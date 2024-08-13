@@ -17,7 +17,7 @@ describe("Header component", () => {
   });
 
   it("contains a link to the home page", () => {
-    const link = screen.getByRole("link");
+    const link = screen.getAllByRole("link")[0];
     expect(link).toHaveProperty("href", `${window.location.origin}/`);
   });
 });

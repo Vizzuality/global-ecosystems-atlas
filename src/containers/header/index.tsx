@@ -1,11 +1,23 @@
 "use client";
+
 import Link from "next/link";
 
 import { Squash as Hamburger } from "hamburger-react";
+import { useAtom } from "jotai";
+
+import { menuOpenAtom } from "@/app/store";
+
+import { Nav } from "@/containers/header/nav";
 
 import { Logo } from "./logo";
 
 export const Header = () => {
+  const [open, setOpen] = useAtom(menuOpenAtom);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <header className="py-8">
       <div className="container">
@@ -19,9 +31,15 @@ export const Header = () => {
             </h1>
           </Link>
 
-          <button type="button" className="h-12 w-12 rounded-full bg-navy-700">
-            <Hamburger color="#FFF" size={24} />
+          <button
+            type="button"
+            className="h-12 w-12 rounded-full bg-navy-700 outline outline-1 outline-navy-700"
+            onClick={handleOpen}
+          >
+            <Hamburger color="#FFF" size={24} toggled={open} rounded />
           </button>
+
+          <Nav />
         </div>
       </div>
     </header>
