@@ -47,6 +47,7 @@ export const Nav = () => {
         <div className="flex items-center justify-end py-8">
           <button
             type="button"
+            aria-label="menu"
             className="flex h-12 w-12 items-center justify-center rounded-full bg-white outline outline-1 outline-navy-700"
             onClick={handleOpen}
           >
@@ -81,13 +82,28 @@ export const Nav = () => {
           <div className="space-y-6">
             <h3 className="text-xs font-semibold uppercase tracking-wider">Follow us</h3>
             <div className="flex gap-6">
-              <a target="_blank" href="https://twitter.com" className="block p-2">
+              <a
+                aria-label="twitter"
+                target="_blank"
+                href="https://twitter.com"
+                className="block p-2"
+              >
                 <PiXLogoLight className="h-8 w-8" />
               </a>
-              <a target="_blank" href="https://linkedin.com" className="block p-2">
+              <a
+                aria-label="linkedin"
+                target="_blank"
+                href="https://linkedin.com"
+                className="block p-2"
+              >
                 <PiLinkedinLogoLight className="h-8 w-8" />
               </a>
-              <a target="_blank" href="https://facebook.com" className="block p-2">
+              <a
+                aria-label="facebook"
+                target="_blank"
+                href="https://facebook.com"
+                className="block p-2"
+              >
                 <PiFacebookLogoLight className="h-8 w-8" />
               </a>
             </div>

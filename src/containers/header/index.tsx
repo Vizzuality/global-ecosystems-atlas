@@ -33,6 +33,7 @@ export const Header = () => {
 
           <button
             type="button"
+            aria-label="menu"
             className="h-12 w-12 rounded-full bg-navy-700 outline outline-1 outline-navy-700"
             onClick={handleOpen}
           >
