@@ -86,7 +86,7 @@ export const Nav = () => {
                 aria-label="twitter"
                 target="_blank"
                 href="https://twitter.com"
-                className="block p-2"
+                className="block p-2 text-navy-700"
               >
                 <PiXLogoLight className="h-8 w-8" />
               </a>
@@ -94,7 +94,7 @@ export const Nav = () => {
                 aria-label="linkedin"
                 target="_blank"
                 href="https://linkedin.com"
-                className="block p-2"
+                className="block p-2 text-navy-700"
               >
                 <PiLinkedinLogoLight className="h-8 w-8" />
               </a>
@@ -102,7 +102,7 @@ export const Nav = () => {
                 aria-label="facebook"
                 target="_blank"
                 href="https://facebook.com"
-                className="block p-2"
+                className="block p-2 text-navy-700"
               >
                 <PiFacebookLogoLight className="h-8 w-8" />
               </a>
