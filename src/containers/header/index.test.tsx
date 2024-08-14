@@ -7,7 +7,7 @@ describe("Header component", () => {
   render(<Header />);
 
   it("renders the Logo component", () => {
-    const logo = screen.getByRole("heading").querySelector("svg");
+    const logo = screen.getByTestId("logo");
     expect(logo).toBeDefined();
   });
 

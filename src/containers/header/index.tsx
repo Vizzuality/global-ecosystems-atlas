@@ -25,7 +25,7 @@ export const Header = () => {
           <Link href="/">
             <h1 className="flex items-center space-x-6">
               <Logo className="fill-navy-700" />
-              <span className="rounded border border-navy-700 px-2 py-1 text-2xs font-bold uppercase italic tracking-wide">
+              <span className="rounded border border-navy-700 px-2 py-1 text-2xs font-bold uppercase italic">
                 Beta
               </span>
             </h1>
