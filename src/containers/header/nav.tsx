@@ -19,7 +19,7 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
   return (
     <Link
       href={props.href}
-      className="inline-flex items-center space-x-6 text-4xl font-semibold text-navy-700 hover:text-navy-500"
+      className="inline-flex items-center space-x-6 text-2xl font-semibold text-navy-700 hover:text-navy-500 2xl:text-4xl"
       onClick={() => setOpen(false)}
     >
       <FiArrowRight />
@@ -38,7 +38,7 @@ export const Nav = () => {
   return (
     <div
       className={cn({
-        "pointer-events-none fixed left-0 top-0 z-10 h-screen w-full bg-white opacity-0 transition-all":
+        "pointer-events-none fixed left-0 top-0 z-10 h-screen w-full overflow-y-auto bg-white opacity-0 transition-all":
           true,
         "pointer-events-auto opacity-100": open,
       })}
@@ -55,7 +55,7 @@ export const Nav = () => {
         </div>
       </div>
 
-      <div className="container p-16">
+      <div className="container p-4 2xl:p-16">
         <nav
           className={cn({
             "flex flex-col gap-8 transition-transform": true,
@@ -73,7 +73,7 @@ export const Nav = () => {
 
         <div
           className={cn({
-            "flex justify-between pt-28 opacity-0 transition-all delay-100": true,
+            "flex flex-col justify-between gap-8 pt-28 opacity-0 transition-all md:flex-row": true,
             "-translate-y-4 opacity-0": !open,
             "translate-y-0 opacity-100": open,
           })}
@@ -93,9 +93,11 @@ export const Nav = () => {
             </div>
           </div>
           <div className="space-y-6">
-            <h3 className="text-right text-xs font-semibold uppercase tracking-wider">Contact</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-wider md:text-right">
+              Contact
+            </h3>
             <Link href="/contact-us" className="block">
-              <Button className="h-auto space-x-2 px-8 py-4 text-base font-semibold">
+              <Button className="h-auto w-full space-x-2 px-8 py-4 text-base font-semibold md:w-auto">
                 <span>Let&apos;s talk</span>
                 <FiArrowRight className="h-6 w-6" />
               </Button>
