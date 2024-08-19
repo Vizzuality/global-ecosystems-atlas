@@ -74,7 +74,8 @@ export const Nav = () => {
 
         <div
           className={cn({
-            "flex flex-col justify-between gap-8 pt-28 opacity-0 transition-all md:flex-row": true,
+            "flex flex-col justify-between gap-8 pt-16 opacity-0 transition-all md:flex-row 2xl:pt-28":
+              true,
             "-translate-y-4 opacity-0": !open,
             "translate-y-0 opacity-100": open,
           })}
