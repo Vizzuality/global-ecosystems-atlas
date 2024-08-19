@@ -1,5 +1,7 @@
 import "./globals.css";
+
 import { ibmPlexSerif, montserrat } from "@/app/fonts";
+import LayoutProviders from "@/app/layout-providers";
 
 export default function RootLayout({
   children,
@@ -7,10 +9,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${montserrat.variable} ${ibmPlexSerif.variable} font-sans`}>
-        {children}
-      </body>
-    </html>
+    <LayoutProviders>
+      <html lang="en">
+        <body className={`${montserrat.variable} ${ibmPlexSerif.variable} font-sans`}>
+          {children}
+        </body>
+      </html>
+    </LayoutProviders>
   );
 }
