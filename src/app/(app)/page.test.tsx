@@ -5,5 +5,5 @@ import Page from "./page";
 
 test("Home", () => {
   render(<Page />);
-  expect(screen.getByRole("main")).toBeDefined();
+  expect(screen.getByText("Home")).toBeDefined();
 });
