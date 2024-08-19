@@ -124,7 +124,7 @@ export const Nav = () => {
             <h3 className="text-xs font-semibold uppercase tracking-wider md:text-right">
               Contact
             </h3>
-            <Link href="/contact-us" className="block">
+            <Link href="/contact" className="block">
               <Button className="h-auto w-full space-x-2 px-8 py-4 text-base font-semibold md:w-auto">
                 <span>Let&apos;s talk</span>
                 <FiArrowRight className="h-6 w-6" />
