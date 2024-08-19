@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 
 import Link, { LinkProps } from "next/link";
 
@@ -12,15 +12,21 @@ import { cn } from "@/lib/utils";
 import { menuOpenAtom } from "@/app/store";
 
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 const NavItem = (props: PropsWithChildren<LinkProps>) => {
+  const pathname = usePathname();
   const setOpen = useSetAtom(menuOpenAtom);
 
   return (
     <Link
       href={props.href}
       className="inline-flex items-center space-x-6 text-2xl font-semibold text-navy-700 hover:text-navy-500 2xl:text-4xl"
-      onClick={() => setOpen(false)}
+      onClick={() => {
+        if (pathname === props.href) {
+          setOpen(false);
+        }
+      }}
     >
       <FiArrowRight />
       <span className="block">{props.children}</span>
@@ -29,11 +35,16 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
 };
 
 export const Nav = () => {
+  const pathname = usePathname();
   const [open, setOpen] = useAtom(menuOpenAtom);
 
   const handleOpen = () => {
-    setOpen(!open);
+    setOpen(false);
   };
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <div

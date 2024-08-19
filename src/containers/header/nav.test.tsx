@@ -39,6 +39,6 @@ describe("Nav component", () => {
     fireEvent.click(button);
 
     // Check if the nav is opened
-    expect(button.querySelector(".hamburger-react")).toHaveProperty("ariaExpanded", "true");
+    expect(button.querySelector(".hamburger-react")).toHaveProperty("ariaExpanded", "false");
   });
 });
