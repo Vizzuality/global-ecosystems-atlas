@@ -1,6 +1,7 @@
 import { PropsWithChildren, useEffect } from "react";
 
 import Link, { LinkProps } from "next/link";
+import { usePathname } from "next/navigation";
 
 import Hamburger from "hamburger-react";
 import { useAtom, useSetAtom } from "jotai";
@@ -12,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { menuOpenAtom } from "@/app/store";
 
 import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
 
 const NavItem = (props: PropsWithChildren<LinkProps>) => {
   const pathname = usePathname();
@@ -44,7 +44,7 @@ export const Nav = () => {
 
   useEffect(() => {
     setOpen(false);
-  }, [pathname]);
+  }, [pathname, setOpen]);
 
   return (
     <div
