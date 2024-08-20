@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import AboutUsData from "@/containers/about-us/data";
 import AboutUsHero from "@/containers/about-us/hero";
 import AboutUsPartners from "@/containers/about-us/partners";
 import AboutUsVision from "@/containers/about-us/vision";
@@ -15,6 +16,7 @@ export default async function AboutUs() {
       <AboutUsHero />
       <AboutUsVision />
       <AboutUsPartners />
+      <AboutUsData />
     </>
   );
 }
