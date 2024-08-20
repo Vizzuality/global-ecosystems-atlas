@@ -92,7 +92,7 @@ export const Nav = () => {
           })}
         >
           <div className="space-y-6">
-            <h3 className="text-xs font-semibold uppercase tracking-wider">Follow us</h3>
+            <h3 className="text-xs font-semibold uppercase">Follow us</h3>
             <div className="flex gap-6">
               <a
                 aria-label="twitter"
@@ -121,9 +121,7 @@ export const Nav = () => {
             </div>
           </div>
           <div className="space-y-6">
-            <h3 className="text-xs font-semibold uppercase tracking-wider md:text-right">
-              Contact
-            </h3>
+            <h3 className="text-xs font-semibold uppercase md:text-right">Contact</h3>
             <Link href="/contact" className="block">
               <Button className="h-auto w-full space-x-2 px-8 py-4 text-base font-semibold md:w-auto">
                 <span>Let&apos;s talk</span>

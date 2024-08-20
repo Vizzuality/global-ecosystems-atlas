@@ -20,8 +20,21 @@ const config = {
     },
     extend: {
       fontSize: {
-        "2xs": "0.625rem",
-        "3xs": "0.5rem",
+        "3xs": ["0.5rem", { lineHeight: "1.5" }],
+        "2xs": ["0.625rem", { lineHeight: "1.5" }],
+        xs: ["0.75rem", { lineHeight: "1.5", letterSpacing: "0.14px" }],
+        sm: ["0.875rem", { lineHeight: "1.5", letterSpacing: "0.14px" }],
+        base: ["1rem", { lineHeight: "1.5", letterSpacing: "0.2px" }],
+        lg: ["1.125rem", { lineHeight: "1.5" }],
+        xl: ["1.25rem", { lineHeight: "1.5", letterSpacing: "0.2px" }],
+        "2xl": ["1.5rem", { lineHeight: "1.5" }],
+        "3xl": ["1.875rem", { lineHeight: "1.3", letterSpacing: "0.3px" }],
+        "4xl": ["2.25rem", { lineHeight: "1.5", letterSpacing: "0.36px" }],
+        "5xl": ["3rem", { lineHeight: "1.2", letterSpacing: "0.6px" }],
+        "6xl": ["3.75rem", { lineHeight: "1.2", letterSpacing: "0.6px" }],
+        "7xl": ["4.5rem", { lineHeight: "1.2", letterSpacing: "0.72px" }],
+        "8xl": ["6rem", { lineHeight: "1" }],
+        "9xl": ["8rem", { lineHeight: "1" }],
       },
       fontFamily: {
         sans: ["var(--font-montserrat)"],

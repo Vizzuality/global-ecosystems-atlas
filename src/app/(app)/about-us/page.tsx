@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { redirect, RedirectType } from "next/navigation";
+import AboutUsHero from "@/containers/about-us/hero";
 
 export const metadata: Metadata = {
   title: "About us | Global Ecosystems Atlas",
@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutUs() {
-  redirect("/coming-soon", RedirectType.replace);
+  return (
+    <>
+      <AboutUsHero />
+    </>
+  );
 }
