@@ -1,14 +1,16 @@
+import { Grid } from "@/components/ui/grid";
 import { H1 } from "@/components/ui/h1";
+import { Hero } from "@/components/ui/hero";
 
 export default function AboutUsHero() {
   return (
-    <section className="-mt-28 bg-navy-700 py-56">
+    <Hero className="bg-navy-700">
       <div className="container">
-        <div className="grid grid-cols-6 gap-8 lg:gap-24 xl:px-24">
-          <div className="col-span-6 lg:col-span-5">
-            <div className="space-y-6 lg:space-y-16">
+        <Grid>
+          <div className="col-span-12 lg:col-span-10">
+            <div className="space-y-10 lg:space-y-16">
               <H1 className="text-white">What is the Global Ecosystems Atlas?</H1>
-              <div className="space-y-5 text-white sm:space-y-8">
+              <div className="space-y-8 text-white">
                 <p className="text-xl">
                   Convened by the Group on Earth Observations (GEO), the Global Ecosystems Atlas is
                   a <strong>cross-sector collaborative initiative</strong> to map and monitor the
@@ -30,8 +32,8 @@ export default function AboutUsHero() {
               </div>
             </div>
           </div>
-        </div>
+        </Grid>
       </div>
-    </section>
+    </Hero>
   );
 }
