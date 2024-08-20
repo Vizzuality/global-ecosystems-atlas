@@ -4,7 +4,7 @@ export default function AboutUsHero() {
   return (
     <section className="-mt-28 bg-navy-700 py-56">
       <div className="container">
-        <div className="grid grid-cols-6 gap-8 lg:gap-28 xl:px-24">
+        <div className="grid grid-cols-6 gap-8 lg:gap-24 xl:px-24">
           <div className="col-span-6 lg:col-span-5">
             <div className="space-y-6 lg:space-y-16">
               <H1 className="text-white">What is the Global Ecosystems Atlas?</H1>
