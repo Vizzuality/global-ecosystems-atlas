@@ -7,10 +7,10 @@ export const env = createEnv({
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string(),
     NEXT_PUBLIC_API_URL: z.preprocess(
       // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
-      // Since NextAuth automatically uses the VERCEL_URL if present.
-      (str) => process.env.VERCEL_URL ?? str,
-      // VERCEL_URL doesnt include `https` so it cant be validated as a URL
-      process.env.VERCEL_URL ? z.string() : z.string().url().min(1),
+      // Since NextAuth automatically uses the NEXT_PUBLIC_VERCEL_URL if present.
+      (str) => process.env.NEXT_PUBLIC_VERCEL_URL ?? str,
+      // NEXT_PUBLIC_VERCEL_URL doesnt include `https` so it cant be validated as a URL
+      process.env.NEXT_PUBLIC_VERCEL_URL ? z.string() : z.string().url().min(1),
     ),
   },
   runtimeEnv: {
