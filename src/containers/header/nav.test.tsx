@@ -28,7 +28,7 @@ describe("Nav component", () => {
     // Check if the contact button is rendered
     expect(getByRole("link", { name: /let's talk/i })).toHaveProperty(
       "href",
-      `${window.location.origin}/contact-us`,
+      `${window.location.origin}/contact`,
     );
   });
 
