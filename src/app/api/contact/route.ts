@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const request = await req.json();
 
   return NextResponse.json(
-    { error: false, emailSent: true, errors: [], response: [] },
+    { error: false, success: true, errors: [], response: [] },
     { status: 200 },
   );
 
@@ -32,11 +32,11 @@ export async function POST(req: Request) {
     .sendMail(mailOptions)
     .then((response: nodemailer.SentMessageInfo) => {
       return NextResponse.json(
-        { error: false, emailSent: true, errors: [], response },
+        { error: false, success: true, errors: [], response },
         { status: 200 },
       );
     })
     .catch((error: nodemailer.SentMessageInfo) => {
-      return NextResponse.json({ error: true, emailSent: false, errors: [error] }, { status: 500 });
+      return NextResponse.json({ error: true, success: false, errors: [error] }, { status: 500 });
     });
 }

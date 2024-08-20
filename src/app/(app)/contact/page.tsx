@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <section className="flex grow flex-col items-center justify-center py-14">
+    <section className="flex grow flex-col py-14 xl:items-center xl:justify-center">
       <div className="container flex flex-col sm:items-center sm:justify-center">
         <div className="grid grid-cols-6 gap-8 lg:gap-28 xl:px-24">
           <div className="col-span-6 space-y-6 lg:col-span-3 lg:space-y-16">
