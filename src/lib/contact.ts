@@ -1,7 +1,9 @@
 import { MutationFunction, useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { z } from "zod";
 
-import API from "@/services/api";
+import { contactAction } from "@/actions/contact";
+
+// import API from "@/services/api";
 
 /**
  ************************************************************
@@ -27,12 +29,7 @@ export const contactFormSchema = z.object({
 });
 
 export const postContact = async (data: z.infer<typeof contactFormSchema>) => {
-  return API<z.infer<typeof contactFormSchema>>({
-    url: `/contact`,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data,
-  });
+  return contactAction(data);
 };
 
 export const postContactMutationOptions = <TError = unknown, TContext = unknown>(
