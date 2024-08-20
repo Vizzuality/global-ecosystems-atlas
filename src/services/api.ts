@@ -3,8 +3,12 @@ import Axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 import { env } from "@/env.mjs";
 
+const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : env.NEXT_PUBLIC_API_URL;
+
 export const AXIOS_INSTANCE = Axios.create({
-  baseURL: env.NEXT_PUBLIC_API_URL,
+  baseURL: BASE_URL,
 });
 
 export const API = <T>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
