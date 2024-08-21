@@ -22,7 +22,7 @@ export default function AboutUsData() {
             <div className="space-y-6 lg:space-y-9">
               <H2 className="text-white">About the data and methods</H2>
               <div className="space-y-8">
-                <p className="text-xl text-white">
+                <p className="text-xl">
                   <TextReveal color={fullConfig.theme.colors.white}>
                     The Global Ecosystems Atlas offers data on ecosystems that have been
                     scientifically validated and harmonised with the IUCN Global Ecosystem Typology
