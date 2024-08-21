@@ -1,4 +1,5 @@
 import { Header } from "@/containers/header";
+import { Newsletter } from "@/containers/newsletter";
 
 export default function RootLayout({
   children,
@@ -9,6 +10,7 @@ export default function RootLayout({
     <main className="flex min-h-screen flex-col">
       <Header />
       {children}
+      <Newsletter />
     </main>
   );
 }
