@@ -17,7 +17,7 @@ export const TextReveal = ({
   const textRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: textRef,
-    offset: ["0 0.6", "1 0.6"],
+    offset: ["0 0.75", "1 0.75"],
   });
 
   const backgroundPositionX = useTransform(scrollYProgress, [0, 1], ["200%", "100%"]);

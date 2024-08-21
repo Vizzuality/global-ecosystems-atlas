@@ -72,7 +72,7 @@ export function ContactForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input placeholder="Enter your full name" {...field} />
               </FormControl>
@@ -123,30 +123,32 @@ export function ContactForm() {
           )}
         />
 
-        {!state.success && (
-          <Button
-            variant="primary"
-            type="submit"
-            size="lg"
-            className="w-full"
-            disabled={state.submitting}
-          >
-            {state.submitting && "Submitting..."}
-            {!state.submitting && "Submit"}
-          </Button>
-        )}
+        <div className="pt-8">
+          {!state.success && (
+            <Button
+              variant="primary"
+              type="submit"
+              size="lg"
+              className="w-full"
+              disabled={state.submitting}
+            >
+              {state.submitting && "Submitting..."}
+              {!state.submitting && "Submit"}
+            </Button>
+          )}
 
-        {!state.submitting && state.submitted && state.success && (
-          <div className="rounded-sm border border-green-600 p-4">
-            <p className="text-green-600">Thank you for your message!</p>
-          </div>
-        )}
+          {!state.submitting && state.submitted && state.success && (
+            <div className="rounded-sm border border-green-600 p-4">
+              <p className="text-green-600">Thank you for your message!</p>
+            </div>
+          )}
 
-        {!state.submitting && state.submitted && state.error && (
-          <div className="rounded-sm border border-red-500 p-4">
-            <p className="text-red-500">Something went wrong. Please try again.</p>
-          </div>
-        )}
+          {!state.submitting && state.submitted && state.error && (
+            <div className="rounded-sm border border-red-500 p-4">
+              <p className="text-red-500">Something went wrong. Please try again.</p>
+            </div>
+          )}
+        </div>
       </form>
     </Form>
   );

@@ -1,13 +1,8 @@
 import Image, { ImageProps } from "next/image";
 
-import resolveConfig from "tailwindcss/resolveConfig";
-
-import { TextReveal } from "@/components/animations/text-reveal";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
 import { Section } from "@/components/ui/section";
-
-import tailwindConfig from "@/../tailwind.config";
 
 const PartnerItem = ({ src, alt, width, height }: ImageProps) => (
   <li className="col-span-6 flex h-24 items-center justify-center md:col-span-4 lg:col-span-2">
@@ -16,8 +11,6 @@ const PartnerItem = ({ src, alt, width, height }: ImageProps) => (
 );
 
 export default function AboutUsPartners() {
-  const fullConfig = resolveConfig(tailwindConfig);
-
   return (
     <Section>
       <div className="container space-y-16">
@@ -27,12 +20,10 @@ export default function AboutUsPartners() {
               <H2>Our Partners</H2>
               <div className="space-y-8">
                 <p className="text-xl">
-                  <TextReveal color={fullConfig.theme.colors.navy[700]}>
-                    The Atlas thrives through collaboration with science-based conservation
-                    organisations, academia, data and technology providers, and governmental bodies.
-                    These partnerships are essential for gathering data, sharing expertise and
-                    promoting the Atlas platform.
-                  </TextReveal>
+                  The Atlas thrives through collaboration with science-based conservation
+                  organisations, academia, data and technology providers, and governmental bodies.
+                  These partnerships are essential for gathering data, sharing expertise and
+                  promoting the Atlas platform.
                 </p>
               </div>
             </div>

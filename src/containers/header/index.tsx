@@ -27,7 +27,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="relative z-10 py-8">
+    <header className="relative z-20 py-8">
       <div className="container">
         <div className="flex items-center justify-between gap-3">
           <Link href="/">
