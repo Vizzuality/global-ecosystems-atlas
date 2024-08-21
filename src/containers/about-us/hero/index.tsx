@@ -49,7 +49,7 @@ export default function AboutUsHero() {
               </div>
             </div>
           </div>
-          <div className="relative col-span-5 col-start-8">
+          <div className="relative col-span-12 lg:col-span-5 lg:col-start-8">
             <div className="aspect-[896/1100] overflow-hidden lg:absolute lg:left-0 lg:top-24">
               <TranslateY
                 className="scale-125"
