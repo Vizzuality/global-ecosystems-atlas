@@ -1,9 +1,16 @@
 import Image from "next/image";
 
+import resolveConfig from "tailwindcss/resolveConfig";
+
+import { TextReveal } from "@/components/animations/text-reveal";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
 
+import tailwindConfig from "@/../tailwind.config";
+
 export default function AboutUsPartners() {
+  const fullConfig = resolveConfig(tailwindConfig);
+
   return (
     <section className="py-36">
       <div className="container space-y-16">
@@ -13,10 +20,12 @@ export default function AboutUsPartners() {
               <H2>Our Partners</H2>
               <div className="space-y-8">
                 <p className="text-xl">
-                  The Atlas thrives through collaboration with science-based conservation
-                  organisations, academia, data and technology providers, and governmental bodies.
-                  These partnerships are essential for gathering data, sharing expertise and
-                  promoting the Atlas platform.
+                  <TextReveal color={fullConfig.theme.colors.navy[700]}>
+                    The Atlas thrives through collaboration with science-based conservation
+                    organisations, academia, data and technology providers, and governmental bodies.
+                    These partnerships are essential for gathering data, sharing expertise and
+                    promoting the Atlas platform.
+                  </TextReveal>
                 </p>
               </div>
             </div>

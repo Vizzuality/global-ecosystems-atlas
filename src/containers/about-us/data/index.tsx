@@ -1,11 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import resolveConfig from "tailwindcss/resolveConfig";
+
+import { TextReveal } from "@/components/animations/text-reveal";
 import { Button } from "@/components/ui/button";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
 
+import tailwindConfig from "@/../tailwind.config";
+
 export default function AboutUsData() {
+  const fullConfig = resolveConfig(tailwindConfig);
+
   return (
     <section className="bg-navy-700 py-36">
       <div className="container space-y-56">
@@ -15,12 +22,14 @@ export default function AboutUsData() {
               <H2 className="text-white">About the data and methods</H2>
               <div className="space-y-8">
                 <p className="text-xl text-white">
-                  The Global Ecosystems Atlas offers data on ecosystems that have been
-                  scientifically validated and harmonised with the IUCN Global Ecosystem Typology -
-                  a common international system for classifying ecosystems across terrestrial,
-                  freshwater and marine realms. Explore the catalogue of carefully vetted datasets
-                  behind the platform to gain deeper insights into the building blocks of the Atlas
-                  and enhance your research and ecosystem mapping projects.
+                  <TextReveal color={fullConfig.theme.colors.white}>
+                    The Global Ecosystems Atlas offers data on ecosystems that have been
+                    scientifically validated and harmonised with the IUCN Global Ecosystem Typology
+                    - a common international system for classifying ecosystems across terrestrial,
+                    freshwater and marine realms. Explore the catalogue of carefully vetted datasets
+                    behind the platform to gain deeper insights into the building blocks of the
+                    Atlas and enhance your research and ecosystem mapping projects.
+                  </TextReveal>
                 </p>
               </div>
               <ul className="flex gap-5 pt-6">
