@@ -14,7 +14,7 @@ export default function AboutUsHero() {
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <Section hero className="bg-navy-700">
+    <Section hero className="bg-navy-700 lg:pb-56">
       <div className="container">
         <Grid>
           <div className="col-span-12 lg:col-span-10">

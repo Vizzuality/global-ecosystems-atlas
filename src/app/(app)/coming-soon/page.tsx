@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { Section } from "@/components/ui/section";
 
 export const metadata: Metadata = {
   title: "Coming soon | Global Ecosystems Atlas",
@@ -11,8 +12,9 @@ export const metadata: Metadata = {
 
 export default function ComingSoon() {
   return (
-    <div
-      className="-mt-28 flex grow flex-col items-center justify-center bg-navy-700 bg-left-top bg-no-repeat pt-28"
+    <Section
+      hero
+      className="flex flex-col items-center justify-center bg-navy-700 bg-left-top bg-no-repeat"
       style={{
         backgroundImage: "url(/coming-soon.svg)",
         backgroundSize: "auto 100%",
@@ -30,6 +32,6 @@ export default function ComingSoon() {
           </Button>
         </Link>
       </div>
-    </div>
+    </Section>
   );
 }
