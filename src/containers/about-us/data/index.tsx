@@ -33,15 +33,15 @@ export default function AboutUsData() {
                   </TextReveal>
                 </p>
               </div>
-              <ul className="flex gap-5 pt-6">
-                <li className="w-1/2">
+              <ul className="flex flex-col gap-5 pt-6 sm:flex-row">
+                <li className="w-full sm:w-1/2">
                   <Link href="/datasets">
                     <Button className="w-full" size="lg" variant="outline">
                       Go to Dataset Catalogue
                     </Button>
                   </Link>
                 </li>
-                <li className="w-1/2">
+                <li className="w-full sm:w-1/2">
                   <Link href="/methodology">
                     <Button className="w-full" size="lg" variant="primary">
                       Go to Methodology

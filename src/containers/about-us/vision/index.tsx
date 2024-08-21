@@ -12,7 +12,7 @@ export default function AboutUsVision() {
 
   return (
     <Section className="bg-blue-100">
-      <div className="container space-y-56">
+      <div className="container space-y-16 lg:space-y-56">
         <Grid>
           <div className="col-span-12 lg:col-span-6">
             <div className="space-y-6 lg:space-y-9">
