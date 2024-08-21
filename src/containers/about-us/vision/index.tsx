@@ -3,6 +3,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import { TextReveal } from "@/components/animations/text-reveal";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
+import { Section } from "@/components/ui/section";
 
 import tailwindConfig from "@/../tailwind.config";
 
@@ -10,7 +11,7 @@ export default function AboutUsVision() {
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <section className="bg-blue-100 py-36">
+    <Section className="bg-blue-100">
       <div className="container space-y-56">
         <Grid>
           <div className="col-span-12 lg:col-span-6">
@@ -67,6 +68,6 @@ export default function AboutUsVision() {
           </div>
         </Grid>
       </div>
-    </section>
+    </Section>
   );
 }

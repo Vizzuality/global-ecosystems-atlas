@@ -2,11 +2,11 @@ import { ContactForm } from "@/containers/contact/form";
 
 import { Grid } from "@/components/ui/grid";
 import { H1 } from "@/components/ui/h1";
-import { Hero } from "@/components/ui/hero";
+import { Section } from "@/components/ui/section";
 
 export default function ContactHero() {
   return (
-    <Hero className="grow">
+    <Section hero className="grow">
       <div className="container">
         <Grid>
           <div className="col-span-12 lg:col-span-6">
@@ -32,6 +32,6 @@ export default function ContactHero() {
           </div>
         </Grid>
       </div>
-    </Hero>
+    </Section>
   );
 }

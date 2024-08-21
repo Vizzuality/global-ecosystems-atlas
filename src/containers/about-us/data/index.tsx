@@ -7,6 +7,7 @@ import { TextReveal } from "@/components/animations/text-reveal";
 import { Button } from "@/components/ui/button";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
+import { Section } from "@/components/ui/section";
 
 import tailwindConfig from "@/../tailwind.config";
 
@@ -14,7 +15,7 @@ export default function AboutUsData() {
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <section className="bg-navy-700 py-36">
+    <Section className="bg-navy-700">
       <div className="container space-y-56">
         <Grid>
           <div className="col-span-12 lg:col-span-7">
@@ -42,7 +43,7 @@ export default function AboutUsData() {
                 </li>
                 <li className="w-1/2">
                   <Link href="/methodology">
-                    <Button className="w-full" size="lg" variant="outline">
+                    <Button className="w-full" size="lg" variant="primary">
                       Go to Methodology
                     </Button>
                   </Link>
@@ -61,6 +62,6 @@ export default function AboutUsData() {
           </div>
         </Grid>
       </div>
-    </section>
+    </Section>
   );
 }

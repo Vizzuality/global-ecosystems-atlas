@@ -3,7 +3,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import { TextReveal } from "@/components/animations/text-reveal";
 import { Grid } from "@/components/ui/grid";
 import { H1 } from "@/components/ui/h1";
-import { Hero } from "@/components/ui/hero";
+import { Section } from "@/components/ui/section";
 
 import tailwindConfig from "@/../tailwind.config";
 
@@ -11,7 +11,7 @@ export default function AboutUsHero() {
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <Hero className="bg-navy-700">
+    <Section hero className="bg-navy-700">
       <div className="container">
         <Grid>
           <div className="col-span-12 lg:col-span-10">
@@ -48,6 +48,6 @@ export default function AboutUsHero() {
           </div>
         </Grid>
       </div>
-    </Hero>
+    </Section>
   );
 }

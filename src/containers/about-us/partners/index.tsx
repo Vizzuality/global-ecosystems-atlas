@@ -5,6 +5,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import { TextReveal } from "@/components/animations/text-reveal";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
+import { Section } from "@/components/ui/section";
 
 import tailwindConfig from "@/../tailwind.config";
 
@@ -12,7 +13,7 @@ export default function AboutUsPartners() {
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <section className="py-36">
+    <Section>
       <div className="container space-y-16">
         <Grid>
           <div className="col-span-12 lg:col-span-7">
@@ -148,6 +149,6 @@ export default function AboutUsPartners() {
           </Grid>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
