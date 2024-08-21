@@ -74,6 +74,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        lightblue: "#EFF8FF",
         navy: {
           50: "#F2F2F2",
           100: "#CFD6D9",

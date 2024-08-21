@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import resolveConfig from "tailwindcss/resolveConfig";
 
 import { TextReveal } from "@/components/animations/text-reveal";
@@ -11,7 +13,10 @@ export default function AboutUsVision() {
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <Section className="bg-blue-100">
+    <Section className="relative z-0 overflow-hidden bg-lightblue">
+      <div className="absolute bottom-0 left-0 hidden w-1/4 lg:block">
+        <Image src="/about/vision.svg" alt="GEO Vision" width={1920} height={1080} />
+      </div>
       <div className="container space-y-16 lg:space-y-56">
         <Grid>
           <div className="col-span-12 lg:col-span-6">
