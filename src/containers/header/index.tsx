@@ -14,7 +14,7 @@ import { Nav } from "@/containers/header/nav";
 
 import { Logo } from "./logo";
 
-const DARK_PATHNAMES = ["/about", "/coming-soon"];
+const DARK_PATHNAMES = ["/about-us", "/coming-soon"];
 
 export const Header = () => {
   const pathname = usePathname();

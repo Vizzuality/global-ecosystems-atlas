@@ -124,7 +124,13 @@ export function ContactForm() {
         />
 
         {!state.success && (
-          <Button type="submit" size="lg" className="w-full" disabled={state.submitting}>
+          <Button
+            variant="primary"
+            type="submit"
+            size="lg"
+            className="w-full"
+            disabled={state.submitting}
+          >
             {state.submitting && "Submitting..."}
             {!state.submitting && "Submit"}
           </Button>
