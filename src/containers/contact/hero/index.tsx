@@ -9,7 +9,7 @@ export default function ContactHero() {
     <Section hero className="grow">
       <div className="container">
         <Grid>
-          <div className="col-span-12 lg:col-span-6">
+          <div className="col-span-12 lg:col-span-5 lg:col-start-2">
             <div className="space-y-6 lg:space-y-16">
               <H1>Let&apos;s talk</H1>
               <div className="space-y-5 sm:space-y-8">
@@ -27,7 +27,7 @@ export default function ContactHero() {
               </div>
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-6">
+          <div className="col-span-12 lg:col-span-4 lg:col-start-8">
             <ContactForm />
           </div>
         </Grid>

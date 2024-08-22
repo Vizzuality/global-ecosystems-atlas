@@ -12,7 +12,7 @@ export default function AboutUsVision() {
       </div>
       <div className="container space-y-16 lg:space-y-56">
         <Grid>
-          <div className="col-span-12 lg:col-span-6">
+          <div className="col-span-12 lg:col-span-5 lg:col-start-2">
             <div className="space-y-6 lg:space-y-9">
               <H2>What is GEO?</H2>
               <div className="space-y-8">
@@ -27,7 +27,7 @@ export default function AboutUsVision() {
         </Grid>
 
         <Grid>
-          <div className="col-span-12 lg:col-span-8 lg:col-start-5">
+          <div className="col-span-12 lg:col-span-7 lg:col-start-5">
             <div className="space-y-6 lg:space-y-9">
               <H2>Our vision</H2>
               <div className="space-y-8">

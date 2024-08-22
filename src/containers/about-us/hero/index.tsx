@@ -14,10 +14,10 @@ export default function AboutUsHero() {
   const fullConfig = resolveConfig(tailwindConfig);
 
   return (
-    <Section hero className="bg-navy-700">
+    <Section hero className="min-h-0 bg-navy-700 lg:pb-56">
       <div className="container">
         <Grid>
-          <div className="col-span-12 lg:col-span-10">
+          <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <div className="space-y-10 lg:space-y-16">
               <H1 className="text-white">What is the Global Ecosystems Atlas?</H1>
               <div className="space-y-8 text-white">
