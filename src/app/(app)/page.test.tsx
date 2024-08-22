@@ -5,5 +5,5 @@ import Page from "./page";
 
 test("Home", () => {
   render(<Page />);
-  expect(screen.getByText("Home")).toBeDefined();
+  expect(screen.getByText("Mapping the world's ecosystems for action")).toBeDefined();
 });

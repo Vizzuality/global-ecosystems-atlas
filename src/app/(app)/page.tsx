@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 
+import HomeHero from "@/containers/home/hero";
+
 export const metadata: Metadata = {
   title: "Global Ecosystems Atlas",
   description: "Global Ecosystems Atlas description",
@@ -8,9 +10,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <div className="container">
-        <h1>Home</h1>
-      </div>
+      <HomeHero />
     </>
   );
 }
