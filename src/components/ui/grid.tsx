@@ -10,7 +10,7 @@ export const Grid = ({
   return (
     <div
       className={cn({
-        "grid grid-cols-12 gap-8 lg:gap-x-16 xl:gap-x-24 xl:px-24": true,
+        "grid grid-cols-12 gap-6": true,
         [`${className}`]: className,
       })}
       {...rest}

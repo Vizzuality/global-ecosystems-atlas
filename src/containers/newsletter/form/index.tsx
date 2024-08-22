@@ -61,7 +61,7 @@ export function NewsletterForm() {
   }
 
   return (
-    <>
+    <div className="space-y-10 p-4">
       <header className="space-y-2 text-center">
         <h2 className="text-4xl font-semibold">Stay tuned</h2>
         <p className="text-xl">
@@ -126,6 +126,6 @@ export function NewsletterForm() {
           </div>
         </form>
       </Form>
-    </>
+    </div>
   );
 }

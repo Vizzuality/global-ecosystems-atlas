@@ -15,7 +15,7 @@ export default function AboutUsPartners() {
     <Section>
       <div className="container space-y-16">
         <Grid>
-          <div className="col-span-12 lg:col-span-7">
+          <div className="col-span-12 lg:col-span-6 lg:col-start-2">
             <div className="space-y-6 lg:space-y-9">
               <H2>Our Partners</H2>
               <div className="space-y-8">
@@ -32,8 +32,10 @@ export default function AboutUsPartners() {
 
         <div className="space-y-28">
           <Grid>
-            <h3 className="col-span-12 text-xs font-semibold uppercase">Supported by</h3>
-            <ul className="col-span-12 grid grid-cols-12 gap-x-8 gap-y-5 lg:grid-cols-10">
+            <h3 className="col-span-12 text-xs font-semibold uppercase lg:col-span-10 lg:col-start-2">
+              Supported by
+            </h3>
+            <ul className="col-span-12 grid grid-cols-12 gap-x-8 gap-y-5 lg:col-span-10 lg:col-start-2 lg:grid-cols-10">
               <PartnerItem
                 src="/partners/un-cbd.png"
                 alt="Convention on Biological Diversity"
@@ -66,8 +68,10 @@ export default function AboutUsPartners() {
           </Grid>
 
           <Grid>
-            <h3 className="col-span-12 text-xs font-semibold uppercase">FUNDED BY</h3>
-            <ul className="col-span-12 grid grid-cols-12 gap-x-2 gap-y-5 lg:grid-cols-10">
+            <h3 className="col-span-12 text-xs font-semibold uppercase lg:col-span-10 lg:col-start-2">
+              FUNDED BY
+            </h3>
+            <ul className="col-span-12 grid grid-cols-12 gap-x-2 gap-y-5 lg:col-span-10 lg:col-start-2 lg:grid-cols-10">
               <PartnerItem
                 src="/partners/defra.png"
                 alt="Department for Environment Food & Rural Affairs"
@@ -85,8 +89,10 @@ export default function AboutUsPartners() {
           </Grid>
 
           <Grid>
-            <h3 className="col-span-12 text-xs font-semibold uppercase">In partnership with</h3>
-            <ul className="col-span-12 grid grid-cols-12 gap-x-2 gap-y-5 lg:grid-cols-10">
+            <h3 className="col-span-12 text-xs font-semibold uppercase lg:col-span-10 lg:col-start-2">
+              In partnership with
+            </h3>
+            <ul className="col-span-12 grid grid-cols-12 gap-x-2 gap-y-5 lg:col-span-10 lg:col-start-2 lg:grid-cols-10">
               <PartnerItem
                 src="/partners/center-for-ecosystem-science.png"
                 alt="Centre for Ecosystem Science"

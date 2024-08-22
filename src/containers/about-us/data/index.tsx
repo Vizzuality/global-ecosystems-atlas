@@ -11,7 +11,7 @@ export default function AboutUsData() {
     <Section className="bg-navy-700">
       <div className="container space-y-56">
         <Grid>
-          <div className="col-span-12 lg:col-span-7">
+          <div className="col-span-12 lg:col-span-5 lg:col-start-2">
             <div className="space-y-6 lg:space-y-9">
               <H2 className="text-white">About the data and methods</H2>
               <div className="space-y-8">
@@ -43,7 +43,7 @@ export default function AboutUsData() {
             </div>
           </div>
 
-          <div className="col-span-12 flex items-center justify-center lg:col-span-5">
+          <div className="col-span-12 flex items-center justify-center lg:col-span-5 lg:col-start-8">
             <Image
               src="/about/data.png"
               alt="Global Ecosystems Atlas data"
