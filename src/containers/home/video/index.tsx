@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/section";
 
 export default function HomeVideo() {
   return (
-    <Section className="relative py-0 lg:py-0">
+    <Section className="relative py-0 lg:py-0 2xl:py-0">
       <div className="container relative z-10">
         <Grid>
           <div className="col-span-12">
