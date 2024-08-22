@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import HomeHero from "@/containers/home/hero";
 import HomeVideo from "@/containers/home/video";
+import HomeWho from "@/containers/home/who";
 import HomeWhy from "@/containers/home/why";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function Home() {
       <HomeHero />
       <HomeVideo />
       <HomeWhy />
+      <HomeWho />
     </>
   );
 }
