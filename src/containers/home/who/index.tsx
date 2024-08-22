@@ -92,7 +92,7 @@ export default function HomeWho() {
                   <CarouselItem key={who.title} className="basis-1/3">
                     <div className="group relative aspect-square rounded-2xl bg-lightblue-100 transition-colors duration-500 hover:bg-navy-700">
                       <div className="space-y-3 p-8">
-                        <h3 className="text-2xl font-semibold transition-colors duration-500 group-hover:text-white">
+                        <h3 className="text-xl font-semibold transition-colors duration-500 group-hover:text-white lg:text-2xl">
                           {who.title}
                         </h3>
                         <p className="font-medium text-navy-100 opacity-0 transition-all duration-500 group-hover:opacity-100">
