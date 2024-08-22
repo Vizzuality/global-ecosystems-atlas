@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import HomeHero from "@/containers/home/hero";
+import HomeStories from "@/containers/home/stories";
 import HomeVideo from "@/containers/home/video";
 import HomeWhere from "@/containers/home/where";
 import HomeWho from "@/containers/home/who";
@@ -19,6 +20,7 @@ export default function Home() {
       <HomeWhy />
       <HomeWho />
       <HomeWhere />
+      <HomeStories />
     </>
   );
 }

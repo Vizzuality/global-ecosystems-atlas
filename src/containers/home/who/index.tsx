@@ -55,7 +55,7 @@ export default function HomeWho() {
   const [api, setApi] = useState<CarouselApi>();
 
   return (
-    <Section className="overflow-hidden">
+    <Section className="overflow-hidden bg-lightblue-50">
       <div className="container space-y-16">
         <Grid>
           <div className="col-span-12 lg:col-span-6 lg:col-start-2">
