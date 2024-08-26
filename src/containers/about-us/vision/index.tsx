@@ -6,7 +6,7 @@ import { Section } from "@/components/ui/section";
 
 export default function AboutUsVision() {
   return (
-    <Section className="relative z-0 overflow-hidden bg-lightblue">
+    <Section className="relative z-0 overflow-hidden bg-lightblue-50">
       <div className="absolute bottom-0 left-0 hidden w-1/4 lg:block">
         <Image src="/about/vision.svg" alt="GEO Vision" width={1920} height={1080} />
       </div>

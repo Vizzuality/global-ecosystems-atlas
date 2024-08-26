@@ -10,6 +10,7 @@ import { z } from "zod";
 import { newsletterFormSchema, usePostNewsletterMutation } from "@/lib/newsletter";
 
 import { Button } from "@/components/ui/button";
+import { DialogTitle } from "@/components/ui/dialog";
 import {
   Form,
   FormField,
@@ -63,7 +64,7 @@ export function NewsletterForm() {
   return (
     <div className="space-y-10 p-4">
       <header className="space-y-2 text-center">
-        <h2 className="text-4xl font-semibold">Stay tuned</h2>
+        <DialogTitle className="text-4xl font-semibold">Stay tuned</DialogTitle>
         <p className="text-xl">
           By signing up, you are making the Global Ecosystems Atlas a reality.
         </p>
