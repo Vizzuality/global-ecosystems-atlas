@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
+import Image from "next/image";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -63,70 +65,84 @@ export function NewsletterForm() {
 
   return (
     <div className="space-y-10 p-4">
-      <header className="space-y-2 text-center">
-        <DialogTitle className="text-4xl font-semibold">Stay tuned</DialogTitle>
-        <p className="text-xl">
-          By signing up, you are making the Global Ecosystems Atlas a reality.
-        </p>
-      </header>
+      {state.success && (
+        <div className="space-y-11 duration-500 animate-in fade-in-0">
+          <header className="space-y-1">
+            <h3 className="text-base font-bold">Thank you!</h3>
+            <p>We’re excited to share this journey with you!</p>
+          </header>
+          <Image src="/success.svg" width={400} height={400} alt="Success" />
+        </div>
+      )}
 
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your full name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your email address" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      {!state.success && (
+        <>
+          <header className="space-y-2 text-center">
+            <DialogTitle className="text-4xl font-semibold">Stay tuned</DialogTitle>
+            <p className="text-xl">
+              By signing up, you are making the Global Ecosystems Atlas a reality.
+            </p>
+          </header>
 
-          <div className="pt-8">
-            {!state.success && (
-              <Button
-                variant="primary"
-                type="submit"
-                size="lg"
-                className="w-full"
-                disabled={state.submitting}
-              >
-                {state.submitting && "Submitting..."}
-                {!state.submitting && "Submit"}
-              </Button>
-            )}
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter your full name" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter your email address" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            {!state.submitting && state.submitted && state.success && (
-              <div className="rounded-sm border border-green-600 p-4">
-                <p className="text-green-600">Thank you for your message!</p>
+              <div className="pt-8">
+                {!state.success && (
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    size="lg"
+                    className="w-full"
+                    disabled={state.submitting}
+                  >
+                    {state.submitting && "Submitting..."}
+                    {!state.submitting && "Submit"}
+                  </Button>
+                )}
+
+                {!state.submitting && state.submitted && state.success && (
+                  <div className="rounded-sm border border-green-600 p-4">
+                    <p className="text-green-600">Thank you for your message!</p>
+                  </div>
+                )}
+
+                {!state.submitting && state.submitted && state.error && (
+                  <div className="rounded-sm border border-red-500 p-4">
+                    <p className="text-red-500">Something went wrong. Please try again.</p>
+                  </div>
+                )}
               </div>
-            )}
-
-            {!state.submitting && state.submitted && state.error && (
-              <div className="rounded-sm border border-red-500 p-4">
-                <p className="text-red-500">Something went wrong. Please try again.</p>
-              </div>
-            )}
-          </div>
-        </form>
-      </Form>
+            </form>
+          </Form>
+        </>
+      )}
     </div>
   );
 }
