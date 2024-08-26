@@ -2,6 +2,8 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { MediaContextProvider } from "@/containers/media";
+
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 function makeQueryClient() {
@@ -42,8 +44,10 @@ export default function LayoutProviders({ children }: { children: React.ReactNod
   const queryClient = getQueryClient();
 
   return (
-    <TooltipProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </TooltipProvider>
+    <MediaContextProvider>
+      <TooltipProvider>
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </TooltipProvider>
+    </MediaContextProvider>
   );
 }

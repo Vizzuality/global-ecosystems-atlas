@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import { FiArrowLeft, FiArrowRight, FiPlus } from "react-icons/fi";
 
+import { Media } from "@/containers/media";
+
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
@@ -51,6 +53,23 @@ const WHO = [
   },
 ];
 
+const WhoItem = (who: { title: string; description: string }) => (
+  <div className="group relative grow rounded-2xl bg-lightblue-100 transition-colors duration-500 hover:bg-navy-700">
+    <div className="space-y-3 p-8">
+      <h3 className="text-xl font-semibold transition-colors duration-500 group-hover:text-white lg:text-2xl">
+        {who.title}
+      </h3>
+      <p className="font-medium text-navy-100 opacity-0 transition-all duration-500 group-hover:opacity-100">
+        {who.description}
+      </p>
+    </div>
+
+    <div className="absolute bottom-8 right-8 h-16 w-16 rounded-full bg-white p-4 transition-opacity duration-300 group-hover:opacity-0">
+      <FiPlus className="h-full w-full text-navy-700" />
+    </div>
+  </div>
+);
+
 export default function HomeWho() {
   const [api, setApi] = useState<CarouselApi>();
 
@@ -61,7 +80,7 @@ export default function HomeWho() {
           <div className="col-span-12 lg:col-span-6 lg:col-start-2">
             <H2>Who is the Global Ecosystems Atlas for?</H2>
           </div>
-          <div className="col-span-12 space-y-6 lg:col-span-4 lg:col-start-8">
+          <div className="col-span-12 hidden space-y-6 md:block lg:col-span-4 lg:col-start-8">
             <div className="flex justify-end space-x-4">
               <button
                 className="h-16 w-16 rounded-full border-2 border-navy-700 p-4"
@@ -80,34 +99,33 @@ export default function HomeWho() {
         </Grid>
         <Grid>
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <Carousel
-              setApi={setApi}
-              opts={{
-                skipSnaps: true,
-                watchDrag: false,
-              }}
-            >
-              <CarouselContent overflow="visible">
+            <Media lessThan="md">
+              <div className="space-y-4">
                 {WHO.map((who) => (
-                  <CarouselItem key={who.title} className="flex flex-col md:basis-1/2 xl:basis-1/3">
-                    <div className="group relative grow rounded-2xl bg-lightblue-100 transition-colors duration-500 hover:bg-navy-700">
-                      <div className="space-y-3 p-8">
-                        <h3 className="text-xl font-semibold transition-colors duration-500 group-hover:text-white lg:text-2xl">
-                          {who.title}
-                        </h3>
-                        <p className="font-medium text-navy-100 opacity-0 transition-all duration-500 group-hover:opacity-100">
-                          {who.description}
-                        </p>
-                      </div>
-
-                      <div className="absolute bottom-8 right-8 h-16 w-16 rounded-full bg-white p-4 transition-opacity duration-300 group-hover:opacity-0">
-                        <FiPlus className="h-full w-full text-navy-700" />
-                      </div>
-                    </div>
-                  </CarouselItem>
+                  <WhoItem key={who.title} {...who} />
                 ))}
-              </CarouselContent>
-            </Carousel>
+              </div>
+            </Media>
+            <Media greaterThanOrEqual="md">
+              <Carousel
+                setApi={setApi}
+                opts={{
+                  skipSnaps: true,
+                  watchDrag: false,
+                }}
+              >
+                <CarouselContent overflow="visible">
+                  {WHO.map((who) => (
+                    <CarouselItem
+                      key={who.title}
+                      className="flex flex-col md:basis-1/2 xl:basis-1/3"
+                    >
+                      <WhoItem {...who} />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+            </Media>
           </div>
         </Grid>
       </div>
