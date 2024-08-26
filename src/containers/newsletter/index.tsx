@@ -2,7 +2,7 @@ import { NewsletterForm } from "@/containers/newsletter/form";
 import { NewsletterStayTuned } from "@/containers/newsletter/stay-tuned";
 
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Grid } from "@/components/ui/grid";
 
 export const Newsletter = () => {
@@ -24,7 +24,8 @@ export const Newsletter = () => {
                   Sign up for updates
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent aria-describedby="newsletter-form">
+                <DialogDescription />
                 <NewsletterForm />
               </DialogContent>
             </Dialog>

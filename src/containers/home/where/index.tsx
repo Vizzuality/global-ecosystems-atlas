@@ -15,7 +15,7 @@ export default function HomeWhere() {
         <Grid>
           <div className="relative col-span-3 hidden lg:block">
             <div className="absolute -top-16 right-0 aspect-[745/831] h-[calc(100%_+_theme(space.64))]">
-              <Image src="/graphic.svg" alt="Where our data comes from" fill />
+              <Image priority src="/graphic.svg" alt="Where our data comes from" fill />
             </div>
           </div>
           <div className="col-span-12 lg:col-span-7 lg:col-start-5">
