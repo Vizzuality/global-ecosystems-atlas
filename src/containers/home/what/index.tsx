@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 
+import { Media } from "@/containers/media";
+
 import {
   Carousel,
   CarouselContent,
@@ -52,6 +54,26 @@ const WHAT = [
   },
 ];
 
+const WhatItem = (what: { title: string; description: string; image: string }) => (
+  <div className="flex flex-col gap-7 md:flex-row md:gap-16">
+    <div className="relative aspect-square shrink-0 md:w-1/2">
+      <Image src={what.image} alt={what.title} fill className="object-cover" sizes="50vw" />
+    </div>
+    <div className="relative grow md:w-1/2 md:space-y-14">
+      <div className="hidden w-full space-y-6 md:block">
+        <div className="flex space-x-4">
+          <CarouselPrevious className="group static h-16 w-16 translate-y-0 rounded-full border-2 border-white bg-transparent p-4 text-white disabled:border-navy-500 disabled:text-navy-500" />
+          <CarouselNext className="group static h-16 w-16 translate-y-0 rounded-full border-2 border-white bg-transparent p-4 text-white disabled:border-navy-500 disabled:text-navy-500" />
+        </div>
+      </div>
+      <div className="space-y-3">
+        <h3 className="text-xl font-semibold text-white lg:text-2xl">{what.title}</h3>
+        <p className="text-base font-medium text-navy-100">{what.description}</p>
+      </div>
+    </div>
+  </div>
+);
+
 export default function HomeWhat() {
   return (
     <Section className="overflow-hidden bg-navy-700">
@@ -60,10 +82,10 @@ export default function HomeWhat() {
           <div className="col-span-12 lg:col-span-8 lg:col-start-3">
             <div className="space-y-16">
               <header className="space-y-12">
-                <H2 className="text-center text-white">
+                <H2 className="text-white md:text-center">
                   What can you do with Global Ecosystems Atlas?
                 </H2>
-                <p className="text-center text-xl text-navy-100 lg:text-2xl">
+                <p className="text-xl text-navy-100 md:text-center lg:text-2xl">
                   The Global Ecosystems Atlas will be a versatile tool for identifying distribution
                   of different ecosystem types, supporting conservation and restoration efforts,
                   informing environmental management decisions, conducting research, and aiding in
@@ -76,36 +98,22 @@ export default function HomeWhat() {
         <Grid>
           <div className="col-span-12">
             <Carousel>
-              <CarouselContent>
-                {WHAT.map((what) => (
-                  <CarouselItem key={what.title} className="flex basis-full space-x-16">
-                    <div className="relative aspect-square w-1/2 shrink-0">
-                      <Image
-                        src={what.image}
-                        alt={what.title}
-                        fill
-                        className="object-cover"
-                        sizes="50vw"
-                      />
-                    </div>
-                    <div className="relative w-1/2 grow space-y-14">
-                      <div className="w-full space-y-6">
-                        <div className="flex space-x-4">
-                          <CarouselPrevious className="group static h-16 w-16 translate-y-0 rounded-full border-2 border-white bg-transparent p-4 text-white disabled:border-navy-500 disabled:text-navy-500" />
-                          <CarouselNext className="group static h-16 w-16 translate-y-0 rounded-full border-2 border-white bg-transparent p-4 text-white disabled:border-navy-500 disabled:text-navy-500" />
-                        </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <h3 className="text-xl font-semibold text-white lg:text-2xl">
-                          {what.title}
-                        </h3>
-                        <p className="text-base font-medium text-navy-100">{what.description}</p>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
+              <Media lessThan="md">
+                <div className="space-y-14">
+                  {WHAT.map((what) => (
+                    <WhatItem key={what.title} {...what} />
+                  ))}
+                </div>
+              </Media>
+              <Media greaterThanOrEqual="md">
+                <CarouselContent>
+                  {WHAT.map((what) => (
+                    <CarouselItem key={what.title} className="basis-full">
+                      <WhatItem {...what} />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Media>
             </Carousel>
           </div>
         </Grid>
