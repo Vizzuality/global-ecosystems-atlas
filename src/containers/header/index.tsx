@@ -1,5 +1,9 @@
 "use client";
 
+import { MouseEvent } from "react";
+
+import { useCookies } from "react-cookie";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -16,6 +20,8 @@ import { Logo } from "@/containers/logo";
 const DARK_PATHNAMES = ["/about-us", "/coming-soon"];
 
 export const Header = () => {
+  const [, setCookie] = useCookies(["welcome"]);
+
   const pathname = usePathname();
   const isDark = DARK_PATHNAMES.includes(pathname);
 
@@ -23,6 +29,12 @@ export const Header = () => {
 
   const handleOpen = () => {
     setOpen(!open);
+  };
+
+  const handleBetaClick = (e: MouseEvent<HTMLSpanElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCookie("welcome", false);
   };
 
   return (
@@ -44,6 +56,7 @@ export const Header = () => {
                   "border-navy-700 text-navy-700": !isDark,
                   "border-white text-white": isDark,
                 })}
+                onClick={handleBetaClick}
               >
                 Beta
               </span>

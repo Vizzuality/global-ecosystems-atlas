@@ -4,6 +4,8 @@ import { ibmPlexSerif, montserrat } from "@/app/fonts";
 import RootHead from "@/app/head";
 import LayoutProviders from "@/app/layout-providers";
 
+import { Welcome } from "@/containers/welcome";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -15,6 +17,8 @@ export default function RootLayout({
         <RootHead />
         <body className={`${montserrat.variable} ${ibmPlexSerif.variable} font-sans`}>
           {children}
+
+          <Welcome />
         </body>
       </html>
     </LayoutProviders>
