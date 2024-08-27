@@ -89,7 +89,7 @@ export const Footer = () => {
           <ul className="flex space-x-4 lg:space-x-8">
             <li>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/GroupOnEarthObservations"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
@@ -99,7 +99,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.facebook.com/"
+                href="https://twitter.com/geosec2025"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
@@ -109,7 +109,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.linkedin.com/company/group-on-earth-observations/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
@@ -119,7 +119,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.instagram.com/grouponearthobservations/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
@@ -129,7 +129,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.youtube.com/channel/UCFJ97Bp2XXA5p7ik_wWSoqg"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
