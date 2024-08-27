@@ -1,3 +1,4 @@
+import { Footer } from "@/containers/footer";
 import { Header } from "@/containers/header";
 import { Newsletter } from "@/containers/newsletter";
 
@@ -11,6 +12,7 @@ export default function RootLayout({
       <Header />
       {children}
       <Newsletter />
+      <Footer />
     </main>
   );
 }

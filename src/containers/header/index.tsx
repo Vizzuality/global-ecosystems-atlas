@@ -11,8 +11,7 @@ import { cn } from "@/lib/utils";
 import { menuOpenAtom } from "@/app/store";
 
 import { Nav } from "@/containers/header/nav";
-
-import { Logo } from "./logo";
+import { Logo } from "@/containers/logo";
 
 const DARK_PATHNAMES = ["/about-us", "/coming-soon"];
 
