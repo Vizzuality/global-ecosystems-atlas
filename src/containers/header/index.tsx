@@ -17,7 +17,15 @@ import { menuOpenAtom } from "@/app/store";
 import { Nav } from "@/containers/header/nav";
 import { Logo } from "@/containers/logo";
 
-const DARK_PATHNAMES = ["/about-us", "/coming-soon"];
+const DARK_PATHNAMES = [
+  "/about-us",
+  "/coming-soon",
+  "/data",
+  "/data/methodology",
+  "/data/how-to-use-the-data",
+  "/data/sources-catalogue",
+  "/data/questions-and-answers",
+];
 
 export const Header = () => {
   const [, setCookie] = useCookies(["welcome"]);

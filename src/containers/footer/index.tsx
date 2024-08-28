@@ -34,7 +34,9 @@ export const Footer = () => {
                     i !== 0,
                 })}
               >
-                <Link href={item.href}>{item.name}</Link>
+                <Link href={item.href} scroll={true}>
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>

@@ -30,7 +30,7 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
       href={props.href}
       className="inline-flex items-center space-x-6 text-2xl font-semibold text-navy-700 hover:text-navy-500 2xl:text-4xl"
       onClick={() => {
-        if (pathname === props.href) {
+        if (pathname.includes(`${props.href}`)) {
           setOpen(false);
         }
       }}

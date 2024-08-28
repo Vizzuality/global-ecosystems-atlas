@@ -2,6 +2,18 @@
 import("./src/env.mjs");
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: "/data",
+        destination: "/data/methodology",
+        permanent: true,
+
+      },
+    ];
+  },
+};
 
 export default nextConfig;
