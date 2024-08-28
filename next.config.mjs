@@ -10,7 +10,6 @@ const nextConfig = {
         source: "/data",
         destination: "/data/methodology",
         permanent: true,
-
       },
     ];
   },
