@@ -6,8 +6,15 @@ import { usePathname } from "next/navigation";
 import Hamburger from "hamburger-react";
 import { useAtom, useSetAtom } from "jotai";
 import { FiArrowRight } from "react-icons/fi";
-import { PiFacebookLogoLight, PiLinkedinLogoLight, PiXLogoLight } from "react-icons/pi";
+import {
+  PiFacebookLogoLight,
+  PiInstagramLogoLight,
+  PiLinkedinLogoLight,
+  PiXLogoLight,
+  PiYoutubeLogoLight,
+} from "react-icons/pi";
 
+import { NAV } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 import { menuOpenAtom } from "@/app/store";
@@ -28,7 +35,7 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
         }
       }}
     >
-      <FiArrowRight />
+      <FiArrowRight className="shrink-0" />
       <span className="block">{props.children}</span>
     </Link>
   );
@@ -70,17 +77,28 @@ export const Nav = () => {
       <div className="container p-4 2xl:p-16">
         <nav
           className={cn({
-            "flex flex-col gap-8 transition-transform": true,
+            "transition-transform": true,
             "-translate-y-4": !open,
             "translate-y-0": open,
           })}
         >
-          <NavItem href="/">Homepage</NavItem>
-          <NavItem href="/atlas">Atlas</NavItem>
-          <NavItem href="/about-us">About us</NavItem>
-          <NavItem href="/methodology">Methodology</NavItem>
-          <NavItem href="/resources">Resources</NavItem>
-          <NavItem href="/datasets">Datasets Catalogue</NavItem>
+          <ul className="flex flex-col gap-5 lg:gap-8">
+            {NAV.map((item) => (
+              <li key={item.href}>
+                <NavItem href={item.href}>{item.name}</NavItem>
+
+                {item.children && (
+                  <ul className="ml-16 mt-8 flex flex-col gap-5 lg:gap-8">
+                    {item.children.map((child) => (
+                      <li key={child.href}>
+                        <NavItem href={child.href}>{child.name}</NavItem>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         </nav>
 
         <div
@@ -91,36 +109,67 @@ export const Nav = () => {
             "translate-y-0 opacity-100": open,
           })}
         >
-          <div className="space-y-6">
+          <div className="space-y-4">
             <h3 className="text-xs font-semibold uppercase">Follow us</h3>
-            <div className="flex gap-6">
-              <a
-                aria-label="twitter"
-                target="_blank"
-                href="https://twitter.com"
-                className="block p-2 text-navy-700"
-              >
-                <PiXLogoLight className="h-8 w-8" />
-              </a>
-              <a
-                aria-label="linkedin"
-                target="_blank"
-                href="https://linkedin.com"
-                className="block p-2 text-navy-700"
-              >
-                <PiLinkedinLogoLight className="h-8 w-8" />
-              </a>
-              <a
-                aria-label="facebook"
-                target="_blank"
-                href="https://facebook.com"
-                className="block p-2 text-navy-700"
-              >
-                <PiFacebookLogoLight className="h-8 w-8" />
-              </a>
-            </div>
+            <ul className="flex gap-3 lg:gap-8">
+              <li>
+                <a
+                  href="https://www.facebook.com/GroupOnEarthObservations"
+                  target="_blank"
+                  aria-label="facebook"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
+                >
+                  <PiFacebookLogoLight className="h-8 w-8" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://twitter.com/geosec2025"
+                  target="_blank"
+                  aria-label="twitter"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
+                >
+                  <PiXLogoLight className="h-8 w-8" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/group-on-earth-observations/"
+                  target="_blank"
+                  aria-label="linkedin"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
+                >
+                  <PiLinkedinLogoLight className="h-8 w-8" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/grouponearthobservations/"
+                  target="_blank"
+                  aria-label="instagram"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
+                >
+                  <PiInstagramLogoLight className="h-8 w-8" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/channel/UCFJ97Bp2XXA5p7ik_wWSoqg"
+                  target="_blank"
+                  aria-label="youtube"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg bg-white/40 p-2 transition-colors hover:bg-white/75"
+                >
+                  <PiYoutubeLogoLight className="h-8 w-8" />
+                </a>
+              </li>
+            </ul>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-4">
             <h3 className="text-xs font-semibold uppercase md:text-right">Contact</h3>
             <Link href="/contact" className="block">
               <Button className="h-auto w-full space-x-2 px-8 py-4 text-base font-semibold md:w-auto">

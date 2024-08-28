@@ -9,6 +9,9 @@ import {
   PiYoutubeLogoLight,
 } from "react-icons/pi";
 
+import { NAV } from "@/lib/nav";
+import { cn } from "@/lib/utils";
+
 import { Logo } from "@/containers/logo";
 
 import { Button } from "@/components/ui/button";
@@ -22,24 +25,18 @@ export const Footer = () => {
         </div>
         <div className="flex flex-col items-center justify-between py-12 lg:flex-row">
           <ul className="flex flex-col space-y-16 text-sm font-medium lg:flex-row lg:space-x-16 lg:space-y-0">
-            <li className="text-center lg:text-left">
-              <Link href="/">Homepage</Link>
-            </li>
-            <li className="relative text-center before:absolute before:-top-8 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:text-left lg:before:-left-8 lg:before:top-1/2 lg:before:-translate-y-0.5">
-              <Link href="/atlas">Atlas</Link>
-            </li>
-            <li className="relative text-center before:absolute before:-top-8 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:text-left lg:before:-left-8 lg:before:top-1/2 lg:before:-translate-y-0.5">
-              <Link href="/stories">Stories</Link>
-            </li>
-            <li className="relative text-center before:absolute before:-top-8 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:text-left lg:before:-left-8 lg:before:top-1/2 lg:before:-translate-y-0.5">
-              <Link href="/about-us">About us</Link>
-            </li>
-            <li className="relative text-center before:absolute before:-top-8 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:text-left lg:before:-left-8 lg:before:top-1/2 lg:before:-translate-y-0.5">
-              <Link href="/data">Data</Link>
-            </li>
-            <li className="relative text-center before:absolute before:-top-8 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:text-left lg:before:-left-8 lg:before:top-1/2 lg:before:-translate-y-0.5">
-              <Link href="/resources">Resources</Link>
-            </li>
+            {NAV.map((item, i) => (
+              <li
+                key={item.href}
+                className={cn({
+                  "relative text-center lg:text-left": true,
+                  "before:absolute before:-top-8 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:before:-left-8 lg:before:top-1/2 lg:before:-translate-y-0.5":
+                    i !== 0,
+                })}
+              >
+                <Link href={item.href}>{item.name}</Link>
+              </li>
+            ))}
           </ul>
 
           <Link href="/contact" className="mt-12 block w-full lg:mt-0 lg:w-auto">
@@ -75,7 +72,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.facebook.com/"
+                href="https://github.com/geo-global-ecosystem-atlas"
                 className="flex items-center space-x-1 text-xs font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
