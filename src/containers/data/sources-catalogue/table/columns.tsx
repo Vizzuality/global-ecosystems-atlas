@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 import { Dataset } from "@/types/dataset";
 
@@ -21,6 +21,7 @@ export const columns: ColumnDef<Dataset>[] = [
   {
     accessorKey: "URL",
     header: "Link",
+    size: 120,
     enableSorting: false,
     cell: (cell) => (
       <a
@@ -32,6 +33,16 @@ export const columns: ColumnDef<Dataset>[] = [
         <span>Dataset</span>
         <FiArrowUpRight className="h-6 w-6" />
       </a>
+    ),
+  },
+  {
+    id: "expanded",
+    size: 60,
+    cell: ({ row }) => (
+      <button onClick={row.getToggleExpandedHandler()}>
+        {row.getIsExpanded() && <FiChevronUp className="h-6 w-6" />}
+        {!row.getIsExpanded() && <FiChevronDown className="h-6 w-6" />}
+      </button>
     ),
   },
 ];

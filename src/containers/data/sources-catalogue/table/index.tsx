@@ -1,17 +1,24 @@
 "use client";
 
+import { Fragment } from "react";
+
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getExpandedRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  Row,
   useReactTable,
 } from "@tanstack/react-table";
 import { FiArrowDown, FiArrowUp } from "react-icons/fi";
 
 import { cn } from "@/lib/utils";
 
+import { Dataset } from "@/types/dataset";
+
+import { Expanded } from "@/containers/data/sources-catalogue/table/expanded";
 import { DataPagination } from "@/containers/data/sources-catalogue/table/pagination";
 
 import {
@@ -35,6 +42,8 @@ export function DatasetTable<TData, TValue>({ columns, data }: DatasetTableProps
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
+    getRowCanExpand: () => true,
     initialState: {
       sorting: [
         {
@@ -45,6 +54,7 @@ export function DatasetTable<TData, TValue>({ columns, data }: DatasetTableProps
       pagination: {
         pageSize: 20,
       },
+      expanded: {},
     },
   });
 
@@ -65,6 +75,9 @@ export function DatasetTable<TData, TValue>({ columns, data }: DatasetTableProps
                       className={cn("text-nowrap text-xs font-bold uppercase", {
                         "cursor-pointer hover:bg-slate-100": header.column.getCanSort(),
                       })}
+                      // style={{
+                      //   width: header.column.getSize(),
+                      // }}
                       onClick={header.column.getToggleSortingHandler()}
                     >
                       <span className="flex items-center gap-1">
@@ -88,13 +101,28 @@ export function DatasetTable<TData, TValue>({ columns, data }: DatasetTableProps
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="text-sm">
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>
+                <Fragment key={row.id}>
+                  <TableRow
+                    data-state={row.getIsSelected() && "selected"}
+                    className={cn({
+                      "border-transparent": row.getIsExpanded(),
+                    })}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id} className="text-sm">
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                  {row.getIsExpanded() && (
+                    <TableRow>
+                      {/* 2nd row is a custom 1 cell row */}
+                      <TableCell colSpan={row.getVisibleCells().length} className="p-0">
+                        <Expanded {...(row as Row<Dataset>)} />
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </Fragment>
               ))
             ) : (
               <TableRow>
