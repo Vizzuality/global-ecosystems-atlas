@@ -75,9 +75,12 @@ export function DatasetTable<TData, TValue>({ columns, data }: DatasetTableProps
                       className={cn("text-nowrap text-xs font-bold uppercase", {
                         "cursor-pointer hover:bg-slate-100": header.column.getCanSort(),
                       })}
-                      // style={{
-                      //   width: header.column.getSize(),
-                      // }}
+                      style={{
+                        width:
+                          header.column.columnDef.minSize === header.column.columnDef.maxSize
+                            ? header.column.columnDef.minSize
+                            : undefined,
+                      }}
                       onClick={header.column.getToggleSortingHandler()}
                     >
                       <span className="flex items-center gap-1">

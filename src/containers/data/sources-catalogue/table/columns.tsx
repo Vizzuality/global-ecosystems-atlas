@@ -9,10 +9,14 @@ export const columns: ColumnDef<Dataset>[] = [
   {
     accessorKey: "title",
     header: "Title",
+    minSize: 260,
+    maxSize: 260,
   },
   {
     accessorKey: "published_year",
     header: "Published Year",
+    minSize: 150,
+    maxSize: 150,
   },
   {
     accessorKey: "provider",
@@ -21,7 +25,8 @@ export const columns: ColumnDef<Dataset>[] = [
   {
     accessorKey: "URL",
     header: "Link",
-    size: 120,
+    minSize: 120,
+    maxSize: 120,
     enableSorting: false,
     cell: (cell) => (
       <a
@@ -37,7 +42,8 @@ export const columns: ColumnDef<Dataset>[] = [
   },
   {
     id: "expanded",
-    size: 60,
+    minSize: 60,
+    maxSize: 60,
     cell: ({ row }) => (
       <button onClick={row.getToggleExpandedHandler()}>
         {row.getIsExpanded() && <FiChevronUp className="h-6 w-6" />}
