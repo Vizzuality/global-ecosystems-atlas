@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import Markdown from "react-markdown";
+
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 import { FAQS } from "@/lib/faqs";
@@ -22,8 +24,8 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
           {open && <FiChevronUp className="relative top-1 h-6 w-6 shrink-0 text-navy-700" />}
         </CollapsibleTrigger>
 
-        <CollapsibleContent>
-          <p className="text-xl text-navy-600">{answer}</p>
+        <CollapsibleContent className="prose">
+          <Markdown>{answer}</Markdown>
         </CollapsibleContent>
       </li>
     </Collapsible>

@@ -26,11 +26,21 @@ export const FAQS = [
   },
   {
     question: "What visual aids are available to help understand the methodology?",
-    answer: "The following visual aids are available:",
+    answer: `The following visual aids are available:
+-   [Insert Image: Data Processing Workflow]: A diagram illustrating the entire data processing workflow.
+-   [Insert Image: Crosswalking Process]: A flowchart detailing how data is mapped from source datasets to the final ecosystem classifications.`,
   },
   {
     question: "Where can I find more information on the tools and methodologies used?",
-    answer: "Additional resources include:",
+    answer: `Additional resources include:
+- Link to a PDF technical report
+- IUCN Global Ecosystems Typology
+- Something from CBD?
+- Something from UN SEEA
+- Something linking back to each source dataset
+- Something linking to any crosswalk tables we publish
+- Github Organisation https://github.com/geo-global-ecosystem-atlas
+`,
   },
   {
     question: "What are the known issues on the data?",
@@ -38,7 +48,10 @@ export const FAQS = [
   },
   {
     question: "How can I report any issue?",
-    answer:
-      "If you notice If you notice incorrect values or missing data or if the platform isn't working correctly, like a broken feature or a technical problem, you can report it to us through [reporting methods define].",
+    answer: `If you notice If you notice incorrect values or missing data or if the platform isn't working correctly, like a broken feature or a technical problem, you can report it to us through [reporting methods define].
+Make sure to include as much detail about the problem as possible in your report.
+- If the issue relates the data [reporting data issues define].
+- If the issue relates the platform, Information like the kind of device you were using, what you were doing when the problem occurred and adding a screenshot may help us address the issue.
+`,
   },
 ];
