@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/section";
 export const HowToHero = () => {
   return (
     <Section>
-      <div className="container space-y-20">
+      <div className="container space-y-10 lg:space-y-20">
         <Grid>
           <div className="col-span-12 lg:col-span-3 lg:col-start-2">
             <H3>Data product</H3>
@@ -28,7 +28,7 @@ export const HowToHero = () => {
 
         <Grid>
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <p className="text-4xl font-light italic text-navy-600">
+            <p className="text-2xl font-light italic text-navy-600 lg:text-4xl">
               The development of the basemap involved the compilation and harmonization of existing,
               publicly available assets that are known to represent ecosystems and that meet
               stringent data quality standards.

@@ -4,6 +4,7 @@ import { MethodologyCorrespondence } from "@/containers/data/methodology/corresp
 import { MethodologyHero } from "@/containers/data/methodology/hero";
 import { MethodologyImage } from "@/containers/data/methodology/image";
 import { MethodologyMethods } from "@/containers/data/methodology/methods";
+import { MethodologyQA } from "@/containers/data/methodology/qa";
 
 export const metadata: Metadata = {
   title: "Methodology | Global Ecosystems Atlas",
@@ -17,6 +18,7 @@ export default async function Methodology() {
       <MethodologyImage />
       <MethodologyCorrespondence />
       <MethodologyMethods />
+      <MethodologyQA />
     </>
   );
 }

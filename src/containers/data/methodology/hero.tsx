@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/section";
 export const MethodologyHero = () => {
   return (
     <Section>
-      <div className="container space-y-20">
+      <div className="container space-y-10 lg:space-y-20">
         <Grid>
           <div className="col-span-12 lg:col-span-3 lg:col-start-2">
             <H3>Data Compilation</H3>
@@ -28,7 +28,7 @@ export const MethodologyHero = () => {
 
         <Grid>
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <p className="text-4xl font-light italic text-navy-600">
+            <p className="text-2xl font-light italic text-navy-600 lg:text-4xl">
               Each dataset was subjected to a rigorous evaluation and quality assessment protocol
               that included formal assessment of license conditions, class definitions, validations
               and accuracy assessment, data freshness, and spatial resolution.
