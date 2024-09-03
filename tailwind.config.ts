@@ -80,6 +80,7 @@ const config = {
           100: "#D9EEFF",
         },
         navy: {
+          10: "#F9FAFC",
           50: "#F2F2F2",
           100: "#CFD6D9",
           200: "#ABB8C2",
