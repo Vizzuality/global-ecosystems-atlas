@@ -20,7 +20,7 @@ export default function HomeWhere() {
           </div>
           <div className="col-span-12 lg:col-span-7 lg:col-start-5">
             <div className="space-y-16">
-              <header className="space-y-12">
+              <header className="space-y-8 lg:space-y-12">
                 <H2>Where our data comes from?</H2>
                 <p className="text-xl lg:text-2xl">
                   The Global Ecosystems Atlas offers data on ecosystems that have been

@@ -81,7 +81,7 @@ export default function HomeWhat() {
         <Grid>
           <div className="col-span-12 lg:col-span-8 lg:col-start-3">
             <div className="space-y-16">
-              <header className="space-y-12">
+              <header className="space-y-8 lg:space-y-12">
                 <H2 className="text-white md:text-center">
                   What can you do with Global Ecosystems Atlas?
                 </H2>
