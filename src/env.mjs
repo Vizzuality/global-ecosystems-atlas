@@ -4,6 +4,7 @@ import { z } from "zod";
 export const env = createEnv({
   server: {},
   client: {
+    NEXT_PUBLIC_MAPBOX_TOKEN: z.string(),
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string(),
     NEXT_PUBLIC_API_URL: z.preprocess(
       // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
@@ -14,6 +15,7 @@ export const env = createEnv({
     ),
   },
   runtimeEnv: {
+    NEXT_PUBLIC_MAPBOX_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
