@@ -50,6 +50,7 @@ const AtlasNavItem = ({
         <TooltipTrigger asChild>
           <Link
             href={href}
+            prefetch
             className={cn({
               "flex items-center gap-3 rounded-sm p-2.5": true,
               "hover:bg-lightblue-50": pathname !== href,
