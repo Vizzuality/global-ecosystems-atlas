@@ -88,7 +88,7 @@ export const Nav = () => {
                 <NavItem href={item.href}>{item.name}</NavItem>
 
                 {item.children && (
-                  <ul className="ml-16 mt-8 flex flex-col gap-5 lg:gap-8">
+                  <ul className="ml-16 mt-4 flex flex-col gap-5 lg:mt-8 lg:gap-8">
                     {item.children.map((child) => (
                       <li key={child.href}>
                         <NavItem href={child.href}>{child.name}</NavItem>

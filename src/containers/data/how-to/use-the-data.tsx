@@ -155,6 +155,41 @@ export const HowToUsetheData = () => {
               <h4 className="text-xl font-semibold">More info</h4>
               <p className="text-lg">Document</p>
             </div>
+            <div className="space-y-1">
+              <h4 className="text-xl font-semibold">Caution notes</h4>
+              <p className="text-lg">
+                While the gea_basemap is a powerful data product for depicting the distribution of
+                ecosystems worldwide, users should be aware of the following issues:
+              </p>
+              <Markdown className="prose prose-lg">
+                {`-   **Data Updates**: The basemap is continuously updated. Users should always verify that they are working with the latest version to ensure currency.
+
+-   **Ecosystem Classifications**: The crosswalking process involves expert interpretation of different map classification schemes. While a variety of controls are included in the development approach to minimise classification errors, users should familiarise themselves with source data classes and the IUCN Globale Ecosystem Typology classes. We recommend propagating source class descriptions in any downstream use of the geo_basemap data.
+
+-   **Use in Specific Contexts**: The gea_basemap is designed for global and regional analyses. For highly localized studies, the use of source datasets might be required.
+
+-   **Resolution Limitations**: The data is provided at a 100-meter per pixel resolution. For applications requiring finer spatial detail, we recommend using the source datasets.
+
+-   **Temporal Issues**. Any spatial dataset that integrates multiple inputs is likely to represent features over different time periods. The geo_basemap development approach limits this by rejecting datasets that represent changing ecosystems (such as those subject to deforestation or ongoing losses and gains) developed more than 2 decades ago. The data specification includes a data layer depicting the integer year that a source dataset was mapped, and we recommend the use of this layer to mask out areas where the data freshness of source data does not meet the needs of an intended analysis.
+
+-   **Standalone Ecosystem Functional Groups**. The specification of the geo_basemap aims to develop a single raster layer representing ecosystem functional groups worldwide. However, several ecosystem functional groups in the IUCN Global Ecosystem Typology are able to co-occur in a single location on Earth, when mapped in 2 dimensions from above. To address this issue, the geo_basemap depicts ecosystems that are on the ground or seafloor. A set of standalone layers for ecosystems which can co-occur with those on the ground or seafloor are provided and should be analysed together with the geo_basemap layer. Examples of these are cave systems, which can occur underneath terrestrial or marine ecosystems, or pelagic systems, which occur in layers above seafloor ecosystems.`}
+              </Markdown>
+              <p className="text-lg">A detailed list of known issues can be found [link]</p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="text-xl font-semibold">How to Cite the Data</h4>
+              <p className="text-lg">
+                When using the Global Ecosystems Atlas Basemap in any publication, report, or
+                project, please cite it as follows:
+              </p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="text-xl font-semibold">Citation Format</h4>
+              <p className="text-lg">
+                Global Ecosystem Atlas Basemap. Version [Version Number]. [Year]. Developed by
+                [Developer Name or Organization]. Available from: [URL]. Accessed on [Date].
+              </p>
+            </div>
           </div>
         </Grid>
       </div>

@@ -35,7 +35,7 @@ export default function DataLayout({
           </Grid>
         </div>
 
-        <nav className="absolute bottom-0 left-0 w-full">
+        <nav className="absolute bottom-0 left-0 hidden w-full lg:block">
           <div className="container">
             <Grid>
               <div className="col-span-12 lg:col-span-10 lg:col-start-2">

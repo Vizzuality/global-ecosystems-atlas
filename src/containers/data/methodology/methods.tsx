@@ -1,4 +1,4 @@
-import { FiCheckCircle, FiDatabase, FiGrid, FiMap } from "react-icons/fi";
+import { PiGridNine, PiSealCheck, PiMapTrifold, PiHardDrives } from "react-icons/pi";
 
 import { Grid } from "@/components/ui/grid";
 import { H3 } from "@/components/ui/h3";
@@ -17,7 +17,7 @@ export const MethodologyMethods = () => {
         <Grid>
           <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-2 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
-              <FiDatabase className="h-8 w-8" />
+              <PiHardDrives className="h-8 w-8" />
             </div>
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Source Data Review</h4>
@@ -31,7 +31,7 @@ export const MethodologyMethods = () => {
           </div>
           <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-7 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
-              <FiMap className="h-8 w-8" />
+              <PiMapTrifold className="h-8 w-8" />
             </div>
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Logical Mapping</h4>
@@ -49,7 +49,7 @@ export const MethodologyMethods = () => {
           </div>
           <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-2 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
-              <FiCheckCircle className="h-8 w-8" />
+              <PiSealCheck className="h-8 w-8" />
             </div>
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Expert review</h4>
@@ -65,7 +65,7 @@ export const MethodologyMethods = () => {
           </div>
           <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-7 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
-              <FiGrid className="h-8 w-8" />
+              <PiGridNine className="h-8 w-8" />
             </div>
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Technical Approach</h4>
