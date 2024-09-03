@@ -7,9 +7,6 @@ import { Section } from "@/components/ui/section";
 export default function AboutUsVision() {
   return (
     <Section className="relative z-0 overflow-hidden bg-lightblue-50">
-      <div className="absolute bottom-0 left-0 hidden w-1/4 lg:block">
-        <Image src="/about/vision.svg" alt="GEO Vision" width={1920} height={1080} />
-      </div>
       <div className="container space-y-16 lg:space-y-56">
         <Grid>
           <div className="col-span-12 lg:col-span-5 lg:col-start-2">
@@ -27,6 +24,11 @@ export default function AboutUsVision() {
         </Grid>
 
         <Grid>
+          <div className="relative col-span-3 hidden lg:block">
+            <div className="absolute -top-6 right-0 aspect-[745/831] h-[calc(100%_+_theme(space.64))]">
+              <Image priority src="/about/graphic.svg" alt="Where our data comes from" fill />
+            </div>
+          </div>
           <div className="col-span-12 lg:col-span-7 lg:col-start-5">
             <div className="space-y-6 lg:space-y-9">
               <H2>Our vision</H2>

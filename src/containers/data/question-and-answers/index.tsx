@@ -18,7 +18,7 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
   return (
     <Collapsible asChild onOpenChange={setOpen}>
       <li className="space-y-4 rounded-lg border border-navy-100 p-6">
-        <CollapsibleTrigger className="flex items-start justify-between gap-6 text-left">
+        <CollapsibleTrigger className="flex w-full items-start justify-between gap-6 text-left">
           <h2 className="text-xl font-medium">{question}</h2>
           {!open && <FiChevronDown className="relative top-1 h-6 w-6 shrink-0 text-navy-700" />}
           {open && <FiChevronUp className="relative top-1 h-6 w-6 shrink-0 text-navy-700" />}
