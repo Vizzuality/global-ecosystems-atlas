@@ -14,7 +14,7 @@ export const Expanded = (row: Row<Dataset>) => {
           <TableRow className="table-row border-b-transparent">
             <TableHead className="table-cell leading-6">Abstract</TableHead>
             <TableCell className="table-cell">
-              <Markdown className="prose-sm">{row.original.abstract}</Markdown>
+              <Markdown className="prose prose-sm">{row.original.abstract}</Markdown>
             </TableCell>
           </TableRow>
           <TableRow className="table-row border-b-transparent">
@@ -24,7 +24,7 @@ export const Expanded = (row: Row<Dataset>) => {
           <TableRow className="table-row border-b-transparent">
             <TableHead className="table-cell leading-6">Citation</TableHead>
             <TableCell className="table-cell">
-              <Markdown className="prose-sm">{row.original.dataset_citation}</Markdown>
+              <Markdown className="prose prose-sm">{row.original.dataset_citation}</Markdown>
             </TableCell>
           </TableRow>
           <TableRow className="table-row border-b-transparent">

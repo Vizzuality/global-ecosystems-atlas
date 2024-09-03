@@ -84,7 +84,7 @@ export const HowToUsetheData = () => {
                     <TableRow>
                       <TableCell className="lg:text-nowrap">Minimum mapping unit</TableCell>
                       <TableCell>
-                        <Markdown className="prose prose-p:text-sm prose-li:text-sm">
+                        <Markdown className="prose prose-sm">
                           {`Potentially 1 to 6/7, minimum likely 3:
   - efg_type (integer, pixel 1-110)
   - biome (integer, pixel 1-xxx)
@@ -106,7 +106,7 @@ export const HowToUsetheData = () => {
                     <TableRow>
                       <TableCell className="lg:text-nowrap">Band names</TableCell>
                       <TableCell>
-                        <Markdown className="prose prose-p:text-sm prose-li:text-sm">
+                        <Markdown className="prose prose-sm">
                           {`- Synthesis product: ['efg_type', 'biome_type', 'realm_type', 'qa_data_date',
                           'qa_data_richness', 'qa_disagreement', 'qa_input_scale',
                           'crosswalk_confidence']
@@ -118,7 +118,7 @@ export const HowToUsetheData = () => {
                     <TableRow>
                       <TableCell className="lg:text-nowrap">Minimum mapping unit</TableCell>
                       <TableCell>
-                        <Markdown className="prose prose-p:text-sm prose-li:text-sm">
+                        <Markdown className="prose prose-sm">
                           {`
   - Title
   - Description
