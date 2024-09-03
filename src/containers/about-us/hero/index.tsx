@@ -19,7 +19,10 @@ export default function AboutUsHero() {
         <Grid>
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <div className="space-y-10 lg:space-y-16">
-              <H1 className="text-white">What is the Global Ecosystems Atlas?</H1>
+              <header className="space-y-2">
+                <h2 className="text-sm font-semibold uppercase text-white">About us</h2>
+                <H1 className="text-white">What is the Global Ecosystems Atlas?</H1>
+              </header>
               <div className="space-y-8 text-white">
                 <p className="text-xl">
                   <TextReveal color={fullConfig.theme.colors.white}>
