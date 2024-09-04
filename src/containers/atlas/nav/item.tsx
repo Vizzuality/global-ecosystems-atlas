@@ -39,8 +39,8 @@ export const AtlasNavItem = ({
             prefetch
             className={cn({
               "flex items-center gap-3 rounded-sm p-2.5": true,
-              "hover:bg-lightblue-50": pathname !== href,
-              "bg-lightblue-100": pathname === href,
+              "text-navy-500 hover:bg-lightblue-50": pathname !== href,
+              "bg-lightblue-100 text-navy-700": pathname === href,
             })}
             onClick={() => {
               const open = pathname !== href ? true : !sidebarOpen;

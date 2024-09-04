@@ -20,6 +20,7 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
       layoutDependency={navOpen}
       transition={{
         duration: 0.4,
+        ease: "easeInOut",
       }}
       className="pointer-events-none relative z-0 h-full w-[450px]"
     >
@@ -37,6 +38,7 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
         className="pointer-events-auto flex h-full w-full flex-col border-r border-gray-200 bg-white"
         transition={{
           duration: 0.4,
+          ease: "easeInOut",
         }}
       >
         {children}
@@ -61,8 +63,9 @@ export const AtlasSidebarHeader = ({ children }: PropsWithChildren) => {
   return (
     <header className="sticky top-0 flex justify-between gap-6 bg-white p-6">
       {children}
+
       <button
-        className="pointer-events-auto absolute right-6 top-6 z-10 flex h-6 w-6 items-center justify-center"
+        className="pointer-events-auto z-10 flex h-6 w-6 items-center justify-center text-navy-500 hover:text-navy-700"
         onClick={() => setSidebarOpen(false)}
       >
         <CollapseSidebarIcon className="h-6 w-6" />

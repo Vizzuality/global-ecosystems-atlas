@@ -42,6 +42,7 @@ export const AtlasNav = () => {
       layoutDependency={navOpen}
       transition={{
         duration: 0.4,
+        ease: "easeInOut",
       }}
       className="pointer-events-auto relative z-10 h-full overflow-hidden"
     >
