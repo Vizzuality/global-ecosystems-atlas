@@ -50,8 +50,20 @@ export const AtlasNav = () => {
         <motion.div layout="position" className="flex flex-col divide-y divide-navy-100">
           <div className="flex flex-col items-start pb-3">
             <Link href="/" className="flex flex-col items-center space-y-1">
-              <div className="flex h-10 w-10 flex-col items-center space-y-1">
+              <div className="relative flex h-10 w-10 flex-col items-center space-y-1">
                 <LogoSmall />
+
+                <motion.span
+                  initial={"initial"}
+                  animate={navOpen ? "animate" : "initial"}
+                  variants={{
+                    initial: { opacity: 0 },
+                    animate: { opacity: 1 },
+                  }}
+                  className="absolute -top-1 left-full block translate-x-0.5 text-[7px] font-bold uppercase leading-[8px] opacity-0"
+                >
+                  Global ecosystems atlas
+                </motion.span>
 
                 <span
                   className={cn({
