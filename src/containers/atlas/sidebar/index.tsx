@@ -3,16 +3,16 @@
 import { PropsWithChildren } from "react";
 
 import { motion } from "framer-motion";
-import { useAtom } from "jotai";
-import { PiArrowLineLeft } from "react-icons/pi";
+import { useAtomValue, useSetAtom } from "jotai";
 
 import { navOpenAtom, sidebarOpenAtom } from "@/app/(atlas)/atlas/store";
 
+import { CollapseSidebarIcon } from "@/components/ui/icons/collapse-sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const AtlasSidebar = ({ children }: PropsWithChildren) => {
-  const navOpen = useAtom(navOpenAtom);
-  const [sidebarOpen, setSidebarOpen] = useAtom(sidebarOpenAtom);
+  const navOpen = useAtomValue(navOpenAtom);
+  const sidebarOpen = useAtomValue(sidebarOpenAtom);
 
   return (
     <motion.aside
@@ -39,13 +39,6 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
           duration: 0.4,
         }}
       >
-        <button
-          className="pointer-events-auto absolute right-6 top-6 z-10 flex h-6 w-6 items-center justify-center"
-          onClick={() => setSidebarOpen(false)}
-        >
-          <PiArrowLineLeft className="h-6 w-6" />
-        </button>
-
         {children}
       </motion.div>
     </motion.aside>
@@ -63,7 +56,19 @@ export const AtlasSidebarSection = ({ children }: PropsWithChildren) => {
 };
 
 export const AtlasSidebarHeader = ({ children }: PropsWithChildren) => {
-  return <header className="sticky top-0 bg-white p-6">{children}</header>;
+  const setSidebarOpen = useSetAtom(sidebarOpenAtom);
+
+  return (
+    <header className="sticky top-0 flex justify-between gap-6 bg-white p-6">
+      {children}
+      <button
+        className="pointer-events-auto absolute right-6 top-6 z-10 flex h-6 w-6 items-center justify-center"
+        onClick={() => setSidebarOpen(false)}
+      >
+        <CollapseSidebarIcon className="h-6 w-6" />
+      </button>
+    </header>
+  );
 };
 
 export const AtlasSidebarContainer = ({ children }: PropsWithChildren) => {

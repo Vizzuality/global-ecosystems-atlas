@@ -7,17 +7,8 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
-import {
-  PiMagnifyingGlass,
-  PiUserCircle,
-  PiPolygon,
-  PiQuestion,
-  PiFunnel,
-  PiStack,
-  PiFileSql,
-  PiList,
-  PiStackFill,
-} from "react-icons/pi";
+import { FiHelpCircle, FiSearch } from "react-icons/fi";
+import { PiStackBold } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
 
@@ -25,6 +16,14 @@ import { navOpenAtom } from "@/app/(atlas)/atlas/store";
 
 import { AtlasNavItem } from "@/containers/atlas/nav/item";
 import { LogoSmall } from "@/containers/logo";
+
+import { CollapseIcon } from "@/components/ui/icons/collapse";
+import { DrawPolygonIcon } from "@/components/ui/icons/draw-polygon";
+import { ExpandIcon } from "@/components/ui/icons/expand";
+import { FilterIcon } from "@/components/ui/icons/filter";
+import { ListIcon } from "@/components/ui/icons/list";
+import { UploadShapefileIcon } from "@/components/ui/icons/upload-shapefile";
+import { UserIcon } from "@/components/ui/icons/user";
 
 export const AtlasNav = () => {
   const [, setCookie] = useCookies(["welcome"]);
@@ -80,36 +79,36 @@ export const AtlasNav = () => {
           <ul className="space-y-3 py-3">
             <li>
               <AtlasNavItem href="/atlas" label="Search" index={0}>
-                <PiMagnifyingGlass className="h-5 w-5" />
+                <FiSearch className="h-5 w-5" />
               </AtlasNavItem>
             </li>
             <li>
               <AtlasNavItem href="/atlas/draw" label="Draw a polygon" index={1}>
-                <PiPolygon className="h-5 w-5" />
+                <DrawPolygonIcon className="h-5 w-5" />
               </AtlasNavItem>
             </li>
             <li>
               <AtlasNavItem href="/atlas/upload" label="Upload area" index={2}>
-                <PiFileSql className="h-5 w-5" />
+                <UploadShapefileIcon className="h-5 w-5" />
               </AtlasNavItem>
             </li>
           </ul>
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem href="/atlas/filters" label="Filters" index={3}>
-              <PiFunnel className="h-5 w-5" />
+              <FilterIcon className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem href="/atlas/list" label="View list" index={4}>
-              <PiList className="h-5 w-5" />
+              <ListIcon className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem href="/atlas/layers" label="Layers" index={5}>
-              <PiStack className="h-5 w-5" />
+              <PiStackBold className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
         </motion.div>
@@ -117,20 +116,24 @@ export const AtlasNav = () => {
         <motion.div layout="position" className="flex flex-col divide-y divide-navy-100">
           <ul className="space-y-3 py-3">
             <AtlasNavItem href="/atlas/login" label="Log in" index={6}>
-              <PiUserCircle className="h-5 w-5" />
+              <UserIcon className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem label="Tour" onClick={() => console.info("button")} index={7}>
-              <PiQuestion className="h-5 w-5" />
+              <FiHelpCircle className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
 
           <ul className="space-y-3 py-3">
-            <AtlasNavItem label="Expand sidebar" onClick={() => setNavExpanded(!navOpen)} index={8}>
-              {!navOpen && <PiStack className="h-5 w-5" />}
-              {navOpen && <PiStackFill className="h-5 w-5" />}
+            <AtlasNavItem
+              label={navOpen ? "Collapse sidebar" : "Expand sidebar"}
+              onClick={() => setNavExpanded(!navOpen)}
+              index={8}
+            >
+              {!navOpen && <ExpandIcon className="h-5 w-5" />}
+              {navOpen && <CollapseIcon className="h-5 w-5" />}
             </AtlasNavItem>
           </ul>
         </motion.div>
