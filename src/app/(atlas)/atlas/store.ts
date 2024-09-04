@@ -1,3 +1,4 @@
 import { atom } from "jotai";
 
-export const navExpandedAtom = atom(false);
+export const navOpenAtom = atom(false);
+export const sidebarOpenAtom = atom(true);

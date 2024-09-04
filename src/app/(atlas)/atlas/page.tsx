@@ -6,5 +6,9 @@ export const metadata: Metadata = {
 };
 
 export default function AtlasPage() {
-  return "Atlas page";
+  return (
+    <section className="p-6">
+      <h1 className="text-sm font-bold uppercase">Search</h1>
+    </section>
+  );
 }
