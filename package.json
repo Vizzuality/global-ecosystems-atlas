@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@deck.gl/core": "^9.0.27",
+    "@deck.gl/extensions": "^9.0.29",
     "@deck.gl/geo-layers": "^9.0.27",
+    "@deck.gl/layers": "^9.0.29",
     "@deck.gl/react": "^9.0.27",
     "@t3-oss/env-nextjs": "^0.11.0",
     "next": "14.2.5",
