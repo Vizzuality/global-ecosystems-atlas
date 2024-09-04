@@ -84,7 +84,7 @@ export const AtlasNav = () => {
               </AtlasNavItem>
             </li>
             <li>
-              <AtlasNavItem href="/atlas/draw" label="Draw polygon" index={1}>
+              <AtlasNavItem href="/atlas/draw" label="Draw a polygon" index={1}>
                 <PiPolygon className="h-5 w-5" />
               </AtlasNavItem>
             </li>
@@ -96,7 +96,7 @@ export const AtlasNav = () => {
           </ul>
 
           <ul className="space-y-3 py-3">
-            <AtlasNavItem href="/atlas/filters" label="Filter" index={3}>
+            <AtlasNavItem href="/atlas/filters" label="Filters" index={3}>
               <PiFunnel className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
@@ -108,7 +108,7 @@ export const AtlasNav = () => {
           </ul>
 
           <ul className="space-y-3 py-3">
-            <AtlasNavItem href="/atlas/layers" label="Data layers" index={5}>
+            <AtlasNavItem href="/atlas/layers" label="Layers" index={5}>
               <PiStack className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
@@ -116,7 +116,7 @@ export const AtlasNav = () => {
 
         <motion.div layout="position" className="flex flex-col divide-y divide-navy-100">
           <ul className="space-y-3 py-3">
-            <AtlasNavItem href="/atlas/login" label="Login" index={6}>
+            <AtlasNavItem href="/atlas/login" label="Log in" index={6}>
               <PiUserCircle className="h-5 w-5" />
             </AtlasNavItem>
           </ul>

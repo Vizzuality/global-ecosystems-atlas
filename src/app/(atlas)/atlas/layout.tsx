@@ -13,7 +13,7 @@ import { AtlasSidebar } from "@/containers/atlas/sidebar";
 export default function AtlasLayout({ children }: PropsWithChildren) {
   return (
     <LayoutProviders>
-      <main className="flex h-screen">
+      <main className="flex h-screen overflow-hidden">
         <div className="pointer-events-none absolute left-0 top-0 z-10 flex h-full">
           <LayoutGroup>
             <AtlasNav />

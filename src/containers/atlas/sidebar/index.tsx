@@ -8,6 +8,8 @@ import { PiArrowLineLeft } from "react-icons/pi";
 
 import { navOpenAtom, sidebarOpenAtom } from "@/app/(atlas)/atlas/store";
 
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 export const AtlasSidebar = ({ children }: PropsWithChildren) => {
   const navOpen = useAtom(navOpenAtom);
   const [sidebarOpen, setSidebarOpen] = useAtom(sidebarOpenAtom);
@@ -32,7 +34,7 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
             x: "-100%",
           },
         }}
-        className="pointer-events-auto h-full w-full border-r border-gray-200 bg-white"
+        className="pointer-events-auto flex h-full w-full flex-col border-r border-gray-200 bg-white"
         transition={{
           duration: 0.4,
         }}
@@ -48,4 +50,26 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
       </motion.div>
     </motion.aside>
   );
+};
+
+export const AtlasSidebarSection = ({ children }: PropsWithChildren) => {
+  return (
+    <section className="flex grow flex-col overflow-hidden">
+      <ScrollArea className="flex grow flex-col">
+        <div className="pb-6">{children}</div>
+      </ScrollArea>
+    </section>
+  );
+};
+
+export const AtlasSidebarHeader = ({ children }: PropsWithChildren) => {
+  return <header className="sticky top-0 bg-white p-6">{children}</header>;
+};
+
+export const AtlasSidebarContainer = ({ children }: PropsWithChildren) => {
+  return <div className="px-6">{children}</div>;
+};
+
+export const AtlasSidebarTitle = ({ children }: PropsWithChildren) => {
+  return <h1 className="text-sm font-bold uppercase">{children}</h1>;
 };

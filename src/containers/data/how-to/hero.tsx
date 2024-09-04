@@ -58,7 +58,7 @@ export const HowToHero = () => {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Paramater</TableHead>
+                    <TableHead>Parameter</TableHead>
                     <TableHead>Description</TableHead>
                   </TableRow>
                 </TableHeader>
