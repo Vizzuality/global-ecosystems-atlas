@@ -6,6 +6,7 @@ import {
   AtlasSidebarSection,
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
+import TestPieParent from "@/containers/atlas/widgets/test-pie";
 
 export const metadata: Metadata = {
   title: "Atlas | Global Ecosystems Atlas",
@@ -19,6 +20,9 @@ export default function AtlasPage() {
         <AtlasSidebarTitle>Search</AtlasSidebarTitle>
       </AtlasSidebarHeader>
       <AtlasSidebarContainer>
+        <div className="h-44 w-1/2">
+          <TestPieParent />
+        </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
           laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
