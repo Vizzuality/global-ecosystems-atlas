@@ -20,7 +20,7 @@ export default function AtlasPage() {
         <AtlasSidebarTitle>Search</AtlasSidebarTitle>
       </AtlasSidebarHeader>
       <AtlasSidebarContainer>
-        <div className="h-44 w-1/2">
+        <div className="aspect-square w-1/2">
           <TestPieParent />
         </div>
         <p>

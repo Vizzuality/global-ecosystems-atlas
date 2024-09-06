@@ -1,5 +1,6 @@
 "use client";
-import { FC, useCallback, useState } from "react";
+
+import { MouseEvent, useCallback } from "react";
 
 import { Group } from "@visx/group";
 import { Pie } from "@visx/shape";
@@ -9,9 +10,7 @@ import { ScaleOrdinal } from "@visx/vendor/d3-scale";
 
 import { cn } from "@/lib/utils";
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-
-const defaultMargin = { top: 20, right: 20, bottom: 20, left: 20 };
+const defaultMargin = { top: 1, right: 1, bottom: 1, left: 1 };
 
 type PieChartData = {
   id: string;
@@ -39,10 +38,6 @@ export interface PieChartProps<T> {
   colorScale: ScaleOrdinal<string, string, never>;
   pieProps?: PieProps<T>;
   format: Intl.NumberFormat["format"];
-  TooltipComponent: FC<{
-    value?: number;
-    label?: string;
-  }>;
   onPathMouseClick?: (data: T) => void;
   onPathMouseEnter?: (data: T) => void;
   onPathMouseLeave?: (data: T) => void;
@@ -59,7 +54,6 @@ export const PieChart = <T extends PieChartData>({
   onPathMouseEnter,
   onPathMouseLeave,
   pieProps,
-  TooltipComponent,
 }: PieChartProps<T>) => {
   // SIZES
   const innerWidth = width - margin.left - margin.right;
@@ -67,11 +61,7 @@ export const PieChart = <T extends PieChartData>({
   const radius = Math.min(innerWidth, innerHeight) / 2;
   const centerY = innerHeight / 2;
   const centerX = innerWidth / 2;
-  const thickness = 20;
-
-  const [tPos, setTPos] = useState<{ x: number; y: number; value: number; label: string } | null>(
-    null,
-  );
+  const thickness = 18;
 
   // Getters
   const getValue: Accessor<T, number> = useCallback((d) => d.value, []);
@@ -89,6 +79,34 @@ export const PieChart = <T extends PieChartData>({
   const getOuterRadius = useCallback(() => {
     return radius;
   }, [radius]);
+
+  const handleMouseClick = useCallback(
+    (e: MouseEvent<SVGPathElement>, arc: PieArcDatum<T>) => {
+      if (onPathMouseClick) onPathMouseClick(arc.data);
+    },
+    [onPathMouseClick],
+  );
+
+  const handleMouseEnter = useCallback(
+    (e: MouseEvent<SVGPathElement>, arc: PieArcDatum<T>) => {
+      // setTPos({
+      //   x: e.clientX,
+      //   y: e.clientY,
+      //   value: arc.data.value,
+      //   label: arc.data.label,
+      // });
+      if (onPathMouseEnter) onPathMouseEnter(arc.data);
+    },
+    [onPathMouseEnter],
+  );
+
+  const handleMouseLeave = useCallback(
+    (e: MouseEvent<SVGPathElement>, arc: PieArcDatum<T>) => {
+      // setTPos(null);
+      if (onPathMouseLeave) onPathMouseLeave(arc.data);
+    },
+    [onPathMouseLeave],
+  );
 
   return (
     <>
@@ -111,34 +129,13 @@ export const PieChart = <T extends PieChartData>({
                       d={pie.path(arc) || undefined}
                       fill={getColor(arc)}
                       strokeWidth={selected?.includes(arc.data.id) ? 2 : 1}
-                      onClick={() => {
-                        if (onPathMouseClick) onPathMouseClick(arc.data);
-                      }}
-                      onMouseEnter={(e) => {
-                        setTPos({
-                          x: e.clientX,
-                          y: e.clientY,
-                          value: arc.data.value,
-                          label: arc.data.label,
-                        });
-                        if (onPathMouseEnter) onPathMouseEnter(arc.data);
-                      }}
-                      onMouseMove={(e) => {
-                        setTPos({
-                          x: e.clientX,
-                          y: e.clientY,
-                          value: arc.data.value,
-                          label: arc.data.label,
-                        });
-                      }}
-                      onMouseLeave={() => {
-                        setTPos(null);
-                        if (onPathMouseLeave) onPathMouseLeave(arc.data);
-                      }}
                       className={cn({
                         "cursor-pointer stroke-white": true,
                         "hover:stroke-black": true,
                       })}
+                      onClick={(e) => handleMouseClick(e, arc)}
+                      onMouseEnter={(e) => handleMouseEnter(e, arc)}
+                      onMouseLeave={(e) => handleMouseLeave(e, arc)}
                     />
                   </Group>
                 );
@@ -147,30 +144,6 @@ export const PieChart = <T extends PieChartData>({
           </Pie>
         </Group>
       </svg>
-
-      <TooltipProvider delayDuration={0} skipDelayDuration={500}>
-        <Tooltip open={!!tPos}>
-          <TooltipTrigger asChild>
-            <div
-              className="pointer-events-none fixed h-0 w-0"
-              style={{
-                top: (tPos?.y ?? -9999) - 10,
-                left: (tPos?.x ?? -9999) + 10,
-              }}
-            />
-          </TooltipTrigger>
-
-          <TooltipContent
-            align="start"
-            alignOffset={-(tPos?.x ?? -9999) + 10}
-            sideOffset={-(tPos?.y ?? -9999) + 10}
-            hideWhenDetached
-            className="pointer-events-none"
-          >
-            <TooltipComponent value={tPos?.value} label={tPos?.label} />
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
     </>
   );
 };

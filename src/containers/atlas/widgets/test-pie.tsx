@@ -23,19 +23,19 @@ export const TestPie = ({
       {
         id: "1",
         label: "One",
-        value: 10,
+        value: 0.25,
         color: "#C8190B",
       },
       {
         id: "2",
         label: "Two",
-        value: 20,
+        value: 0.45,
         color: "#EB7A08",
       },
       {
         id: "3",
         label: "Three",
-        value: 30,
+        value: 0.3,
         color: "#F3C045",
       },
     ];
