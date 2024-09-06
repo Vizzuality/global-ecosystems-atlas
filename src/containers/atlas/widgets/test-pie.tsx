@@ -63,12 +63,6 @@ export const TestPie = ({
       colorScale={colorScale}
       format={formatPercentage}
       selected={selected}
-      TooltipComponent={({ value, label }) => (
-        <div>
-          <div>{label}</div>
-          <div>{formatPercentage(value || 0 / 100)}</div>
-        </div>
-      )}
       onPathMouseClick={onPieClick}
     />
   );
