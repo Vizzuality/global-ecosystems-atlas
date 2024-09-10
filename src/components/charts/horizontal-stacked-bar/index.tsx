@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react";
+import { FC, useMemo, useState } from "react";
 
 import { TooltipPortal } from "@radix-ui/react-tooltip";
 import { Group } from "@visx/group";
 import { BarStackHorizontal } from "@visx/shape";
-import { SeriesPoint } from "@visx/shape/lib/types";
+import { BarGroupBar, SeriesPoint } from "@visx/shape/lib/types";
 import { ScaleLinear, ScaleBand, ScaleOrdinal } from "@visx/vendor/d3-scale";
 import { motion } from "framer-motion";
 
@@ -15,19 +15,6 @@ type DataProps = {
 };
 type ChartDataProps = Record<string, string | number>;
 
-export type TooltipProps<T> = {
-  id: string | number;
-  total: number;
-  index: number;
-  height: number;
-  width: number;
-  x: number;
-  y: number;
-  color: string;
-  bar: SeriesPoint<T>;
-  key: string | number;
-};
-
 interface HorizontalStackedBarProps<D extends DataProps> {
   data: D[];
   width: number;
@@ -37,6 +24,12 @@ interface HorizontalStackedBarProps<D extends DataProps> {
   colorScale: ScaleOrdinal<string, string, never>;
   interactive?: boolean;
   selected?: (string | number)[];
+  TooltipComponent: FC<{
+    bar: Omit<BarGroupBar<string | number>, "key" | "value"> & {
+      bar: SeriesPoint<ChartDataProps>;
+      key: string | number;
+    };
+  }>;
 }
 
 const HorizontalStackedBar = <D extends DataProps>({
@@ -48,6 +41,7 @@ const HorizontalStackedBar = <D extends DataProps>({
   colorScale,
   interactive,
   selected,
+  TooltipComponent,
 }: HorizontalStackedBarProps<D>) => {
   const [hover, setHover] = useState<string | number | null>(null);
 
@@ -56,7 +50,7 @@ const HorizontalStackedBar = <D extends DataProps>({
     return data.map((d) => d.id);
   }, [data]);
 
-  const TOTAL = data.reduce((acc, curr) => acc + curr.value, 0);
+  // const TOTAL = data.reduce((acc, curr) => acc + curr.value, 0);
 
   const DATA = useMemo<ChartDataProps[]>(() => {
     return [
@@ -119,11 +113,7 @@ const HorizontalStackedBar = <D extends DataProps>({
 
                           <TooltipPortal>
                             <TooltipContent sideOffset={2}>
-                              <>
-                                <h2>{data.find((d) => d.id === bar.key)?.id}</h2>
-                                <p>{data.find((d) => d.id === bar.key)?.value}</p>
-                                <p>{TOTAL}</p>
-                              </>
+                              <TooltipComponent bar={bar} />
                             </TooltipContent>
                           </TooltipPortal>
                         </Tooltip>

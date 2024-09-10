@@ -22,85 +22,90 @@ export default function AtlasPage() {
         <AtlasSidebarTitle>Search</AtlasSidebarTitle>
       </AtlasSidebarHeader>
       <AtlasSidebarContainer>
-        <div className="aspect-square w-1/2">
-          <TestPieParent />
+        <div className="space-y-20">
+          <div className="aspect-square w-1/2">
+            <TestPieParent />
+          </div>
+          <div>
+            <TestRankingChart />
+          </div>
+          <div className="h-4">
+            <TestHorizontalBarChart />
+          </div>
+
+          <div className="prose prose-sm">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
+              laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum!
+              Autem molestiae possimus obcaecati sapiente molestias tenetur nobis.
+            </p>
+          </div>
         </div>
-        <div>
-          <TestRankingChart />
-        </div>
-        <div className="h-4">
-          <TestHorizontalBarChart interactive />
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
-          laudantium numquam maiores, mollitia debitis, beatae dolor asperiores assumenda cum! Autem
-          molestiae possimus obcaecati sapiente molestias tenetur nobis.
-        </p>
       </AtlasSidebarContainer>
     </AtlasSidebarSection>
   );

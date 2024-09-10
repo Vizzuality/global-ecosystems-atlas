@@ -81,6 +81,13 @@ const TestHorizontalBar = ({ width, height, interactive, selected }: TestHorizon
       xScale={xScale}
       yScale={yScale}
       colorScale={colorScale}
+      TooltipComponent={({ bar }) => (
+        <>
+          <h2>{DATA.find((d) => d.id === bar.key)?.id}</h2>
+          <p>{DATA.find((d) => d.id === bar.key)?.value}</p>
+          <p>{TOTAL}</p>
+        </>
+      )}
     />
   );
 };
