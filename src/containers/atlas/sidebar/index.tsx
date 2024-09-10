@@ -61,7 +61,7 @@ export const AtlasSidebarHeader = ({ children }: PropsWithChildren) => {
   const setSidebarOpen = useSetAtom(sidebarOpenAtom);
 
   return (
-    <header className="sticky top-0 flex justify-between gap-6 bg-white p-6">
+    <header className="sticky top-0 z-10 flex justify-between gap-6 bg-gradient-to-b from-white to-white/0 p-6">
       {children}
 
       <button
