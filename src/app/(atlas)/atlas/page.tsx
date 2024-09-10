@@ -6,9 +6,12 @@ import {
   AtlasSidebarSection,
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
-import TestHorizontalBarChart from "@/containers/atlas/widgets/test-horizontal-bar";
-import TestPieParent from "@/containers/atlas/widgets/test-pie";
-import TestRankingChart from "@/containers/atlas/widgets/test-ranking";
+import TestHorizontalBar from "@/containers/atlas/widgets/test-horizontal-bar";
+import TestNumber from "@/containers/atlas/widgets/test-number";
+import TestPie from "@/containers/atlas/widgets/test-pie";
+import TestRanking from "@/containers/atlas/widgets/test-ranking";
+
+import { Grid } from "@/components/ui/grid";
 
 export const metadata: Metadata = {
   title: "Atlas | Global Ecosystems Atlas",
@@ -24,14 +27,25 @@ export default function AtlasPage() {
       <AtlasSidebarContainer>
         <div className="space-y-20">
           <div className="aspect-square w-1/2">
-            <TestPieParent />
+            <TestPie />
           </div>
           <div>
-            <TestRankingChart />
+            <TestRanking />
           </div>
           <div className="h-4">
-            <TestHorizontalBarChart />
+            <TestHorizontalBar />
           </div>
+          <Grid>
+            <div className="col-span-4">
+              <TestNumber />
+            </div>
+            <div className="col-span-4">
+              <TestNumber />
+            </div>
+            <div className="col-span-4">
+              <TestNumber />
+            </div>
+          </Grid>
 
           <div className="prose prose-sm">
             <p>

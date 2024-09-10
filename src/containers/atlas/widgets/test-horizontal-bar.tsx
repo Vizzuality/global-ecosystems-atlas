@@ -6,16 +6,21 @@ import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
 
 import HorizontalStackedBar from "@/components/charts/horizontal-stacked-bar";
 
-interface TestHorizontalBarParentProps {
+interface TestHorizontalBarProps {
   interactive?: boolean;
   selected?: (string | number)[];
 }
-interface TestHorizontalBarProps extends TestHorizontalBarParentProps {
+interface TestHorizontalBarChildProps extends TestHorizontalBarProps {
   width: number;
   height: number;
 }
 
-const TestHorizontalBar = ({ width, height, interactive, selected }: TestHorizontalBarProps) => {
+const TestHorizontalBarChild = ({
+  width,
+  height,
+  interactive,
+  selected,
+}: TestHorizontalBarChildProps) => {
   // DATA
   const DATA = useMemo(() => {
     return [
@@ -92,12 +97,12 @@ const TestHorizontalBar = ({ width, height, interactive, selected }: TestHorizon
   );
 };
 
-const TestHorizontalBarParent = (props: TestHorizontalBarParentProps) => {
+const TestHorizontalBar = (props: TestHorizontalBarProps) => {
   return (
     <ParentSize>
-      {({ width, height }) => <TestHorizontalBar {...props} width={width} height={height} />}
+      {({ width, height }) => <TestHorizontalBarChild {...props} width={width} height={height} />}
     </ParentSize>
   );
 };
 
-export default TestHorizontalBarParent;
+export default TestHorizontalBar;

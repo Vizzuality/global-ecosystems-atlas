@@ -7,7 +7,7 @@ import { formatPercentage } from "@/lib/utils";
 
 import RankingChart from "@/components/charts/ranking";
 
-const TestRankingChart = () => {
+const TestRanking = () => {
   const DATA = useMemo(() => {
     return [
       {
@@ -69,4 +69,4 @@ const TestRankingChart = () => {
   );
 };
 
-export default TestRankingChart;
+export default TestRanking;

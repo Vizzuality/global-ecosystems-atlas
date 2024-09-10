@@ -27,6 +27,7 @@ export type TooltipProps<T> = {
 export interface PieChartProps<T> {
   data: T[];
   selected?: PieChartData["id"][];
+  interactive?: boolean;
   width?: number;
   height?: number;
   margin?: {
@@ -47,6 +48,7 @@ export const PieChart = <T extends PieChartData>({
   data,
   colorScale,
   selected,
+  interactive = false,
   width = 300,
   height = 300,
   margin = defaultMargin,
@@ -130,12 +132,14 @@ export const PieChart = <T extends PieChartData>({
                       fill={getColor(arc)}
                       strokeWidth={selected?.includes(arc.data.id) ? 2 : 1}
                       className={cn({
-                        "cursor-pointer stroke-white": true,
-                        "hover:stroke-black": true,
+                        "stroke-white": true,
+                        "cursor-pointer hover:stroke-black": interactive,
                       })}
-                      onClick={(e) => handleMouseClick(e, arc)}
-                      onMouseEnter={(e) => handleMouseEnter(e, arc)}
-                      onMouseLeave={(e) => handleMouseLeave(e, arc)}
+                      {...(interactive && {
+                        onClick: (e) => handleMouseClick(e, arc),
+                        onMouseEnter: (e) => handleMouseEnter(e, arc),
+                        onMouseLeave: (e) => handleMouseLeave(e, arc),
+                      })}
                     />
                   </Group>
                 );

@@ -7,7 +7,7 @@ import { scaleOrdinal } from "@visx/scale";
 
 import { PieChart } from "@/components/charts/pie";
 
-export const TestPie = ({
+export const TestPieChild = ({
   width,
   height,
   selected,
@@ -68,12 +68,12 @@ export const TestPie = ({
   );
 };
 
-export default function TestPieParent(
-  props: Omit<Parameters<typeof TestPie>[0], "width" | "height">,
+export default function TestPie(
+  props: Omit<Parameters<typeof TestPieChild>[0], "width" | "height">,
 ) {
   return (
     <ParentSize>
-      {({ width, height }) => <TestPie width={width} height={height} {...props} />}
+      {({ width, height }) => <TestPieChild width={width} height={height} {...props} />}
     </ParentSize>
   );
 }
