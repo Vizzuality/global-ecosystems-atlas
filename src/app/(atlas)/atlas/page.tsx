@@ -6,6 +6,7 @@ import {
   AtlasSidebarSection,
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
+import TestHorizontalBarChart from "@/containers/atlas/widgets/test-horizontal-bar";
 import TestPieParent from "@/containers/atlas/widgets/test-pie";
 import TestRankingChart from "@/containers/atlas/widgets/test-ranking";
 
@@ -26,6 +27,9 @@ export default function AtlasPage() {
         </div>
         <div>
           <TestRankingChart />
+        </div>
+        <div className="h-4">
+          <TestHorizontalBarChart interactive />
         </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error ab nulla
