@@ -22,20 +22,20 @@ export const TestPie = ({
     return [
       {
         id: "1",
-        label: "One",
-        value: 0.25,
+        label: "T6.1 Ice sheets, glaciers and perennial snowfields",
+        value: 0.05,
         color: "#C8190B",
       },
       {
         id: "2",
-        label: "Two",
-        value: 0.45,
+        label: "T6.2 Polar/alpine cliffs, screes, outcrops and lava flows",
+        value: 0.575,
         color: "#EB7A08",
       },
       {
         id: "3",
-        label: "Three",
-        value: 0.3,
+        label: "T1.1 Tropical/Subtropical lowland rainforests",
+        value: 0.375,
         color: "#F3C045",
       },
     ];

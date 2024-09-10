@@ -12,19 +12,19 @@ const TestRankingChart = () => {
     return [
       {
         id: "1",
-        label: "One",
+        label: "T6.1 Ice sheets, glaciers and perennial snowfields",
         value: 0.05,
         color: "#C8190B",
       },
       {
         id: "2",
-        label: "Two",
+        label: "T6.2 Polar/alpine cliffs, screes, outcrops and lava flows",
         value: 0.575,
         color: "#EB7A08",
       },
       {
         id: "3",
-        label: "Three",
+        label: "T1.1 Tropical/Subtropical lowland rainforests",
         value: 0.375,
         color: "#F3C045",
       },

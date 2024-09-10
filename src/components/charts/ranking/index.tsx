@@ -54,9 +54,9 @@ const HorizontalBar = <D extends DataProps>({
                   onClick: () => onBarClick && onBarClick(d),
                 })}
             >
-              <div className="table-cell w-full py-1.5">
+              <div className={cn({ "table-cell w-full": true, "pt-3": i !== 0 })}>
                 <div className="flex grow flex-col gap-1">
-                  <div className="text-xs font-semibold text-navy-700">{label}</div>
+                  <div className="line-clamp-1 text-xs font-semibold text-navy-700">{label}</div>
                   <div className="w-full bg-navy-50">
                     <div
                       className={cn({
@@ -72,7 +72,7 @@ const HorizontalBar = <D extends DataProps>({
                 </div>
               </div>
               <div className="table-cell w-full pl-6 align-bottom">
-                <div className="shrink-0 whitespace-nowrap text-xl font-medium text-navy-700">
+                <div className="shrink-0 whitespace-nowrap text-right text-xl font-medium text-navy-700">
                   {format(d)}
                 </div>
               </div>
