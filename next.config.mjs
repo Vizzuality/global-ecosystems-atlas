@@ -3,25 +3,9 @@ import("./src/env.mjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // experimental: {
-  //   missingSuspenseWithCSRBailout: false,
-  // },
   images: {
     unoptimized: true,
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/:path*{/}?",
-  //       headers: [
-  //         {
-  //           key: "X-Accel-Buffering",
-  //           value: "no",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
   async redirects() {
     return [
       // Basic redirect

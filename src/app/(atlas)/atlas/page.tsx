@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "Atlas | Global Ecosystems Atlas description",
 };
 
-export default function AtlasPage() {
+export default async function AtlasPage() {
   return (
     <AtlasSidebarSection>
       <AtlasSidebarHeader>
