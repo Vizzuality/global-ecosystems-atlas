@@ -1,48 +1,43 @@
 "use client";
 
-import Map, { useMap } from "react-map-gl";
-
-import { motion } from "framer-motion";
-import { useResizeObserverRef } from "rooks";
+import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 
 import { env } from "@/env.mjs";
 
+import { useSyncBbox } from "@/app/(atlas)/atlas/store";
+
 export const AtlasMap = () => {
   const { atlasMap } = useMap();
+  const [bbox, setBbox] = useSyncBbox();
 
-  const handleResizeMap = () => {
-    setTimeout(() => {
-      const center = atlasMap?.getCenter();
-      atlasMap?.flyTo({
-        center,
-        duration: 400,
-      });
-      atlasMap?.resize();
-    }, 0);
+  const handleMove = () => {
+    if (atlasMap) {
+      const b = atlasMap
+        .getBounds()
+        ?.toArray()
+        ?.flat()
+        ?.map((v: number) => {
+          return parseFloat(v.toFixed(2));
+        });
+
+      if (b) setBbox(b);
+      // setTmpBbox(undefined);
+    }
   };
-  const [ref] = useResizeObserverRef(handleResizeMap);
-
   return (
-    <motion.div
-      layout
-      transition={{
-        duration: 0.4,
-      }}
-      className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50"
-    >
-      <div ref={ref} className="h-full w-full grow bg-lightblue-50">
+    <div className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50">
+      <div className="h-full w-full grow bg-lightblue-50">
         <Map
           id="atlasMap"
           mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
           initialViewState={{
-            longitude: -122.4,
-            latitude: 37.8,
-            zoom: 14,
+            bounds: bbox as LngLatBoundsLike,
           }}
+          onMove={handleMove}
           style={{ width: "100%", height: "100%" }}
           mapStyle="mapbox://styles/mapbox/streets-v9"
         />
       </div>
-    </motion.div>
+    </div>
   );
 };

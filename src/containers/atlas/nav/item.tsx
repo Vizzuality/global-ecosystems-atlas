@@ -10,7 +10,7 @@ import { useAtom, useAtomValue } from "jotai";
 
 import { cn } from "@/lib/utils";
 
-import { navOpenAtom, sidebarOpenAtom } from "@/app/(atlas)/atlas/store";
+import { navOpenAtom, sidebarOpenAtom, useSyncSearchParams } from "@/app/(atlas)/atlas/store";
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -26,6 +26,8 @@ export const AtlasNavItem = ({
   href?: string;
   children: React.ReactNode;
 }) => {
+  const searchParams = useSyncSearchParams();
+
   const navOpen = useAtomValue(navOpenAtom);
   const [sidebarOpen, setSidebarOpen] = useAtom(sidebarOpenAtom);
   const pathname = usePathname();
@@ -35,7 +37,7 @@ export const AtlasNavItem = ({
       {href && (
         <TooltipTrigger asChild>
           <Link
-            href={href}
+            href={`${href}${searchParams}`}
             prefetch
             className={cn({
               "flex items-center gap-3 rounded-sm p-2.5": true,
