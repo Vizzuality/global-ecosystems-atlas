@@ -1,5 +1,3 @@
 import { parseAsArrayOf, parseAsFloat } from "nuqs";
 
-export const bboxParser = parseAsArrayOf(parseAsFloat).withDefault([
-  -40.057100412, -33.5313590243, -33.2169444375, 22.142895202,
-]);
+export const bboxParser = parseAsArrayOf(parseAsFloat).withDefault([-227.18, -53.92, 88.88, 71.99]);

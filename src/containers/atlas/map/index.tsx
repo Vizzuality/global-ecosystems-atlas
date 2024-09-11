@@ -24,6 +24,7 @@ export const AtlasMap = () => {
       // setTmpBbox(undefined);
     }
   };
+
   return (
     <div className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50">
       <div className="h-full w-full grow bg-lightblue-50">
