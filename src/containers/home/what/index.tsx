@@ -72,7 +72,14 @@ const WhatItem = (what: {
       exit={{ x: -10, opacity: 0, scale: 0.95 }}
       transition={{ ease: "easeInOut", duration: 0.3 }}
     >
-      <Image src={what.image} alt={what.title} fill className="object-cover" sizes="50vw" />
+      <Image
+        priority
+        src={what.image}
+        alt={what.title}
+        fill
+        className="object-cover"
+        sizes="50vw"
+      />
     </motion.div>
     <div className="relative grow md:w-1/2 md:space-y-14">
       <div className="hidden w-full space-y-6 md:block">
@@ -109,18 +116,28 @@ const WhatItem = (what: {
         <motion.h3
           className="origin-left text-xl font-semibold text-white lg:text-2xl"
           initial={{ x: 10, opacity: 0, scale: 0.95 }}
-          animate={{ x: 0, opacity: 1, scale: 1 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            transition: { ease: "easeInOut", duration: 0.4, delay: 0.2 },
+          }}
           exit={{ x: 10, opacity: 0, scale: 0.95 }}
-          transition={{ ease: "easeInOut", duration: 0.3 }}
+          transition={{ ease: "easeInOut", duration: 0.4 }}
         >
           {what.title}
         </motion.h3>
         <motion.p
           className="origin-left text-base font-medium text-navy-100"
           initial={{ x: 10, opacity: 0, scale: 0.95 }}
-          animate={{ x: 0, opacity: 1, scale: 1 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            transition: { ease: "easeInOut", duration: 0.4, delay: 0.3 },
+          }}
           exit={{ x: 10, opacity: 0, scale: 0.95 }}
-          transition={{ ease: "easeInOut", duration: 0.3, delay: 0.05 }}
+          transition={{ ease: "easeInOut", duration: 0.4 }}
         >
           {what.description}
         </motion.p>
