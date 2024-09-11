@@ -79,5 +79,5 @@ export const AtlasSidebarContainer = ({ children }: PropsWithChildren) => {
 };
 
 export const AtlasSidebarTitle = ({ children }: PropsWithChildren) => {
-  return <h1 className="text-sm font-bold uppercase">{children}</h1>;
+  return <h1 className="flex gap-4 text-sm font-bold uppercase">{children}</h1>;
 };

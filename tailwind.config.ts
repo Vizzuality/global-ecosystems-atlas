@@ -110,6 +110,10 @@ const config = {
           600: "#4F1D1E",
           700: "#350304",
         },
+        alert: {
+          50: "#FEFBDF",
+          800: "#FEE92E",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
