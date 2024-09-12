@@ -4,11 +4,23 @@ import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 
 import { env } from "@/env.mjs";
 
-import { useSyncBbox } from "@/app/(atlas)/atlas/store";
+import { useSyncBasemap, useSyncBbox } from "@/app/(atlas)/atlas/store";
+
+import { BASEMAPS } from "@/containers/atlas/map/basemaps";
+import { MapSettings } from "@/containers/atlas/map/settings";
+import { MapShare } from "@/containers/atlas/map/share";
+
+import Controls from "@/components/map/controls";
+import SettingsControl from "@/components/map/controls/settings";
+import ShareControl from "@/components/map/controls/share";
+import ZoomControl from "@/components/map/controls/zoom";
 
 export const AtlasMap = () => {
   const { atlasMap } = useMap();
   const [bbox, setBbox] = useSyncBbox();
+  const [basemap] = useSyncBasemap();
+
+  const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
 
   const handleMove = () => {
     if (atlasMap) {
@@ -34,10 +46,23 @@ export const AtlasMap = () => {
           initialViewState={{
             bounds: bbox as LngLatBoundsLike,
           }}
-          onMove={handleMove}
           style={{ width: "100%", height: "100%" }}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
-        />
+          projection={{
+            name: "mercator",
+          }}
+          mapStyle={mapStyle}
+          onMove={handleMove}
+        >
+          <Controls>
+            <ZoomControl />
+            <SettingsControl>
+              <MapSettings />
+            </SettingsControl>
+            <ShareControl>
+              <MapShare />
+            </ShareControl>
+          </Controls>
+        </Map>
       </div>
     </div>
   );
