@@ -105,6 +105,7 @@ const HorizontalStackedBar = <D extends DataProps>({
                               })}
                               cursor={interactive ? "pointer" : "default"}
                               pointerEvents={interactive ? "all" : "none"}
+                              initial={false}
                               animate={{
                                 fillOpacity: hover === bar.key || !hover ? 1 : opacity,
                               }}
