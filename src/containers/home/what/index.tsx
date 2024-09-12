@@ -120,10 +120,10 @@ const WhatItem = (what: {
             x: 0,
             opacity: 1,
             scale: 1,
-            transition: { ease: "easeInOut", duration: 0.4, delay: 0.2 },
+            transition: { ease: "easeInOut", duration: 0.3, delay: 0.2 },
           }}
           exit={{ x: 10, opacity: 0, scale: 0.95 }}
-          transition={{ ease: "easeInOut", duration: 0.4 }}
+          transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           {what.title}
         </motion.h3>
@@ -134,10 +134,10 @@ const WhatItem = (what: {
             x: 0,
             opacity: 1,
             scale: 1,
-            transition: { ease: "easeInOut", duration: 0.4, delay: 0.3 },
+            transition: { ease: "easeInOut", duration: 0.3, delay: 0.3 },
           }}
           exit={{ x: 10, opacity: 0, scale: 0.95 }}
-          transition={{ ease: "easeInOut", duration: 0.4 }}
+          transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           {what.description}
         </motion.p>
