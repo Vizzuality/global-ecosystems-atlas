@@ -4,7 +4,10 @@ import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 
 import { env } from "@/env.mjs";
 
-import { useSyncBbox } from "@/app/(atlas)/atlas/store";
+import { useSyncBasemap, useSyncBbox } from "@/app/(atlas)/atlas/store";
+
+import { BASEMAPS } from "@/containers/atlas/map/basemaps";
+import { MapSettings } from "@/containers/atlas/map/settings";
 
 import Controls from "@/components/map/controls";
 import SettingsControl from "@/components/map/controls/settings";
@@ -13,6 +16,9 @@ import ZoomControl from "@/components/map/controls/zoom";
 export const AtlasMap = () => {
   const { atlasMap } = useMap();
   const [bbox, setBbox] = useSyncBbox();
+  const [basemap] = useSyncBasemap();
+
+  const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
 
   const handleMove = () => {
     if (atlasMap) {
@@ -38,20 +44,17 @@ export const AtlasMap = () => {
           initialViewState={{
             bounds: bbox as LngLatBoundsLike,
           }}
-          onMove={handleMove}
           style={{ width: "100%", height: "100%" }}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
+          projection={{
+            name: "mercator",
+          }}
+          mapStyle={mapStyle}
+          onMove={handleMove}
         >
           <Controls>
             <ZoomControl />
             <SettingsControl>
-              <div className="flex flex-col space-y-2">
-                <button className="h-8 w-full border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition-colors hover:bg-slate-200 active:bg-white active:outline active:outline-2 active:outline-white/50">
-                  <span className="flex h-full w-full items-center justify-center">
-                    Map settings
-                  </span>
-                </button>
-              </div>
+              <MapSettings />
             </SettingsControl>
           </Controls>
         </Map>
