@@ -4,8 +4,6 @@ import { useRef, useState } from "react";
 
 import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils";
-
 import { useSyncSearchParams } from "@/app/(atlas)/atlas/store";
 
 import { Button } from "@/components/ui/button";
@@ -26,6 +24,13 @@ export const MapShare = () => {
     }
 
     navigator.clipboard.writeText(ref.current.textContent ?? "");
+    const range = document.createRange();
+    const selection = window.getSelection();
+    range.selectNodeContents(ref.current);
+
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
     setCopied(true);
 
     timeoutRef.current = setTimeout(() => {
@@ -35,16 +40,10 @@ export const MapShare = () => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-sm font-bold uppercase">Map settings</h3>
+      <h3 className="text-sm font-bold uppercase">Share</h3>
 
       <div className="flex flex-col items-end gap-2">
-        <p
-          ref={ref}
-          className={cn({
-            "break-all rounded-lg border border-navy-100 p-2 text-xs leading-4": true,
-            "bg-lightblue-50": copied,
-          })}
-        >
+        <p ref={ref} className="break-all rounded-lg border border-navy-100 p-2 text-xs leading-4">
           {`${window.location.origin}${pathname}${searchParams}`}
         </p>
         <Button size="sm" variant="default" onClick={handleCopy}>
