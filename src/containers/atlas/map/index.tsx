@@ -8,9 +8,11 @@ import { useSyncBasemap, useSyncBbox } from "@/app/(atlas)/atlas/store";
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 import { MapSettings } from "@/containers/atlas/map/settings";
+import { MapShare } from "@/containers/atlas/map/share";
 
 import Controls from "@/components/map/controls";
 import SettingsControl from "@/components/map/controls/settings";
+import ShareControl from "@/components/map/controls/share";
 import ZoomControl from "@/components/map/controls/zoom";
 
 export const AtlasMap = () => {
@@ -56,6 +58,9 @@ export const AtlasMap = () => {
             <SettingsControl>
               <MapSettings />
             </SettingsControl>
+            <ShareControl>
+              <MapShare />
+            </ShareControl>
           </Controls>
         </Map>
       </div>
