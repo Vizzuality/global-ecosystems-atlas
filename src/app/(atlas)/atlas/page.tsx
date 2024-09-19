@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import { AtlasSearch } from "@/containers/atlas/search";
 import {
   AtlasSidebarContainer,
   AtlasSidebarHeader,
@@ -26,6 +27,7 @@ export default async function AtlasPage() {
       </AtlasSidebarHeader>
       <AtlasSidebarContainer>
         <div className="space-y-20">
+          <AtlasSearch />
           <div className="aspect-square w-1/2">
             <TestPie />
           </div>

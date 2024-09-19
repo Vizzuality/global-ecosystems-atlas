@@ -134,6 +134,12 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      width: {
+        "popover-width": "var(--radix-popover-trigger-width)",
+      },
+      height: {
+        "popover-height": "var(--radix-popover-trigger-height)",
+      },
     },
   },
   plugins: [tailwindCSSanimate, tailwindCSStypography],
