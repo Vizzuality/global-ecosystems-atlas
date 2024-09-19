@@ -106,5 +106,13 @@
         "pathGroupsExcludedImportTypes": ["react"]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/types/generated/*.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
 }

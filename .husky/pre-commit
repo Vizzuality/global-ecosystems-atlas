@@ -1,1 +1,1 @@
-pnpm lint && pnpm test:run
+pnpm types && pnpm lint --fix && pnpm check-types && git add src/types/generated/ && pnpm test:run
