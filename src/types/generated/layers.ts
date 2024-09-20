@@ -18,6 +18,8 @@ import type {
 import { API } from "../../services/api";
 import type { ErrorType } from "../../services/api";
 
+import type { ResponseModelListLayer } from "./strapi.schemas";
+
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 
 /**
@@ -25,7 +27,7 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
  * @summary Api
  */
 export const apiLayersGet = (options?: SecondParameter<typeof API>, signal?: AbortSignal) => {
-  return API<unknown>({ url: `/layers`, method: "GET", signal }, options);
+  return API<ResponseModelListLayer>({ url: `/layers`, method: "GET", signal }, options);
 };
 
 export const getApiLayersGetQueryKey = () => {

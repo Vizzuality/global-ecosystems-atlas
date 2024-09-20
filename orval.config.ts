@@ -22,7 +22,7 @@ module.exports = {
     input: {
       target: "https://global-ecosystem-atlas.staging.dev-vizzuality.com/api/api",
       filters: {
-        tags: ["datasets", "layers"],
+        tags: ["datasets", "layers", "widgtets", "locations", "ecosystems"],
       },
     },
   },

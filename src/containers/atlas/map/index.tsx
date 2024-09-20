@@ -1,10 +1,19 @@
 "use client";
 
+import { useCallback, useEffect } from "react";
+
 import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
+
+import { useAtom, useAtomValue } from "jotai";
 
 import { env } from "@/env.mjs";
 
-import { useSyncBasemap, useSyncBbox } from "@/app/(atlas)/atlas/store";
+import {
+  sidebarOpenAtom,
+  tmpBboxAtom,
+  useSyncBasemap,
+  useSyncBbox,
+} from "@/app/(atlas)/atlas/store";
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 import { MapSettings } from "@/containers/atlas/map/settings";
@@ -18,6 +27,8 @@ import ZoomControl from "@/components/map/controls/zoom";
 export const AtlasMap = () => {
   const { atlasMap } = useMap();
   const [bbox, setBbox] = useSyncBbox();
+  const [tmpBbox, setTmpBbox] = useAtom(tmpBboxAtom);
+  const sidebarOpen = useAtomValue(sidebarOpenAtom);
   const [basemap] = useSyncBasemap();
 
   const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
@@ -33,9 +44,28 @@ export const AtlasMap = () => {
         });
 
       if (b) setBbox(b);
-      // setTmpBbox(undefined);
+      setTmpBbox(undefined);
     }
   };
+
+  const handleFitBounds = useCallback(() => {
+    if (tmpBbox && atlasMap) {
+      atlasMap.fitBounds(tmpBbox as LngLatBoundsLike, {
+        padding: {
+          top: 50,
+          bottom: 50,
+          left: sidebarOpen ? 600 : 125,
+          right: 50,
+        },
+      });
+    }
+  }, [atlasMap, sidebarOpen, tmpBbox]);
+
+  useEffect(() => {
+    if (tmpBbox) {
+      handleFitBounds();
+    }
+  }, [tmpBbox, handleFitBounds]);
 
   return (
     <div className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50">
@@ -45,6 +75,14 @@ export const AtlasMap = () => {
           mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
           initialViewState={{
             bounds: bbox as LngLatBoundsLike,
+            fitBoundsOptions: {
+              padding: {
+                top: 50,
+                bottom: 50,
+                left: sidebarOpen ? 600 : 125,
+                right: 50,
+              },
+            },
           }}
           style={{ width: "100%", height: "100%" }}
           projection={{

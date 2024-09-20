@@ -3,7 +3,6 @@
 import * as React from "react";
 
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { UseQueryResult } from "@tanstack/react-query";
 import { Command as CommandPrimitive } from "cmdk";
 import { FiSearch, FiX } from "react-icons/fi";
 
@@ -31,7 +30,7 @@ export type SearchProps<T> = {
   placeholder?: string;
   onChange: (e: string) => void;
   onSelect: (o: T | null) => void;
-} & Partial<UseQueryResult<unknown, unknown>>;
+};
 
 export function Search<T extends Option>({
   value,
@@ -48,13 +47,18 @@ export function Search<T extends Option>({
     <Popover onOpenChange={setOpened} open={opened}>
       <PopoverTrigger
         ref={triggerRef}
-        className="relative w-full rounded-md border border-navy-100 bg-white pl-9"
+        className="relative flex w-full rounded-md border border-navy-100 bg-white px-9 pr-11"
       >
         <FiSearch className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-300" />
-        <div className="w-full text-sm leading-none">
-          <div className={cn("flex h-10 items-center", !value && "text-navy-500")}>
+        <div className="flex h-10 w-full min-w-0 items-center overflow-hidden">
+          <span
+            className={cn(
+              "block w-full min-w-0 items-center overflow-hidden overflow-ellipsis whitespace-nowrap text-left text-sm leading-none",
+              !value && "text-navy-500",
+            )}
+          >
             {value || placeholder || "Search..."}
-          </div>
+          </span>
         </div>
 
         <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -89,7 +93,7 @@ export function Search<T extends Option>({
                 value={value}
                 placeholder={placeholder ?? "Search..."}
                 className={cn(
-                  "flex h-10 w-full bg-transparent py-0 pl-9 text-sm outline-none placeholder:text-navy-500 disabled:cursor-not-allowed disabled:opacity-50",
+                  "flex h-10 w-full bg-transparent py-0 pl-9 pr-11 text-sm outline-none placeholder:text-navy-500 disabled:cursor-not-allowed disabled:opacity-50",
                 )}
                 onValueChange={(e) => {
                   onChange(e);

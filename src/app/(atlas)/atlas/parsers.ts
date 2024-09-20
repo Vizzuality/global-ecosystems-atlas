@@ -1,6 +1,4 @@
-import { parseAsArrayOf, parseAsFloat, parseAsStringLiteral } from "nuqs";
-
-import { COUNTRIES } from "@/lib/countries";
+import { parseAsArrayOf, parseAsFloat, parseAsString, parseAsStringLiteral } from "nuqs";
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 
@@ -10,4 +8,4 @@ export const basemapParser = parseAsStringLiteral(BASEMAPS.map((b) => b.value)).
   "light",
 );
 
-export const countryParser = parseAsStringLiteral(COUNTRIES.map((c) => c.iso3));
+export const locationParser = parseAsString;

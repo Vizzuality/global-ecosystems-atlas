@@ -4,12 +4,41 @@
  *  Global ecosystems atlas Tiler
  * OpenAPI spec version: 0.1.0
  */
+export type WidgetDescription = string | null;
+
+export interface Widget {
+  description?: WidgetDescription;
+  id: string;
+  name: string;
+  price: number;
+}
+
 export type ValidationErrorLocItem = string | number;
 
 export interface ValidationError {
   loc: ValidationErrorLocItem[];
   msg: string;
   type: string;
+}
+
+export interface ResponseModelListWidget {
+  data: Widget[];
+}
+
+export interface ResponseModelListLocation {
+  data: Location[];
+}
+
+export interface ResponseModelListLayer {
+  data: Layer[];
+}
+
+export interface ResponseModelListEcosystem {
+  data: Ecosystem[];
+}
+
+export interface ResponseModelListDataset {
+  data: Dataset[];
 }
 
 /**
@@ -21,6 +50,49 @@ export interface Point {
   band_names: string[];
   coordinates: number[];
   values: number[];
+}
+
+export type MetadataVersion = string | null;
+
+export type MetadataSource = string | null;
+
+export type MetadataDescription = string | null;
+
+export type MetadataAttribution = string | null;
+
+export interface Metadata {
+  attribution?: MetadataAttribution;
+  description?: MetadataDescription;
+  name: string;
+  source?: MetadataSource;
+  version?: MetadataVersion;
+}
+
+export interface Location {
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  bounds: [number, number, number, number];
+  efgs?: Ecosystem[];
+  gis_name: string;
+  iso: string;
+  location_code: string;
+}
+
+export type LayerTax = number | null;
+
+export type LayerMetadata = Metadata | null;
+
+export type LayerDefinition = string | null;
+
+export interface Layer {
+  definition?: LayerDefinition;
+  metadata?: LayerMetadata;
+  name: string;
+  price: number;
+  tags?: string[];
+  tax?: LayerTax;
 }
 
 /**
@@ -42,4 +114,24 @@ export const ImageType = {
 
 export interface HTTPValidationError {
   detail?: ValidationError[];
+}
+
+export type EcosystemEfgCode = string | null;
+
+export type EcosystemBiomeName = number | null;
+
+export interface Ecosystem {
+  biome_name?: EcosystemBiomeName;
+  efg_code?: EcosystemEfgCode;
+  efg_name: number;
+  id: string;
+  realm_name?: string[];
+}
+
+export interface Dataset {
+  id: string;
+  key: string;
+  LastModified: string;
+  Size: number;
+  url: string;
 }

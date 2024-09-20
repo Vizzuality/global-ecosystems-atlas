@@ -18,6 +18,8 @@ import type {
 import { API } from "../../services/api";
 import type { ErrorType } from "../../services/api";
 
+import type { ResponseModelListDataset } from "./strapi.schemas";
+
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 
 /**
@@ -25,7 +27,7 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
  * @summary Api
  */
 export const apiDatasetsGet = (options?: SecondParameter<typeof API>, signal?: AbortSignal) => {
-  return API<unknown>({ url: `/datasets`, method: "GET", signal }, options);
+  return API<ResponseModelListDataset>({ url: `/datasets`, method: "GET", signal }, options);
 };
 
 export const getApiDatasetsGetQueryKey = () => {

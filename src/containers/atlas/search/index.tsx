@@ -2,12 +2,12 @@
 
 import { useCallback, useState } from "react";
 
-import { COUNTRIES } from "@/lib/countries";
+import { useSetAtom } from "jotai";
 
-import { useApiDatasetsGet } from "@/types/generated/datasets";
-import { useApiLayersGet } from "@/types/generated/layers";
+import { useApiLocationsGet } from "@/types/generated/locations";
 
-import { useSyncCountry } from "@/app/(atlas)/atlas/store";
+import { bboxParser } from "@/app/(atlas)/atlas/parsers";
+import { tmpBboxAtom, useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import { Search } from "@/components/ui/search";
 
@@ -15,16 +15,17 @@ type Option = {
   label: string;
   value: string;
   key: string;
+  bounds: number[];
 };
 
 export const AtlasSearch = () => {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
-  const [, setCountry] = useSyncCountry();
+  const [location, setLocation] = useSyncLocation();
 
-  const { data: datasetsData } = useApiDatasetsGet();
-  const { data: layersData } = useApiLayersGet();
-  console.info({ datasetsData, layersData });
+  const setTmpBbox = useSetAtom(tmpBboxAtom);
+
+  const { data: locationsData } = useApiLocationsGet();
 
   const handleSearch = useCallback(
     (value: string) => {
@@ -39,29 +40,39 @@ export const AtlasSearch = () => {
       if (!value) {
         setOpen(false);
         setSearch("");
-        setCountry(null);
+        setLocation(null);
+        setTmpBbox(bboxParser.defaultValue);
         return;
       }
 
       setSearch(value.label);
       setOpen(false);
-      setCountry(value.value);
+      setLocation(value.value);
+      setTmpBbox(value.bounds);
     },
-    [setCountry],
+    [setLocation, setTmpBbox],
   );
 
   return (
     <Search
-      value={search}
+      value={
+        search || locationsData?.data.find((l) => l.location_code === location)?.gis_name || ""
+      }
       open={open}
-      options={COUNTRIES.map((c) => ({
-        label: c.name,
-        value: c.iso3,
-        key: c.iso3,
-      }))}
+      options={
+        locationsData?.data
+          ?.filter(
+            (value, index, self) => index === self.findIndex((t) => t.gis_name === value.gis_name),
+          )
+          .sort((a, b) => a.gis_name.localeCompare(b.gis_name))
+          .map((l) => ({
+            label: l.gis_name,
+            value: l.location_code,
+            key: l.location_code,
+            bounds: l.bounds,
+          })) || []
+      }
       placeholder="Start searching..."
-      isFetched={true}
-      isFetching={false}
       onChange={handleSearch}
       onSelect={handleSelect}
     />
