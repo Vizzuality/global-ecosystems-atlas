@@ -12,7 +12,7 @@ export const MethodologyImage = () => {
         }}
         transformOptions={{
           from: [0, 1],
-          to: ["0%", `-25%`],
+          to: ["-25%", `0%`],
         }}
       >
         <Image

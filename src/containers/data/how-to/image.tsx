@@ -12,7 +12,7 @@ export const HowToImage = () => {
         }}
         transformOptions={{
           from: [0, 1],
-          to: ["25%", `-25%`],
+          to: ["-25%", `25%`],
         }}
       >
         <Image

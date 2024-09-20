@@ -22,86 +22,81 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 
 /**
  * Get all map layer information
- * @summary Get Version
+ * @summary Api
  */
-export const getVersionLayersGet = (
-  options?: SecondParameter<typeof API>,
-  signal?: AbortSignal,
-) => {
+export const apiLayersGet = (options?: SecondParameter<typeof API>, signal?: AbortSignal) => {
   return API<unknown>({ url: `/layers`, method: "GET", signal }, options);
 };
 
-export const getGetVersionLayersGetQueryKey = () => {
+export const getApiLayersGetQueryKey = () => {
   return [`/layers`] as const;
 };
 
-export const getGetVersionLayersGetQueryOptions = <
-  TData = Awaited<ReturnType<typeof getVersionLayersGet>>,
+export const getApiLayersGetQueryOptions = <
+  TData = Awaited<ReturnType<typeof apiLayersGet>>,
   TError = ErrorType<unknown>,
 >(options?: {
-  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getVersionLayersGet>>, TError, TData>>;
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiLayersGet>>, TError, TData>>;
   request?: SecondParameter<typeof API>;
 }) => {
   const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey = queryOptions?.queryKey ?? getGetVersionLayersGetQueryKey();
+  const queryKey = queryOptions?.queryKey ?? getApiLayersGetQueryKey();
 
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getVersionLayersGet>>> = ({ signal }) =>
-    getVersionLayersGet(requestOptions, signal);
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof apiLayersGet>>> = ({ signal }) =>
+    apiLayersGet(requestOptions, signal);
 
   return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
-    Awaited<ReturnType<typeof getVersionLayersGet>>,
+    Awaited<ReturnType<typeof apiLayersGet>>,
     TError,
     TData
   > & { queryKey: QueryKey };
 };
 
-export type GetVersionLayersGetQueryResult = NonNullable<
-  Awaited<ReturnType<typeof getVersionLayersGet>>
->;
-export type GetVersionLayersGetQueryError = ErrorType<unknown>;
+export type ApiLayersGetQueryResult = NonNullable<Awaited<ReturnType<typeof apiLayersGet>>>;
+export type ApiLayersGetQueryError = ErrorType<unknown>;
 
-export function useGetVersionLayersGet<
-  TData = Awaited<ReturnType<typeof getVersionLayersGet>>,
+export function useApiLayersGet<
+  TData = Awaited<ReturnType<typeof apiLayersGet>>,
   TError = ErrorType<unknown>,
 >(options: {
-  query: Partial<UseQueryOptions<Awaited<ReturnType<typeof getVersionLayersGet>>, TError, TData>> &
+  query: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiLayersGet>>, TError, TData>> &
     Pick<
-      DefinedInitialDataOptions<Awaited<ReturnType<typeof getVersionLayersGet>>, TError, TData>,
+      DefinedInitialDataOptions<Awaited<ReturnType<typeof apiLayersGet>>, TError, TData>,
       "initialData"
     >;
   request?: SecondParameter<typeof API>;
 }): DefinedUseQueryResult<TData, TError> & { queryKey: QueryKey };
-export function useGetVersionLayersGet<
-  TData = Awaited<ReturnType<typeof getVersionLayersGet>>,
+export function useApiLayersGet<
+  TData = Awaited<ReturnType<typeof apiLayersGet>>,
   TError = ErrorType<unknown>,
 >(options?: {
-  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getVersionLayersGet>>, TError, TData>> &
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiLayersGet>>, TError, TData>> &
     Pick<
-      UndefinedInitialDataOptions<Awaited<ReturnType<typeof getVersionLayersGet>>, TError, TData>,
+      UndefinedInitialDataOptions<Awaited<ReturnType<typeof apiLayersGet>>, TError, TData>,
       "initialData"
     >;
   request?: SecondParameter<typeof API>;
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey };
-export function useGetVersionLayersGet<
-  TData = Awaited<ReturnType<typeof getVersionLayersGet>>,
+export function useApiLayersGet<
+  TData = Awaited<ReturnType<typeof apiLayersGet>>,
   TError = ErrorType<unknown>,
 >(options?: {
-  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getVersionLayersGet>>, TError, TData>>;
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiLayersGet>>, TError, TData>>;
   request?: SecondParameter<typeof API>;
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey };
 /**
- * @summary Get Version
+ * @summary Api
  */
 
-export function useGetVersionLayersGet<
-  TData = Awaited<ReturnType<typeof getVersionLayersGet>>,
+export function useApiLayersGet<
+  TData = Awaited<ReturnType<typeof apiLayersGet>>,
   TError = ErrorType<unknown>,
 >(options?: {
-  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getVersionLayersGet>>, TError, TData>>;
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiLayersGet>>, TError, TData>>;
   request?: SecondParameter<typeof API>;
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
-  const queryOptions = getGetVersionLayersGetQueryOptions(options);
+  const queryOptions = getApiLayersGetQueryOptions(options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

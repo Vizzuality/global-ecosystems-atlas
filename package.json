@@ -11,7 +11,7 @@
     "test:run": "vitest --run",
     "prepare": "husky",
     "check-types": "tsc",
-    "types": "orval --config ./orval.config.ts"
+    "types": "orval --config ./orval.config.ts && next lint --fix"
   },
   "dependencies": {
     "@artsy/fresnel": "^7.1.4",

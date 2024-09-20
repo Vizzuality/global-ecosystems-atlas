@@ -1,5 +1,5 @@
 module.exports = {
-  ccsa: {
+  gea: {
     output: {
       mode: "tags",
       client: "react-query",
@@ -21,6 +21,9 @@ module.exports = {
     },
     input: {
       target: "https://global-ecosystem-atlas.staging.dev-vizzuality.com/api/api",
+      filters: {
+        tags: ["datasets", "layers"],
+      },
     },
   },
 };
