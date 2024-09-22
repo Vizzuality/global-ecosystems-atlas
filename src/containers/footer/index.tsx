@@ -49,11 +49,11 @@ export const Footer = () => {
         </div>
 
         <div className="flex flex-col items-center justify-between space-y-10 border-t border-white pt-8 lg:flex-row lg:space-y-0">
-          <ul className="flex space-x-5">
+          <ul className="flex flex-col gap-5 sm:flex-row">
             <li>
               <a
                 href="https://www.facebook.com/"
-                className="flex items-center space-x-1 text-xs font-medium"
+                className="flex items-center justify-center space-x-1 text-xs font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -64,7 +64,7 @@ export const Footer = () => {
             <li>
               <a
                 href="https://www.facebook.com/"
-                className="flex items-center space-x-1 text-xs font-medium"
+                className="flex items-center justify-center space-x-1 text-xs font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -75,7 +75,7 @@ export const Footer = () => {
             <li>
               <a
                 href="https://github.com/geo-global-ecosystem-atlas"
-                className="flex items-center space-x-1 text-xs font-medium"
+                className="flex items-center justify-center space-x-1 text-xs font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -86,7 +86,7 @@ export const Footer = () => {
             <li>
               <Link
                 href="/privacy-policy"
-                className="flex items-center space-x-1 text-xs font-medium"
+                className="flex items-center justify-center space-x-1 text-xs font-medium"
               >
                 <span>Privacy policy</span>
               </Link>
