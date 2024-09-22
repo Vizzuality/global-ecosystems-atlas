@@ -80,7 +80,7 @@ export function Search<T extends Option>({
         <PopoverPrimitive.Content
           align="start"
           updatePositionStrategy="always"
-          sideOffset={(triggerRef.current?.getBoundingClientRect()?.height || 0) * -1 ?? 0}
+          sideOffset={(triggerRef.current?.getBoundingClientRect()?.height || 0) * -1}
           className={cn(
             "z-50 w-popover-width overflow-hidden rounded-md border border-navy-100 bg-white p-0 text-popover-foreground shadow-md outline-none",
           )}
