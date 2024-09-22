@@ -28,9 +28,8 @@ export default function DataLayout({
                 </header>
                 <div className="space-y-8 text-white">
                   <p className="text-xl">
-                    This is an intro copy of the section, let&apos;s come up with some content
-                    sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt sequuntur
-                    magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    Explore how ecosystems are mapped, learn how to use the data, browse our data
+                    sources, and find answers to your questions.
                   </p>
                 </div>
               </div>

@@ -83,6 +83,14 @@ export const Footer = () => {
                 <span>GitHub</span>
               </a>
             </li>
+            <li>
+              <Link
+                href="/privacy-policy"
+                className="flex items-center space-x-1 text-xs font-medium"
+              >
+                <span>Privacy policy</span>
+              </Link>
+            </li>
           </ul>
 
           <ul className="flex space-x-4 lg:space-x-8">

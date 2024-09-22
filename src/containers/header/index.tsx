@@ -20,6 +20,7 @@ import { Logo } from "@/containers/logo";
 const DARK_PATHNAMES = [
   "/about-us",
   "/coming-soon",
+  "/privacy-policy",
   "/data",
   "/data/methodology",
   "/data/how-to-use-the-data",
