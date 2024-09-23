@@ -49,49 +49,53 @@ export const Footer = () => {
         </div>
 
         <div className="flex flex-col items-center justify-between space-y-10 border-t border-white pt-8 lg:flex-row lg:space-y-0">
-          <ul className="flex flex-col gap-5 sm:flex-row">
-            <li>
-              <a
-                href="https://www.facebook.com/"
-                className="flex items-center justify-center space-x-1 text-xs font-medium"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiArrowUpRight className="h-4 w-4" />
-                <span>Google Earth Engine</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.facebook.com/"
-                className="flex items-center justify-center space-x-1 text-xs font-medium"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiArrowUpRight className="h-4 w-4" />
-                <span>ArcGIS</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/geo-global-ecosystem-atlas"
-                className="flex items-center justify-center space-x-1 text-xs font-medium"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiArrowUpRight className="h-4 w-4" />
-                <span>GitHub</span>
-              </a>
-            </li>
-            <li>
-              <Link
-                href="/privacy-policy"
-                className="flex items-center justify-center space-x-1 text-xs font-medium"
-              >
-                <span>Privacy policy</span>
-              </Link>
-            </li>
-          </ul>
+          <div className="flex flex-col gap-10 lg:flex-row">
+            <ul className="flex flex-col gap-5 sm:flex-row">
+              <li>
+                <a
+                  href="https://www.facebook.com/"
+                  className="flex items-center justify-center space-x-1 text-xs font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FiArrowUpRight className="h-4 w-4" />
+                  <span>Google Earth Engine</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/"
+                  className="flex items-center justify-center space-x-1 text-xs font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FiArrowUpRight className="h-4 w-4" />
+                  <span>ArcGIS</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/geo-global-ecosystem-atlas"
+                  className="flex items-center justify-center space-x-1 text-xs font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FiArrowUpRight className="h-4 w-4" />
+                  <span>GitHub</span>
+                </a>
+              </li>
+            </ul>
+            <ul className="flex flex-col gap-5 sm:flex-row">
+              <li className="relative before:absolute before:-top-5 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:before:-left-5 lg:before:top-1/2 lg:before:-translate-y-0.5">
+                <Link
+                  href="/privacy-policy"
+                  className="flex items-center justify-center space-x-1 text-xs font-medium"
+                >
+                  <span>Privacy policy</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           <ul className="flex space-x-4 lg:space-x-8">
             <li>
