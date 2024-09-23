@@ -7,17 +7,27 @@ import { CheckedState } from "@radix-ui/react-checkbox";
 import { useRealms } from "@/lib/taxonomy";
 import { cn } from "@/lib/utils";
 
-import { useSyncRealms } from "@/app/(atlas)/atlas/store";
+import { useSyncBiomes, useSyncEcosystems, useSyncRealms } from "@/app/(atlas)/atlas/store";
 
+import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 export const RealmsTrigger = () => {
-  return <div>Realms</div>;
+  return (
+    <div className="flex items-center gap-2">
+      Realms
+      <Badge variant="secondary" className="rounded-2xl">
+        4/4
+      </Badge>
+    </div>
+  );
 };
 
 export const RealmsContent = () => {
   const [realms, setRealms] = useSyncRealms();
+  const [biomes, setBiomes] = useSyncBiomes();
+  const [ecosystems, setEcosystems] = useSyncEcosystems();
   const realmsData = useRealms();
 
   const DATA = useMemo(() => {
@@ -48,6 +58,14 @@ export const RealmsContent = () => {
       setRealms((prev) => prev.filter((realm) => realm !== realmId));
     } else {
       setRealms((prev) => [...prev, realmId]);
+    }
+
+    if (biomes.length) {
+      setBiomes([]);
+    }
+
+    if (ecosystems.length) {
+      setEcosystems([]);
     }
   };
 

@@ -13,7 +13,7 @@ export const getBiomeFromEFGCode = (efgCode: string) => {
   return biomeId;
 };
 
-export const useEcosystems = () => {
+export const useEcosystems = (props?: { realms?: string[]; biomes?: string[] }) => {
   const { data: ecosystemsData } = useApiEcosystemsGet();
 
   return ecosystemsData?.data
@@ -31,10 +31,30 @@ export const useEcosystems = () => {
         biome: getBiomeFromEFGCode(e.efg_code!),
         realms: getRealmsFromEFGCode(e.efg_code!),
       };
+    })
+    .filter((e) => {
+      if (!props?.biomes?.length && !props?.realms?.length) {
+        return true;
+      }
+
+      const brls = e.realms.sort().toString();
+      const rls = props?.realms?.sort().toString();
+
+      const bbms = e.biome;
+
+      if (!props?.biomes?.length) {
+        return rls === brls;
+      }
+
+      if (!props?.realms?.length) {
+        return props.biomes.includes(bbms);
+      }
+
+      return rls === brls && props.biomes.includes(bbms);
     });
 };
 
-export const useBiomes = () => {
+export const useBiomes = (props?: { realms?: string[] }) => {
   const { data: ecosystemsData } = useApiEcosystemsGet();
 
   return ecosystemsData?.data
@@ -54,6 +74,15 @@ export const useBiomes = () => {
         biome: getBiomeFromEFGCode(e.efg_code!),
         realms: getRealmsFromEFGCode(e.efg_code!),
       };
+    })
+    .filter((b) => {
+      if (props?.realms?.length) {
+        const brls = b.realms.sort().toString();
+        const rls = props.realms.sort().toString();
+
+        return rls === brls;
+      }
+      return true;
     });
 };
 

@@ -1,23 +1,34 @@
-import { useMemo } from "react";
-
 import { CheckedState } from "@radix-ui/react-checkbox";
 
 import { useEcosystems } from "@/lib/taxonomy";
 
 import { useSyncBiomes, useSyncEcosystems, useSyncRealms } from "@/app/(atlas)/atlas/store";
 
+import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 export const EcosystemsTrigger = () => {
-  return <div>Ecosystems</div>;
+  const [realms] = useSyncRealms();
+  const [biomes] = useSyncBiomes();
+  const ecosystemsData = useEcosystems();
+  const ecosystemsDataFiltered = useEcosystems({ realms, biomes });
+
+  return (
+    <div className="flex items-center gap-2">
+      Ecosystems
+      <Badge variant="secondary" className="rounded-2xl">
+        {ecosystemsDataFiltered?.length}/{ecosystemsData?.length}
+      </Badge>
+    </div>
+  );
 };
 
 export const EcosystemsContent = () => {
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
   const [ecosystems, setEcosystems] = useSyncEcosystems();
-  const ecosystemsData = useEcosystems();
+  const ecosystemsDataFiltered = useEcosystems({ realms, biomes });
 
   const handleChange = (ecosystemId: string, checked: CheckedState) => {
     if (!checked) {
@@ -27,32 +38,9 @@ export const EcosystemsContent = () => {
     }
   };
 
-  const DATA = useMemo(() => {
-    if (!realms.length && !biomes.length) {
-      return ecosystemsData;
-    }
-
-    return ecosystemsData?.filter((ecosystem) => {
-      const brls = ecosystem.realms.sort().toString();
-      const rls = realms.sort().toString();
-
-      const bbms = ecosystem.biome;
-
-      if (!biomes.length) {
-        return rls === brls;
-      }
-
-      if (!realms.length) {
-        return biomes.includes(bbms);
-      }
-
-      return rls === brls && biomes.includes(bbms);
-    });
-  }, [ecosystemsData, realms, biomes]);
-
   return (
     <ul className="flex flex-col">
-      {DATA?.map((ecosystem) => {
+      {ecosystemsDataFiltered?.map((ecosystem) => {
         return (
           <li key={ecosystem.id} className="flex">
             <Checkbox
