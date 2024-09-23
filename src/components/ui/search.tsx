@@ -21,10 +21,12 @@ export type Option = {
   label: string;
   value: string;
   key: string;
+  bounds: number[];
 };
 
 export type SearchProps<T> = {
-  value: string;
+  initialValue?: string;
+  value?: string;
   open: boolean;
   options: T[];
   placeholder?: string;
