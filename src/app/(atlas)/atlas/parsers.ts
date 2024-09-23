@@ -9,3 +9,5 @@ export const basemapParser = parseAsStringLiteral(BASEMAPS.map((b) => b.value)).
 );
 
 export const locationParser = parseAsString;
+
+export const realmsParser = parseAsArrayOf(parseAsString).withDefault([]);

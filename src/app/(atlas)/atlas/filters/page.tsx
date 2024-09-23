@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import { AtlasFilters } from "@/containers/atlas/filters";
 import {
   AtlasSidebarContainer,
   AtlasSidebarHeader,
@@ -18,7 +19,9 @@ export default function AtlasFiltersPage() {
       <AtlasSidebarHeader>
         <AtlasSidebarTitle>Filters</AtlasSidebarTitle>
       </AtlasSidebarHeader>
-      <AtlasSidebarContainer>Atlas filters page</AtlasSidebarContainer>
+      <AtlasSidebarContainer>
+        <AtlasFilters />
+      </AtlasSidebarContainer>
     </AtlasSidebarSection>
   );
 }
