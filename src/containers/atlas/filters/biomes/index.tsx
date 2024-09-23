@@ -43,15 +43,15 @@ export const BiomesContent = () => {
     <ul className="flex flex-col">
       {DATA?.map((biome) => {
         return (
-          <li key={biome.id} className="flex items-center">
+          <li key={biome.id} className="flex">
             <Checkbox
               id={biome.id}
               value={biome.id}
               checked={biomes.includes(biome.id)}
-              className="cursor-pointer"
+              className="mt-2 cursor-pointer"
               onCheckedChange={(checked: CheckedState) => handleChange(biome.id, checked)}
             />
-            <Label htmlFor={biome.id} className="grow cursor-pointer py-2 pl-2">
+            <Label htmlFor={biome.id} className="grow cursor-pointer py-2 pl-2 leading-tight">
               {biome.id} {biome.name}
             </Label>
           </li>

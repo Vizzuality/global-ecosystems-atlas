@@ -25,7 +25,7 @@ export const useEcosystems = () => {
     })
     .map((e) => {
       return {
-        id: e.id,
+        id: `${e.efg_code}`,
         name: e.efg_name,
         code: e.efg_code,
         biome: getBiomeFromEFGCode(e.efg_code!),
