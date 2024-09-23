@@ -28,17 +28,16 @@ export const RealmsContent = () => {
   return (
     <ul className="flex flex-col">
       {realmsData?.map((realm) => {
-        const realmId = realm.realms.toString();
         return (
           <li key={realm.id} className="flex items-center">
             <Checkbox
-              id={realmId}
-              value={realmId}
-              checked={realms.includes(realmId)}
+              id={realm.id}
+              value={realm.id}
+              checked={realms.includes(realm.id)}
               className="cursor-pointer"
-              onCheckedChange={(checked: CheckedState) => handleChange(realmId, checked)}
+              onCheckedChange={(checked: CheckedState) => handleChange(realm.id, checked)}
             />
-            <Label htmlFor={realmId} className="grow cursor-pointer py-2 pl-2">
+            <Label htmlFor={realm.id} className="grow cursor-pointer py-2 pl-2">
               {realm.name}
             </Label>
           </li>

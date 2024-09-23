@@ -1,16 +1,16 @@
 import { useApiEcosystemsGet } from "@/types/generated/ecosystems";
 
-export const getBiomeFromEFGCode = (efgCode: string) => {
-  const biomeId = efgCode.replace(/[a-zA-Z]/g, "").split(".")[0];
-
-  return +biomeId;
-};
-
 export const getRealmsFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters
   const realmIds = efgCode.replace(/[0-9.]/g, "").split("");
 
   return realmIds;
+};
+
+export const getBiomeFromEFGCode = (efgCode: string) => {
+  const biomeId = efgCode.split(".")[0];
+
+  return biomeId;
 };
 
 export const useEcosystems = () => {
@@ -49,7 +49,7 @@ export const useBiomes = () => {
     )
     .map((e) => {
       return {
-        id: e.id,
+        id: getBiomeFromEFGCode(e.efg_code!),
         name: `${e.biome_name}`.trim(),
         biome: getBiomeFromEFGCode(e.efg_code!),
         realms: getRealmsFromEFGCode(e.efg_code!),
@@ -72,7 +72,7 @@ export const useRealms = () => {
     )
     .map((e) => {
       return {
-        id: e.id,
+        id: getRealmsFromEFGCode(e.efg_code!).toString(),
         name: e.realm_name,
         realms: getRealmsFromEFGCode(e.efg_code!),
       };

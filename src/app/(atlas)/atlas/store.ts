@@ -6,6 +6,7 @@ import { createSerializer, useQueryState } from "nuqs";
 import {
   basemapParser,
   bboxParser,
+  biomesParser,
   locationParser,
   realmsParser,
 } from "@/app/(atlas)/atlas/parsers";
@@ -29,11 +30,16 @@ export const useSyncRealms = () => {
   return useQueryState("realms", realmsParser);
 };
 
+export const useSyncBiomes = () => {
+  return useQueryState("biomes", biomesParser);
+};
+
 const serialize = createSerializer({
   bbox: bboxParser,
   basemap: basemapParser,
   location: locationParser,
   realms: realmsParser,
+  biomes: biomesParser,
 });
 
 export const useSyncSearchParams = () => {
@@ -41,12 +47,14 @@ export const useSyncSearchParams = () => {
   const [basemap] = useSyncBasemap();
   const [location] = useSyncLocation();
   const [realms] = useSyncRealms();
+  const [biomes] = useSyncBiomes();
 
   return serialize({
     bbox,
     basemap,
     location,
     realms,
+    biomes,
   });
 };
 
