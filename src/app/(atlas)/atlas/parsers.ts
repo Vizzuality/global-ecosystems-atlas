@@ -13,3 +13,4 @@ export const locationParser = parseAsString;
 export const realmsParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const biomesParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const ecosystemsParser = parseAsArrayOf(parseAsString).withDefault([]);
+export const depthParser = parseAsArrayOf(parseAsFloat).withDefault([-10000, 10000]);

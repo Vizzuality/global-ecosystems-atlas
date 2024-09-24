@@ -7,6 +7,7 @@ import {
   basemapParser,
   bboxParser,
   biomesParser,
+  depthParser,
   ecosystemsParser,
   locationParser,
   realmsParser,
@@ -39,6 +40,10 @@ export const useSyncEcosystems = () => {
   return useQueryState("ecosystems", ecosystemsParser);
 };
 
+export const useSyncDepth = () => {
+  return useQueryState("depth", depthParser);
+};
+
 const serialize = createSerializer({
   bbox: bboxParser,
   basemap: basemapParser,
@@ -46,6 +51,7 @@ const serialize = createSerializer({
   realms: realmsParser,
   biomes: biomesParser,
   ecosystems: ecosystemsParser,
+  depth: depthParser,
 });
 
 export const useSyncSearchParams = () => {
@@ -55,6 +61,7 @@ export const useSyncSearchParams = () => {
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
   const [ecosystems] = useSyncEcosystems();
+  const [depth] = useSyncDepth();
 
   return serialize({
     bbox,
@@ -63,6 +70,7 @@ export const useSyncSearchParams = () => {
     realms,
     biomes,
     ecosystems,
+    depth,
   });
 };
 
