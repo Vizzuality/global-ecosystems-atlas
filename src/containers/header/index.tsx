@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils";
 
 import { menuOpenAtom } from "@/app/store";
 
-import { Nav } from "@/containers/header/nav";
 import { Logo } from "@/containers/logo";
 
 const DARK_PATHNAMES = [
@@ -92,8 +91,6 @@ export const Header = () => {
               rounded
             />
           </button>
-
-          <Nav />
         </div>
       </div>
     </header>

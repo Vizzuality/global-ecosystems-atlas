@@ -20,6 +20,7 @@ import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
 
 import Controls from "@/components/map/controls";
+import { MenuControl } from "@/components/map/controls/menu";
 import SettingsControl from "@/components/map/controls/settings";
 import ShareControl from "@/components/map/controls/share";
 import ZoomControl from "@/components/map/controls/zoom";
@@ -92,6 +93,7 @@ export const AtlasMap = () => {
           onMove={handleMove}
         >
           <Controls>
+            <MenuControl />
             <ZoomControl />
             <SettingsControl>
               <MapSettings />
