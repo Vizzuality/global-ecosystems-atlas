@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+
+import { FiCheckCircle } from "react-icons/fi";
 
 import { Button } from "@/components/ui/button";
 import { Grid } from "@/components/ui/grid";
@@ -43,13 +44,27 @@ export default function AboutUsData() {
             </div>
           </div>
 
-          <div className="col-span-12 flex items-center justify-center lg:col-span-5 lg:col-start-8">
-            <Image
-              src="/about/data.png"
-              alt="Global Ecosystems Atlas data"
-              width={450}
-              height={398}
-            />
+          <div className="hidden items-center justify-center lg:col-span-3 lg:col-start-9 lg:flex">
+            <ul className="w-full space-y-4 font-bold text-white">
+              <li className="flex w-full items-center gap-4 rounded-2xl border border-white/20 p-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
+                  <FiCheckCircle className="h-8 w-8 text-green-500" />
+                </div>
+                Spatial Processing
+              </li>
+              <li className="flex w-full items-center gap-4 rounded-2xl border border-white/20 p-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
+                  <FiCheckCircle className="h-8 w-8 text-green-500" />
+                </div>
+                Reclassification
+              </li>
+              <li className="flex w-full items-center gap-4 rounded-2xl border border-white/20 p-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
+                  <FiCheckCircle className="h-8 w-8 text-green-500" />
+                </div>
+                Quality Assurance
+              </li>
+            </ul>
           </div>
         </Grid>
       </div>

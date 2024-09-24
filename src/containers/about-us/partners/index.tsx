@@ -4,9 +4,11 @@ import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
 import { Section } from "@/components/ui/section";
 
-const PartnerItem = ({ src, alt, width, height }: ImageProps) => (
+const PartnerItem = ({ src, alt, width, height, href }: ImageProps & { href: string }) => (
   <li className="col-span-6 flex h-24 items-center justify-center md:col-span-4 lg:col-span-2">
-    <Image src={src} alt={alt} width={width} height={height} />
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <Image src={src} alt={alt} width={width} height={height} />
+    </a>
   </li>
 );
 
@@ -41,14 +43,22 @@ export default function AboutUsPartners() {
                 alt="Convention on Biological Diversity"
                 width={158}
                 height={61}
+                href="https://www.cbd.int/"
               />
-              <PartnerItem src="/partners/ramsar.png" alt="Ramsar" width={82} height={110} />
+              <PartnerItem
+                src="/partners/ramsar.png"
+                alt="Ramsar"
+                width={82}
+                height={110}
+                href="https://www.ramsar.org/"
+              />
 
               <PartnerItem
                 src="/partners/resilience-frontiers.png"
                 alt="Resilience frontiers"
                 width={168}
                 height={60}
+                href="https://resiliencefrontiers.org/"
               />
 
               <PartnerItem
@@ -56,6 +66,7 @@ export default function AboutUsPartners() {
                 alt="United Nations - Convention to Combat Desertification"
                 width={155}
                 height={43}
+                href="https://www.unccd.int/"
               />
 
               <PartnerItem
@@ -63,6 +74,7 @@ export default function AboutUsPartners() {
                 alt="United Nations - Framework Convention on Climate Change"
                 width={179}
                 height={40}
+                href="https://unfccc.int/"
               />
             </ul>
           </Grid>
@@ -77,6 +89,7 @@ export default function AboutUsPartners() {
                 alt="Department for Environment Food & Rural Affairs"
                 width={143}
                 height={74}
+                href="https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
               />
 
               <PartnerItem
@@ -84,6 +97,7 @@ export default function AboutUsPartners() {
                 alt="United Nations - Environment programme"
                 width={121}
                 height={86}
+                href="https://www.unep.org/"
               />
             </ul>
           </Grid>
@@ -98,39 +112,119 @@ export default function AboutUsPartners() {
                 alt="Centre for Ecosystem Science"
                 width={135}
                 height={67}
+                href="https://www.unsw.edu.au/research/ecosystem"
               />
 
-              <PartnerItem src="/partners/esri.png" alt="Esri" width={150} height={112} />
+              <PartnerItem
+                src="/partners/esri.png"
+                alt="Esri"
+                width={150}
+                height={112}
+                href="https://www.esri.com/en-us/home"
+              />
 
-              <PartnerItem src="/partners/gbif.png" alt="GBIF" width={126} height={51} />
+              <PartnerItem
+                src="/partners/gbif.png"
+                alt="GBIF"
+                width={126}
+                height={51}
+                href="https://www.gbif.org/"
+              />
 
-              <PartnerItem src="/partners/iucn.png" alt="IUCN" width={65} height={62} />
+              <PartnerItem
+                src="/partners/iucn.png"
+                alt="IUCN"
+                width={65}
+                height={62}
+                href="https://iucn.org/"
+              />
 
               <PartnerItem
                 src="/partners/jcu.png"
                 alt="James Cook University"
                 width={131}
                 height={59}
+                href="https://www.jcu.edu.au/"
               />
 
-              <PartnerItem src="/partners/planet.png" alt="Planet" width={127} height={63} />
+              <PartnerItem
+                src="/partners/nature-positive-initiative.png"
+                alt="Nature positive initiative"
+                width={153}
+                height={84}
+                href="https://www.naturepositive.org/"
+              />
+
+              <PartnerItem
+                src="/partners/planet.png"
+                alt="Planet"
+                width={127}
+                height={63}
+                href="https://www.planet.com/"
+              />
+
+              <PartnerItem
+                src="/partners/seea.png"
+                alt="System of Environmental Economic Accounting"
+                width={161}
+                height={70}
+                href="https://seea.un.org/"
+              />
+
+              <PartnerItem
+                src="/partners/uom.png"
+                alt="The University of Melbourne"
+                width={114}
+                height={114}
+                href="https://www.unimelb.edu.au/"
+              />
+
+              <PartnerItem
+                src="/partners/tnfd.png"
+                alt="TNFD"
+                width={103}
+                height={102}
+                href="https://tnfd.global/"
+              />
 
               <PartnerItem
                 src="/partners/unep-wcmc.png"
                 alt="UNEP - WCMC"
                 width={179}
                 height={87}
+                href="https://www.unep-wcmc.org/en"
               />
 
-              <PartnerItem src="/partners/unsw.png" alt="UNSW" width={89} height={103} />
+              <PartnerItem
+                src="/partners/unsw.png"
+                alt="UNSW"
+                width={89}
+                height={103}
+                href="https://www.unsw.edu.au/"
+              />
 
-              <PartnerItem src="/partners/usgs.png" alt="USGS" width={104} height={104} />
+              <PartnerItem
+                src="/partners/usgs.png"
+                alt="USGS"
+                width={104}
+                height={104}
+                href="https://www.usgs.gov/"
+              />
 
               <PartnerItem
                 src="/partners/villars-institute.png"
                 alt="Villars institute"
                 width={138}
                 height={40}
+                href="https://villarsinstitute.org/"
+              />
+
+              <PartnerItem
+                src="/partners/walderwyss.png"
+                alt="Walderwyss"
+                width={170}
+                height={32}
+                href="https://www.walderwyss.com/en"
               />
             </ul>
           </Grid>
