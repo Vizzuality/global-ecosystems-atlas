@@ -72,6 +72,7 @@ const WhoItem = (who: { title: string; description: string }) => (
 
 export default function HomeWho() {
   const [api, setApi] = useState<CarouselApi>();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
     <Section className="overflow-hidden bg-lightblue-50">
@@ -83,14 +84,24 @@ export default function HomeWho() {
           <div className="col-span-12 hidden space-y-6 md:block lg:col-span-4 lg:col-start-8">
             <div className="flex justify-end space-x-4">
               <button
-                className="h-16 w-16 rounded-full border-2 border-navy-700 p-4"
-                onClick={() => api?.scrollPrev()}
+                key={`prev-${currentSlide}`}
+                className="h-16 w-16 rounded-full border-2 border-navy-700 p-4 disabled:opacity-50"
+                onClick={() => {
+                  api?.scrollPrev();
+                  setCurrentSlide((prev) => prev - 1);
+                }}
+                disabled={!api?.canScrollPrev()}
               >
                 <FiArrowLeft className="text-primary-500 h-full w-full" />
               </button>
               <button
-                className="h-16 w-16 rounded-full border-2 border-navy-700 p-4"
-                onClick={() => api?.scrollNext()}
+                key={`next-${currentSlide}`}
+                className="h-16 w-16 rounded-full border-2 border-navy-700 p-4 disabled:opacity-50"
+                onClick={() => {
+                  api?.scrollNext();
+                  setCurrentSlide((prev) => prev + 1);
+                }}
+                disabled={!api?.canScrollNext()}
               >
                 <FiArrowRight className="text-primary-500 h-full w-full" />
               </button>
