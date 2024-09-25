@@ -29,7 +29,7 @@ export async function generateStaticParams() {
   return ecosystems.data
     .filter((ecosystem) => ecosystem.efg_code !== "0")
     .map((ecosystem) => ({
-      ecosystemId: ecosystem.efg_code?.toString(),
+      ecosystemId: `${ecosystem.efg_code}`,
     }));
 }
 
