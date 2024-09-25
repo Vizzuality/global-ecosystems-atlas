@@ -64,9 +64,9 @@ const WhatItem = (what: {
   onPrevious: () => void;
   onNext: () => void;
 }) => (
-  <div className="flex flex-col gap-7 md:flex-row md:gap-16">
+  <div className="flex flex-col gap-7 lg:flex-row lg:gap-16">
     <motion.div
-      className="relative aspect-square shrink-0 origin-right shadow-2xl md:w-1/2"
+      className="relative aspect-square shrink-0 origin-right shadow-2xl lg:w-1/2"
       initial={{ x: -10, opacity: 0, scale: 0.95 }}
       animate={{ x: 0, opacity: 1, scale: 1 }}
       exit={{ x: -10, opacity: 0, scale: 0.95 }}
@@ -81,8 +81,8 @@ const WhatItem = (what: {
         sizes="50vw"
       />
     </motion.div>
-    <div className="relative grow md:w-1/2 md:space-y-14">
-      <div className="hidden w-full space-y-6 md:block">
+    <div className="relative grow lg:w-1/2 lg:space-y-14">
+      <div className="hidden w-full space-y-6 lg:block">
         <div className="flex space-x-4">
           <Button
             variant="outline"
@@ -115,28 +115,28 @@ const WhatItem = (what: {
       <div className="space-y-3">
         <motion.h3
           className="origin-left text-xl font-semibold text-white lg:text-2xl"
-          initial={{ x: 10, opacity: 0, scale: 0.95 }}
+          initial={{ x: -10, opacity: 0, scale: 0.95 }}
           animate={{
             x: 0,
             opacity: 1,
             scale: 1,
             transition: { ease: "easeInOut", duration: 0.3, delay: 0.2 },
           }}
-          exit={{ x: 10, opacity: 0, scale: 0.95 }}
+          exit={{ x: 0, opacity: 0, scale: 0.95 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           {what.title}
         </motion.h3>
         <motion.p
           className="origin-left text-base font-medium text-navy-100"
-          initial={{ x: 10, opacity: 0, scale: 0.95 }}
+          initial={{ x: -10, opacity: 0, scale: 0.95 }}
           animate={{
             x: 0,
             opacity: 1,
             scale: 1,
             transition: { ease: "easeInOut", duration: 0.3, delay: 0.3 },
           }}
-          exit={{ x: 10, opacity: 0, scale: 0.95 }}
+          exit={{ x: 0, opacity: 0, scale: 0.95 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           {what.description}
@@ -156,10 +156,10 @@ export default function HomeWhat() {
           <div className="col-span-12 lg:col-span-8 lg:col-start-3">
             <div className="space-y-16">
               <header className="space-y-8 lg:space-y-12">
-                <H2 className="text-white md:text-center">
+                <H2 className="text-white lg:text-center">
                   What can you do with Global Ecosystems Atlas?
                 </H2>
-                <p className="text-xl text-navy-100 md:text-center lg:text-2xl">
+                <p className="text-xl text-navy-100 lg:text-center lg:text-2xl">
                   The Global Ecosystems Atlas will be a versatile tool for identifying distribution
                   of different ecosystem types, supporting conservation and restoration efforts,
                   informing environmental management decisions, conducting research, and aiding in
@@ -171,7 +171,7 @@ export default function HomeWhat() {
         </Grid>
         <Grid>
           <div className="col-span-12">
-            <Media lessThan="md">
+            <Media lessThan="lg">
               <div className="space-y-14">
                 {WHAT.map((what, i) => (
                   <WhatItem
@@ -185,22 +185,49 @@ export default function HomeWhat() {
                 ))}
               </div>
             </Media>
-            <Media greaterThanOrEqual="md">
-              <AnimatePresence mode="wait">
-                {WHAT.map((what, i) => {
-                  if (i !== selected) return null;
-                  return (
-                    <WhatItem
-                      key={what.title}
-                      {...what}
-                      index={i}
-                      list={WHAT}
-                      onPrevious={() => setSelected(i - 1)}
-                      onNext={() => setSelected(i + 1)}
-                    />
-                  );
-                })}
-              </AnimatePresence>
+            <Media greaterThanOrEqual="lg">
+              <>
+                <AnimatePresence mode="wait">
+                  {WHAT.map((what, i) => {
+                    if (i !== selected) return null;
+                    return (
+                      <WhatItem
+                        key={what.title}
+                        {...what}
+                        index={i}
+                        list={WHAT}
+                        onPrevious={() => setSelected(i - 1)}
+                        onNext={() => setSelected(i + 1)}
+                      />
+                    );
+                  })}
+                </AnimatePresence>
+
+                {/* Dots */}
+                <Grid>
+                  <div className="col-span-6 col-start-7">
+                    <ul className="ml-14 flex -translate-y-full gap-3">
+                      {WHAT.map((w, i) => (
+                        <li key={w.title} className="block">
+                          <motion.button
+                            layout
+                            className={cn({
+                              "h-2 w-2 rounded-3xl bg-white/40": true,
+                              "w-14 bg-white": selected === i,
+                            })}
+                            style={{ borderRadius: 24 }}
+                            onClick={() => setSelected(i)}
+                            transition={{
+                              ease: "easeInOut",
+                              duration: 0.3,
+                            }}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Grid>
+              </>
             </Media>
           </div>
         </Grid>
