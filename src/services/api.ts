@@ -1,12 +1,12 @@
 import Axios, { AxiosError, AxiosRequestConfig } from "axios";
 // import qs from "query-string";
 
-// import { env } from "@/env.mjs";
+import { env } from "@/env.mjs";
 
-// const BASE_URL = env.NEXT_PUBLIC_API_URL;
+const BASE_URL = env.NEXT_PUBLIC_API_URL;
 
 export const AXIOS_INSTANCE = Axios.create({
-  baseURL: "https://global-ecosystem-atlas.staging.dev-vizzuality.com/api",
+  baseURL: BASE_URL,
 });
 
 export const API = <T>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
