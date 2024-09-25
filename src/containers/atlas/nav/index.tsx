@@ -102,7 +102,7 @@ export const AtlasNav = () => {
           </ul>
 
           <ul className="space-y-3 py-3">
-            <AtlasNavItem href="/atlas/list" label="View list" index={4}>
+            <AtlasNavItem href="/atlas/ecosystems" label="Ecosystems list" index={4}>
               <ListIcon className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
@@ -116,20 +116,20 @@ export const AtlasNav = () => {
 
         <motion.div layout="position" className="flex flex-col divide-y divide-navy-100">
           <ul className="space-y-3 py-3">
-            <AtlasNavItem href="/atlas/login" label="Log in" index={6}>
+            <AtlasNavItem href="/atlas/login" label="User profile" index={6}>
               <UserIcon className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
 
           <ul className="space-y-3 py-3">
-            <AtlasNavItem label="Tour" onClick={() => console.info("button")} index={7}>
+            <AtlasNavItem label="Help center" onClick={() => console.info("button")} index={7}>
               <FiHelpCircle className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem
-              label={navOpen ? "Collapse sidebar" : "Expand sidebar"}
+              label={navOpen ? "Collapse side menu" : "Expand side menu"}
               onClick={() => setNavExpanded(!navOpen)}
               index={8}
             >

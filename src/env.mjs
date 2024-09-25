@@ -2,17 +2,10 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
-  server: {},
   client: {
     NEXT_PUBLIC_MAPBOX_TOKEN: z.string(),
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string(),
-    NEXT_PUBLIC_API_URL: z.preprocess(
-      // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
-      // Since NextAuth automatically uses the NEXT_PUBLIC_VERCEL_URL if present.
-      (str) => process.env.NEXT_PUBLIC_VERCEL_URL ?? str,
-      // NEXT_PUBLIC_VERCEL_URL doesnt include `https` so it cant be validated as a URL
-      process.env.NEXT_PUBLIC_VERCEL_URL ? z.string() : z.string().url().min(1),
-    ),
+    NEXT_PUBLIC_API_URL: z.string().url().min(1),
   },
   runtimeEnv: {
     NEXT_PUBLIC_MAPBOX_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
