@@ -66,7 +66,7 @@ export default function AtlasUploadPage() {
             </div>
           </div>
 
-          <div className="space-y-3 border border-alert-800 bg-alert-50 px-6 py-5">
+          <div className="space-y-3 rounded-lg border border-alert-800 bg-alert-50 px-6 py-5">
             <FiAlertTriangle className="h-6 w-6" />
             <div className="space-y-2">
               <p className="text-sm font-medium">
