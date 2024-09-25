@@ -23,7 +23,9 @@ export default function DataLayout({
             <div className="col-span-12 lg:col-span-6 lg:col-start-2">
               <div className="space-y-10 lg:space-y-16">
                 <header className="space-y-2">
-                  <h2 className="text-sm font-semibold uppercase text-white">Data</h2>
+                  <h2 className="text-sm font-semibold uppercase tracking-widest text-white">
+                    Data
+                  </h2>
                   <H1 className="text-white">A tool to support environmental initiatives</H1>
                 </header>
                 <div className="space-y-8 text-white">

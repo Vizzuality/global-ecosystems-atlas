@@ -29,7 +29,7 @@ export default function AboutUsData() {
                 <li className="w-full sm:w-1/2">
                   <Link href="/data/sources-catalogue">
                     <Button className="w-full" size="lg" variant="outline">
-                      Go to Dataset Catalogue
+                      Go to Sources Catalogue
                     </Button>
                   </Link>
                 </li>

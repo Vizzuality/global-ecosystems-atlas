@@ -18,6 +18,9 @@ export const newsletterFormSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
+  agree: z.boolean().refine((value) => value === true, {
+    message: "You must agree to the terms.",
+  }),
 });
 
 export const postNewsletter = async (data: z.infer<typeof newsletterFormSchema>) => {

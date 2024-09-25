@@ -130,8 +130,19 @@ export function ContactForm() {
                   <FormControl>
                     <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                   </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormLabel>I agree with the Global Ecosystems Atlas Privacy Policy.</FormLabel>
+                  <div>
+                    <FormLabel className="block leading-tight">
+                      I agree with the Global Ecosystems Atlas&apos;{" "}
+                      <a
+                        href="/privacy-policy"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="underline"
+                      >
+                        Privacy Policy
+                      </a>
+                      .
+                    </FormLabel>
                   </div>
                 </FormItem>
               )}

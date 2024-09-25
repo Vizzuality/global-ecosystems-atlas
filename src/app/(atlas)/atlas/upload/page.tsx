@@ -37,7 +37,15 @@ export default function AtlasUploadPage() {
             <div className="prose prose-sm">
               <p className="font-medium">
                 Upload your own shapefile (learn more about shapefiles{" "}
-                <span className="underline">here</span>).
+                <a
+                  href="https://en.wikipedia.org/wiki/Shapefile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  here
+                </a>
+                ).
               </p>
             </div>
 

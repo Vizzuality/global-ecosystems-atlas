@@ -12,6 +12,7 @@ import { z } from "zod";
 import { newsletterFormSchema, usePostNewsletterMutation } from "@/lib/newsletter";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { DialogTitle } from "@/components/ui/dialog";
 import {
   Form,
@@ -43,6 +44,7 @@ export function NewsletterForm() {
     defaultValues: {
       name: "",
       email: "",
+      agree: false,
     },
   });
 
@@ -109,6 +111,32 @@ export function NewsletterForm() {
                       <Input placeholder="Enter your email address" {...field} />
                     </FormControl>
                     <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="agree"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex gap-2">
+                      <FormControl>
+                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <FormLabel className="block leading-tight">
+                        I agree with the Global Ecosystems Atlas&apos;{" "}
+                        <a
+                          href="/privacy-policy"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="underline"
+                        >
+                          Privacy Policy
+                        </a>
+                        .
+                      </FormLabel>
+                    </div>
                   </FormItem>
                 )}
               />

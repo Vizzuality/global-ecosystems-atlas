@@ -36,7 +36,7 @@ export const columns: ColumnDef<Dataset>[] = [
         className="flex items-center gap-1"
       >
         <span>Dataset</span>
-        <FiArrowUpRight className="h-6 w-6" />
+        <FiArrowUpRight className="h-5 w-5" />
       </a>
     ),
   },
@@ -45,9 +45,14 @@ export const columns: ColumnDef<Dataset>[] = [
     minSize: 60,
     maxSize: 60,
     cell: ({ row }) => (
-      <button onClick={row.getToggleExpandedHandler()}>
-        {row.getIsExpanded() && <FiChevronUp className="h-6 w-6" />}
-        {!row.getIsExpanded() && <FiChevronDown className="h-6 w-6" />}
+      <button
+        onClick={row.getToggleExpandedHandler()}
+        className="mt-1 block h-4 w-4 overflow-hidden"
+      >
+        {row.getIsExpanded() && <FiChevronUp className="h-6 w-6 -translate-x-1 -translate-y-1" />}
+        {!row.getIsExpanded() && (
+          <FiChevronDown className="h-6 w-6 -translate-x-1 -translate-y-1" />
+        )}
       </button>
     ),
   },
