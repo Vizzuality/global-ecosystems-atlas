@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { AtlasEcosysytemsList } from "@/containers/atlas/ecosysytems";
+import { AtlasEcosysytemsList } from "@/containers/atlas/ecosysytems/list";
 import {
   AtlasSidebarContainer,
   AtlasSidebarHeader,

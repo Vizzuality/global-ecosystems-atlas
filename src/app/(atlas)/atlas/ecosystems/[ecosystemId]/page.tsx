@@ -1,9 +1,10 @@
-import { Metadata } from "next";
-
 import Link from "next/link";
 
 import { FiChevronLeft } from "react-icons/fi";
 
+import { apiEcosystemsGet } from "@/types/generated/ecosystems";
+
+import { AtlasEcosysytemsDetail } from "@/containers/atlas/ecosysytems/detail";
 import {
   AtlasSidebarContainer,
   AtlasSidebarHeader,
@@ -11,16 +12,28 @@ import {
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
 
-export const metadata: Metadata = {
-  title: "Atlas Ecosysytems Detail | Global Ecosystems Atlas",
-  description: "Atlas Ecosysytems Detail | Global Ecosystems Atlas description",
-};
+export async function generateMetadata({ params }: { params: { ecosystemId: string } }) {
+  const ecosystems = await apiEcosystemsGet();
 
-export default function AtlasEcosysytemsDetailPage({
-  params: { ecosystemId },
-}: {
-  params: { ecosystemId: string };
-}) {
+  const ECOSYSTEM = ecosystems.data.find((e) => e.efg_code === params.ecosystemId);
+
+  return {
+    title: `${ECOSYSTEM?.efg_name} | Global Ecosystems Atlas`,
+    description: "Atlas Ecosysytems Detail | Global Ecosystems Atlas description",
+  };
+}
+
+export async function generateStaticParams() {
+  const ecosystems = await apiEcosystemsGet();
+
+  return ecosystems.data
+    .filter((ecosystem) => ecosystem.efg_code !== "0")
+    .map((ecosystem) => ({
+      ecosystemId: ecosystem.efg_code?.toString(),
+    }));
+}
+
+export default function AtlasEcosysytemsDetailPage() {
   return (
     <AtlasSidebarSection>
       <AtlasSidebarHeader>
@@ -30,7 +43,9 @@ export default function AtlasEcosysytemsDetailPage({
           </Link>
         </AtlasSidebarTitle>
       </AtlasSidebarHeader>
-      <AtlasSidebarContainer>{ecosystemId}</AtlasSidebarContainer>
+      <AtlasSidebarContainer>
+        <AtlasEcosysytemsDetail />
+      </AtlasSidebarContainer>
     </AtlasSidebarSection>
   );
 }
