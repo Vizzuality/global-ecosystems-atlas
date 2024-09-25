@@ -1,6 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
+
+import { EcosystemEfgCode } from "@/types/generated/strapi.schemas";
 
 import {
   Table,
@@ -16,6 +20,12 @@ export const AtlasEcosysytemsList = () => {
   const biomesData = useBiomes();
   const ecosysytemsData = useEcosystems();
 
+  const { push } = useRouter();
+
+  const handleRowClick = (code: EcosystemEfgCode | undefined) => {
+    push(`/atlas/ecosystems/${code}`);
+  };
+
   return (
     <div>
       <Table>
@@ -28,7 +38,11 @@ export const AtlasEcosysytemsList = () => {
         </TableHeader>
         <TableBody>
           {ecosysytemsData?.map((e) => (
-            <TableRow key={e.name} className="w-full overflow-hidden">
+            <TableRow
+              key={e.name}
+              className="w-full cursor-pointer overflow-hidden hover:bg-lightblue-50"
+              onClick={() => handleRowClick(e.code)}
+            >
               <TableCell className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 pl-0 text-xs font-medium">
                 {e.code} {e.name}
               </TableCell>
