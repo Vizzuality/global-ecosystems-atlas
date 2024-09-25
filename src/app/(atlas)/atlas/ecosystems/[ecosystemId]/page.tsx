@@ -26,6 +26,8 @@ export async function generateMetadata({ params }: { params: { ecosystemId: stri
 export async function generateStaticParams() {
   const ecosystems = await apiEcosystemsGet();
 
+  console.log("ecosystems", ecosystems.data);
+
   return ecosystems.data
     .filter((ecosystem) => ecosystem.efg_code !== "0")
     .map((ecosystem) => ({
