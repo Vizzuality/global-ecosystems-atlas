@@ -2,9 +2,6 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
-  server: {
-    NEXT_PUBLIC_API_URL: z.string().url().min(1),
-  },
   client: {
     NEXT_PUBLIC_MAPBOX_TOKEN: z.string(),
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string(),
