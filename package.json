@@ -16,6 +16,7 @@
   "dependencies": {
     "@artsy/fresnel": "^7.1.4",
     "@hookform/resolvers": "^3.9.0",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-collapsible": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -67,6 +68,7 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.0.1",
     "@types/chroma-js": "^2.4.4",
+    "@types/mailchimp__mailchimp_marketing": "^3.0.20",
     "@types/node": "^20.16.5",
     "@types/nodemailer": "^6.4.16",
     "@types/react": "^18.3.8",
