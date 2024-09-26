@@ -33,7 +33,7 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
   return (
     <Link
       href={props.href}
-      className="group inline-flex items-center space-x-6 text-2xl font-semibold text-navy-700 2xl:text-4xl"
+      className="group inline-flex items-center space-x-3 text-2xl font-semibold text-navy-700 2xl:space-x-6 2xl:text-4xl"
       scroll={false}
       onClick={() => {
         if (pathname.includes(`${props.href}`)) {
@@ -41,7 +41,7 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
         }
       }}
     >
-      <FiArrowRight className="shrink-0 transition-transform group-hover:translate-x-2" />
+      <FiArrowRight className="shrink-0 transition-transform group-hover:translate-x-1 2xl:group-hover:translate-x-2" />
       <span className="block">{props.children}</span>
     </Link>
   );
@@ -86,7 +86,7 @@ export const Nav = () => {
             </div>
           </div>
 
-          <div className="container p-4 2xl:p-16">
+          <div className="container p-4 2xl:p-10">
             <nav
               className={cn({
                 "transition-transform": true,
@@ -94,13 +94,13 @@ export const Nav = () => {
                 "translate-y-0": open,
               })}
             >
-              <ul className="flex flex-col gap-2 2xl:gap-8">
+              <ul className="flex flex-col gap-2">
                 {NAV.map((item) => (
                   <li key={item.href}>
                     <NavItem href={item.href}>{item.name}</NavItem>
 
                     {item.children && (
-                      <ul className="ml-16 mt-2 flex flex-col gap-2 2xl:mt-8 2xl:gap-8">
+                      <ul className="ml-12 mt-2 flex flex-col gap-2 2xl:ml-16">
                         {item.children.map((child) => (
                           <li key={child.href}>
                             <NavItem href={child.href}>{child.name}</NavItem>
@@ -115,7 +115,7 @@ export const Nav = () => {
 
             <div
               className={cn({
-                "flex flex-col justify-between gap-8 pt-16 opacity-0 transition-all md:flex-row 2xl:pt-28":
+                "flex flex-col justify-between gap-8 pt-16 opacity-0 transition-all md:flex-row 2xl:pt-20":
                   true,
                 "-translate-y-4 opacity-0": !open,
                 "translate-y-0 opacity-100": open,
