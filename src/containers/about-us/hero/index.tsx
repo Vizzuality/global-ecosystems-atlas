@@ -1,9 +1,8 @@
-import Image from "next/image";
-
 import resolveConfig from "tailwindcss/resolveConfig";
 
+import { AboutHeroImage } from "@/containers/about-us/hero/image";
+
 import { TextReveal } from "@/components/animations/text-reveal";
-import { TranslateY } from "@/components/animations/translateY";
 import { Grid } from "@/components/ui/grid";
 import { H1 } from "@/components/ui/h1";
 import { Section } from "@/components/ui/section";
@@ -55,23 +54,7 @@ export default function AboutUsHero() {
             </div>
           </div>
           <div className="relative col-span-12 lg:col-span-5 lg:col-start-8">
-            <div className="z-10 aspect-[896/1100] overflow-hidden lg:absolute lg:left-0 lg:top-24">
-              <TranslateY
-                className="scale-125"
-                transformOptions={{
-                  from: [0, 1],
-                  to: ["0%", `-${(1 - 1100 / 1344) * 100}%`],
-                }}
-              >
-                <Image
-                  src="/about/hero.png"
-                  alt="Global Ecosystems Atlas"
-                  className="w-full max-w-none"
-                  width={896}
-                  height={1344}
-                />
-              </TranslateY>
-            </div>
+            <AboutHeroImage />
           </div>
         </Grid>
       </div>
