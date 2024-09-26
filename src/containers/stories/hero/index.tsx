@@ -61,20 +61,20 @@ export default function AboutUsHero() {
         <Grid className="pt-24">
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <Grid>
-              <div className="col-span-6 flex h-full min-h-60 flex-col">
+              <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
                 <Link href="/stories/south-africa-mozambique" className="flex grow flex-col">
                   <StoriesItem title="South Africa & Mozambique" />
                 </Link>
               </div>
-              <div className="col-span-6 flex h-full min-h-60 flex-col">
+              <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
                 <Link href="/stories/maldives" className="flex grow flex-col">
                   <StoriesItem title="Maldives" />
                 </Link>
               </div>
-              <div className="col-span-6 flex h-full min-h-60 flex-col">
+              <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
                 <StoriesItem title="Coming soon" comingSoon />
               </div>
-              <div className="col-span-6 flex h-full min-h-60 flex-col">
+              <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
                 <StoriesItem title="Coming soon" comingSoon />
               </div>
             </Grid>
