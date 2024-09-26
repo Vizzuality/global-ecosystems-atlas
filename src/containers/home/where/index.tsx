@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { PiHardDrives, PiMapTrifold, PiStack } from "react-icons/pi";
+
 import { Button } from "@/components/ui/button";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
@@ -16,6 +18,18 @@ export default function HomeWhere() {
           <div className="relative col-span-3 hidden lg:block">
             <div className="absolute -top-16 right-0 aspect-[745/831] h-[calc(100%_+_theme(space.64))]">
               <Image priority src="/graphic.svg" alt="Where our data comes from" fill />
+
+              <div className="absolute right-48 top-0 z-10 hidden h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg xl:flex">
+                <PiMapTrifold className="h-8 w-8" />
+              </div>
+
+              <div className="absolute right-0 top-1/3 z-10 hidden h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg xl:flex">
+                <PiHardDrives className="h-8 w-8" />
+              </div>
+
+              <div className="absolute right-24 top-2/3 z-10 hidden h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg xl:flex">
+                <PiStack className="h-8 w-8" />
+              </div>
             </div>
           </div>
           <div className="col-span-12 lg:col-span-7 lg:col-start-5">

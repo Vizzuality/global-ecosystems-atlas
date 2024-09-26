@@ -23,7 +23,7 @@ export default function HomeStories() {
                 </p>
               </header>
 
-              <Link href="/stories/south-africa-and-mozambique" className="inline-block">
+              <Link href="/stories/south-africa-mozambique" className="inline-block">
                 <Button size="lg">Read full story</Button>
               </Link>
             </div>
