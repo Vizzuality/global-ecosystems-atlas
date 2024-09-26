@@ -20,6 +20,7 @@ const DARK_PATHNAMES = [
   "/about-us",
   "/coming-soon",
   "/privacy-policy",
+  "/stories",
   "/data",
   "/data/methodology",
   "/data/how-to-use-the-data",
