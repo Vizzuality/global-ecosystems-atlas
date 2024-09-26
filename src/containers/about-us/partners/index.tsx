@@ -1,11 +1,26 @@
 import Image, { ImageProps } from "next/image";
 
+import { cn } from "@/lib/utils";
+
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
 import { Section } from "@/components/ui/section";
 
-const PartnerItem = ({ src, alt, width, height, href }: ImageProps & { href: string }) => (
-  <li className="col-span-6 flex h-24 items-center justify-center md:col-span-4 lg:col-span-2">
+const PartnerItem = ({
+  src,
+  alt,
+  width,
+  height,
+  href,
+  className,
+}: ImageProps & { href: string }) => (
+  <li
+    className={cn({
+      // "col-span-6 flex h-24 items-center justify-center md:col-span-4 lg:col-span-2": true,
+      "flex h-24 w-full items-center justify-center": true,
+      [`${className}`]: className,
+    })}
+  >
     <a href={href} target="_blank" rel="noopener noreferrer">
       <Image src={src} alt={alt} width={width} height={height} />
     </a>
@@ -37,7 +52,7 @@ export default function AboutUsPartners() {
             <h3 className="col-span-12 text-xs font-semibold uppercase lg:col-span-10 lg:col-start-2">
               Supported by
             </h3>
-            <ul className="col-span-12 grid grid-cols-12 gap-x-8 gap-y-5 lg:col-span-10 lg:col-start-2 lg:grid-cols-10">
+            <ul className="col-span-12 grid grid-cols-2 gap-x-8 gap-y-5 md:grid-cols-3 lg:col-span-10 lg:col-start-2 lg:grid-cols-4 xl:grid-cols-5">
               <PartnerItem
                 src="/partners/un-cbd.png"
                 alt="Convention on Biological Diversity"
@@ -83,7 +98,7 @@ export default function AboutUsPartners() {
             <h3 className="col-span-12 text-xs font-semibold uppercase lg:col-span-10 lg:col-start-2">
               FUNDED BY
             </h3>
-            <ul className="col-span-12 grid grid-cols-12 gap-x-2 gap-y-5 lg:col-span-10 lg:col-start-2 lg:grid-cols-10">
+            <ul className="col-span-12 grid grid-cols-2 gap-x-2 gap-y-5 md:grid-cols-3 lg:col-span-10 lg:col-start-2 lg:grid-cols-4 xl:grid-cols-5">
               <PartnerItem
                 src="/partners/defra.png"
                 alt="Department for Environment Food & Rural Affairs"
@@ -106,14 +121,23 @@ export default function AboutUsPartners() {
             <h3 className="col-span-12 text-xs font-semibold uppercase lg:col-span-10 lg:col-start-2">
               In partnership with
             </h3>
-            <ul className="col-span-12 grid grid-cols-12 gap-x-2 gap-y-5 lg:col-span-10 lg:col-start-2 lg:grid-cols-10">
-              <PartnerItem
-                src="/partners/center-for-ecosystem-science.png"
-                alt="Centre for Ecosystem Science"
-                width={135}
-                height={67}
-                href="https://www.unsw.edu.au/research/ecosystem"
-              />
+            <ul className="col-span-12 grid grid-cols-2 gap-x-2 gap-y-10 md:grid-cols-3 lg:col-span-10 lg:col-start-2 lg:grid-cols-4 xl:grid-cols-5">
+              <div className="col-span-2 flex gap-x-4 divide-x">
+                <PartnerItem
+                  src="/partners/center-for-ecosystem-science.png"
+                  alt="Centre for Ecosystem Science"
+                  width={135}
+                  height={67}
+                  href="https://www.unsw.edu.au/research/ecosystem"
+                />
+                <PartnerItem
+                  src="/partners/unsw.png"
+                  alt="UNSW"
+                  width={89}
+                  height={103}
+                  href="https://www.unsw.edu.au/"
+                />
+              </div>
 
               <PartnerItem
                 src="/partners/esri.png"
@@ -193,14 +217,6 @@ export default function AboutUsPartners() {
                 width={179}
                 height={87}
                 href="https://www.unep-wcmc.org/en"
-              />
-
-              <PartnerItem
-                src="/partners/unsw.png"
-                alt="UNSW"
-                width={89}
-                height={103}
-                href="https://www.unsw.edu.au/"
               />
 
               <PartnerItem
