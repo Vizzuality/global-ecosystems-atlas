@@ -42,7 +42,7 @@ export default async function AtlasDrawPage() {
               </p>
             </div>
             <div className="flex items-center justify-center">
-              <Image src="/atlas/draw.svg" width={177} height={137} alt="Draw a polygon" />
+              <Image src="/atlas/draw.svg" width={177} height={137} alt="Draw a polygon" priority />
             </div>
             <div className="flex items-center justify-center">
               <Button disabled>Start drawing</Button>

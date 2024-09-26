@@ -33,41 +33,45 @@ export default function HomeStories() {
             <div className="space-y-2">
               <div className="flex items-end justify-between">
                 <div>
-                  <span className="text-6xl font-semibold leading-none">16</span>
-                  <span className="text-2xl leading-none"> / 24</span>
+                  <span className="text-6xl font-semibold leading-none">78</span>
+                  <span className="text-2xl leading-none"> %</span>
                 </div>
 
-                <p className="text-sx relative -top-1 font-semibold leading-none">
-                  ecosystems mapped
-                </p>
+                <p className="relative -top-1 text-xs font-semibold leading-none">map coverage</p>
               </div>
 
               <div className="h-1.5 w-full overflow-hidden rounded bg-white">
-                <div className="h-full w-1/2 bg-navy-700"></div>
+                <div
+                  className="h-full bg-navy-700"
+                  style={{
+                    width: "78%",
+                  }}
+                />
+              </div>
+
+              <div className="flex gap-2">
+                <p className="text-xs font-bold">
+                  <span className="font-bold">terrestial surface</span>
+                </p>
               </div>
             </div>
             <div className="space-y-2">
               <div className="flex items-end justify-between">
                 <div>
-                  <span className="text-6xl font-semibold leading-none">77,5</span>
-                  <span className="text-2xl leading-none"> / %</span>
+                  <span className="text-6xl font-semibold leading-none">13</span>
+                  <span className="text-2xl leading-none"> %</span>
                 </div>
 
-                <p className="text-sx relative -top-1 font-semibold leading-none">surface mapped</p>
+                <p className="relative -top-1 text-xs font-semibold leading-none">protected area</p>
               </div>
 
               <div className="h-1.5 w-full overflow-hidden rounded bg-white">
-                <div className="h-full w-1/2 bg-navy-700"></div>
-              </div>
-
-              <div className="flex gap-2">
-                <p className="text-sx font-bold">
-                  66% <span className="font-medium">marine</span>
-                </p>
-                <p>·</p>
-                <p className="text-sx font-semibold">
-                  89% <span className="font-medium">land</span>
-                </p>
+                <div
+                  className="h-full bg-navy-700"
+                  style={{
+                    width: "13%",
+                  }}
+                />
               </div>
             </div>
           </div>

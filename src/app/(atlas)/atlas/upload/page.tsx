@@ -51,7 +51,13 @@ export default function AtlasUploadPage() {
 
             <div className="space-y-2">
               <div className="flex flex-col items-center gap-6 rounded-xl border border-dashed border-neutral-300 px-11 py-9">
-                <Image src="/atlas/upload.svg" width={159} height={108} alt="Upload area" />
+                <Image
+                  src="/atlas/upload.svg"
+                  width={159}
+                  height={108}
+                  alt="Upload area"
+                  priority
+                />
                 <div className="space-y-2 text-center text-xs">
                   <p className="font-medium">
                     <strong>Drag and drop</strong> your shapefile or{" "}

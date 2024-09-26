@@ -115,28 +115,26 @@ const WhatItem = (what: {
       <div className="space-y-3">
         <motion.h3
           className="origin-left text-xl font-semibold text-white lg:text-2xl"
-          initial={{ x: -10, opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{
-            x: 0,
             opacity: 1,
             scale: 1,
             transition: { ease: "easeInOut", duration: 0.3, delay: 0.2 },
           }}
-          exit={{ x: 0, opacity: 0, scale: 0.95 }}
+          exit={{ opacity: 0, scale: 0.95 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           {what.title}
         </motion.h3>
         <motion.p
           className="origin-left text-base font-medium text-navy-100"
-          initial={{ x: -10, opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{
-            x: 0,
             opacity: 1,
             scale: 1,
-            transition: { ease: "easeInOut", duration: 0.3, delay: 0.3 },
+            transition: { ease: "easeInOut", duration: 0.3, delay: 0.2 },
           }}
-          exit={{ x: 0, opacity: 0, scale: 0.95 }}
+          exit={{ opacity: 0, scale: 0.95 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           {what.description}
