@@ -10,10 +10,24 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Basic redirect
       {
-        source: "/data",
-        destination: "/data/methodology",
+        source: "/atlas",
+        destination: "/coming-soon",
+        permanent: true,
+      },
+      {
+        source: "/stories/:path*",
+        destination: "/coming-soon",
+        permanent: true,
+      },
+      {
+        source: "/data/:path*",
+        destination: "/coming-soon",
+        permanent: true,
+      },
+      {
+        source: "/resources",
+        destination: "/coming-soon",
         permanent: true,
       },
     ];
