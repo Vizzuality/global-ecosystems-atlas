@@ -16,10 +16,10 @@ export const SAMSection4 = () => {
       <div className="container">
         <Grid>
           <div className="col-span-5 lg:col-start-2">
-            <Step id="hero" offset={0.5} onEnter={() => setStep(5)}>
+            <Step id="why-1" offset={0.5} onEnter={() => setStep(5)}>
               <SAMWhy1 />
             </Step>
-            <Step id="sa" offset={0.5} onEnter={() => setStep(6)}>
+            <Step id="why-2" offset={0.5} onEnter={() => setStep(6)}>
               <SAMWhy2 />
             </Step>
           </div>

@@ -12,13 +12,13 @@ export const SAMSection3 = () => {
 
   return (
     <>
-      <Step id="compare" offset={0.5} onEnter={() => setStep(4)}>
+      <Step id="decisions" offset={0.5} onEnter={() => setStep(4)}>
         <Section>
           <div className="container">
             <Grid>
               <div className="col-span-12 space-y-9 lg:col-span-8 lg:col-start-2">
                 <H2 className="">Turning data into decisions</H2>
-                <p className="text-xl">
+                <p className="text-lg">
                   The Global Ecosystems Atlas equips countries to better monitor and conserve their
                   ecosystems. With its user-friendly tools, the Atlas{" "}
                   <strong>
@@ -28,7 +28,7 @@ export const SAMSection3 = () => {
                   ecosystem extent, ecosystem risk status, and protected area coverage in the format
                   required by the Convention on Biological Diversity (CBD).
                 </p>
-                <p>
+                <p className="text-lg">
                   For instance, by comparing South Africa and Mozambique data, the Atlas can reveal
                   shared ecosystems like savannas and highlight areas most at risk. This information
                   is crucial not only for governments but also for businesses that depend or impact

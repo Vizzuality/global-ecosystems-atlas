@@ -8,6 +8,7 @@ import { SAMSection1 } from "@/containers/stories/south-africa-mozambique/sectio
 import { SAMSection2 } from "@/containers/stories/south-africa-mozambique/section-2";
 import { SAMSection3 } from "@/containers/stories/south-africa-mozambique/section-3";
 import { SAMSection4 } from "@/containers/stories/south-africa-mozambique/section-4";
+import { SAMSection5 } from "@/containers/stories/south-africa-mozambique/section-5";
 
 export const metadata: Metadata = {
   title: "Stories: South Africa and Mozambique | Global Ecosystems Atlas",
@@ -27,6 +28,7 @@ export default async function StoriesSouthAfricaMozambiquePage() {
         width={2878}
         height={699}
       />
+      <SAMSection5 />
     </Suspense>
   );
 }

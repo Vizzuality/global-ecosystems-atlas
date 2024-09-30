@@ -9,12 +9,12 @@ export const SAMWhy1 = () => {
       </h3>
 
       <div className="space-y-4">
-        <p className="text-xl">
+        <p className="text-lg">
           We know nature is under threat, but to protect it, we need to know what is where.
           Fundamental questions about the state of our ecosystems remain unanswered because existing
           data is inconsistent.
         </p>
-        <p className="text-xl">
+        <p className="text-lg">
           While some ecosystems have been mapped, these efforts vary in detail and aren&apos;t
           harmonized across countries. Even with global indicators for ecosystem monitoring,
           there&apos;s no consistent way to apply them worldwide.
