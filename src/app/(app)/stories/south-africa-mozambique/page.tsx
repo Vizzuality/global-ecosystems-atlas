@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { Metadata } from "next";
 
 import { SAMSection1 } from "@/containers/stories/south-africa-mozambique/section-1";
@@ -11,10 +13,10 @@ export const metadata: Metadata = {
 
 export default async function StoriesSouthAfricaMozambiquePage() {
   return (
-    <>
+    <Suspense fallback={null}>
       <SAMSection1 />
       <SAMSection2 />
       <SAMSection3 />
-    </>
+    </Suspense>
   );
 }
