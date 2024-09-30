@@ -2,6 +2,8 @@ import { Suspense } from "react";
 
 import { Metadata } from "next";
 
+import Image from "next/image";
+
 import { SAMSection1 } from "@/containers/stories/south-africa-mozambique/section-1";
 import { SAMSection2 } from "@/containers/stories/south-africa-mozambique/section-2";
 import { SAMSection3 } from "@/containers/stories/south-africa-mozambique/section-3";
@@ -19,6 +21,12 @@ export default async function StoriesSouthAfricaMozambiquePage() {
       <SAMSection2 />
       <SAMSection3 />
       <SAMSection4 />
+      <Image
+        src="/sam/sam-footer.jpeg"
+        alt="South Africa and Mozambique"
+        width={2878}
+        height={699}
+      />
     </Suspense>
   );
 }

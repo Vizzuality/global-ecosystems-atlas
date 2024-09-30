@@ -2,8 +2,8 @@
 
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
-import { SAMHero } from "@/containers/stories/south-africa-mozambique/hero";
-import { SAMInnovativeSouthAfrica } from "@/containers/stories/south-africa-mozambique/innovative/south-africa";
+import { SAMWhy1 } from "@/containers/stories/south-africa-mozambique/why/1";
+import { SAMWhy2 } from "@/containers/stories/south-africa-mozambique/why/2";
 
 import { Step } from "@/components/scroll/step";
 import { Grid } from "@/components/ui/grid";
@@ -13,14 +13,14 @@ export const SAMSection4 = () => {
 
   return (
     <>
-      <div className="container -mt-28">
+      <div className="container">
         <Grid>
           <div className="col-span-5 lg:col-start-2">
             <Step id="hero" offset={0.5} onEnter={() => setStep(5)}>
-              <SAMHero />
+              <SAMWhy1 />
             </Step>
             <Step id="sa" offset={0.5} onEnter={() => setStep(6)}>
-              <SAMInnovativeSouthAfrica />
+              <SAMWhy2 />
             </Step>
           </div>
           <div className="col-span-6">
