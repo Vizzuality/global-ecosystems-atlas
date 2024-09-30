@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { SAMCollaborativeMap } from "@/containers/stories/south-africa-mozambique/collaborative-compare-map";
 
@@ -10,9 +10,7 @@ import { H2 } from "@/components/ui/h2";
 import { Section } from "@/components/ui/section";
 
 export const SAMSection2 = () => {
-  const [step, setStep] = useState(0);
-
-  console.log(step);
+  const [, setStep] = useSyncStep();
 
   return (
     <>

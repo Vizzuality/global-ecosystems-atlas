@@ -25,7 +25,7 @@ export const Step = ({ id, children, offset, className, onEnter }: StepProps) =>
   const ref = useRef<HTMLDivElement>(null);
 
   const margin = useMemo(() => {
-    return `-${offset * 100}% ${0}px -${100 - offset * 100}% ${0}px` as MarginType;
+    return `-${offset * 100}% ${0}px -${(100 - offset) * 100}% ${0}px` as MarginType;
   }, [offset]);
 
   const inView = useInView(ref, {

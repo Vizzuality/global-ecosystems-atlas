@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { SAMHero } from "@/containers/stories/south-africa-mozambique/hero";
 import { SAMInnovativeMozambique } from "@/containers/stories/south-africa-mozambique/innovative/mozambique";
@@ -11,7 +11,7 @@ import { Step } from "@/components/scroll/step";
 import { Grid } from "@/components/ui/grid";
 
 export const SAMSection1 = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useSyncStep();
 
   return (
     <>
