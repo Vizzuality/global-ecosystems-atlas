@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
-import { SAMSection1 } from "@/containers/stories/south-africa-mozambique";
+import { SAMSection1 } from "@/containers/stories/south-africa-mozambique/section-1";
+import { SAMSection2 } from "@/containers/stories/south-africa-mozambique/section-2";
 
 export const metadata: Metadata = {
   title: "Stories: South Africa and Mozambique | Global Ecosystems Atlas",
@@ -11,6 +12,7 @@ export default async function StoriesSouthAfricaMozambiquePage() {
   return (
     <>
       <SAMSection1 />
+      <SAMSection2 />
     </>
   );
 }

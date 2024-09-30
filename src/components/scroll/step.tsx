@@ -4,6 +4,8 @@ import { ReactElement, useEffect, useMemo, useRef } from "react";
 
 import { useInView } from "framer-motion";
 
+import { cn } from "@/lib/utils";
+
 type MarginValue = `${number}${"px" | "%"}`;
 type MarginType =
   | MarginValue
@@ -13,12 +15,13 @@ type MarginType =
 
 export interface StepProps {
   id: string;
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
   offset: number;
+  className?: string;
   onEnter?: (id: string) => void;
 }
 
-export const Step = ({ id, children, offset, onEnter }: StepProps) => {
+export const Step = ({ id, children, offset, className, onEnter }: StepProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const margin = useMemo(() => {
@@ -37,7 +40,7 @@ export const Step = ({ id, children, offset, onEnter }: StepProps) => {
   }, [id, inView, onEnter]);
 
   return (
-    <div id={id} ref={ref}>
+    <div id={id} ref={ref} className={cn(className)}>
       {children}
     </div>
   );
