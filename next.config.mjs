@@ -11,7 +11,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/atlas",
+        source: "/atlas/:path*",
         destination: "/coming-soon",
         permanent: false,
       },
