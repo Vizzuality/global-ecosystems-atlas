@@ -12,17 +12,6 @@ import {
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
 
-export async function generateMetadata({ params }: { params: { ecosystemId: string } }) {
-  const ecosystems = await apiEcosystemsGet();
-
-  const ECOSYSTEM = ecosystems.data.find((e) => e.efg_code === params.ecosystemId);
-
-  return {
-    title: `${ECOSYSTEM?.efg_name} | Global Ecosystems Atlas`,
-    description: "Atlas Ecosysytems Detail | Global Ecosystems Atlas description",
-  };
-}
-
 export async function generateStaticParams() {
   const ecosystems = await apiEcosystemsGet();
 

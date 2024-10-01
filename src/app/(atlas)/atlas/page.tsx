@@ -1,5 +1,3 @@
-import { Metadata } from "next";
-
 import { AtlasSearch } from "@/containers/atlas/search";
 import {
   AtlasSidebarContainer,
@@ -13,12 +11,6 @@ import TestPie from "@/containers/atlas/widgets/test-pie";
 import TestRanking from "@/containers/atlas/widgets/test-ranking";
 
 import { Grid } from "@/components/ui/grid";
-
-export const metadata: Metadata = {
-  title: "Atlas | Global Ecosystems Atlas",
-  description:
-    "Discover the Global Ecosystems Atlas interactive tool. It will provide everything you need to know about the distribution, change, and risks of ecosystems worldwide",
-};
 
 export default async function AtlasPage() {
   return (

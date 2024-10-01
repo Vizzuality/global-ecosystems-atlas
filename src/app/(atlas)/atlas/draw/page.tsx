@@ -1,5 +1,3 @@
-import { Metadata } from "next";
-
 import Image from "next/image";
 
 import { FiAlertTriangle } from "react-icons/fi";
@@ -15,11 +13,6 @@ import { NewsletterForm } from "@/containers/newsletter/form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
-
-export const metadata: Metadata = {
-  title: "Atlas Draw | Global Ecosystems Atlas",
-  description: "Atlas Draw | Global Ecosystems Atlas description",
-};
 
 export default async function AtlasDrawPage() {
   return (
