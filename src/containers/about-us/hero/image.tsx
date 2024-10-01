@@ -36,7 +36,7 @@ export const AboutHeroImage = () => {
           }}
         >
           <Image
-            src="/about/hero.png"
+            src="/about/hero.avif"
             alt="Global Ecosystems Atlas"
             className="w-full max-w-none"
             width={896}
