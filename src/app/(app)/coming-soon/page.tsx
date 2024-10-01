@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/section";
 
 export const metadata: Metadata = {
   title: "Coming soon | Global Ecosystems Atlas",
-  description: "Coming soon Global Ecosystems Atlas description",
+  description: "Global Ecosystems Atlas Coming soon",
 };
 
 export default function ComingSoon() {

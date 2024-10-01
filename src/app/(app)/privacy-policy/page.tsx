@@ -6,7 +6,7 @@ import { Section } from "@/components/ui/section";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Global Ecosystems Atlas",
-  description: "Privacy Policy Global Ecosystems Atlas description",
+  description: "Global Ecosystems Atlas Privacy Policy",
 };
 
 export default async function PrivacyPolicy() {

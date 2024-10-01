@@ -10,7 +10,8 @@ import HomeWhy from "@/containers/home/why";
 
 export const metadata: Metadata = {
   title: "Global Ecosystems Atlas",
-  description: "Global Ecosystems Atlas description",
+  description:
+    "Global Ecosystems Atlas, a cross-sector collaborative initiative to map and monitor the world's ecosystems for a deeper understanding of Earth's ecological diversity",
 };
 
 export default function Home() {
