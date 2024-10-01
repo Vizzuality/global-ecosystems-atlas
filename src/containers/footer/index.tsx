@@ -51,7 +51,7 @@ export const Footer = () => {
         <div className="flex flex-col items-center justify-between space-y-10 border-t border-white pt-8 lg:flex-row lg:space-y-0">
           <div className="flex flex-col gap-10 lg:flex-row">
             <ul className="flex flex-col gap-5 sm:flex-row">
-              <li>
+              {/* <li>
                 <a
                   href="https://www.facebook.com/"
                   className="flex items-center justify-center space-x-1 text-xs font-medium"
@@ -72,7 +72,7 @@ export const Footer = () => {
                   <FiArrowUpRight className="h-4 w-4" />
                   <span>ArcGIS</span>
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href="https://github.com/geo-global-ecosystem-atlas"
