@@ -1,16 +1,9 @@
-import { Metadata } from "next";
-
 import {
   AtlasSidebarContainer,
   AtlasSidebarHeader,
   AtlasSidebarSection,
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
-
-export const metadata: Metadata = {
-  title: "Atlas Log in | Global Ecosystems Atlas",
-  description: "Atlas Log in | Global Ecosystems Atlas description",
-};
 
 export default function AtlasLoginPage() {
   return (

@@ -1,5 +1,3 @@
-import { Metadata } from "next";
-
 import { AtlasEcosysytemsList } from "@/containers/atlas/ecosysytems/list";
 import {
   AtlasSidebarContainer,
@@ -7,11 +5,6 @@ import {
   AtlasSidebarSection,
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
-
-export const metadata: Metadata = {
-  title: "Atlas Ecosysytems List | Global Ecosystems Atlas",
-  description: "Atlas Ecosysytems List | Global Ecosystems Atlas description",
-};
 
 export default function AtlasEcosysytemsListPage() {
   return (
