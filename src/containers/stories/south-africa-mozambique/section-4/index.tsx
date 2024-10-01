@@ -2,14 +2,15 @@
 
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
-import { SAMWhy1 } from "@/containers/stories/south-africa-mozambique/why/1";
-import { SAMWhy2 } from "@/containers/stories/south-africa-mozambique/why/2";
+import { SAMSection4Map } from "@/containers/stories/south-africa-mozambique/section-4/map";
+import { SAMWhy1 } from "@/containers/stories/south-africa-mozambique/section-4/why/1";
+import { SAMWhy2 } from "@/containers/stories/south-africa-mozambique/section-4/why/2";
 
 import { Step } from "@/components/scroll/step";
 import { Grid } from "@/components/ui/grid";
 
 export const SAMSection4 = () => {
-  const [step, setStep] = useSyncStep();
+  const [, setStep] = useSyncStep();
 
   return (
     <>
@@ -25,7 +26,7 @@ export const SAMSection4 = () => {
           </div>
           <div className="col-span-6">
             <div className="sticky top-0 flex h-screen w-[50vw] items-center justify-center bg-lightblue-50 text-4xl">
-              Map {step}
+              <SAMSection4Map />
             </div>
           </div>
         </Grid>

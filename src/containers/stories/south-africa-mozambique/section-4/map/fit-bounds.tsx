@@ -6,13 +6,13 @@ import { usePreviousDifferent } from "rooks";
 
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
-import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
+import { STEPS } from "@/containers/stories/south-africa-mozambique/section-4/map";
 
 export const FitBounds = () => {
   const [step] = useSyncStep();
   const { current } = useMap();
 
-  const s = Math.min(STEPS.length - 1, step);
+  const s = Math.max(0, Math.min(STEPS.length - 1, step - 5));
   const prevStep = usePreviousDifferent(s);
 
   const STEP = useMemo(() => {

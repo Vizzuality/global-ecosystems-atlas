@@ -2,7 +2,7 @@
 
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
-import { SAMCollaborativeMap } from "@/containers/stories/south-africa-mozambique/collaborative-compare-map";
+import { SAMCollaborativeMap } from "@/containers/stories/south-africa-mozambique/section-2/map";
 
 import { Step } from "@/components/scroll/step";
 import { Grid } from "@/components/ui/grid";
