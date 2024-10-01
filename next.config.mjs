@@ -13,22 +13,22 @@ const nextConfig = {
       {
         source: "/atlas",
         destination: "/coming-soon",
-        permanent: true,
+        permanent: false,
       },
       {
         source: "/stories/:path*",
         destination: "/coming-soon",
-        permanent: true,
+        permanent: false,
       },
       {
         source: "/data/:path*",
         destination: "/coming-soon",
-        permanent: true,
+        permanent: false,
       },
       {
         source: "/resources",
         destination: "/coming-soon",
-        permanent: true,
+        permanent: false,
       },
     ];
   },
