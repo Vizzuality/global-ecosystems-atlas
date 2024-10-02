@@ -1,5 +1,5 @@
 "use client";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { ParentSize } from "@visx/responsive";
 import { scaleOrdinal } from "@visx/scale";
@@ -24,6 +24,7 @@ import {
 import { PieChart } from "@/components/charts/pie";
 
 export const WidgetExtentRealms = () => {
+  const [selected, setSelected] = useState<RealmsIds>();
   const [location] = useSyncLocation();
 
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
@@ -38,7 +39,7 @@ export const WidgetExtentRealms = () => {
   const DATA = useMemo(() => {
     return data?.data.map((d) => {
       return {
-        id: d.id,
+        id: d.id as RealmsIds,
         label: d.label,
         value: (d.value ?? 0) / (TOTAL ?? 1),
         color: REALMS[d.id as RealmsIds]?.color ?? "#000",
@@ -46,12 +47,22 @@ export const WidgetExtentRealms = () => {
     });
   }, [data, TOTAL]);
 
+  const SELECTED = useMemo(() => {
+    const s = DATA?.find((d) => d.id === selected);
+
+    return s ?? DATA?.[0];
+  }, [DATA, selected]);
+
   // SCALES
   const colorScale = useMemo(() => {
     return scaleOrdinal<string, string>({
       domain: DATA?.map((e) => `${e.id}`),
       range: DATA?.map((e) => `${e.color}`),
     });
+  }, [DATA]);
+
+  useEffect(() => {
+    setSelected(DATA?.[0]?.id);
   }, [DATA]);
 
   return (
@@ -66,24 +77,47 @@ export const WidgetExtentRealms = () => {
               <div className="grid grid-cols-2 items-center gap-6">
                 <div className="col-span-1 aspect-square">
                   {!!DATA && (
-                    <ParentSize>
+                    <ParentSize className="relative">
                       {({ width, height }) => (
-                        <PieChart
-                          width={width}
-                          height={height}
-                          data={DATA ?? []}
-                          colorScale={colorScale}
-                          format={formatPercentage}
-                          // selected={selected}
-                          // onPathMouseClick={onPieClick}
-                        />
+                        <>
+                          <PieChart
+                            width={width}
+                            height={height}
+                            data={DATA ?? []}
+                            colorScale={colorScale}
+                            format={formatPercentage}
+                            interactive
+                            onPathMouseEnter={(d) => {
+                              setSelected(d.id);
+                            }}
+                          />
+                          <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center px-8">
+                            <div>
+                              <span className="text-4xl font-semibold leading-none">
+                                {formatPercentage(SELECTED?.value ?? 0)}
+                              </span>
+                              <span className="text-lg leading-none">%</span>
+                            </div>
+                            <div className="text-center leading-none">
+                              <span className="text-center text-xs font-medium leading-none">
+                                {SELECTED?.label}
+                              </span>
+                            </div>
+                          </div>
+                        </>
                       )}
                     </ParentSize>
                   )}
                 </div>
+
+                {/* Legend */}
                 <ul className="col-span-1 space-y-2">
                   {DATA?.map((d) => (
-                    <li key={d.id} className="flex items-start gap-2.5">
+                    <li
+                      key={d.id}
+                      className="flex items-start gap-2.5"
+                      onMouseEnter={() => setSelected(d.id)}
+                    >
                       <div
                         className="mt-0.5 h-2 w-2 shrink-0 rounded-full"
                         style={{

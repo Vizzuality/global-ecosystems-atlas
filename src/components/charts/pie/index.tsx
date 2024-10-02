@@ -133,7 +133,6 @@ export const PieChart = <T extends PieChartData>({
                       strokeWidth={selected?.includes(arc.data.id) ? 2 : 1}
                       className={cn({
                         "stroke-white": true,
-                        "cursor-pointer hover:stroke-black": interactive,
                       })}
                       {...(interactive && {
                         onClick: (e) => handleMouseClick(e, arc),
