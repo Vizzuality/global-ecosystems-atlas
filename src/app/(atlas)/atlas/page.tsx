@@ -5,6 +5,7 @@ import {
   AtlasSidebarSection,
   AtlasSidebarTitle,
 } from "@/containers/atlas/sidebar";
+import { WidgetStatus } from "@/containers/atlas/widgets/current_status";
 import TestHorizontalBar from "@/containers/atlas/widgets/test-horizontal-bar";
 import TestNumber from "@/containers/atlas/widgets/test-number";
 import TestPie from "@/containers/atlas/widgets/test-pie";
@@ -21,6 +22,8 @@ export default async function AtlasPage() {
       <AtlasSidebarContainer>
         <div className="space-y-20">
           <AtlasSearch />
+
+          <WidgetStatus />
           <div className="aspect-square w-1/2">
             <TestPie />
           </div>
