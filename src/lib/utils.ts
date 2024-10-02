@@ -5,6 +5,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function formatNumber(value: number, options?: Intl.NumberFormatOptions) {
+  const v = Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+    style: "decimal",
+    ...options,
+  });
+
+  if (value < 0.001) {
+    return "<0.01";
+  }
+
+  return v.format(value);
+}
+
 export function formatPercentage(value: number, options?: Intl.NumberFormatOptions) {
   const v = Intl.NumberFormat("en-US", {
     minimumFractionDigits: 0,
