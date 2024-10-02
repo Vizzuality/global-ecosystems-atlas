@@ -13,6 +13,10 @@ export function formatPercentage(value: number, options?: Intl.NumberFormatOptio
     ...options,
   });
 
+  if (value < 0.0001) {
+    return "<0.01%";
+  }
+
   return v.format(value);
 }
 
