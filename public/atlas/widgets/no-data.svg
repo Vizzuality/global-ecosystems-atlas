@@ -1,0 +1,35 @@
+<svg width="164" height="130" viewBox="0 0 164 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_6174_19296" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="164" height="130">
+<ellipse cx="82" cy="65" rx="82" ry="65" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_6174_19296)">
+<rect x="29.5" y="10" width="105" height="108" rx="6" fill="#F2F2F2"/>
+<rect x="4" y="24.5" width="116" height="37" rx="3.5" fill="white"/>
+<rect x="4" y="24.5" width="116" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="15.5" y="37" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="15.5" y="45" width="93" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="44" y="66.5" width="117" height="37" rx="3.5" fill="white"/>
+<rect x="44" y="66.5" width="117" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="55.5" y="79" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="55.5" y="87" width="94" height="4" rx="2" fill="#CFD6D9"/>
+</g>
+<ellipse cx="82" cy="65" rx="82" ry="65" fill="url(#paint0_radial_6174_19296)"/>
+<mask id="mask1_6174_19296" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="75" y="64" width="42" height="42">
+<circle cx="96.2008" cy="85.1998" r="20.4" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask1_6174_19296)">
+<rect x="29.5" y="9.99976" width="105" height="108" rx="6" fill="#F2F2F2"/>
+<rect x="44" y="66.4998" width="117" height="37" rx="3.5" fill="white"/>
+<rect x="44" y="66.4998" width="117" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="55.5" y="78.9998" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="55.5" y="86.9998" width="94" height="4" rx="2" fill="#CFD6D9"/>
+</g>
+<path d="M96.3333 106.667C108.115 106.667 117.667 97.1154 117.667 85.3333C117.667 73.5513 108.115 64 96.3333 64C84.5513 64 75 73.5513 75 85.3333C75 97.1154 84.5513 106.667 96.3333 106.667Z" stroke="#8A9CA8" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M123 112L111.4 100.4" stroke="#8A9CA8" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<radialGradient id="paint0_radial_6174_19296" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(82 65) rotate(90) scale(65 82)">
+<stop stop-color="white" stop-opacity="0"/>
+<stop offset="1" stop-color="white"/>
+</radialGradient>
+</defs>
+</svg>

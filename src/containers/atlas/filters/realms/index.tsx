@@ -30,9 +30,11 @@ export const RealmsContent = () => {
   const [ecosystems, setEcosystems] = useSyncEcosystems();
   const realmsData = useRealms();
 
+  const REALMS = realmsData?.filter((r) => r.realms.length === 1);
+
   const DATA = useMemo(() => {
     if (!realms.length) {
-      return realmsData?.map((realm) => {
+      return REALMS?.map((realm) => {
         return {
           ...realm,
           disabled: false,
@@ -40,7 +42,7 @@ export const RealmsContent = () => {
       });
     }
 
-    return realmsData?.map((realm) => {
+    return REALMS?.map((realm) => {
       const disabled =
         (realm.id === "S" && realms.includes("T")) ||
         (realm.id === "T" && realms.includes("S")) ||
@@ -51,7 +53,7 @@ export const RealmsContent = () => {
         disabled,
       };
     });
-  }, [realms, realmsData]);
+  }, [realms, REALMS]);
 
   const handleChange = (realmId: string, checked: CheckedState) => {
     if (!checked) {

@@ -6,6 +6,8 @@ import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
 
 import { EcosystemEfgCode } from "@/types/generated/strapi.schemas";
 
+import { useSyncSearchParams } from "@/app/(atlas)/atlas/store";
+
 import {
   Table,
   TableBody,
@@ -16,6 +18,8 @@ import {
 } from "@/components/ui/table";
 
 export const AtlasEcosysytemsList = () => {
+  const searchParams = useSyncSearchParams();
+
   const realmsData = useRealms();
   const biomesData = useBiomes();
   const ecosysytemsData = useEcosystems();
@@ -23,7 +27,7 @@ export const AtlasEcosysytemsList = () => {
   const { push } = useRouter();
 
   const handleRowClick = (code: EcosystemEfgCode | undefined) => {
-    push(`/atlas/ecosystems/${code}`);
+    push(`/atlas/ecosystems/${code}${searchParams}`);
   };
 
   return (

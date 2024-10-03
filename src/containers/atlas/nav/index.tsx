@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
-import { FiHelpCircle, FiSearch } from "react-icons/fi";
+import { FiHelpCircle } from "react-icons/fi";
 import { PiStackBold } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
@@ -21,6 +21,7 @@ import { CollapseIcon } from "@/components/ui/icons/collapse";
 import { DrawPolygonIcon } from "@/components/ui/icons/draw-polygon";
 import { ExpandIcon } from "@/components/ui/icons/expand";
 import { FilterIcon } from "@/components/ui/icons/filter";
+import { GlobeIcon } from "@/components/ui/icons/globe";
 import { ListIcon } from "@/components/ui/icons/list";
 import { UploadShapefileIcon } from "@/components/ui/icons/upload-shapefile";
 import { UserIcon } from "@/components/ui/icons/user";
@@ -80,7 +81,7 @@ export const AtlasNav = () => {
           <ul className="space-y-3 py-3">
             <li>
               <AtlasNavItem href="/atlas" label="Search" index={0}>
-                <FiSearch className="h-5 w-5" />
+                <GlobeIcon className="h-5 w-5" />
               </AtlasNavItem>
             </li>
             <li>
