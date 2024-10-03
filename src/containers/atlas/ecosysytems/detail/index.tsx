@@ -4,6 +4,8 @@ import { useParams } from "next/navigation";
 
 import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
 
+import { WidgetEcosystemsList } from "@/containers/atlas/widgets";
+
 export const AtlasEcosysytemsDetail = () => {
   const { ecosystemId } = useParams();
   const realmsData = useRealms();
@@ -23,6 +25,8 @@ export const AtlasEcosysytemsDetail = () => {
         {BIOME?.id} {BIOME?.name}
       </p>
       <p>{REALMS?.map((realm) => realm?.name).join(", ")}</p>
+
+      <WidgetEcosystemsList />
     </div>
   );
 };
