@@ -16,10 +16,11 @@ export const MethodologyImage = () => {
         }}
       >
         <Image
-          src="/data/methodology.jpeg"
+          src="/data/methodology.avif"
           alt="Methodology"
           fill
           className="max-w-none scale-150 object-cover"
+          priority
         />
       </TranslateY>
     </div>
