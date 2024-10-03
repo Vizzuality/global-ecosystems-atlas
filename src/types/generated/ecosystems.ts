@@ -18,7 +18,11 @@ import type {
 import { API } from "../../services/api";
 import type { ErrorType } from "../../services/api";
 
-import type { ResponseModelListEcosystem } from "./strapi.schemas";
+import type {
+  HTTPValidationError,
+  ResponseModelListEcosystem,
+  ResponseModelListWidgetData,
+} from "./strapi.schemas";
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 
@@ -99,6 +103,175 @@ export function useApiEcosystemsGet<
   request?: SecondParameter<typeof API>;
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getApiEcosystemsGetQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
+ * Get all ecosystem information
+ * @summary Api
+ */
+export const apiEcosystemsEcosystemIdWidgetsWidgetIdGet = (
+  ecosystemId: unknown,
+  widgetId: unknown,
+  options?: SecondParameter<typeof API>,
+  signal?: AbortSignal,
+) => {
+  return API<ResponseModelListWidgetData>(
+    { url: `/ecosystems/${ecosystemId}/widgets/${widgetId}`, method: "GET", signal },
+    options,
+  );
+};
+
+export const getApiEcosystemsEcosystemIdWidgetsWidgetIdGetQueryKey = (
+  ecosystemId: unknown,
+  widgetId: unknown,
+) => {
+  return [`/ecosystems/${ecosystemId}/widgets/${widgetId}`] as const;
+};
+
+export const getApiEcosystemsEcosystemIdWidgetsWidgetIdGetQueryOptions = <
+  TData = Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  ecosystemId: unknown,
+  widgetId: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof API>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ??
+    getApiEcosystemsEcosystemIdWidgetsWidgetIdGetQueryKey(ecosystemId, widgetId);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>
+  > = ({ signal }) =>
+    apiEcosystemsEcosystemIdWidgetsWidgetIdGet(ecosystemId, widgetId, requestOptions, signal);
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!(ecosystemId && widgetId),
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ApiEcosystemsEcosystemIdWidgetsWidgetIdGetQueryResult = NonNullable<
+  Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>
+>;
+export type ApiEcosystemsEcosystemIdWidgetsWidgetIdGetQueryError = ErrorType<HTTPValidationError>;
+
+export function useApiEcosystemsEcosystemIdWidgetsWidgetIdGet<
+  TData = Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  ecosystemId: unknown,
+  widgetId: unknown,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+          TError,
+          TData
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof API>;
+  },
+): DefinedUseQueryResult<TData, TError> & { queryKey: QueryKey };
+export function useApiEcosystemsEcosystemIdWidgetsWidgetIdGet<
+  TData = Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  ecosystemId: unknown,
+  widgetId: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+          TError,
+          TData
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof API>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey };
+export function useApiEcosystemsEcosystemIdWidgetsWidgetIdGet<
+  TData = Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  ecosystemId: unknown,
+  widgetId: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof API>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey };
+/**
+ * @summary Api
+ */
+
+export function useApiEcosystemsEcosystemIdWidgetsWidgetIdGet<
+  TData = Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  ecosystemId: unknown,
+  widgetId: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof apiEcosystemsEcosystemIdWidgetsWidgetIdGet>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof API>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getApiEcosystemsEcosystemIdWidgetsWidgetIdGetQueryOptions(
+    ecosystemId,
+    widgetId,
+    options,
+  );
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

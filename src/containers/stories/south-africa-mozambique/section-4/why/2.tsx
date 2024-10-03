@@ -1,6 +1,6 @@
 export const SAMWhy2 = () => {
   return (
-    <section className="flex min-h-screen flex-col justify-center gap-8 py-24">
+    <section className="flex min-h-dvh flex-col justify-center gap-8 py-24">
       <h3 className="text-lg font-bold uppercase">Bridging Data Gaps Globally So All Can Use</h3>
 
       <div className="space-y-4">

@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 
 import { cn } from "@/lib/utils";
 
-import { Logo } from "@/containers/logo";
+import { Logo, LogoGeoBig } from "@/containers/logo";
 
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
@@ -24,19 +24,32 @@ export const Welcome = () => {
         close={false}
         className="overflow-hidden border-none p-0 lg:max-w-[900px]"
       >
-        <ScrollArea className="max-h-screen">
+        <ScrollArea className="max-h-dvh">
           <div className="space-y-10 p-10 md:space-y-16 lg:p-16">
             <div className="flex w-full items-center justify-center space-x-6">
-              <Logo className="block fill-navy-700" />
-              <span
-                className={cn({
-                  "rounded border border-navy-700 px-2 py-1 text-2xs font-bold uppercase italic":
-                    true,
-                  "border-navy-700 text-navy-700": true,
-                })}
-              >
-                Beta
-              </span>
+              <div className="flex flex-col items-center gap-6 divide-neutral-200 md:flex-row md:gap-6 md:divide-x">
+                <div className="flex w-full items-center justify-center space-x-6">
+                  <Logo className="block fill-navy-700" />
+                  <span
+                    className={cn({
+                      "rounded border border-navy-700 px-2 py-1 text-2xs font-bold uppercase italic":
+                        true,
+                      "border-navy-700 text-navy-700": true,
+                    })}
+                  >
+                    Beta
+                  </span>
+                </div>
+                <div className="block pl-5">
+                  <a
+                    href="https://earthobservations.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LogoGeoBig />
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-10">

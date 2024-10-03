@@ -4,13 +4,35 @@
  *  Global ecosystems atlas Tiler
  * OpenAPI spec version: 0.1.0
  */
-export type WidgetDescription = string | null;
+export type WidgetMetadataAbstract = string | null;
+
+export interface WidgetMetadata {
+  abstract?: WidgetMetadataAbstract;
+}
+
+export type WidgetDataValue = number | number | null;
+
+export type WidgetDataColor = string | null;
+
+export interface WidgetData {
+  color?: WidgetDataColor;
+  id: string;
+  label: string;
+  value?: WidgetDataValue;
+}
+
+export type WidgetType = (typeof WidgetType)[keyof typeof WidgetType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const WidgetType = {
+  widget: "widget",
+} as const;
 
 export interface Widget {
-  description?: WidgetDescription;
   id: string;
+  metadata?: WidgetMetadata[];
   name: string;
-  price: number;
+  type: WidgetType;
 }
 
 export type ValidationErrorLocItem = string | number;
@@ -23,6 +45,10 @@ export interface ValidationError {
 
 export interface ResponseModelListWidget {
   data: Widget[];
+}
+
+export interface ResponseModelListWidgetData {
+  data: WidgetData[];
 }
 
 export interface ResponseModelListLocation {
@@ -118,7 +144,7 @@ export interface HTTPValidationError {
 
 export type EcosystemEfgCode = string | null;
 
-export type EcosystemBiomeName = number | null;
+export type EcosystemBiomeName = string | null;
 
 export interface Ecosystem {
   biome_name?: EcosystemBiomeName;
