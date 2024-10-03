@@ -20,5 +20,4 @@ export const FilterItem = ({ trigger, component, ...rest }: FilterItemProps) => 
       <CollapsibleContent className="mt-3">{component}</CollapsibleContent>
     </Collapsible>
   );
-  return <div>Filter Item</div>;
 };
