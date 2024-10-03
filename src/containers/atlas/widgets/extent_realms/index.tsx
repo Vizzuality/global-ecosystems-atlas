@@ -11,6 +11,7 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
+import { WidgetInfo } from "@/containers/atlas/widgets/info";
 import {
   Widget,
   WidgetContent,
@@ -69,6 +70,7 @@ export const WidgetExtentRealms = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Ecosystem functional groups</WidgetTitle>
+        <WidgetInfo>Hello</WidgetInfo>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>

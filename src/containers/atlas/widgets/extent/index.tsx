@@ -6,6 +6,7 @@ import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import { BiomesExtent } from "@/containers/atlas/widgets/extent/biomes";
 import { EFGSExtent } from "@/containers/atlas/widgets/extent/efgs";
+import { WidgetInfo } from "@/containers/atlas/widgets/info";
 import {
   Widget,
   WidgetContent,
@@ -37,6 +38,7 @@ export const WidgetExtent = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Extent</WidgetTitle>
+        <WidgetInfo>Hello</WidgetInfo>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader

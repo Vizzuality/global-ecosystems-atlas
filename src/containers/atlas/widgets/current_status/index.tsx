@@ -5,6 +5,7 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
+import { WidgetInfo } from "@/containers/atlas/widgets/info";
 import {
   Widget,
   WidgetContent,
@@ -37,6 +38,7 @@ export const WidgetStatus = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Current status</WidgetTitle>
+        <WidgetInfo>Hello</WidgetInfo>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
@@ -44,14 +46,16 @@ export const WidgetStatus = () => {
             <WidgetNoData isNoData={!DATA}>
               <div className="flex flex-col gap-3">
                 <div className="space-y-2 rounded-md bg-navy-700 p-4 text-white">
-                  <div className="space-x-2">
-                    <span className="space-x-1">
-                      <span className="text-4xl font-semibold leading-none">
-                        {DATA?.mapped_coverage}
+                  <div className="flex items-start justify-between">
+                    <div className="space-x-2">
+                      <span className="space-x-1">
+                        <span className="text-4xl font-semibold leading-none">
+                          {DATA?.mapped_coverage}
+                        </span>
+                        <span className="text-lg leading-none">%</span>
                       </span>
-                      <span className="text-lg leading-none">%</span>
-                    </span>
-                    <span className="text-xs font-medium leading-none">global coverage</span>
+                      <span className="text-xs font-medium leading-none">global coverage</span>
+                    </div>
                   </div>
                   <div className="h-2 w-full rounded-sm bg-white/20">
                     <div

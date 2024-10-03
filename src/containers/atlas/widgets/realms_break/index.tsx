@@ -13,6 +13,7 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
+import { WidgetInfo } from "@/containers/atlas/widgets/info";
 import {
   Widget,
   WidgetContent,
@@ -64,6 +65,7 @@ export const WidgetRealmsBreak = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Realms breakdown</WidgetTitle>
+        <WidgetInfo>Hello</WidgetInfo>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
