@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import { FiArrowUpRight } from "react-icons/fi";
@@ -12,7 +14,8 @@ import {
 import { NAV } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-import { Logo } from "@/containers/logo";
+import { Logo, LogoGeo, LogoNoText } from "@/containers/logo";
+import { Media } from "@/containers/media";
 
 import { Button } from "@/components/ui/button";
 
@@ -21,7 +24,21 @@ export const Footer = () => {
     <footer className="bg-lightblue-50 py-16">
       <div className="container">
         <div className="flex justify-center lg:justify-start">
-          <Logo className="fill-navy-700" />
+          <div className="flex items-center gap-6 divide-x divide-neutral-200 md:gap-6">
+            <div>
+              <Media greaterThanOrEqual="md">
+                <Logo className="fill-navy-700" />
+              </Media>
+
+              <Media lessThan="md">
+                <LogoNoText className="fill-navy-700" />
+              </Media>
+            </div>
+
+            <div className="pl-5">
+              <LogoGeo />
+            </div>
+          </div>
         </div>
         <div className="flex flex-col items-center justify-between py-12 lg:flex-row">
           <ul className="flex flex-col space-y-16 text-sm font-medium lg:flex-row lg:space-x-16 lg:space-y-0">
