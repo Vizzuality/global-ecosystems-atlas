@@ -67,7 +67,7 @@ export const Nav = () => {
   return (
     <div
       className={cn({
-        "pointer-events-none fixed left-0 top-0 z-40 h-screen w-full bg-white opacity-0 transition-all":
+        "pointer-events-none fixed left-0 top-0 z-40 h-dvh w-full bg-white opacity-0 transition-all":
           true,
         "pointer-events-auto opacity-100": open,
       })}

@@ -28,7 +28,7 @@ export const SAMSection1 = () => {
           </Step>
         </div>
         <div className="col-span-6">
-          <div className="sticky top-0 flex h-screen w-[50vw] items-center justify-center bg-lightblue-50 text-4xl">
+          <div className="sticky top-0 flex h-dvh w-[50vw] items-center justify-center bg-lightblue-50 text-4xl">
             <SAMSection1Map />
           </div>
         </div>
