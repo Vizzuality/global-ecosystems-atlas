@@ -9,6 +9,8 @@ import {
   biomesParser,
   depthParser,
   ecosystemsParser,
+  layersParser,
+  layersSettingsParser,
   locationParser,
   realmsParser,
 } from "@/app/(atlas)/atlas/parsers";
@@ -28,6 +30,16 @@ export const useSyncLocation = () => {
   return useQueryState("location", locationParser);
 };
 
+// LAYERS
+export const useSyncLayers = () => {
+  return useQueryState("layers", layersParser);
+};
+
+export const useSyncLayersSettings = () => {
+  return useQueryState("layers-settings", layersSettingsParser);
+};
+
+// FILTERS
 export const useSyncRealms = () => {
   return useQueryState("realms", realmsParser);
 };
@@ -52,6 +64,8 @@ const serialize = createSerializer({
   biomes: biomesParser,
   ecosystems: ecosystemsParser,
   depth: depthParser,
+  layers: layersParser,
+  layersSettings: layersSettingsParser,
 });
 
 export const useSyncSearchParams = () => {
@@ -62,6 +76,8 @@ export const useSyncSearchParams = () => {
   const [biomes] = useSyncBiomes();
   const [ecosystems] = useSyncEcosystems();
   const [depth] = useSyncDepth();
+  const [layers] = useSyncLayers();
+  const [layersSettings] = useSyncLayersSettings();
 
   return serialize({
     bbox,
@@ -71,6 +87,8 @@ export const useSyncSearchParams = () => {
     biomes,
     ecosystems,
     depth,
+    layers,
+    layersSettings,
   });
 };
 

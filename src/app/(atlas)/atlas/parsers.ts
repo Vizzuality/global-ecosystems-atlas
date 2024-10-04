@@ -1,4 +1,10 @@
-import { parseAsArrayOf, parseAsFloat, parseAsString, parseAsStringLiteral } from "nuqs";
+import {
+  parseAsArrayOf,
+  parseAsFloat,
+  parseAsJson,
+  parseAsString,
+  parseAsStringLiteral,
+} from "nuqs";
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 
@@ -14,3 +20,8 @@ export const realmsParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const biomesParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const ecosystemsParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const depthParser = parseAsArrayOf(parseAsFloat).withDefault([-10000, 10000]);
+
+export const layersParser = parseAsArrayOf(parseAsString).withDefault(["efgs"]);
+export const layersSettingsParser = parseAsJson<{
+  [key: string]: Record<string, unknown>;
+}>();
