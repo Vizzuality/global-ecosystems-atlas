@@ -10,6 +10,7 @@ import * as Layers from "@deck.gl/layers";
 import { ParamsConfig } from "@/types/layers";
 
 import RasterLayer from "@/components/map/layers/deck-layer/raster";
+import RasterMaskLayer from "@/components/map/layers/deck-layer/raster-mask";
 
 import FUNCTIONS from "./utils";
 
@@ -19,6 +20,7 @@ export const JSON_CONFIGURATION = new JSONConfiguration({
     MaskExtension,
     DataFilterExtension,
     RasterLayer,
+    RasterMaskLayer,
   }),
   functions: FUNCTIONS,
   constants: {},

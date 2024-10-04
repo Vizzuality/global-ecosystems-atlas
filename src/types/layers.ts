@@ -34,7 +34,7 @@ export type LayerProps = {
 };
 
 export type LayerTyped = {
-  id: number;
+  id: string | number;
   type: string;
   config: unknown;
   params_config: ParamsConfig;

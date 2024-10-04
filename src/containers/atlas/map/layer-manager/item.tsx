@@ -17,47 +17,99 @@ interface LayerManagerItemProps {
 }
 
 const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => {
-  const data: LayerTyped = {
-    id: 1,
-    type: "test",
-    config: {
-      "@@type": "RasterLayer",
-      source: {
-        tiles:
-          "https://tiles.globalforestwatch.org/umd_tree_cover_gain_from_height/v202206/mode/{z}/{x}/{y}.png",
-      },
-    },
-    params_config: [
-      {
-        key: "opacity",
-        default: 1,
-      },
-      {
-        key: "visibility",
-        default: true,
-      },
-    ],
-    legend_config: {
-      type: "basic",
-      items: [
-        {
-          value: "Test",
-          color: "#000",
-        },
-      ],
-    },
-    interaction_config: {
-      event: "click",
+  let data: Partial<LayerTyped> = {};
+  // if (id === "efgs") {
+  //   data = {
+  //     id,
+  //     type: "test",
+  //     config: {
+  //       "@@type": "RasterLayer",
+  //       source: {
+  //         tiles:
+  //           "https://tiles.globalforestwatch.org/umd_tree_cover_gain_from_height/v202206/mode/{z}/{x}/{y}.png",
+  //       },
+  //       extensions: ["@@MaskExtension"],
+  //       maskId: "terrain-layer-deck",
+  //     },
+  //     params_config: [
+  //       {
+  //         key: "opacity",
+  //         default: 1,
+  //       },
+  //       {
+  //         key: "visibility",
+  //         default: true,
+  //       },
+  //     ],
+  //     legend_config: {
+  //       type: "basic",
+  //       items: [
+  //         {
+  //           value: "Test",
+  //           color: "#000",
+  //         },
+  //       ],
+  //     },
+  //     interaction_config: {
+  //       event: "click",
+  //       type: "test",
+  //       values: [
+  //         {
+  //           key: "test",
+  //           value: "test",
+  //         },
+  //       ],
+  //     },
+  //     metadata: {},
+  //   };
+  // }
+
+  if (id === "terrain") {
+    data = {
+      id,
       type: "test",
-      values: [
+      config: {
+        "@@type": "RasterMaskLayer",
+        source: {
+          tiles: [
+            "https://tiles.globalforestwatch.org/umd_tree_cover_gain_from_height/v202206/mode/{z}/{x}/{y}.png",
+            "https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=pk.eyJ1IjoiYWZpbGF0b3JlOTAiLCJhIjoiY2lqcml0bHoyMDBhZHZwbHhzM2Q1bnRwNSJ9.Zm2C1hNemolKnIAAWquGYg",
+          ],
+        },
+      },
+      params_config: [
         {
-          key: "test",
-          value: "test",
+          key: "opacity",
+          default: 1,
+        },
+        {
+          key: "visibility",
+          default: true,
         },
       ],
-    },
-    metadata: {},
-  };
+      legend_config: {
+        type: "basic",
+        items: [
+          {
+            value: "Test",
+            color: "#000",
+          },
+        ],
+      },
+      interaction_config: {
+        event: "click",
+        type: "test",
+        values: [
+          {
+            key: "test",
+            value: "test",
+          },
+        ],
+      },
+      metadata: {},
+    };
+  }
+
   const { config, params_config } = data;
   const c = parseConfig<Layer>({
     config: {

@@ -25,7 +25,7 @@ class RasterLayer {
       maxZoom: source.maxzoom,
       visible: visibility ?? true,
       opacity: opacity ?? 1,
-      refinementStrategy: "never",
+      // refinementStrategy: "never",
       renderSubLayers: (subLayer) => {
         const {
           id: subLayerId,
