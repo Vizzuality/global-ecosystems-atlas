@@ -35,6 +35,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.9.0(react-hook-form@7.53.0(react@18.3.1))
+      '@luma.gl/core':
+        specifier: ^9.0.27
+        version: 9.0.27
       '@luma.gl/engine':
         specifier: ^9.0.27
         version: 9.0.27(@luma.gl/core@9.0.27)

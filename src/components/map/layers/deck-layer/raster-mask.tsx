@@ -1,6 +1,7 @@
-import { Layer, LayerExtension } from "@deck.gl/core";
+import { Layer, LayerContext, LayerExtension } from "@deck.gl/core";
 import { GeoBoundingBox, TileLayer, TileLayerProps } from "@deck.gl/geo-layers";
 import { BitmapLayer, BitmapLayerProps } from "@deck.gl/layers";
+import { Texture } from "@luma.gl/core";
 import { Model } from "@luma.gl/engine";
 // import GL from "@luma.gl/constants";
 import { RasterTileSource } from "mapbox-gl";
@@ -17,8 +18,9 @@ export interface RasterMaskLayerProps extends LayerProps {
 }
 
 type DecodeExtensionType = Layer<{
-  terrainFunction: string;
   terrainTexture: ImageBitmap;
+  terrainStart: number;
+  terrainEnd: number;
 }>;
 
 export class DecodeExtension extends LayerExtension<BitmapLayerProps> {
@@ -27,6 +29,8 @@ export class DecodeExtension extends LayerExtension<BitmapLayerProps> {
       inject: {
         "fs:#decl": /*glsl*/ `
           uniform sampler2D terrainTexture;
+          uniform float terrainStart;
+          uniform float terrainEnd;
         `,
 
         "fs:#main-end": /* glsl */ `
@@ -36,26 +40,35 @@ export class DecodeExtension extends LayerExtension<BitmapLayerProps> {
           float height = -10000.0 + (((t.r * 255.0) * 256.0 * 256.0 + (t.g * 255.0) * 256.0 + (t.b * 255.0)) * 0.1);
           float h = height / 8849.0;
 
-          if (height > 500.0) {
+          if (height < terrainStart || height > terrainEnd) {
             discard;
           }
-
           fragColor = b;
         `,
       },
     };
   }
 
-  draw(this: DecodeExtensionType) {
-    const { terrainTexture } = this.props;
-    const model = this.state.model as Model;
-
-    const texture = this.context.device.createTexture({
-      data: terrainTexture,
+  initializeState(this: DecodeExtensionType, context: LayerContext): void {
+    const texture = context.device.createTexture({
+      data: this.props.terrainTexture,
     });
 
+    this.setState({
+      tTexture: texture,
+    });
+  }
+
+  draw(this: DecodeExtensionType) {
+    const model = this.state.model as Model;
+
     model.setBindings({
-      terrainTexture: texture,
+      terrainTexture: this.state.tTexture as Texture,
+    });
+
+    model.setUniforms({
+      terrainStart: this.props.terrainStart,
+      terrainEnd: this.props.terrainEnd,
     });
   }
 }
