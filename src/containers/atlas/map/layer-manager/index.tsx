@@ -80,13 +80,11 @@ export const LayerManager = () => {
           Loop through active layers. The id is gonna be used to fetch the current layer and know how to order the layers.
           The first item will always be at the top of the layers stack
         */}
-        {LAYERS.map((l, i) => {
-          const beforeId = i === 0 ? baseLayer : `${LAYERS[i - 1]}-layer`;
+        {LAYERS.map((l) => {
           return (
             <LayerManagerItem
               key={l}
               id={l}
-              beforeId={beforeId}
               settings={{
                 // ...{ opacity: 1, visibility: true },
                 ...(!!layersSettings && layersSettings[l]),

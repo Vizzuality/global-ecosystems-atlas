@@ -18,7 +18,7 @@ interface LayerManagerItemProps {
   id: string;
 }
 
-const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => {
+const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const [depth] = useSyncDepth();
   let data: Partial<LayerTyped> = {};
   // if (id === "efgs") {
@@ -80,10 +80,8 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
             "https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=pk.eyJ1IjoiYWZpbGF0b3JlOTAiLCJhIjoiY2lqcml0bHoyMDBhZHZwbHhzM2Q1bnRwNSJ9.Zm2C1hNemolKnIAAWquGYg",
           ],
         },
-        tileProps: {
-          terrainStart: depth[0],
-          terrainEnd: depth[1],
-        },
+        terrainStart: depth[0],
+        terrainEnd: depth[1],
         bitmapProps: {
           terrainStart: depth[0],
           terrainEnd: depth[1],
@@ -140,7 +138,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
     return cloneElement(c, { id: `${id}-layer`, key: `${id}-layer` });
   }
 
-  return <DeckLayer key={`${id}-layer`} id={`${id}-layer`} beforeId={beforeId} config={c} />;
+  return <DeckLayer key={`${id}-layer`} id={`${id}-layer`} config={c} beforeId={`${id}-layer`} />;
 };
 
 export default LayerManagerItem;

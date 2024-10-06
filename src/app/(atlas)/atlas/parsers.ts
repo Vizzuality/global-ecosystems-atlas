@@ -19,9 +19,9 @@ export const locationParser = parseAsString;
 export const realmsParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const biomesParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const ecosystemsParser = parseAsArrayOf(parseAsString).withDefault([]);
-export const depthParser = parseAsArrayOf(parseAsFloat).withDefault([-10000, 10000]);
+export const depthParser = parseAsArrayOf(parseAsFloat).withDefault([-10000, 8849]);
 
-export const layersParser = parseAsArrayOf(parseAsString).withDefault(["terrain", "efgs"]);
+export const layersParser = parseAsArrayOf(parseAsString).withDefault(["terrain"]);
 export const layersSettingsParser = parseAsJson<{
   [key: string]: Record<string, unknown>;
 }>();
