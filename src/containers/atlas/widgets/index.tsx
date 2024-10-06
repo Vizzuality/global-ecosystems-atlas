@@ -1,23 +1,23 @@
 import { cn } from "@/lib/utils";
 
-import { WidgetStatus } from "@/containers/atlas/widgets/current_status";
-import { WidgetExtent } from "@/containers/atlas/widgets/extent";
-import { WidgetExtentRealms } from "@/containers/atlas/widgets/extent_realms";
-import { WidgetProtectedEfgs } from "@/containers/atlas/widgets/protected_efgs";
-import { WidgetRealmsBreak } from "@/containers/atlas/widgets/realms_break";
+import { WidgetLocationStatus } from "@/containers/atlas/widgets/location/current_status";
+import { WidgetLocationExtent } from "@/containers/atlas/widgets/location/extent";
+import { WidgetLocationExtentRealms } from "@/containers/atlas/widgets/location/extent_realms";
+import { WidgetLocationProtectedEfgs } from "@/containers/atlas/widgets/location/protected_efgs";
+import { WidgetLocationRealmsBreak } from "@/containers/atlas/widgets/location/realms_break";
 
 export const WIDGETS_LOCATION = [
-  <WidgetStatus key="current_status" />,
-  <WidgetExtentRealms key="extent_realms" />,
-  <WidgetExtent key="extent" />,
-  <WidgetProtectedEfgs key="protected_efgs" />,
-  <WidgetRealmsBreak key="realms_break" />,
+  <WidgetLocationStatus key="current_status" />,
+  <WidgetLocationExtentRealms key="extent_realms" />,
+  <WidgetLocationExtent key="extent" />,
+  <WidgetLocationProtectedEfgs key="protected_efgs" />,
+  <WidgetLocationRealmsBreak key="realms_break" />,
 ];
 
 export const WIDGETS_ECOSYSYTEMS = [
-  <WidgetExtentRealms key="extent_realms" />,
-  <WidgetExtent key="extent" />,
-  <WidgetProtectedEfgs key="protected_efgs" />,
+  // <WidgetExtentRealms key="extent_realms" />,
+  // <WidgetExtent key="extent" />,
+  // <WidgetProtectedEfgs key="protected_efgs" />,
 ];
 
 export const WidgetLocationList = () => {

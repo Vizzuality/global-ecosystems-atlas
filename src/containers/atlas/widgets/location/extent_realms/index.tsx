@@ -24,7 +24,7 @@ import {
 
 import { PieChart } from "@/components/charts/pie";
 
-export const WidgetExtentRealms = () => {
+export const WidgetLocationExtentRealms = () => {
   const [selected, setSelected] = useState<RealmsIds>();
   const [location] = useSyncLocation();
 

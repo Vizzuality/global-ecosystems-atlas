@@ -24,7 +24,7 @@ import {
   WidgetTitle,
 } from "@/containers/atlas/widgets/item";
 
-export const WidgetRealmsBreak = () => {
+export const WidgetLocationRealmsBreak = () => {
   const [location] = useSyncLocation();
 
   const realmsData = useRealms();

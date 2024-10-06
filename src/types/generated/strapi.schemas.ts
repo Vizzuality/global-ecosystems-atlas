@@ -43,6 +43,23 @@ export interface ValidationError {
   type: string;
 }
 
+export interface SuccessResponse {
+  success?: boolean;
+}
+
+export interface SourceDataset {
+  id: string;
+  label: string;
+  map_class_label: string;
+  spatial_resolution: string;
+  url: string;
+  year: number;
+}
+
+export interface ResponseModelSuccessResponse {
+  data: SuccessResponse;
+}
+
 export interface ResponseModelListWidget {
   data: Widget[];
 }
@@ -119,6 +136,27 @@ export interface Layer {
   price: number;
   tags?: string[];
   tax?: LayerTax;
+}
+
+export type InteractivityResponseType =
+  (typeof InteractivityResponseType)[keyof typeof InteractivityResponseType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const InteractivityResponseType = {
+  efgs: "efgs",
+  biomes: "biomes",
+  realms: "realms",
+} as const;
+
+export type InteractivityResponseSourcesAgreement = string | null;
+
+export type InteractivityResponseLabel = string | null;
+
+export interface InteractivityResponse {
+  label?: InteractivityResponseLabel;
+  source_datasets?: SourceDataset[];
+  sources_agreement?: InteractivityResponseSourcesAgreement;
+  type: InteractivityResponseType;
 }
 
 /**
