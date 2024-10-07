@@ -13,7 +13,7 @@ const StoriesItem = (story: { title: string; comingSoon?: boolean }) => (
     className={cn({
       "group relative grow rounded-2xl bg-lightblue-100 transition-colors duration-500": true,
       "hover:bg-white": !story.comingSoon,
-      "bg-white/10": story.comingSoon,
+      "border border-dashed border-white/40 bg-white/10": story.comingSoon,
     })}
   >
     <div className="space-y-3 p-8">
@@ -35,7 +35,7 @@ const StoriesItem = (story: { title: string; comingSoon?: boolean }) => (
   </div>
 );
 
-export default function AboutUsHero() {
+export default function StoriesHero() {
   return (
     <Section hero className="min-h-0 bg-navy-700 lg:pb-56">
       <div className="container">
