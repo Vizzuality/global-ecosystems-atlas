@@ -1,10 +1,7 @@
-import Link from "next/link";
-
-import { FiChevronLeft } from "react-icons/fi";
-
 import { apiEcosystemsGet } from "@/types/generated/ecosystems";
 
 import { AtlasEcosysytemsDetail } from "@/containers/atlas/ecosysytems/detail";
+import { AtlasEcosysytemsDetailBack } from "@/containers/atlas/ecosysytems/detail/back";
 import {
   AtlasSidebarContainer,
   AtlasSidebarHeader,
@@ -27,9 +24,7 @@ export default function AtlasEcosysytemsDetailPage() {
     <AtlasSidebarSection>
       <AtlasSidebarHeader>
         <AtlasSidebarTitle>
-          <Link href="/atlas/ecosystems" className="flex gap-2">
-            <FiChevronLeft className="mt-px h-5 w-5" /> List view of Ecosystem Groups
-          </Link>
+          <AtlasEcosysytemsDetailBack />
         </AtlasSidebarTitle>
       </AtlasSidebarHeader>
       <AtlasSidebarContainer>

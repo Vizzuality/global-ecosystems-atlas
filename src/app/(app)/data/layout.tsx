@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -26,7 +27,7 @@ export default function DataLayout({
                   <h2 className="text-sm font-semibold uppercase tracking-widest text-white">
                     Data
                   </h2>
-                  <H1 className="text-white">A tool to support environmental initiatives</H1>
+                  <H1 className="text-white">A platform to support environmental initiatives</H1>
                 </header>
                 <div className="space-y-8 text-white">
                   <p className="text-xl">
@@ -35,6 +36,9 @@ export default function DataLayout({
                   </p>
                 </div>
               </div>
+            </div>
+            <div className="hidden lg:col-span-5 lg:col-start-8 xl:block">
+              <Image src="/data/hero.png" width={566} height={563} alt="Data" priority />
             </div>
           </Grid>
         </div>

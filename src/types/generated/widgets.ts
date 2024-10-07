@@ -18,9 +18,98 @@ import type {
 import { API } from "../../services/api";
 import type { ErrorType } from "../../services/api";
 
-import type { HTTPValidationError, ResponseModelListWidgetData } from "./strapi.schemas";
+import type {
+  HTTPValidationError,
+  ResponseModelListWidget,
+  ResponseModelListWidgetData,
+} from "./strapi.schemas";
 
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
+
+/**
+ * Get all map layer information
+ * @summary Api
+ */
+export const apiWidgetsGet = (options?: SecondParameter<typeof API>, signal?: AbortSignal) => {
+  return API<ResponseModelListWidget>({ url: `/widgets`, method: "GET", signal }, options);
+};
+
+export const getApiWidgetsGetQueryKey = () => {
+  return [`/widgets`] as const;
+};
+
+export const getApiWidgetsGetQueryOptions = <
+  TData = Awaited<ReturnType<typeof apiWidgetsGet>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiWidgetsGet>>, TError, TData>>;
+  request?: SecondParameter<typeof API>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getApiWidgetsGetQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof apiWidgetsGet>>> = ({ signal }) =>
+    apiWidgetsGet(requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof apiWidgetsGet>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ApiWidgetsGetQueryResult = NonNullable<Awaited<ReturnType<typeof apiWidgetsGet>>>;
+export type ApiWidgetsGetQueryError = ErrorType<unknown>;
+
+export function useApiWidgetsGet<
+  TData = Awaited<ReturnType<typeof apiWidgetsGet>>,
+  TError = ErrorType<unknown>,
+>(options: {
+  query: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiWidgetsGet>>, TError, TData>> &
+    Pick<
+      DefinedInitialDataOptions<Awaited<ReturnType<typeof apiWidgetsGet>>, TError, TData>,
+      "initialData"
+    >;
+  request?: SecondParameter<typeof API>;
+}): DefinedUseQueryResult<TData, TError> & { queryKey: QueryKey };
+export function useApiWidgetsGet<
+  TData = Awaited<ReturnType<typeof apiWidgetsGet>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiWidgetsGet>>, TError, TData>> &
+    Pick<
+      UndefinedInitialDataOptions<Awaited<ReturnType<typeof apiWidgetsGet>>, TError, TData>,
+      "initialData"
+    >;
+  request?: SecondParameter<typeof API>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey };
+export function useApiWidgetsGet<
+  TData = Awaited<ReturnType<typeof apiWidgetsGet>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiWidgetsGet>>, TError, TData>>;
+  request?: SecondParameter<typeof API>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey };
+/**
+ * @summary Api
+ */
+
+export function useApiWidgetsGet<
+  TData = Awaited<ReturnType<typeof apiWidgetsGet>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof apiWidgetsGet>>, TError, TData>>;
+  request?: SecondParameter<typeof API>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getApiWidgetsGetQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
 
 /**
  * Get all map layer information

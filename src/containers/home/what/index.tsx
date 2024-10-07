@@ -155,13 +155,13 @@ export default function HomeWhat() {
             <div className="space-y-16">
               <header className="space-y-8 lg:space-y-12">
                 <H2 className="text-white lg:text-center">
-                  What can you do with Global Ecosystems Atlas?
+                  What can you do with the Global Ecosystems Atlas?
                 </H2>
                 <p className="text-xl text-navy-100 lg:text-center lg:text-2xl">
-                  The Global Ecosystems Atlas will be a versatile tool for identifying distribution
-                  of different ecosystem types, supporting conservation and restoration efforts,
-                  informing environmental management decisions, conducting research, and aiding in
-                  environmental and corporate reporting.
+                  The Global Ecosystems Atlas will be a versatile platform for identifying
+                  distribution of different ecosystem types, supporting conservation and restoration
+                  efforts, informing environmental management decisions, conducting research, and
+                  aiding in environmental and corporate reporting.
                 </p>
               </header>
             </div>

@@ -10,7 +10,7 @@ export type DataProps = {
   label: string;
 };
 
-interface HorizontalBarProps<D extends Partial<DataProps>> {
+interface RankingChartProps<D extends Partial<DataProps>> {
   data: D[];
   xScale: ScaleLinear<number, number, never>;
   colorScale: ScaleOrdinal<string, string, never>;
@@ -20,7 +20,7 @@ interface HorizontalBarProps<D extends Partial<DataProps>> {
   onBarClick?: (bar: D) => void;
 }
 
-const HorizontalBar = <D extends DataProps>({
+const RankingChart = <D extends DataProps>({
   data,
   xScale,
   colorScale,
@@ -28,7 +28,7 @@ const HorizontalBar = <D extends DataProps>({
   interactive = false,
   format,
   onBarClick,
-}: HorizontalBarProps<D>) => {
+}: RankingChartProps<D>) => {
   const [hover, setHover] = useState<string | number | null>(null);
 
   return (
@@ -65,7 +65,7 @@ const HorizontalBar = <D extends DataProps>({
                       })}
                       style={{
                         width: `${xScale(value)}%`,
-                        background: colorScale(id.toString()),
+                        background: colorScale(id.toString()) ?? "#000",
                       }}
                     />
                   </div>
@@ -84,4 +84,4 @@ const HorizontalBar = <D extends DataProps>({
   );
 };
 
-export default HorizontalBar;
+export default RankingChart;

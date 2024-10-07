@@ -68,7 +68,7 @@ describe("taxonomy functions and hooks", () => {
         id: "TF2.2",
         name: "Ecosystem 2",
         code: "TF2.2",
-        biome: "TF2",
+        biome: "FT2",
         realms: ["T", "F"],
       },
       {
@@ -91,9 +91,9 @@ describe("taxonomy functions and hooks", () => {
         realms: ["T"],
       },
       {
-        id: "TF2",
+        id: "FT2",
         name: "Biome 2",
-        biome: "TF2",
+        biome: "FT2",
         realms: ["T", "F"],
       },
       {
@@ -112,6 +112,11 @@ describe("taxonomy functions and hooks", () => {
         id: "T",
         name: "Realm 1",
         realms: ["T"],
+      },
+      {
+        id: "TF",
+        name: "Realm 2",
+        realms: ["T", "F"],
       },
       {
         id: "S",

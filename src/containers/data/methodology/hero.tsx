@@ -14,7 +14,7 @@ export const MethodologyHero = () => {
           <div className="col-span-12 lg:col-span-7 lg:col-start-5">
             <p className="text-lg">
               The gea_basemap was created by searching for and compiling existing spatial data
-              products that were intended to represent ecosystems Searches focused on publicly
+              products that were developed to represent ecosystems. Searches focused on publicly
               available data repositories, the scientific literature, and through a coordinated
               program of targeted outreach focused primarily on national ecosystem mapping
               organisations. Each dataset was subjected to a <strong>rigorous evaluation</strong>{" "}

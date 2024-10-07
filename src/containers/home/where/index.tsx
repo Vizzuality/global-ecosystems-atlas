@@ -37,10 +37,20 @@ export default function HomeWhere() {
               <header className="space-y-8 lg:space-y-12">
                 <H2>Where our data comes from?</H2>
                 <p className="text-xl lg:text-2xl">
-                  The Global Ecosystems Atlas offers data on ecosystems that have been
-                  scientifically validated and harmonised with the IUCN Global Ecosystem Typology -
-                  a common international system for classifying ecosystems across terrestrial,
-                  freshwater and marine realms.
+                  The Global Ecosystems Atlas was created by compiling existing spatial data
+                  products developed to represent ecosystems. These maps come from high-quality
+                  national, regional, and global repositories. Each dataset has been subjected to a
+                  rigorous evaluation process, including validation and harmonization with the{" "}
+                  <a
+                    href="https://iucn.org/resources/conservation-tool/iucn-global-ecosystem-typology"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    IUCN Global Ecosystem Typology
+                  </a>{" "}
+                  - an internationally recognized system for classifying ecosystems across
+                  terrestrial, freshwater and marine realms.
                 </p>
               </header>
 

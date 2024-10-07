@@ -22,14 +22,14 @@ const WHO = [
       "Focal points and signatories will have access to robust tools and datasets to streamline and enhance reporting processes, ensuring accurate, coherent and consistent compliance with international environmental frameworks.",
   },
   {
-    title: "Development banks and lending institutions",
-    description:
-      "Development banks and lending institutions will be able to use the Atlas to assess environmental risks and guide sustainable investments, ensuring projects align with conservation goals.",
-  },
-  {
     title: "Private sector",
     description:
       "Companies will be able to integrate the Atlas into business strategies to manage environmental risks, support sustainability goals, and enhance corporate social responsibility practices and reporting. For auditors, the Atlas will be an essential tool to verify and validate a company’s environmental claims and sustainability practices.",
+  },
+  {
+    title: "Development banks and lending institutions",
+    description:
+      "Development banks and lending institutions will be able to use the Atlas to assess environmental risks and guide sustainable investments, ensuring projects align with conservation goals.",
   },
   {
     title: "Local and indigenous communities",
