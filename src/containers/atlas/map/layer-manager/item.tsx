@@ -74,7 +74,7 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
       id,
       type: "test",
       config: {
-        "@@type": "RasterMaskLayer",
+        "@@type": "RasterMaskedLayer",
         source: {
           tiles: [
             "https://s3.amazonaws.com/wri-tiles/global-landcover-2015/{z}/{x}/{y}.png",

@@ -86,7 +86,7 @@ class RasterMaskLayer {
       maxZoom: source.maxzoom,
       visible: visibility ?? true,
       opacity: opacity ?? 1,
-      getTileData: (tile) => {
+      getTileData: (tile): Promise<ImageBitmap[]> => {
         const { x, y, z } = tile.index;
 
         return Promise.all(
