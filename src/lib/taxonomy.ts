@@ -19,6 +19,17 @@ export const getBiomeFromEFGCode = (efgCode: string) => {
   return `${realmIds.join("")}${biomeNumber}`;
 };
 
+export const getEFGSortedFromEFGCode = (efgCode: string) => {
+  const realmIds = efgCode
+    .replace(/[0-9.]/g, "")
+    .split("")
+    .sort();
+  const biomeNumber = efgCode.replace(/[A-Z]/g, "").split(".")[0];
+  const efgNumber = efgCode.replace(/[A-Z]/g, "").split(".")[1];
+
+  return `${realmIds.join("")}${biomeNumber}.${efgNumber}`;
+};
+
 export const useGetGroups = (
   data: {
     id: string;
