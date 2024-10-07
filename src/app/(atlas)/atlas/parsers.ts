@@ -21,7 +21,7 @@ export const biomesParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const ecosystemsParser = parseAsArrayOf(parseAsString).withDefault([]);
 export const depthParser = parseAsArrayOf(parseAsFloat).withDefault([-10000, 8849]);
 
-export const layersParser = parseAsArrayOf(parseAsString).withDefault(["terrain"]);
+export const layersParser = parseAsArrayOf(parseAsString).withDefault(["terrain", "efgs"]);
 export const layersSettingsParser = parseAsJson<{
   [key: string]: Record<string, unknown>;
 }>();
