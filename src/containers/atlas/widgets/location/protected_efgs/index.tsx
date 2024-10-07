@@ -23,7 +23,7 @@ import {
 
 import RankingChart from "@/components/charts/ranking";
 
-export const WidgetProtectedEfgs = () => {
+export const WidgetLocationProtectedEfgs = () => {
   const [location] = useSyncLocation();
 
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(

@@ -4,8 +4,6 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
-import { BiomesExtent } from "@/containers/atlas/widgets/extent/biomes";
-import { EFGSExtent } from "@/containers/atlas/widgets/extent/efgs";
 import { WidgetInfo } from "@/containers/atlas/widgets/info";
 import {
   Widget,
@@ -19,7 +17,10 @@ import {
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export const WidgetExtent = () => {
+import { BiomesExtent } from "./biomes";
+import { EFGSExtent } from "./efgs";
+
+export const WidgetLocationExtent = () => {
   const [location] = useSyncLocation();
 
   const {

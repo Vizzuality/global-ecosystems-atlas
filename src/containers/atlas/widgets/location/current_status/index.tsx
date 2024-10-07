@@ -16,7 +16,7 @@ import {
   WidgetTitle,
 } from "@/containers/atlas/widgets/item";
 
-export const WidgetStatus = () => {
+export const WidgetLocationStatus = () => {
   const [location] = useSyncLocation();
 
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
