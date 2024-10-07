@@ -38,8 +38,8 @@ export const HowToHero = () => {
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <p className="text-2xl font-light italic text-navy-600 lg:text-4xl">
               The development of the basemap involved the compilation and harmonization of existing,
-              publicly available assets that are known to represent ecosystems and that meet
-              stringent data quality standards.
+              publicly available geospatial data products that are known to represent ecosystems and
+              that meet stringent data quality standards.
             </p>
           </div>
         </Grid>
@@ -74,10 +74,6 @@ export const HowToHero = () => {
                   <TableRow>
                     <TableCell className="lg:text-nowrap">Classification System</TableCell>
                     <TableCell>IUCN Global Ecosystem Typology</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="lg:text-nowrap">Reclassification Tool</TableCell>
-                    <TableCell>ArcGIS Reclassify Tool</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="lg:text-nowrap">Input Data Sources</TableCell>
