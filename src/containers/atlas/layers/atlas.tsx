@@ -4,6 +4,8 @@ import { LAYERS } from "@/lib/layers";
 
 import { useSyncLayers } from "@/app/(atlas)/atlas/store";
 
+import { Info } from "@/containers/atlas/info";
+
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
@@ -28,16 +30,20 @@ export const AtlasLayersAtlas = () => {
 
       <RadioGroup value={value} onValueChange={handleAtlasLayerChange}>
         {ATLAS_LAYERS.map((layer) => (
-          <div key={layer.id} className="flex items-center gap-2">
-            <RadioGroupItem
-              key={layer.id}
-              value={layer.id}
-              id={layer.id}
-              className="cursor-pointer"
-            />
-            <Label htmlFor={layer.id} className="cursor-pointer text-sm">
-              {layer.name}
-            </Label>
+          <div key={layer.id} className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <RadioGroupItem
+                key={layer.id}
+                value={layer.id}
+                id={layer.id}
+                className="cursor-pointer"
+              />
+              <Label htmlFor={layer.id} className="cursor-pointer text-sm">
+                {layer.name}
+              </Label>
+            </div>
+
+            <Info>{layer.name}</Info>
           </div>
         ))}
       </RadioGroup>
