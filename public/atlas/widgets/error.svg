@@ -1,0 +1,48 @@
+<svg width="333" height="140" viewBox="0 0 333 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6174_19887)">
+<mask id="mask0_6174_19887" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-8" y="-31" width="349" height="200">
+<ellipse cx="166.5" cy="69" rx="174.5" ry="100" fill="white"/>
+</mask>
+<g mask="url(#mask0_6174_19887)">
+<rect x="-23" y="50.5" width="116" height="37" rx="3.5" fill="white"/>
+<rect x="-23" y="50.5" width="116" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="-11.5" y="63" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="-11.5" y="71" width="93" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="257" y="50.5" width="116" height="37" rx="3.5" fill="white"/>
+<rect x="257" y="50.5" width="116" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="268.5" y="63" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="268.5" y="71" width="93" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="74" y="102.5" width="117" height="37" rx="3.5" fill="white"/>
+<rect x="74" y="102.5" width="117" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="85.5" y="115" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="85.5" y="123" width="94" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="208" y="102.5" width="117" height="37" rx="3.5" fill="white"/>
+<rect x="208" y="102.5" width="117" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="219.5" y="115" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="219.5" y="123" width="94" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="155" y="0.5" width="117" height="37" rx="3.5" fill="white"/>
+<rect x="155" y="0.5" width="117" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="166.5" y="13" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="166.5" y="21" width="94" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="21" y="0.5" width="117" height="37" rx="3.5" fill="white"/>
+<rect x="21" y="0.5" width="117" height="37" rx="3.5" stroke="#F2F2F2"/>
+<rect x="32.5" y="13" width="31" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="32.5" y="21" width="94" height="4" rx="2" fill="#CFD6D9"/>
+<rect x="110" y="50.5" width="130" height="37" rx="3.5" fill="#FFEAEA"/>
+<rect x="110" y="50.5" width="130" height="37" rx="3.5" stroke="#EF4444"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M129.396 61.7124C129.733 61.5226 130.113 61.423 130.5 61.423C130.887 61.423 131.267 61.5226 131.604 61.7124C131.941 61.9021 132.223 62.1754 132.424 62.5061L132.426 62.5096L138.778 73.1146L138.785 73.125C138.981 73.4652 139.085 73.8509 139.086 74.2438C139.087 74.6367 138.985 75.023 138.791 75.3643C138.596 75.7056 138.316 75.9901 137.977 76.1893C137.639 76.3886 137.254 76.4957 136.861 76.5L136.853 76.5001L124.139 76.5C123.746 76.4957 123.362 76.3886 123.023 76.1893C122.684 75.9901 122.404 75.7056 122.209 75.3643C122.015 75.023 121.913 74.6367 121.914 74.2438C121.915 73.8509 122.019 73.4652 122.216 73.125L122.222 73.1146L128.576 62.5061C128.777 62.1754 129.059 61.9021 129.396 61.7124ZM130.5 62.923C130.371 62.923 130.244 62.9562 130.132 63.0194C130.02 63.0824 129.926 63.173 129.86 63.2826L123.512 73.8794C123.448 73.9917 123.414 74.1187 123.414 74.248C123.414 74.379 123.448 74.5078 123.512 74.6215C123.577 74.7353 123.671 74.8301 123.784 74.8965C123.896 74.9624 124.023 74.998 124.152 75H136.848C136.978 74.998 137.105 74.9624 137.216 74.8965C137.329 74.8301 137.423 74.7353 137.488 74.6215C137.553 74.5078 137.586 74.379 137.586 74.248C137.586 74.1187 137.552 73.9917 137.488 73.8794L131.141 63.284C131.141 63.2835 131.141 63.2831 131.14 63.2826C131.074 63.173 130.98 63.0824 130.868 63.0194C130.756 62.9562 130.629 62.923 130.5 62.923ZM130.5 66C130.914 66 131.25 66.3358 131.25 66.75V69.75C131.25 70.1642 130.914 70.5 130.5 70.5C130.086 70.5 129.75 70.1642 129.75 69.75V66.75C129.75 66.3358 130.086 66 130.5 66ZM129.75 72.75C129.75 72.3358 130.086 72 130.5 72H130.508C130.922 72 131.258 72.3358 131.258 72.75C131.258 73.1642 130.922 73.5 130.508 73.5H130.5C130.086 73.5 129.75 73.1642 129.75 72.75Z" fill="#EF4444"/>
+<rect x="149.5" y="63" width="30" height="4" rx="2" fill="#FFCCCC"/>
+<rect x="149.5" y="71" width="79" height="4" rx="2" fill="#FFCCCC"/>
+</g>
+<ellipse cx="166.5" cy="69" rx="174.5" ry="100" fill="url(#paint0_radial_6174_19887)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_6174_19887" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(166.5 69) rotate(90) scale(100 174.5)">
+<stop stop-color="white" stop-opacity="0"/>
+<stop offset="1" stop-color="white"/>
+</radialGradient>
+<clipPath id="clip0_6174_19887">
+<rect width="332" height="140" fill="white" transform="translate(0.5)"/>
+</clipPath>
+</defs>
+</svg>

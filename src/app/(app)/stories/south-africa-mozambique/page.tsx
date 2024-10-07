@@ -4,6 +4,8 @@ import { Metadata } from "next";
 
 import Image from "next/image";
 
+import Loading from "@/app/(app)/stories/south-africa-mozambique/loading";
+
 import { SAMSection1 } from "@/containers/stories/south-africa-mozambique/section-1";
 import { SAMSection2 } from "@/containers/stories/south-africa-mozambique/section-2";
 import { SAMSection3 } from "@/containers/stories/south-africa-mozambique/section-3";
@@ -15,9 +17,9 @@ export const metadata: Metadata = {
   description: "Stories: South Africa and Mozambique description",
 };
 
-export default async function StoriesSouthAfricaMozambiquePage() {
+export default function StoriesSouthAfricaMozambiquePage() {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loading />}>
       <SAMSection1 />
       <SAMSection2 />
       <SAMSection3 />

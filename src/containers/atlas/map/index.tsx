@@ -20,6 +20,7 @@ import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
 
 import Controls from "@/components/map/controls";
+import FeedbackControl from "@/components/map/controls/feedback";
 import { MenuControl } from "@/components/map/controls/menu";
 import SettingsControl from "@/components/map/controls/settings";
 import ShareControl from "@/components/map/controls/share";
@@ -101,6 +102,7 @@ export const AtlasMap = () => {
             <ShareControl>
               <MapShare />
             </ShareControl>
+            <FeedbackControl />
           </Controls>
         </Map>
       </div>

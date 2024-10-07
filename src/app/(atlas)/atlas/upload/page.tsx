@@ -60,7 +60,7 @@ export default function AtlasUploadPage() {
                 </div>
               </div>
               <p className="font-emdium text-center text-xs text-navy-400">
-                By uploading data you agree to the GEA Terms of service
+                By uploading data you agree to the Global Ecosystems Altas Terms of service
               </p>
             </div>
           </div>

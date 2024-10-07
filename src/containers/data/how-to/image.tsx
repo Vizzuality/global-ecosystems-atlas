@@ -16,10 +16,11 @@ export const HowToImage = () => {
         }}
       >
         <Image
-          src="/data/how-to.png"
+          src="/data/how-to.avif"
           alt="HowTo"
           fill
           className="max-w-none scale-150 object-cover"
+          priority
         />
       </TranslateY>
     </div>
