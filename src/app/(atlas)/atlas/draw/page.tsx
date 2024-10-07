@@ -31,7 +31,7 @@ export default async function AtlasDrawPage() {
             <div className="prose prose-sm">
               <p className="font-medium">
                 Draw the area you want to analyze on the map. Make sure it&rsquo;s smaller than
-                35,000 km², roughly the size of Belgium.
+                35,000 km², roughly the size of Lesotho.
               </p>
             </div>
             <div className="flex items-center justify-center">

@@ -67,7 +67,7 @@ export const Footer = () => {
 
         <div className="flex flex-col items-center justify-between space-y-10 border-t border-white pt-8 lg:flex-row lg:space-y-0">
           <div className="flex flex-col gap-10 lg:flex-row">
-            <ul className="flex flex-col gap-5 sm:flex-row">
+            <ul className="flex flex-col gap-5 lg:flex-row">
               {/* <li>
                 <a
                   href="https://www.facebook.com/"
@@ -102,13 +102,21 @@ export const Footer = () => {
                 </a>
               </li>
             </ul>
-            <ul className="flex flex-col gap-5 sm:flex-row">
+            <ul className="flex flex-col gap-5 lg:flex-row">
               <li className="relative before:absolute before:-top-5 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:before:-left-5 lg:before:top-1/2 lg:before:-translate-y-0.5">
                 <Link
                   href="/privacy-policy"
                   className="flex items-center justify-center space-x-1 text-xs font-medium"
                 >
                   <span>Privacy policy</span>
+                </Link>
+              </li>
+              <li className="relative mt-5 before:absolute before:-top-5 before:left-1/2 before:h-1 before:w-1 before:-translate-x-0.5 before:bg-white lg:ml-5 lg:mt-0 lg:before:-left-5 lg:before:top-1/2 lg:before:-translate-y-0.5">
+                <Link
+                  href="/disclaimer"
+                  className="flex items-center justify-center space-x-1 text-xs font-medium"
+                >
+                  <span>Disclaimer</span>
                 </Link>
               </li>
             </ul>

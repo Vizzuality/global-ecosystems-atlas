@@ -54,14 +54,14 @@ export default function AboutUsPartners() {
             </h3>
             <ul className="col-span-12 grid grid-cols-2 gap-x-8 gap-y-5 md:grid-cols-3 lg:col-span-10 lg:col-start-2 lg:grid-cols-4 xl:grid-cols-5">
               <PartnerItem
-                src="/partners/un-cbd.png"
+                src="/partners/un-cbd.webp"
                 alt="Convention on Biological Diversity"
                 width={158}
                 height={61}
                 href="https://www.cbd.int/"
               />
               <PartnerItem
-                src="/partners/ramsar.png"
+                src="/partners/ramsar.webp"
                 alt="Ramsar"
                 width={82}
                 height={110}
@@ -69,7 +69,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/resilience-frontiers.png"
+                src="/partners/resilience-frontiers.webp"
                 alt="Resilience frontiers"
                 width={168}
                 height={60}
@@ -77,7 +77,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/unccd.png"
+                src="/partners/unccd.webp"
                 alt="United Nations - Convention to Combat Desertification"
                 width={155}
                 height={43}
@@ -85,7 +85,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/unfccc.png"
+                src="/partners/unfccc.webp"
                 alt="United Nations - Framework Convention on Climate Change"
                 width={179}
                 height={40}
@@ -100,7 +100,7 @@ export default function AboutUsPartners() {
             </h3>
             <ul className="col-span-12 grid grid-cols-2 gap-x-2 gap-y-5 md:grid-cols-3 lg:col-span-10 lg:col-start-2 lg:grid-cols-4 xl:grid-cols-5">
               <PartnerItem
-                src="/partners/defra.png"
+                src="/partners/defra.webp"
                 alt="Department for Environment Food & Rural Affairs"
                 width={143}
                 height={74}
@@ -108,7 +108,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/unep.png"
+                src="/partners/unep.webp"
                 alt="United Nations - Environment programme"
                 width={121}
                 height={86}
@@ -124,14 +124,14 @@ export default function AboutUsPartners() {
             <ul className="col-span-12 grid grid-cols-2 gap-x-2 gap-y-24 md:grid-cols-3 lg:col-span-10 lg:col-start-2 lg:grid-cols-4 xl:grid-cols-5">
               <div className="col-span-2 flex gap-x-4 divide-x">
                 <PartnerItem
-                  src="/partners/center-for-ecosystem-science.png"
+                  src="/partners/center-for-ecosystem-science.webp"
                   alt="Centre for Ecosystem Science"
                   width={135}
                   height={67}
                   href="https://www.unsw.edu.au/research/ecosystem"
                 />
                 <PartnerItem
-                  src="/partners/unsw.png"
+                  src="/partners/unsw.webp"
                   alt="UNSW"
                   width={89}
                   height={103}
@@ -140,7 +140,7 @@ export default function AboutUsPartners() {
               </div>
 
               <PartnerItem
-                src="/partners/esri.png"
+                src="/partners/esri.webp"
                 alt="Esri"
                 width={150}
                 height={112}
@@ -148,7 +148,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/gbif.png"
+                src="/partners/gbif.webp"
                 alt="GBIF"
                 width={126}
                 height={51}
@@ -156,7 +156,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/iucn.png"
+                src="/partners/iucn.webp"
                 alt="IUCN"
                 width={65}
                 height={62}
@@ -164,7 +164,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/jcu.png"
+                src="/partners/jcu.webp"
                 alt="James Cook University"
                 width={131}
                 height={59}
@@ -172,7 +172,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/nature-positive-initiative.png"
+                src="/partners/nature-positive-initiative.webp"
                 alt="Nature positive initiative"
                 width={153}
                 height={84}
@@ -180,7 +180,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/planet.png"
+                src="/partners/planet.webp"
                 alt="Planet"
                 width={127}
                 height={63}
@@ -188,7 +188,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/seea.png"
+                src="/partners/seea.webp"
                 alt="System of Environmental Economic Accounting"
                 width={161}
                 height={70}
@@ -196,7 +196,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/uom.png"
+                src="/partners/uom.webp"
                 alt="The University of Melbourne"
                 width={114}
                 height={114}
@@ -204,7 +204,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/tnfd.png"
+                src="/partners/tnfd.webp"
                 alt="TNFD"
                 width={103}
                 height={102}
@@ -212,7 +212,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/unep-wcmc.png"
+                src="/partners/unep-wcmc.webp"
                 alt="UNEP - WCMC"
                 width={179}
                 height={87}
@@ -220,7 +220,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/usgs.png"
+                src="/partners/usgs.webp"
                 alt="USGS"
                 width={104}
                 height={104}
@@ -228,7 +228,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/villars-institute.png"
+                src="/partners/villars-institute.webp"
                 alt="Villars institute"
                 width={138}
                 height={40}
@@ -236,7 +236,7 @@ export default function AboutUsPartners() {
               />
 
               <PartnerItem
-                src="/partners/walderwyss.png"
+                src="/partners/walderwyss.webp"
                 alt="Walderwyss"
                 width={170}
                 height={32}

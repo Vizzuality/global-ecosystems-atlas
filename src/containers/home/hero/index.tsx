@@ -16,7 +16,7 @@ export default function HomeHero() {
           <div className="col-span-12 lg:col-span-8 lg:col-start-3">
             <p className="text-center text-xl lg:text-2xl">
               The Global Ecosystems Atlas will be the first comprehensive harmonised open resource
-              on the extent and change of all the world&rsquo;s ecosystems.
+              on the extent, change, condition and risk of all the world&rsquo;s ecosystems.
             </p>
           </div>
           <div className="col-span-12 flex justify-center">
