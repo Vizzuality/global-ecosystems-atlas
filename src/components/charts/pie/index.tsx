@@ -8,7 +8,7 @@ import { PieArcDatum, PieProps } from "@visx/shape/lib/shapes/Pie";
 import { Accessor } from "@visx/shape/lib/types";
 import { ScaleOrdinal } from "@visx/vendor/d3-scale";
 
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 
 const defaultMargin = { top: 1, right: 1, bottom: 1, left: 1 };
 
@@ -47,7 +47,7 @@ export interface PieChartProps<T> {
 export const PieChart = <T extends PieChartData>({
   data,
   colorScale,
-  selected,
+  // selected,
   interactive = false,
   width = 300,
   height = 300,
@@ -130,10 +130,10 @@ export const PieChart = <T extends PieChartData>({
                     <path
                       d={pie.path(arc) || undefined}
                       fill={getColor(arc)}
-                      strokeWidth={selected?.includes(arc.data.id) ? 2 : 1}
-                      className={cn({
-                        "stroke-white": true,
-                      })}
+                      // strokeWidth={selected?.includes(arc.data.id) ? 2 : 1}
+                      // className={cn({
+                      //   "stroke-white": true,
+                      // })}
                       {...(interactive && {
                         onClick: (e) => handleMouseClick(e, arc),
                         onMouseEnter: (e) => handleMouseEnter(e, arc),

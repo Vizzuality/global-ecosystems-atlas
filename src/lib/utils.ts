@@ -13,7 +13,7 @@ export function formatNumber(value: number, options?: Intl.NumberFormatOptions) 
     ...options,
   });
 
-  if (value < 0.001) {
+  if (value < 0.01) {
     return "<0.01";
   }
 
