@@ -6,6 +6,8 @@ import { Layer, useMap } from "react-map-gl";
 
 import { useSyncLayers, useSyncLayersSettings } from "@/app/(atlas)/atlas/store";
 
+import { Mask } from "@/containers/atlas/map/layer-manager/mask";
+
 import { DeckMapboxOverlayProvider } from "@/components/map/provider";
 
 import LayerManagerItem from "./item";
@@ -57,6 +59,7 @@ export const LayerManager = () => {
 
   return (
     <DeckMapboxOverlayProvider>
+      <Mask />
       <>
         {/*
           Generate all transparent backgrounds to be able to sort by layers without an error

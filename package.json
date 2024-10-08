@@ -84,6 +84,7 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.0.1",
     "@types/chroma-js": "^2.4.4",
+    "@types/geojson": "^7946.0.14",
     "@types/mailchimp__mailchimp_marketing": "^3.0.20",
     "@types/node": "^20.16.5",
     "@types/nodemailer": "^6.4.16",

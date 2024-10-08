@@ -11,6 +11,9 @@ import { ParamsConfig } from "@/types/layers";
 
 import RasterLayer from "@/components/map/layers/deck-layer/raster";
 import RasterMaskedLayer from "@/components/map/layers/deck-layer/raster-masked";
+import RasterMaskedExtensionLayer, {
+  DecodeExtension,
+} from "@/components/map/layers/deck-layer/raster-masked-extension";
 
 import FUNCTIONS from "./utils";
 
@@ -18,9 +21,11 @@ export const JSON_CONFIGURATION = new JSONConfiguration({
   React,
   classes: Object.assign({}, Layers, GeoLayers, AggregationLayers, {
     MaskExtension,
+    DecodeExtension,
     DataFilterExtension,
     RasterLayer,
     RasterMaskedLayer,
+    RasterMaskedExtensionLayer,
   }),
   functions: FUNCTIONS,
   constants: {},

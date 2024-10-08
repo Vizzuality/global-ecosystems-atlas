@@ -84,11 +84,15 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
           maxzoom: 10,
           minzoom: 0,
         },
-        terrainStart: depth[0],
-        terrainEnd: depth[1],
+        tileProps: {
+          terrainStart: depth[0],
+          terrainEnd: depth[1],
+        },
         bitmapProps: {
           terrainStart: depth[0],
           terrainEnd: depth[1],
+          extensions: [{ "@@type": "MaskExtension" }],
+          maskId: "location-mask-layer-deck",
         },
       },
       params_config: [

@@ -13,7 +13,7 @@ export type DeckLayerProps<T> = LayerProps &
     config: Layer | null;
   };
 
-const DeckJsonLayer = <T,>({ id, config }: DeckLayerProps<T>) => {
+const DeckLayer = <T,>({ id, config }: DeckLayerProps<T>) => {
   const i = `${id}-deck`;
   const { addLayer, removeLayer } = useDeckMapboxOverlayContext();
 
@@ -37,4 +37,4 @@ const DeckJsonLayer = <T,>({ id, config }: DeckLayerProps<T>) => {
   return null;
 };
 
-export default DeckJsonLayer;
+export default DeckLayer;

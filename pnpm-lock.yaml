@@ -213,6 +213,9 @@ importers:
       '@types/chroma-js':
         specifier: ^2.4.4
         version: 2.4.4
+      '@types/geojson':
+        specifier: ^7946.0.14
+        version: 7946.0.14
       '@types/mailchimp__mailchimp_marketing':
         specifier: ^3.0.20
         version: 3.0.20

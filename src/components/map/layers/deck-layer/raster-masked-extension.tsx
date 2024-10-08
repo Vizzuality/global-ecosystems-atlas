@@ -8,7 +8,7 @@ import { RasterTileSource } from "mapbox-gl";
 
 import { LayerProps } from "@/types/layers";
 
-export interface RasterMaskLayerProps extends LayerProps, TileLayerProps {
+export interface RasterMaskedExtensionLayerProps extends LayerProps, TileLayerProps {
   id: string;
   source: RasterTileSource;
   opacity: number;
@@ -75,8 +75,15 @@ export class DecodeExtension extends LayerExtension<BitmapLayerProps> {
 
 DecodeExtension.extensionName = "DecodeExtension";
 
-class RasterMaskLayer {
-  constructor({ id, source, visibility, opacity, bitmapProps, ...props }: RasterMaskLayerProps) {
+class RasterMaskedExtensionLayer {
+  constructor({
+    id,
+    source,
+    visibility,
+    opacity,
+    bitmapProps,
+    ...props
+  }: RasterMaskedExtensionLayerProps) {
     return new TileLayer<unknown>({
       ...props,
       id,
@@ -123,7 +130,6 @@ class RasterMaskLayer {
             visible: subLayerVisible,
             opacity: subLayerOpacity,
             terrainTexture: subLayerData[1],
-            extensions: [new DecodeExtension()],
           });
         }
         return null;
@@ -132,4 +138,4 @@ class RasterMaskLayer {
   }
 }
 
-export default RasterMaskLayer;
+export default RasterMaskedExtensionLayer;

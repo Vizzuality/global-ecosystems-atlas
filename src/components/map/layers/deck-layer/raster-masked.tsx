@@ -12,18 +12,19 @@ import { LayerProps } from "@/types/layers";
 
 import BitmapMaskedLayer from "@/components/map/layers/deck-layer/bitmap-masked";
 
-export interface RasterMaskedLayerProps extends LayerProps, TileLayerProps {
+export interface RasterMaskedLayerProps extends LayerProps {
   id: string;
   source: RasterTileSource;
   opacity: number;
   visibility: boolean;
+  tileProps: TileLayerProps;
   bitmapProps: BitmapLayerProps;
 }
 
 class RasterMaskedLayer {
-  constructor({ id, source, visibility, opacity, bitmapProps, ...props }: RasterMaskedLayerProps) {
+  constructor({ id, source, visibility, opacity, bitmapProps, tileProps }: RasterMaskedLayerProps) {
     return new TileLayer<unknown>({
-      ...props,
+      ...tileProps,
       id,
       data: source.tiles,
       tileSize: source.tileSize ?? 256,
@@ -64,8 +65,8 @@ class RasterMaskedLayer {
             id: subLayerId,
             image: subLayerData[0],
             bounds: [west, south, east, north],
-            visible: subLayerVisible,
-            opacity: subLayerOpacity,
+            visible: subLayerVisible ?? true,
+            opacity: subLayerOpacity ?? 1,
             terrainTexture: subLayerData[1],
           });
         }
