@@ -6,6 +6,7 @@ import { Layer, useMap } from "react-map-gl";
 
 import { useSyncLayers, useSyncLayersSettings } from "@/app/(atlas)/atlas/store";
 
+import { Location } from "@/containers/atlas/map/layer-manager/location";
 import { Mask } from "@/containers/atlas/map/layer-manager/mask";
 
 import { DeckMapboxOverlayProvider } from "@/components/map/provider";
@@ -56,7 +57,7 @@ export const LayerManager = () => {
   }, [layers, layersSettings, setLayersSettings]);
 
   const LAYERS = useMemo(() => {
-    return [...layers, "mask"];
+    return ["location", ...layers, "mask"]; // SUPER IMPORTANT: mask should always be the last one, otherwise you won't see anything
   }, [layers]);
 
   return (
@@ -85,7 +86,8 @@ export const LayerManager = () => {
           The first item will always be at the top of the layers stack
         */}
         {LAYERS.map((l) => {
-          if (l === "mask") return <Mask key={l} beforeId={`${LAYERS[LAYERS.length - 1]}-layer`} />;
+          if (l === "mask") return <Mask key={l} beforeId={`${l}-layer`} />;
+          if (l === "location") return <Location key={l} beforeId={`${l}-layer`} />;
 
           return (
             <LayerManagerItem

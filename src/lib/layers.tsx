@@ -22,6 +22,7 @@ export const LAYERS = [
         terrainEnd: "@@#params.depth1",
         extensions: [{ "@@type": "MaskExtension" }],
         maskId: "location-mask-layer-deck",
+        // getPolygonOffset: "@@=[-100000, -100000]",
       },
     },
     params_config: [
@@ -62,7 +63,7 @@ export const LAYERS = [
       "@@type": "RasterMaskedLayer",
       data: [
         // "https://tiles.globalforestwatch.org/gfw_forest_carbon_net_flux/v20240402/tcd_30/6/32/22.png",
-        "https://tiles.globalforestwatch.org/gfw_forest_carbon_gross_emissions/v20240402/tcd_30/{z}/{x}/{y}.png",
+        "https://tiles.globalforestwatch.org/birdlife_biodiversity_intactness/v201909/default/{z}/{x}/{y}.png",
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 10,

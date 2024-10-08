@@ -42,6 +42,8 @@ class RasterMaskedLayer extends TileLayer<ImageBitmap[], RasterMaskedLayerExtraP
     return Promise.reject(new Error("Invalid tile data"));
   }
 
+  _onTileError(): void {}
+
   renderSubLayers(
     sublayer: TileLayer["props"] & {
       id: string;
