@@ -7,19 +7,16 @@ export const LAYERS = [
     group: "atlas-data",
     config: {
       "@@type": "RasterMaskedLayer",
-      source: {
-        tiles: [
-          "https://s3.amazonaws.com/wri-tiles/global-landcover-2015/{z}/{x}/{y}.png",
-          // "https://tiles.globalforestwatch.org/umd_tree_cover_gain_from_height/v202206/mode/{z}/{x}/{y}.png",
-          `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
-        ],
-        maxzoom: 10,
-        minzoom: 0,
-      },
-      tileProps: {
-        terrainStart: "@@#params.depth0",
-        terrainEnd: "@@#params.depth1",
-      },
+
+      data: [
+        "https://s3.amazonaws.com/wri-tiles/global-landcover-2015/{z}/{x}/{y}.png",
+        // "https://tiles.globalforestwatch.org/umd_tree_cover_gain_from_height/v202206/mode/{z}/{x}/{y}.png",
+        `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
+      ],
+      maxZoom: 10,
+      minZoom: 0,
+      terrainStart: "@@#params.depth0",
+      terrainEnd: "@@#params.depth1",
       bitmapProps: {
         terrainStart: "@@#params.depth0",
         terrainEnd: "@@#params.depth1",
@@ -63,19 +60,15 @@ export const LAYERS = [
     group: "atlas-data",
     config: {
       "@@type": "RasterMaskedLayer",
-      source: {
-        tiles: [
-          // "https://tiles.globalforestwatch.org/gfw_forest_carbon_net_flux/v20240402/tcd_30/6/32/22.png",
-          "https://tiles.globalforestwatch.org/gfw_forest_carbon_gross_emissions/v20240402/tcd_30/{z}/{x}/{y}.png",
-          `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
-        ],
-        maxzoom: 10,
-        minzoom: 0,
-      },
-      tileProps: {
-        terrainStart: "@@#params.depth0",
-        terrainEnd: "@@#params.depth1",
-      },
+      data: [
+        // "https://tiles.globalforestwatch.org/gfw_forest_carbon_net_flux/v20240402/tcd_30/6/32/22.png",
+        "https://tiles.globalforestwatch.org/gfw_forest_carbon_gross_emissions/v20240402/tcd_30/{z}/{x}/{y}.png",
+        `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
+      ],
+      maxZoom: 10,
+      minZoom: 0,
+      terrainStart: "@@#params.depth0",
+      terrainEnd: "@@#params.depth1",
       bitmapProps: {
         terrainStart: "@@#params.depth0",
         terrainEnd: "@@#params.depth1",
@@ -119,18 +112,14 @@ export const LAYERS = [
     group: "atlas-data",
     config: {
       "@@type": "RasterMaskedLayer",
-      source: {
-        tiles: [
-          "https://tiles.globalforestwatch.org/gfw_forest_carbon_net_flux/v20240402/tcd_30/{z}/{x}/{y}.png",
-          `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
-        ],
-        maxzoom: 10,
-        minzoom: 0,
-      },
-      tileProps: {
-        terrainStart: "@@#params.depth0",
-        terrainEnd: "@@#params.depth1",
-      },
+      data: [
+        "https://tiles.globalforestwatch.org/gfw_forest_carbon_net_flux/v20240402/tcd_30/{z}/{x}/{y}.png",
+        `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
+      ],
+      maxZoom: 10,
+      minZoom: 0,
+      terrainStart: "@@#params.depth0",
+      terrainEnd: "@@#params.depth1",
       bitmapProps: {
         terrainStart: "@@#params.depth0",
         terrainEnd: "@@#params.depth1",
