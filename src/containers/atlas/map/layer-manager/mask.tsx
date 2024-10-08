@@ -11,7 +11,11 @@ import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
 
-export const Mask = () => {
+export type MaskProps = {
+  beforeId?: string;
+};
+
+export const Mask = ({ beforeId }: MaskProps) => {
   const { data: locationsData } = useApiLocationsGet();
   const [location] = useSyncLocation();
 
@@ -54,12 +58,15 @@ export const Mask = () => {
     return new GeoJsonLayer({
       id: "location-mask-layer-deck",
       data,
-      getFillColor: [0, 0, 0],
-      getLineColor: [0, 0, 0],
-      getLineWidth: 0,
-      operation: "mask",
+      stroked: true,
+      getFillColor: [0, 0, 0, 0],
+      getLineColor: [0, 0, 0, 255],
+      getLineWidth: 2,
+      beforeId,
+      lineWidthUnits: "pixels",
+      operation: "mask+draw",
     });
-  }, [LOCATION]);
+  }, [beforeId, LOCATION]);
 
   return <DeckLayer id="location-mask-layer" config={c} />;
 };

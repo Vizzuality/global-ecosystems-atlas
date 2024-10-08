@@ -55,11 +55,12 @@ export const LayerManager = () => {
     });
   }, [layers, layersSettings, setLayersSettings]);
 
-  const LAYERS = layers;
+  const LAYERS = useMemo(() => {
+    return [...layers, "mask"];
+  }, [layers]);
 
   return (
     <DeckMapboxOverlayProvider>
-      <Mask />
       <>
         {/*
           Generate all transparent backgrounds to be able to sort by layers without an error
@@ -84,6 +85,8 @@ export const LayerManager = () => {
           The first item will always be at the top of the layers stack
         */}
         {LAYERS.map((l) => {
+          if (l === "mask") return <Mask key={l} beforeId={`${LAYERS[LAYERS.length - 1]}-layer`} />;
+
           return (
             <LayerManagerItem
               key={l}

@@ -14,6 +14,7 @@ import BitmapMaskedLayer from "@/components/map/layers/deck-layer/bitmap-masked"
 
 export interface RasterMaskedLayerProps extends LayerProps {
   id: string;
+  beforeId?: string;
   source: RasterTileSource;
   opacity: number;
   visibility: boolean;
@@ -22,7 +23,15 @@ export interface RasterMaskedLayerProps extends LayerProps {
 }
 
 class RasterMaskedLayer {
-  constructor({ id, source, visibility, opacity, bitmapProps, tileProps }: RasterMaskedLayerProps) {
+  constructor({
+    id,
+    beforeId,
+    source,
+    visibility,
+    opacity,
+    bitmapProps,
+    tileProps,
+  }: RasterMaskedLayerProps) {
     return new TileLayer<unknown>({
       ...tileProps,
       id,
@@ -32,6 +41,8 @@ class RasterMaskedLayer {
       maxZoom: source.maxzoom,
       visible: visibility ?? true,
       opacity: opacity ?? 1,
+      // @ts-expect-error - `beforeId` is not a valid prop
+      beforeId,
       getTileData: (tile): Promise<ImageBitmap[]> => {
         return Promise.all(
           source.tiles.map((t) => {
@@ -47,6 +58,7 @@ class RasterMaskedLayer {
           }),
         );
       },
+      onTileError: () => {},
       // refinementStrategy: "never",
       renderSubLayers: (subLayer) => {
         const {

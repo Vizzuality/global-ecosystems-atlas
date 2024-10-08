@@ -54,7 +54,9 @@ export const WidgetLocationStatus = () => {
                         </span>
                         <span className="text-lg leading-none">%</span>
                       </span>
-                      <span className="text-xs font-medium leading-none">global coverage</span>
+                      <span className="text-xs font-medium leading-none">
+                        {!location && "global"} coverage
+                      </span>
                     </div>
                   </div>
                   <div className="h-2 w-full rounded-sm bg-white/20">
