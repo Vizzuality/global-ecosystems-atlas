@@ -1,11 +1,9 @@
-import { GeoBoundingBox, TileLayer, TileLayerProps } from "@deck.gl/geo-layers";
+import { _Tile2DHeader, GeoBoundingBox, TileLayer, TileLayerProps } from "@deck.gl/geo-layers";
 import { BitmapLayer, BitmapLayerProps } from "@deck.gl/layers";
 // import GL from "@luma.gl/constants";
 import { RasterTileSource } from "mapbox-gl";
 
-import { LayerProps } from "@/types/layers";
-
-export interface RasterLayerProps extends LayerProps {
+export interface RasterLayerExtraProps {
   id: string;
   beforeId?: string;
   source: RasterTileSource;
@@ -15,61 +13,39 @@ export interface RasterLayerProps extends LayerProps {
   bitmapProps: BitmapLayerProps;
 }
 
-class RasterLayer {
-  constructor({
-    id,
-    beforeId,
-    source,
-    visibility,
-    opacity,
-    tileProps,
-    bitmapProps,
-  }: RasterLayerProps) {
-    return new TileLayer<unknown>({
-      ...tileProps,
-      id,
-      data: source.tiles,
-      tileSize: source.tileSize ?? 256,
-      minZoom: source.minzoom,
-      maxZoom: source.maxzoom,
-      visible: visibility ?? true,
-      opacity: opacity ?? 1,
-      // @ts-expect-error - `beforeId` is not a valid prop
-      beforeId,
-      // refinementStrategy: "never",
-      renderSubLayers: (subLayer) => {
-        const {
-          id: subLayerId,
-          data: subLayerData,
-          tile: subLayerTile,
-          visible: subLayerVisible,
-          opacity: subLayerOpacity,
-        } = subLayer;
+class RasterLayer extends TileLayer<ImageBitmap, RasterLayerExtraProps> {
+  renderSubLayers(
+    sublayer: TileLayer["props"] & {
+      id: string;
+      data: ImageBitmap;
+      _offset: number;
+      tile: _Tile2DHeader<ImageBitmap>;
+    },
+  ): BitmapLayer | null {
+    const {
+      id: subLayerId,
+      data: subLayerData,
+      tile: subLayerTile,
+      visible: subLayerVisible,
+      opacity: subLayerOpacity,
+    } = sublayer;
 
-        const { zoom } = subLayerTile;
-        const { west, south, east, north } = subLayerTile.bbox as GeoBoundingBox;
+    const { west, south, east, north } = subLayerTile.bbox as GeoBoundingBox;
 
-        if (subLayerData) {
-          return new BitmapLayer({
-            ...bitmapProps,
-            id: subLayerId,
-            image: subLayerData,
-            bounds: [west, south, east, north],
-            // textureParameters: {
-            //   [GL.TEXTURE_MIN_FILTER]: GL.NEAREST,
-            //   [GL.TEXTURE_MAG_FILTER]: GL.NEAREST,
-            //   [GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
-            //   [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
-            // },
-            zoom,
-            visible: subLayerVisible,
-            opacity: subLayerOpacity,
-          });
-        }
-        return null;
-      },
-    });
+    if (subLayerData) {
+      return new BitmapLayer({
+        ...this.props.bitmapProps,
+        id: subLayerId,
+        image: subLayerData,
+        bounds: [west, south, east, north],
+        visible: subLayerVisible ?? true,
+        opacity: subLayerOpacity ?? 1,
+      });
+    }
+    return null;
   }
 }
+
+RasterLayer.layerName = "RasterLayer";
 
 export default RasterLayer;
