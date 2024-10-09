@@ -19,6 +19,7 @@ import { API } from "../../services/api";
 import type { ErrorType } from "../../services/api";
 
 import type {
+  ApiLocationsLocationGet200,
   HTTPValidationError,
   ResponseModelListLocation,
   ResponseModelListWidgetData,
@@ -103,6 +104,134 @@ export function useApiLocationsGet<
   request?: SecondParameter<typeof API>;
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getApiLocationsGetQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
+ * Get one location geometry
+ * @summary Api
+ */
+export const apiLocationsLocationGet = (
+  location: unknown,
+  options?: SecondParameter<typeof API>,
+  signal?: AbortSignal,
+) => {
+  return API<ApiLocationsLocationGet200>(
+    { url: `/locations/${location}`, method: "GET", signal },
+    options,
+  );
+};
+
+export const getApiLocationsLocationGetQueryKey = (location: unknown) => {
+  return [`/locations/${location}`] as const;
+};
+
+export const getApiLocationsLocationGetQueryOptions = <
+  TData = Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  location: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof apiLocationsLocationGet>>, TError, TData>
+    >;
+    request?: SecondParameter<typeof API>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getApiLocationsLocationGetQueryKey(location);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof apiLocationsLocationGet>>> = ({
+    signal,
+  }) => apiLocationsLocationGet(location, requestOptions, signal);
+
+  return { queryKey, queryFn, enabled: !!location, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ApiLocationsLocationGetQueryResult = NonNullable<
+  Awaited<ReturnType<typeof apiLocationsLocationGet>>
+>;
+export type ApiLocationsLocationGetQueryError = ErrorType<HTTPValidationError>;
+
+export function useApiLocationsLocationGet<
+  TData = Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  location: unknown,
+  options: {
+    query: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof apiLocationsLocationGet>>, TError, TData>
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+          TError,
+          TData
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof API>;
+  },
+): DefinedUseQueryResult<TData, TError> & { queryKey: QueryKey };
+export function useApiLocationsLocationGet<
+  TData = Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  location: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof apiLocationsLocationGet>>, TError, TData>
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+          TError,
+          TData
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof API>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey };
+export function useApiLocationsLocationGet<
+  TData = Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  location: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof apiLocationsLocationGet>>, TError, TData>
+    >;
+    request?: SecondParameter<typeof API>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey };
+/**
+ * @summary Api
+ */
+
+export function useApiLocationsLocationGet<
+  TData = Awaited<ReturnType<typeof apiLocationsLocationGet>>,
+  TError = ErrorType<HTTPValidationError>,
+>(
+  location: unknown,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof apiLocationsLocationGet>>, TError, TData>
+    >;
+    request?: SecondParameter<typeof API>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getApiLocationsLocationGetQueryOptions(location, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

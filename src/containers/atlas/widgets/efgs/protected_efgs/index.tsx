@@ -8,7 +8,7 @@ import { cn, formatPercentage } from "@/lib/utils";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
 
-import { WidgetInfo } from "@/containers/atlas/widgets/info";
+import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
@@ -37,7 +37,7 @@ export const WidgetEcosystemsProtectedEfgs = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Protection level</WidgetTitle>
-        <WidgetInfo>Hello</WidgetInfo>
+        <Info>Hello</Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>

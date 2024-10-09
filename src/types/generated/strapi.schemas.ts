@@ -4,6 +4,50 @@
  *  Global ecosystems atlas Tiler
  * OpenAPI spec version: 0.1.0
  */
+/**
+ * Point model.
+
+response model for `/point` endpoints
+ */
+export interface TitilerCoreModelsResponsesPoint {
+  band_names: string[];
+  coordinates: number[];
+  values: number[];
+}
+
+export type GeojsonPydanticGeometriesPointType =
+  (typeof GeojsonPydanticGeometriesPointType)[keyof typeof GeojsonPydanticGeometriesPointType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const GeojsonPydanticGeometriesPointType = {
+  Point: "Point",
+} as const;
+
+export type GeojsonPydanticGeometriesPointCoordinates = Position2D | Position3D;
+
+export type GeojsonPydanticGeometriesPointBbox =
+  | [number, number, number, number]
+  | [number, number, number, number, number, number]
+  | null;
+
+/**
+ * Point Model
+ */
+export interface GeojsonPydanticGeometriesPoint {
+  bbox?: GeojsonPydanticGeometriesPointBbox;
+  coordinates: GeojsonPydanticGeometriesPointCoordinates;
+  type: GeojsonPydanticGeometriesPointType;
+}
+
+export type ApiLocationsLocationGet200 =
+  | GeojsonPydanticGeometriesPoint
+  | MultiPoint
+  | LineString
+  | MultiLineString
+  | Polygon
+  | MultiPolygon
+  | GeometryCollection;
+
 export type WidgetMetadataAbstract = string | null;
 
 export interface WidgetMetadata {
@@ -48,11 +92,11 @@ export interface SuccessResponse {
 }
 
 export interface SourceDataset {
-  id: string;
+  dataset_pixel_value: number;
+  efg_pixel_value: number;
   label: string;
-  map_class_label: string;
-  spatial_resolution: string;
-  url: string;
+  map_class_name: string;
+  spatial_resolution: number;
   year: number;
 }
 
@@ -85,14 +129,107 @@ export interface ResponseModelListDataset {
 }
 
 /**
- * Point model.
-
-response model for `/point` endpoints
+ * @minItems 3
+ * @maxItems 3
  */
-export interface Point {
-  band_names: string[];
-  coordinates: number[];
-  values: number[];
+export type Position3D = [number, number, number];
+
+/**
+ * @minItems 2
+ * @maxItems 2
+ */
+export type Position2D = [number, number];
+
+export type PolygonType = (typeof PolygonType)[keyof typeof PolygonType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const PolygonType = {
+  Polygon: "Polygon",
+} as const;
+
+export type PolygonCoordinatesItemItem = Position2D | Position3D;
+
+export type PolygonBbox =
+  | [number, number, number, number]
+  | [number, number, number, number, number, number]
+  | null;
+
+/**
+ * Polygon Model
+ */
+export interface Polygon {
+  bbox?: PolygonBbox;
+  coordinates: PolygonCoordinatesItemItem[][];
+  type: PolygonType;
+}
+
+export type MultiPolygonType = (typeof MultiPolygonType)[keyof typeof MultiPolygonType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const MultiPolygonType = {
+  MultiPolygon: "MultiPolygon",
+} as const;
+
+export type MultiPolygonCoordinatesItemItemItem = Position2D | Position3D;
+
+export type MultiPolygonBbox =
+  | [number, number, number, number]
+  | [number, number, number, number, number, number]
+  | null;
+
+/**
+ * MultiPolygon Model
+ */
+export interface MultiPolygon {
+  bbox?: MultiPolygonBbox;
+  coordinates: MultiPolygonCoordinatesItemItemItem[][][];
+  type: MultiPolygonType;
+}
+
+export type MultiPointType = (typeof MultiPointType)[keyof typeof MultiPointType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const MultiPointType = {
+  MultiPoint: "MultiPoint",
+} as const;
+
+export type MultiPointCoordinatesItem = Position2D | Position3D;
+
+export type MultiPointBbox =
+  | [number, number, number, number]
+  | [number, number, number, number, number, number]
+  | null;
+
+/**
+ * MultiPoint Model
+ */
+export interface MultiPoint {
+  bbox?: MultiPointBbox;
+  coordinates: MultiPointCoordinatesItem[];
+  type: MultiPointType;
+}
+
+export type MultiLineStringType = (typeof MultiLineStringType)[keyof typeof MultiLineStringType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const MultiLineStringType = {
+  MultiLineString: "MultiLineString",
+} as const;
+
+export type MultiLineStringCoordinatesItemItem = Position2D | Position3D;
+
+export type MultiLineStringBbox =
+  | [number, number, number, number]
+  | [number, number, number, number, number, number]
+  | null;
+
+/**
+ * MultiLineString Model
+ */
+export interface MultiLineString {
+  bbox?: MultiLineStringBbox;
+  coordinates: MultiLineStringCoordinatesItemItem[][];
+  type: MultiLineStringType;
 }
 
 export type MetadataVersion = string | null;
@@ -123,6 +260,30 @@ export interface Location {
   location_code: string;
 }
 
+export type LineStringType = (typeof LineStringType)[keyof typeof LineStringType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const LineStringType = {
+  LineString: "LineString",
+} as const;
+
+export type LineStringCoordinatesItem = Position2D | Position3D;
+
+export type LineStringBbox =
+  | [number, number, number, number]
+  | [number, number, number, number, number, number]
+  | null;
+
+/**
+ * LineString Model
+ */
+export interface LineString {
+  bbox?: LineStringBbox;
+  /** @minItems 2 */
+  coordinates: LineStringCoordinatesItem[];
+  type: LineStringType;
+}
+
 export type LayerTax = number | null;
 
 export type LayerMetadata = Metadata | null;
@@ -148,14 +309,12 @@ export const InteractivityResponseType = {
   realms: "realms",
 } as const;
 
-export type InteractivityResponseSourcesAgreement = string | null;
-
 export type InteractivityResponseLabel = string | null;
 
 export interface InteractivityResponse {
-  label?: InteractivityResponseLabel;
-  source_datasets?: SourceDataset[];
-  sources_agreement?: InteractivityResponseSourcesAgreement;
+  label: InteractivityResponseLabel;
+  source_datasets: SourceDataset[];
+  sources_agreement: string;
   type: InteractivityResponseType;
 }
 
@@ -178,6 +337,37 @@ export const ImageType = {
 
 export interface HTTPValidationError {
   detail?: ValidationError[];
+}
+
+export type GeometryCollectionType =
+  (typeof GeometryCollectionType)[keyof typeof GeometryCollectionType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const GeometryCollectionType = {
+  GeometryCollection: "GeometryCollection",
+} as const;
+
+export type GeometryCollectionGeometriesItem =
+  | GeojsonPydanticGeometriesPoint
+  | MultiPoint
+  | LineString
+  | MultiLineString
+  | Polygon
+  | MultiPolygon
+  | GeometryCollection;
+
+export type GeometryCollectionBbox =
+  | [number, number, number, number]
+  | [number, number, number, number, number, number]
+  | null;
+
+/**
+ * GeometryCollection Model
+ */
+export interface GeometryCollection {
+  bbox?: GeometryCollectionBbox;
+  geometries: GeometryCollectionGeometriesItem[];
+  type: GeometryCollectionType;
 }
 
 export type EcosystemEfgCode = string | null;

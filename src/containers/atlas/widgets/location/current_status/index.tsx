@@ -5,7 +5,7 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
-import { WidgetInfo } from "@/containers/atlas/widgets/info";
+import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
@@ -38,7 +38,7 @@ export const WidgetLocationStatus = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Current status</WidgetTitle>
-        <WidgetInfo>Hello</WidgetInfo>
+        <Info>Hello</Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
@@ -54,7 +54,9 @@ export const WidgetLocationStatus = () => {
                         </span>
                         <span className="text-lg leading-none">%</span>
                       </span>
-                      <span className="text-xs font-medium leading-none">global coverage</span>
+                      <span className="text-xs font-medium leading-none">
+                        {!location && "global"} coverage
+                      </span>
                     </div>
                   </div>
                   <div className="h-2 w-full rounded-sm bg-white/20">
