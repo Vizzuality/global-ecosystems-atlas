@@ -4,21 +4,15 @@ import {
   _TileLoadProps,
   GeoBoundingBox,
   TileLayer,
-  TileLayerProps,
 } from "@deck.gl/geo-layers";
 import { BitmapLayerProps } from "@deck.gl/layers";
 // import GL from "@luma.gl/constants";
-import { RasterTileSource } from "mapbox-gl";
 
 import BitmapMaskedLayer from "@/components/map/layers/deck-layer/bitmap-masked";
 
 export interface RasterMaskedLayerExtraProps {
   id: string;
   beforeId?: string;
-  source: RasterTileSource;
-  opacity: number;
-  visibility: boolean;
-  tileProps: TileLayerProps;
   bitmapProps: BitmapLayerProps;
 }
 
@@ -70,7 +64,7 @@ class RasterMaskedLayer extends TileLayer<ImageBitmap[], RasterMaskedLayerExtraP
         bounds: [west, south, east, north],
         visible: subLayerVisible ?? true,
         opacity: subLayerOpacity ?? 1,
-        terrainTexture: subLayerData[1],
+        depthTexture: subLayerData[1],
       });
     }
     return null;

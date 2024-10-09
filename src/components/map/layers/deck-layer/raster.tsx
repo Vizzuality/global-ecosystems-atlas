@@ -1,15 +1,9 @@
-import { _Tile2DHeader, GeoBoundingBox, TileLayer, TileLayerProps } from "@deck.gl/geo-layers";
+import { _Tile2DHeader, GeoBoundingBox, TileLayer } from "@deck.gl/geo-layers";
 import { BitmapLayer, BitmapLayerProps } from "@deck.gl/layers";
 // import GL from "@luma.gl/constants";
-import { RasterTileSource } from "mapbox-gl";
-
 export interface RasterLayerExtraProps {
   id: string;
   beforeId?: string;
-  source: RasterTileSource;
-  opacity: number;
-  visibility: boolean;
-  tileProps: TileLayerProps;
   bitmapProps: BitmapLayerProps;
 }
 

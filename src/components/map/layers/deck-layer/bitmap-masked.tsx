@@ -4,9 +4,9 @@ import { Model } from "@luma.gl/engine";
 import { ShaderModule } from "@luma.gl/shadertools";
 
 class BitmapMaskedLayer extends BitmapLayer<{
-  terrainTexture: string;
-  terrainStart: number;
-  terrainEnd: number;
+  depthTexture: string;
+  depthStart: number;
+  depthEnd: number;
 }> {
   state!: {
     disablePicking?: boolean;
@@ -20,32 +20,43 @@ class BitmapMaskedLayer extends BitmapLayer<{
   getShaders() {
     const shaders = super.getShaders();
     const m = {
-      name: "bitmap-masked",
+      name: "depth",
       vs: /* glsl */ `
-        uniform sampler2D terrainTexture;
-        uniform float terrainStart;
-        uniform float terrainEnd;
-    `,
-      fs: /* glsl */ `
-        uniform sampler2D terrainTexture;
-        uniform float terrainStart;
-        uniform float terrainEnd;
+        uniform sampler2D depthTexture;
+
+        uniform depthUniforms {
+          float start;
+          float end;
+        } depth;
       `,
+      fs: /* glsl */ `
+        uniform sampler2D depthTexture;
+        uniform depthUniforms {
+          float start;
+          float end;
+        } depth;
+      `,
+      uniformTypes: {
+        start: "f32",
+        end: "f32",
+      },
       inject: {
         "fs:#main-end": /* glsl */ `
-          vec4 b = texture(bitmapTexture, uv);
-          vec4 t = texture(terrainTexture, uv);
+          vec4 t = texture(depthTexture, uv);
           float height = -10000.0 + (((t.r * 255.0) * 256.0 * 256.0 + (t.g * 255.0) * 256.0 + (t.b * 255.0)) * 0.1);
           float h = height / 8849.0;
-          if (height < terrainStart || height > terrainEnd) {
+          if (height <= depth.start || height >= depth.end) {
             discard;
           }
-          fragColor = b;
         `,
       },
-    };
+    } as const satisfies ShaderModule<{
+      depthTexture: string;
+      start: number;
+      end: number;
+    }>;
 
-    if (!shaders.modules.find((m: ShaderModule) => m.name === "bitmap-masked")) {
+    if (!shaders.modules.find((m: ShaderModule) => m.name === "depth")) {
       shaders.modules.push(m);
     }
 
@@ -55,7 +66,7 @@ class BitmapMaskedLayer extends BitmapLayer<{
   initializeState(): void {
     super.initializeState();
     const texture = this.context.device.createTexture({
-      data: this.props.terrainTexture,
+      data: this.props.depthTexture,
     });
     this.setState({
       tTexture: texture,
@@ -64,12 +75,17 @@ class BitmapMaskedLayer extends BitmapLayer<{
 
   draw(this: BitmapMaskedLayer, opts: unknown) {
     const model = this.state.model as Model;
-    model.setBindings({
-      terrainTexture: this.state.tTexture as Texture,
-    });
-    model.setUniforms({
-      terrainStart: this.props.terrainStart,
-      terrainEnd: this.props.terrainEnd,
+    if (this.state.tTexture) {
+      model.setBindings({
+        depthTexture: this.state.tTexture,
+      });
+    }
+
+    model.shaderInputs.setProps({
+      depth: {
+        start: this.props.depthStart,
+        end: this.props.depthEnd,
+      },
     });
     super.draw(opts);
   }

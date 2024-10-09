@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 
+// import { MVTLayer } from "@deck.gl/geo-layers";
 import { GeoJsonLayer } from "@deck.gl/layers";
 import { GeoJSON } from "geojson";
 
@@ -66,7 +67,25 @@ export const Mask = ({ beforeId }: MaskProps) => {
       beforeId,
       operation: "mask",
     });
-  }, [beforeId, GEOJSON]);
+    // return new MVTLayer({
+    //   id: "location-mask-layer-deck",
+    //   data: "https://tiles.globalforestwatch.org/wdpa_protected_areas/v202308/default/{z}/{x}/{y}.pbf",
+    //   binary: false,
+    //   maxZoom: 10,
+    //   beforeId,
+    //   pickable: false,
+    //   renderSubLayers: (props) => {
+    //     if (!props.data) return null;
+
+    //     // const d = props.data.filter(d1 => d1.properties.iso3 === 'PRT');
+    //     return new GeoJsonLayer(props, {
+    //       data: props.data,
+    //       operation: "mask",
+    //       pickable: false,
+    //     });
+    //   },
+    // });
+  }, [GEOJSON, beforeId]);
 
   return <DeckLayer id="location-mask-layer" config={m} />;
 };
