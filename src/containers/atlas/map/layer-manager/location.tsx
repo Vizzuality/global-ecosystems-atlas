@@ -3,9 +3,9 @@
 import { useMemo } from "react";
 
 import { GeoJsonLayer } from "@deck.gl/layers";
-import { GeoJSON } from "geojson";
+import { GeoJSON, Polygon } from "geojson";
 
-import { useApiLocationsGet } from "@/types/generated/locations";
+import { useApiLocationsLocationGet } from "@/types/generated/locations";
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
@@ -16,13 +16,13 @@ export type LocationProps = {
 };
 
 export const Location = ({ beforeId }: LocationProps) => {
-  const { data: locationsData } = useApiLocationsGet();
   const [location] = useSyncLocation();
 
-  const LOCATION = useMemo(() => {
-    if (!locationsData) return null;
-    return locationsData.data.find((l) => l.location_code === location);
-  }, [location, locationsData]);
+  const { data: locationData } = useApiLocationsLocationGet(location, {
+    query: {
+      enabled: !!location,
+    },
+  });
 
   const GEOJSON = useMemo<GeoJSON>(() => {
     return {
@@ -31,30 +31,11 @@ export const Location = ({ beforeId }: LocationProps) => {
         {
           type: "Feature",
           properties: {},
-          geometry: {
-            type: "Polygon",
-            coordinates: [
-              LOCATION?.bounds
-                ? [
-                    [LOCATION.bounds[0], LOCATION.bounds[1]],
-                    [LOCATION.bounds[0], LOCATION.bounds[3]],
-                    [LOCATION.bounds[2], LOCATION.bounds[3]],
-                    [LOCATION.bounds[2], LOCATION.bounds[1]],
-                    [LOCATION.bounds[0], LOCATION.bounds[1]],
-                  ]
-                : [
-                    [-180, -90],
-                    [-180, 90],
-                    [180, 90],
-                    [180, -90],
-                    [-180, -90],
-                  ],
-            ],
-          },
+          geometry: locationData as Polygon,
         },
       ],
     };
-  }, [LOCATION]);
+  }, [locationData]);
 
   const m = useMemo(() => {
     return new GeoJsonLayer({

@@ -6,8 +6,9 @@ import { Layer } from "@deck.gl/core";
 
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
+import { useLocationId } from "@/lib/locations";
 
-import { useSyncDepth } from "@/app/(atlas)/atlas/store";
+import { useSyncDepth, useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
 
@@ -19,7 +20,10 @@ interface LayerManagerItemProps {
 
 const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const LAYER = LAYERS.find((l) => l.id === id);
+  const [location] = useSyncLocation();
   const [depth] = useSyncDepth();
+
+  const LOCATION = useLocationId(location);
 
   const { config, params_config } = LAYER ?? {};
   const c = parseConfig<Layer>({
@@ -32,6 +36,7 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
     params_config,
     settings: {
       ...settings,
+      extent: LOCATION?.bounds || null,
       depth0: depth[0],
       depth1: depth[1],
     },

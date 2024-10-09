@@ -9,15 +9,18 @@ export const LAYERS = [
       "@@type": "RasterMaskedLayer",
 
       data: [
-        "https://s3.amazonaws.com/wri-tiles/global-landcover-2015/{z}/{x}/{y}.png",
+        `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png?asset=realms`,
+        // "https://s3.amazonaws.com/wri-tiles/global-landcover-2015/{z}/{x}/{y}.png",
         // `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 10,
       minZoom: 0,
       refinementStrategy: "no-overlap",
+      zoomOffset: 1,
       depthStart: "@@#params.depth0",
       depthEnd: "@@#params.depth1",
+      extent: "@@#params.extent",
       bitmapProps: {
         depthStart: "@@#params.depth0",
         depthEnd: "@@#params.depth1",
@@ -41,6 +44,10 @@ export const LAYERS = [
       {
         key: "depth1",
         default: 8849,
+      },
+      {
+        key: "extent",
+        default: null,
       },
     ],
     legend_config: {
@@ -62,15 +69,16 @@ export const LAYERS = [
     config: {
       "@@type": "RasterMaskedLayer",
       data: [
-        // "https://tiles.globalforestwatch.org/gfw_forest_carbon_net_flux/v20240402/tcd_30/6/32/22.png",
-        "https://tiles.globalforestwatch.org/birdlife_biodiversity_intactness/v201909/default/{z}/{x}/{y}.png",
+        `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png?asset=biomes`,
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 10,
       minZoom: 0,
       refinementStrategy: "no-overlap",
+      zoomOffset: 1,
       depthStart: "@@#params.depth0",
       depthEnd: "@@#params.depth1",
+      extent: "@@#params.extent",
       bitmapProps: {
         depthStart: "@@#params.depth0",
         depthEnd: "@@#params.depth1",
@@ -94,6 +102,10 @@ export const LAYERS = [
       {
         key: "depth1",
         default: 8849,
+      },
+      {
+        key: "extent",
+        default: null,
       },
     ],
     legend_config: {
@@ -115,14 +127,16 @@ export const LAYERS = [
     config: {
       "@@type": "RasterMaskedLayer",
       data: [
-        "https://tiles.globalforestwatch.org/gfw_forest_carbon_net_flux/v20240402/tcd_30/{z}/{x}/{y}.png",
+        `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png?asset=efgs`,
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 10,
       minZoom: 0,
       refinementStrategy: "no-overlap",
+      zoomOffset: 1,
       depthStart: "@@#params.depth0",
       depthEnd: "@@#params.depth1",
+      extent: "@@#params.extent",
       bitmapProps: {
         depthStart: "@@#params.depth0",
         depthEnd: "@@#params.depth1",
@@ -146,6 +160,10 @@ export const LAYERS = [
       {
         key: "depth1",
         default: 8849,
+      },
+      {
+        key: "extent",
+        default: null,
       },
     ],
     legend_config: {
