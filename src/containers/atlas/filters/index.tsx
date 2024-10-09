@@ -12,7 +12,7 @@ export const AtlasFilters = () => {
       <FilterItem defaultOpen={true} trigger={<RealmsTrigger />} component={<RealmsContent />} />
       <FilterItem trigger={<BiomesTrigger />} component={<BiomesContent />} />
       <FilterItem trigger={<EcosystemsTrigger />} component={<EcosystemsContent />} />
-      <FilterItem trigger={<DepthTrigger />} component={<DepthContent />} />
+      <FilterItem defaultOpen={true} trigger={<DepthTrigger />} component={<DepthContent />} />
     </>
   );
 };

@@ -10,7 +10,7 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
-import { WidgetInfo } from "@/containers/atlas/widgets/info";
+import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
@@ -72,7 +72,7 @@ export const WidgetLocationProtectedEfgs = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Top 5 protected ecosystem groups</WidgetTitle>
-        <WidgetInfo>Hello</WidgetInfo>
+        <Info>Hello</Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>

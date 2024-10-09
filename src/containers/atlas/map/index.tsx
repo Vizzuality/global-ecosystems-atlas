@@ -1,21 +1,26 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 
+import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue } from "jotai";
 
 import { env } from "@/env.mjs";
+
+import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import {
   sidebarOpenAtom,
   tmpBboxAtom,
   useSyncBasemap,
   useSyncBbox,
+  useSyncLocation,
 } from "@/app/(atlas)/atlas/store";
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
+import { LayerManager } from "@/containers/atlas/map/layer-manager";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
 
@@ -27,7 +32,10 @@ import ShareControl from "@/components/map/controls/share";
 import ZoomControl from "@/components/map/controls/zoom";
 
 export const AtlasMap = () => {
+  const queryClient = useQueryClient();
   const { atlasMap } = useMap();
+  const [loaded, setLoaded] = useState(false);
+  const [location] = useSyncLocation();
   const [bbox, setBbox] = useSyncBbox();
   const [tmpBbox, setTmpBbox] = useAtom(tmpBboxAtom);
   const sidebarOpen = useAtomValue(sidebarOpenAtom);
@@ -92,6 +100,12 @@ export const AtlasMap = () => {
           }}
           mapStyle={mapStyle}
           onMove={handleMove}
+          onLoad={async () => {
+            if (location) {
+              await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions(location));
+            }
+            setLoaded(true);
+          }}
         >
           <Controls>
             <MenuControl />
@@ -104,6 +118,8 @@ export const AtlasMap = () => {
             </ShareControl>
             <FeedbackControl />
           </Controls>
+
+          {loaded && <LayerManager />}
         </Map>
       </div>
     </div>

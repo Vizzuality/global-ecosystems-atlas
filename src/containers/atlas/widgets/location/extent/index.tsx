@@ -4,7 +4,7 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
-import { WidgetInfo } from "@/containers/atlas/widgets/info";
+import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
@@ -39,7 +39,7 @@ export const WidgetLocationExtent = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Extent</WidgetTitle>
-        <WidgetInfo>Hello</WidgetInfo>
+        <Info>Hello</Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader

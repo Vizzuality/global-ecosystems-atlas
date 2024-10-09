@@ -2,9 +2,13 @@
 
 import { useCallback, useState } from "react";
 
+import { useQueryClient } from "@tanstack/react-query";
 import { useSetAtom } from "jotai";
 
-import { useApiLocationsGet } from "@/types/generated/locations";
+import {
+  getApiLocationsLocationGetQueryOptions,
+  useApiLocationsGet,
+} from "@/types/generated/locations";
 
 import { bboxParser } from "@/app/(atlas)/atlas/parsers";
 import { tmpBboxAtom, useSyncLocation } from "@/app/(atlas)/atlas/store";
@@ -19,6 +23,7 @@ type Option = {
 };
 
 export const AtlasSearch = () => {
+  const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useSyncLocation();
@@ -28,16 +33,16 @@ export const AtlasSearch = () => {
   const { data: locationsData } = useApiLocationsGet();
 
   const handleSearch = useCallback(
-    (value: string) => {
+    (v: string) => {
       setOpen(true);
-      setSearch(value);
+      setSearch(v);
     },
     [setSearch],
   );
 
   const handleSelect = useCallback(
-    (value: Option | null) => {
-      if (!value) {
+    async (v: Option | null) => {
+      if (!v) {
         setOpen(false);
         setSearch("");
         setLocation(null);
@@ -45,12 +50,15 @@ export const AtlasSearch = () => {
         return;
       }
 
-      setSearch(value.label);
+      setSearch(v.label);
       setOpen(false);
-      setLocation(value.value);
-      setTmpBbox(value.bounds);
+
+      await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions(v.value));
+
+      setLocation(v.value);
+      setTmpBbox(v.bounds);
     },
-    [setLocation, setTmpBbox],
+    [queryClient, setLocation, setTmpBbox],
   );
 
   return (

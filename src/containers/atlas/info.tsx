@@ -4,7 +4,7 @@ import { FiInfo } from "react-icons/fi";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-export const WidgetInfo = ({ children }: PropsWithChildren) => {
+export const Info = ({ children }: PropsWithChildren) => {
   return (
     <Dialog>
       <DialogTrigger>

@@ -5,13 +5,13 @@ import { ParentSize } from "@visx/responsive";
 import { scaleOrdinal } from "@visx/scale";
 
 import { REALMS, RealmsIds } from "@/lib/colors";
-import { formatNumber, formatPercentage } from "@/lib/utils";
+import { formatPercentage } from "@/lib/utils";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
-import { WidgetInfo } from "@/containers/atlas/widgets/info";
+import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
@@ -70,7 +70,7 @@ export const WidgetLocationExtentRealms = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Ecosystem functional groups</WidgetTitle>
-        <WidgetInfo>Hello</WidgetInfo>
+        <Info>Hello</Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
@@ -94,9 +94,9 @@ export const WidgetLocationExtentRealms = () => {
                             }}
                           />
                           <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center px-8">
-                            <div>
+                            <div className="space-x-1">
                               <span className="text-4xl font-semibold leading-none">
-                                {formatNumber((SELECTED?.value ?? 0) * 100)}
+                                {formatPercentage(SELECTED?.value ?? 0, {}, false)}
                               </span>
                               <span className="text-lg leading-none">%</span>
                             </div>

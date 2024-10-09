@@ -1,3 +1,4 @@
+import { AtlasLayers } from "@/containers/atlas/layers";
 import {
   AtlasSidebarContainer,
   AtlasSidebarHeader,
@@ -11,7 +12,9 @@ export default function AtlasLayersPage() {
       <AtlasSidebarHeader>
         <AtlasSidebarTitle>Layers</AtlasSidebarTitle>
       </AtlasSidebarHeader>
-      <AtlasSidebarContainer>Atlas layers page</AtlasSidebarContainer>
+      <AtlasSidebarContainer>
+        <AtlasLayers />
+      </AtlasSidebarContainer>
     </AtlasSidebarSection>
   );
 }

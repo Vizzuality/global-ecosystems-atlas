@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { atom } from "jotai";
 import { createSerializer, useQueryState } from "nuqs";
 
@@ -9,6 +11,8 @@ import {
   biomesParser,
   depthParser,
   ecosystemsParser,
+  layersParser,
+  layersSettingsParser,
   locationParser,
   realmsParser,
 } from "@/app/(atlas)/atlas/parsers";
@@ -28,6 +32,16 @@ export const useSyncLocation = () => {
   return useQueryState("location", locationParser);
 };
 
+// LAYERS
+export const useSyncLayers = () => {
+  return useQueryState("layers", layersParser);
+};
+
+export const useSyncLayersSettings = () => {
+  return useQueryState("layers-settings", layersSettingsParser);
+};
+
+// FILTERS
 export const useSyncRealms = () => {
   return useQueryState("realms", realmsParser);
 };
@@ -44,17 +58,21 @@ export const useSyncDepth = () => {
   return useQueryState("depth", depthParser);
 };
 
-const serialize = createSerializer({
-  bbox: bboxParser,
-  basemap: basemapParser,
-  location: locationParser,
-  realms: realmsParser,
-  biomes: biomesParser,
-  ecosystems: ecosystemsParser,
-  depth: depthParser,
-});
-
 export const useSyncSearchParams = () => {
+  const serialize = useMemo(() => {
+    return createSerializer({
+      bbox: bboxParser,
+      basemap: basemapParser,
+      location: locationParser,
+      realms: realmsParser,
+      biomes: biomesParser,
+      ecosystems: ecosystemsParser,
+      depth: depthParser,
+      layers: layersParser,
+      layersSettings: layersSettingsParser,
+    });
+  }, []);
+
   const [bbox] = useSyncBbox();
   const [basemap] = useSyncBasemap();
   const [location] = useSyncLocation();
@@ -62,6 +80,8 @@ export const useSyncSearchParams = () => {
   const [biomes] = useSyncBiomes();
   const [ecosystems] = useSyncEcosystems();
   const [depth] = useSyncDepth();
+  const [layers] = useSyncLayers();
+  const [layersSettings] = useSyncLayersSettings();
 
   return serialize({
     bbox,
@@ -71,6 +91,8 @@ export const useSyncSearchParams = () => {
     biomes,
     ecosystems,
     depth,
+    layers,
+    layersSettings,
   });
 };
 

@@ -1,3 +1,5 @@
+import { formatNumber } from "@/lib/utils";
+
 import { depthParser } from "@/app/(atlas)/atlas/parsers";
 import { useSyncDepth } from "@/app/(atlas)/atlas/store";
 
@@ -24,8 +26,8 @@ export const DepthContent = () => {
         onValueChange={handleChange}
       />
       <div className="flex justify-between text-xs font-medium">
-        <span>{depthParser.defaultValue[0]}m</span>
-        <span>+{depthParser.defaultValue[1]}m</span>
+        <span>{formatNumber(depthParser.defaultValue[0])}m</span>
+        <span>+{formatNumber(depthParser.defaultValue[1])}m</span>
       </div>
     </div>
   );
