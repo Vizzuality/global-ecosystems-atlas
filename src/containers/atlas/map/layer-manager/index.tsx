@@ -57,7 +57,7 @@ export const LayerManager = () => {
   }, [layers, layersSettings, setLayersSettings]);
 
   const LAYERS = useMemo(() => {
-    return ["location", ...layers, "mask"]; // SUPER IMPORTANT: mask should always be the last one, otherwise you won't see anything
+    return ["location", ...layers.toReversed(), "mask"]; // SUPER IMPORTANT: mask should always be the last one, otherwise you won't see anything
   }, [layers]);
 
   return (
