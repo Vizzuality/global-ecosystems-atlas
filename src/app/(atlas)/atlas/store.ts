@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { atom } from "jotai";
 import { createSerializer, useQueryState } from "nuqs";
 
@@ -56,19 +58,21 @@ export const useSyncDepth = () => {
   return useQueryState("depth", depthParser);
 };
 
-const serialize = createSerializer({
-  bbox: bboxParser,
-  basemap: basemapParser,
-  location: locationParser,
-  realms: realmsParser,
-  biomes: biomesParser,
-  ecosystems: ecosystemsParser,
-  depth: depthParser,
-  layers: layersParser,
-  layersSettings: layersSettingsParser,
-});
-
 export const useSyncSearchParams = () => {
+  const serialize = useMemo(() => {
+    return createSerializer({
+      bbox: bboxParser,
+      basemap: basemapParser,
+      location: locationParser,
+      realms: realmsParser,
+      biomes: biomesParser,
+      ecosystems: ecosystemsParser,
+      depth: depthParser,
+      layers: layersParser,
+      layersSettings: layersSettingsParser,
+    });
+  }, []);
+
   const [bbox] = useSyncBbox();
   const [basemap] = useSyncBasemap();
   const [location] = useSyncLocation();
