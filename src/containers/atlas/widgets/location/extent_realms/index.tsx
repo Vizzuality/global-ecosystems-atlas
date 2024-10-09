@@ -5,7 +5,7 @@ import { ParentSize } from "@visx/responsive";
 import { scaleOrdinal } from "@visx/scale";
 
 import { REALMS, RealmsIds } from "@/lib/colors";
-import { formatNumber, formatPercentage } from "@/lib/utils";
+import { formatPercentage } from "@/lib/utils";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
@@ -94,9 +94,9 @@ export const WidgetLocationExtentRealms = () => {
                             }}
                           />
                           <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center px-8">
-                            <div>
+                            <div className="space-x-1">
                               <span className="text-4xl font-semibold leading-none">
-                                {formatNumber((SELECTED?.value ?? 0) * 100)}
+                                {formatPercentage(SELECTED?.value ?? 0, {}, false)}
                               </span>
                               <span className="text-lg leading-none">%</span>
                             </div>

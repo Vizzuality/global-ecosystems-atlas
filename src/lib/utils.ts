@@ -13,14 +13,14 @@ export function formatNumber(value: number, options?: Intl.NumberFormatOptions) 
     ...options,
   });
 
-  if (value < 0.01) {
-    return "<0.01";
-  }
-
   return v.format(value);
 }
 
-export function formatPercentage(value: number, options?: Intl.NumberFormatOptions) {
+export function formatPercentage(
+  value: number,
+  options?: Intl.NumberFormatOptions,
+  displayUnit: boolean = true,
+) {
   const v = Intl.NumberFormat("en-US", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
@@ -29,7 +29,14 @@ export function formatPercentage(value: number, options?: Intl.NumberFormatOptio
   });
 
   if (value < 0.0001) {
+    if (!displayUnit) {
+      return "<0.01";
+    }
     return "<0.01%";
+  }
+
+  if (!displayUnit) {
+    return v.format(value).replace("%", "");
   }
 
   return v.format(value);
