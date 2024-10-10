@@ -20,6 +20,10 @@ export const LAYERS = [
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
       bitmapProps: {
+        textureParameters: {
+          minFilter: "nearest",
+          magFilter: "nearest",
+        },
         depthStart: "@@#params.depth0",
         depthEnd: "@@#params.depth1",
         extensions: [{ "@@type": "MaskExtension" }],
@@ -78,6 +82,10 @@ export const LAYERS = [
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
       bitmapProps: {
+        textureParameters: {
+          minFilter: "nearest",
+          magFilter: "nearest",
+        },
         depthStart: "@@#params.depth0",
         depthEnd: "@@#params.depth1",
         extensions: [{ "@@type": "MaskExtension" }],
@@ -136,6 +144,10 @@ export const LAYERS = [
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
       bitmapProps: {
+        textureParameters: {
+          minFilter: "nearest",
+          magFilter: "nearest",
+        },
         depthStart: "@@#params.depth0",
         depthEnd: "@@#params.depth1",
         extensions: [{ "@@type": "MaskExtension" }],
@@ -194,6 +206,10 @@ export const LAYERS = [
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
       bitmapProps: {
+        textureParameters: {
+          minFilter: "nearest",
+          magFilter: "nearest",
+        },
         depthStart: "@@#params.depth0",
         depthEnd: "@@#params.depth1",
         extensions: [{ "@@type": "MaskExtension" }],
@@ -238,6 +254,34 @@ export const LAYERS = [
     id: "country-contribution",
     name: "Country contribution",
     group: "status-data",
+    config: {
+      "@@type": "MVTLayer",
+      data: `https://api.mapbox.com/v4/vizzgea.0kkwfp3y/{z}/{x}/{y}.mvt?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
+      filled: true,
+      getFillColor: (d: { properties: { PoC_Status: string } }) => {
+        switch (d.properties.PoC_Status) {
+          case "National map included":
+            return [134, 239, 172, 255];
+          case "Subnational map(s) included":
+            return [240, 171, 252, 255];
+          case "Engagement underway":
+            return [165, 180, 252, 255];
+          default:
+            return [0, 0, 0, 0];
+        }
+      },
+    },
+    params_config: [
+      {
+        key: "opacity",
+        default: 1,
+      },
+      {
+        key: "visibility",
+        default: true,
+      },
+    ],
+    //
   },
   {
     id: "protected-areas",
