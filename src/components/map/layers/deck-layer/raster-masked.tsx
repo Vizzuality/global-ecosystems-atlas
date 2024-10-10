@@ -16,10 +16,13 @@ export interface RasterMaskedLayerExtraProps {
   bitmapProps: BitmapLayerProps;
 }
 
-class RasterMaskedLayer extends TileLayer<ImageBitmap[], RasterMaskedLayerExtraProps> {
-  getTileData(tile: _TileLoadProps): Promise<ImageBitmap[]> {
+class RasterMaskedLayer extends TileLayer<
+  PromiseSettledResult<ImageBitmap>[],
+  RasterMaskedLayerExtraProps
+> {
+  getTileData(tile: _TileLoadProps): Promise<PromiseSettledResult<ImageBitmap>[]> {
     if (Array.isArray(this.props.data)) {
-      return Promise.all(
+      return Promise.allSettled(
         this.props.data.map((t) => {
           const url = _getURLFromTemplate(t, tile);
 
@@ -41,9 +44,9 @@ class RasterMaskedLayer extends TileLayer<ImageBitmap[], RasterMaskedLayerExtraP
   renderSubLayers(
     sublayer: TileLayer["props"] & {
       id: string;
-      data: ImageBitmap[];
+      data: PromiseSettledResult<ImageBitmap>[];
       _offset: number;
-      tile: _Tile2DHeader<ImageBitmap[]>;
+      tile: _Tile2DHeader<PromiseSettledResult<ImageBitmap>[]>;
     },
   ): BitmapMaskedLayer | null {
     const {
@@ -60,11 +63,11 @@ class RasterMaskedLayer extends TileLayer<ImageBitmap[], RasterMaskedLayerExtraP
       return new BitmapMaskedLayer({
         ...this.props.bitmapProps,
         id: subLayerId,
-        image: subLayerData[0],
+        image: subLayerData[0].status === "fulfilled" ? subLayerData[0].value : null,
         bounds: [west, south, east, north],
         visible: subLayerVisible ?? true,
         opacity: subLayerOpacity ?? 1,
-        depthTexture: subLayerData[1],
+        depthTexture: subLayerData[1].status === "fulfilled" ? subLayerData[1].value : null,
       });
     }
     return null;

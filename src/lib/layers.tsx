@@ -183,7 +183,7 @@ export const LAYERS = [
     config: {
       "@@type": "RasterMaskedLayer",
       data: [
-        `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=qa_efg_disagreement&resampling=mode&colormap_name=viridis`,
+        `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=qa_efg_disagreement&resampling=mode&colormap_name=overlap`,
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 20,
