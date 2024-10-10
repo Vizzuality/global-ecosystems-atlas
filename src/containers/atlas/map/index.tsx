@@ -5,13 +5,15 @@ import { useCallback, useEffect, useState } from "react";
 import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 
 import { useQueryClient } from "@tanstack/react-query";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { MapMouseEvent } from "mapbox-gl";
 
 import { env } from "@/env.mjs";
 
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import {
+  popupAtom,
   sidebarOpenAtom,
   tmpBboxAtom,
   useSyncBasemap,
@@ -21,6 +23,7 @@ import {
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 import { LayerManager } from "@/containers/atlas/map/layer-manager";
+import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
 
@@ -34,12 +37,16 @@ import ZoomControl from "@/components/map/controls/zoom";
 export const AtlasMap = () => {
   const queryClient = useQueryClient();
   const { atlasMap } = useMap();
+
   const [loaded, setLoaded] = useState(false);
+
   const [location] = useSyncLocation();
-  const [bbox, setBbox] = useSyncBbox();
-  const [tmpBbox, setTmpBbox] = useAtom(tmpBboxAtom);
-  const sidebarOpen = useAtomValue(sidebarOpenAtom);
   const [basemap] = useSyncBasemap();
+  const [bbox, setBbox] = useSyncBbox();
+
+  const [tmpBbox, setTmpBbox] = useAtom(tmpBboxAtom);
+  const setPopup = useSetAtom(popupAtom);
+  const sidebarOpen = useAtomValue(sidebarOpenAtom);
 
   const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
 
@@ -71,6 +78,13 @@ export const AtlasMap = () => {
     }
   }, [atlasMap, sidebarOpen, tmpBbox]);
 
+  const handleClick = useCallback(
+    (e: MapMouseEvent) => {
+      setPopup(e.lngLat);
+    },
+    [setPopup],
+  );
+
   useEffect(() => {
     if (tmpBbox) {
       handleFitBounds();
@@ -99,6 +113,7 @@ export const AtlasMap = () => {
             name: "mercator",
           }}
           mapStyle={mapStyle}
+          onClick={handleClick}
           onMove={handleMove}
           onLoad={async () => {
             if (location) {
@@ -120,6 +135,7 @@ export const AtlasMap = () => {
           </Controls>
 
           {loaded && <LayerManager />}
+          {loaded && <AtlasPopup />}
         </Map>
       </div>
     </div>

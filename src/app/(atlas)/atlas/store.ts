@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 
 import { atom } from "jotai";
+import { LngLat } from "mapbox-gl";
 import { createSerializer, useQueryState } from "nuqs";
 
 import {
@@ -97,3 +98,4 @@ export const useSyncSearchParams = () => {
 };
 
 export const tmpBboxAtom = atom<number[]>();
+export const popupAtom = atom<LngLat | null>(null);

@@ -4,6 +4,88 @@
  *  Global ecosystems atlas Tiler
  * OpenAPI spec version: 0.1.0
  */
+export type PointCustomTilerPointGetReproject =
+  (typeof PointCustomTilerPointGetReproject)[keyof typeof PointCustomTilerPointGetReproject];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const PointCustomTilerPointGetReproject = {
+  nearest: "nearest",
+  bilinear: "bilinear",
+  cubic: "cubic",
+  cubic_spline: "cubic_spline",
+  lanczos: "lanczos",
+  average: "average",
+  mode: "mode",
+  sum: "sum",
+  rms: "rms",
+} as const;
+
+export type PointCustomTilerPointGetResampling =
+  (typeof PointCustomTilerPointGetResampling)[keyof typeof PointCustomTilerPointGetResampling];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const PointCustomTilerPointGetResampling = {
+  nearest: "nearest",
+  bilinear: "bilinear",
+  cubic: "cubic",
+  cubic_spline: "cubic_spline",
+  lanczos: "lanczos",
+  average: "average",
+  mode: "mode",
+  gauss: "gauss",
+  rms: "rms",
+} as const;
+
+export type PointCustomTilerPointGetParams = {
+  /**
+   * Longitude
+   */
+  lon: number;
+  /**
+   * Latitude
+   */
+  lat: number;
+  /**
+   * atlas asset name, one of `efgs`,`biomes` or `realms`
+   */
+  asset: string;
+  /**
+   * Coordinate Reference System of the input coords. Default to `epsg:4326`.
+   */
+  coord_crs?: string | null;
+  /**
+   * Dataset band indexes
+   */
+  classes?: string[] | null;
+  /**
+   * Overwrite internal Nodata value
+   */
+  nodata?: string | number | number | null;
+  /**
+   * Apply internal Scale/Offset. Defaults to `False`.
+   */
+  unscale?: boolean;
+  /**
+   * RasterIO resampling algorithm. Defaults to `nearest`.
+   */
+  resampling?: PointCustomTilerPointGetResampling;
+  /**
+   * WarpKernel resampling algorithm (only used when doing re-projection). Defaults to `nearest`.
+   */
+  reproject?: PointCustomTilerPointGetReproject;
+};
+
+export type TileCustomTilerTilesZXYFormatGetParams = {
+  /**
+   * atlas asset name, one of `efgs`,`biomes` or `realms`
+   */
+  asset: string;
+  /**
+   * Dataset band indexes
+   */
+  classes?: string[] | null;
+};
+
 /**
  * Point model.
 
