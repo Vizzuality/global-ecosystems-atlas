@@ -40,7 +40,7 @@ export const BiomesExtentChart = ({ width, height }: { width: number; height: nu
           id: d.id,
           label: d.label,
           value: d.value ?? 0,
-          color: CHROMA.random().hex(),
+          color: d.color ?? CHROMA.random().hex(),
         };
       }) ?? []
     );
@@ -73,7 +73,7 @@ export const BiomesExtentChart = ({ width, height }: { width: number; height: nu
     return scaleOrdinal<string, string>({
       domain: KEYS.map((key) => key.toString()),
       range: KEYS.map((key) => {
-        return DATA.find((d) => d.id === key)?.color || "";
+        return DATA.find((d) => d.id === key)?.color ?? CHROMA.random().hex();
       }),
     });
   }, [DATA, KEYS]);
@@ -114,7 +114,7 @@ export const BiomesExtentRanking = () => {
             id: d.id,
             label: d.label,
             value: d.value ?? 0,
-            color: CHROMA.random().hex(),
+            color: d.color ?? CHROMA.random().hex(),
           };
         }) ?? []
     );

@@ -40,7 +40,7 @@ export const EFGSExtentChart = ({ width, height }: { width: number; height: numb
           id: d.id,
           label: d.label,
           value: d.value ?? 0,
-          color: CHROMA.random().hex(),
+          color: d.color,
         };
       }) ?? []
     );
@@ -113,7 +113,7 @@ export const EFGSExtentRanking = () => {
             id: d.id,
             label: d.label,
             value: d.value ?? 0,
-            color: CHROMA.random().hex(),
+            color: d.color,
           };
         }) ?? []
     );
@@ -137,7 +137,7 @@ export const EFGSExtentRanking = () => {
   const colorScale = useMemo(() => {
     return scaleOrdinal<string, string>({
       domain: KEYS.map((key) => key.toString()),
-      range: DATA.map((d) => d.color),
+      range: DATA.map((d) => d.color || CHROMA.random().hex()),
     });
   }, [DATA, KEYS]);
 
