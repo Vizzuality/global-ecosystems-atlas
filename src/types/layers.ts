@@ -1,5 +1,3 @@
-import { FormatProps } from "@/lib/json-converter/utils/formats";
-
 export type ParamsConfigValue = {
   key: string;
   default: unknown;
@@ -21,7 +19,6 @@ export type InteractionConfig = {
   values: {
     key: string;
     value: string;
-    format?: FormatProps;
   }[];
 };
 

@@ -68,6 +68,10 @@ class RasterMaskedLayer extends TileLayer<
         visible: subLayerVisible ?? true,
         opacity: subLayerOpacity ?? 1,
         depthTexture: subLayerData[1].status === "fulfilled" ? subLayerData[1].value : null,
+        textureParameters: {
+          minFilter: "nearest",
+          magFilter: "nearest",
+        },
       });
     }
     return null;

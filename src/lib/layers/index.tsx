@@ -243,6 +243,25 @@ export const LAYERS = [
     id: "protected-areas",
     name: "Protected areas",
     group: "context-data",
+    config: {
+      "@@type": "MVTLayer",
+      data: `https://api.mapbox.com/v4/vizzgea.wdpa_preprocessed_simple/{z}/{x}/{y}.mvt?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
+      stroked: true,
+      filled: true,
+      getFillColor: [239, 68, 68, 180],
+      getLineColor: [239, 68, 68, 255],
+      lineWidthUnits: "pixels",
+    },
+    params_config: [
+      {
+        key: "opacity",
+        default: 1,
+      },
+      {
+        key: "visibility",
+        default: true,
+      },
+    ],
   },
   {
     id: "human-population",

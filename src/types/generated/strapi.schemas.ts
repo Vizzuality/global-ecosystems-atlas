@@ -4,6 +4,15 @@
  *  Global ecosystems atlas Tiler
  * OpenAPI spec version: 0.1.0
  */
+export type ApiLocationsLocationGet200 =
+  | GeojsonPydanticGeometriesPoint
+  | MultiPoint
+  | LineString
+  | MultiLineString
+  | Polygon
+  | MultiPolygon
+  | GeometryCollection;
+
 export type PointCustomTilerPointGetReproject =
   (typeof PointCustomTilerPointGetReproject)[keyof typeof PointCustomTilerPointGetReproject];
 
@@ -121,15 +130,6 @@ export interface GeojsonPydanticGeometriesPoint {
   type: GeojsonPydanticGeometriesPointType;
 }
 
-export type ApiLocationsLocationGet200 =
-  | GeojsonPydanticGeometriesPoint
-  | MultiPoint
-  | LineString
-  | MultiLineString
-  | Polygon
-  | MultiPolygon
-  | GeometryCollection;
-
 export type WidgetMetadataAbstract = string | null;
 
 export interface WidgetMetadata {
@@ -173,13 +173,17 @@ export interface SuccessResponse {
   success?: boolean;
 }
 
+export type SourceDatasetYear = number | null;
+
+export type SourceDatasetSpatialResolution = string | null;
+
 export interface SourceDataset {
   dataset_pixel_value: number;
   efg_pixel_value: number;
   label: string;
   map_class_name: string;
-  spatial_resolution: number;
-  year: number;
+  spatial_resolution?: SourceDatasetSpatialResolution;
+  year: SourceDatasetYear;
 }
 
 export interface ResponseModelSuccessResponse {
