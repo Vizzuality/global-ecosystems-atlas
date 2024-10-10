@@ -1,6 +1,6 @@
 import { Children, PropsWithChildren, useRef, useState } from "react";
 
-import { Swipper } from "@/components/map/compare/swipper";
+import { Swipper } from "@/components/ui/compare/swipper";
 
 export const Compare = ({ children }: PropsWithChildren) => {
   const ref = useRef<HTMLDivElement>(null);
