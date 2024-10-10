@@ -50,7 +50,7 @@ export const WidgetLocationExtent = () => {
         >
           <WidgetError isError={biomesWidgetIsError || efgsWidgetIsError}>
             <WidgetNoData isNoData={false}>
-              <Tabs defaultValue="biomes">
+              <Tabs defaultValue="efgs">
                 <TabsList className="w-full">
                   <TabsTrigger className="w-full" value="biomes">
                     Biomes

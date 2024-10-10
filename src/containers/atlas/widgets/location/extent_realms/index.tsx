@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ParentSize } from "@visx/responsive";
 import { scaleOrdinal } from "@visx/scale";
 
-import { REALMS, RealmsIds } from "@/lib/colors";
+import { RealmsIds } from "@/lib/colors";
 import { formatPercentage } from "@/lib/utils";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
@@ -43,7 +43,7 @@ export const WidgetLocationExtentRealms = () => {
         id: d.id as RealmsIds,
         label: d.label,
         value: (d.value ?? 0) / (TOTAL ?? 1),
-        color: REALMS[d.id as RealmsIds]?.color ?? "#000",
+        color: d.color,
       };
     });
   }, [data, TOTAL]);
@@ -123,7 +123,7 @@ export const WidgetLocationExtentRealms = () => {
                       <div
                         className="mt-0.5 h-2 w-2 shrink-0 rounded-full"
                         style={{
-                          background: d.color,
+                          background: d.color ?? "transparent",
                         }}
                       />
                       <div className="text-xs font-medium leading-none">
