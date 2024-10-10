@@ -64,7 +64,7 @@ export const AtlasSearch = () => {
   return (
     <Search
       value={
-        search || locationsData?.data.find((l) => l.location_code === location)?.gis_name || ""
+        search || locationsData?.data?.find((l) => l.location_code === location)?.gis_name || ""
       }
       open={open}
       options={

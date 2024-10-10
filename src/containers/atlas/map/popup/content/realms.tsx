@@ -72,25 +72,25 @@ export const RealmsPopup = () => {
         <div className="pt-3" key={dataset.label}>
           <ul className="space-y-2">
             <li>
-              <h4 className="text-xs font-bold tracking-wider">Source dataset</h4>
+              <h4 className="text-xs font-bold tracking-wide">Source dataset</h4>
               <p className="text-xs leading-snug">{dataset.label}</p>
             </li>
             <li>
-              <h4 className="text-xs font-bold tracking-wider">Map class in source dataset</h4>
+              <h4 className="text-xs font-bold tracking-wide">Map class in source dataset</h4>
               <p className="text-xs leading-snug">{dataset.map_class_name}</p>
             </li>
             <li>
-              <h4 className="text-xs font-bold tracking-wider">Sources agreement</h4>
+              <h4 className="text-xs font-bold tracking-wide">Sources agreement</h4>
               <p className="text-xs leading-snug">{data.sources_agreement}</p>
             </li>
             <li>
-              <h4 className="text-xs font-bold tracking-wider">
+              <h4 className="text-xs font-bold tracking-wide">
                 Spatial resolution in source dataset
               </h4>
               <p className="text-xs leading-snug">{dataset.spatial_resolution}m</p>
             </li>
             <li>
-              <h4 className="text-xs font-bold tracking-wider">Year of publication</h4>
+              <h4 className="text-xs font-bold tracking-wide">Year of publication</h4>
               <p className="text-xs leading-snug">{dataset.year}</p>
             </li>
           </ul>

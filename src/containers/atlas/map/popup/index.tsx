@@ -37,7 +37,8 @@ export const AtlasPopup = () => {
       <div
         className="max-h-[45vh] w-[380px] space-y-2.5 overflow-y-auto overflow-x-hidden rounded-lg bg-white p-3 pr-6 text-navy-500 shadow-[0_20px_15px_rgba(0,0,0,0.1)]"
         style={{
-          transform: "translate3d(0, 0, 0)",
+          transform: "translateZ(0px)",
+          backfaceVisibility: "hidden",
         }}
       >
         {layers
