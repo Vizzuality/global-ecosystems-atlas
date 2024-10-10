@@ -6,8 +6,11 @@ import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 
 import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue } from "jotai";
+import { MapMouseEvent } from "mapbox-gl";
 
 import { env } from "@/env.mjs";
+
+import { useGetMutationPoint } from "@/lib/map";
 
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
@@ -43,6 +46,8 @@ export const AtlasMap = () => {
 
   const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
 
+  const pointMutation = useGetMutationPoint();
+
   const handleMove = () => {
     if (atlasMap) {
       const b = atlasMap
@@ -70,6 +75,24 @@ export const AtlasMap = () => {
       });
     }
   }, [atlasMap, sidebarOpen, tmpBbox]);
+
+  const handleClick = useCallback(
+    (e: MapMouseEvent) => {
+      pointMutation.mutate(
+        {
+          lat: e.lngLat.lat,
+          lon: e.lngLat.lng,
+          asset: "efgs",
+        },
+        {
+          onSuccess: (data) => {
+            console.log(data);
+          },
+        },
+      );
+    },
+    [pointMutation],
+  );
 
   useEffect(() => {
     if (tmpBbox) {
@@ -99,6 +122,7 @@ export const AtlasMap = () => {
             name: "mercator",
           }}
           mapStyle={mapStyle}
+          onClick={handleClick}
           onMove={handleMove}
           onLoad={async () => {
             if (location) {
