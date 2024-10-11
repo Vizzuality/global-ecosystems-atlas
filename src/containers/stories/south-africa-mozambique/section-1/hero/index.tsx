@@ -2,8 +2,8 @@ import { H2 } from "@/components/ui/h2";
 
 export const SAMHero = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center gap-4 py-24">
-      <H2>Mapping Nature Beyond Borders: South Africa and Mozambique</H2>
+    <section className="flex min-h-dvh flex-col justify-center gap-4 py-24 pt-48">
+      <H2 size="sm">Mapping Nature Beyond Borders: South Africa and Mozambique</H2>
       <p className="text-xl">
         South Africa and Mozambique, though neighboring countries with shared ecosystems, have
         distinct histories, languages, and conservation challenges.

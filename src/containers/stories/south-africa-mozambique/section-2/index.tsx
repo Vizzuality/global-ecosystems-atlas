@@ -19,7 +19,9 @@ export const SAMSection2 = () => {
           <div className="container">
             <Grid>
               <div className="col-span-12 space-y-9 lg:col-span-10 lg:col-start-2">
-                <H2 className="text-white">Conservation Collaboration</H2>
+                <H2 size="sm" className="text-white">
+                  Conservation Collaboration
+                </H2>
                 <p className="text-xl text-white">
                   Though they have independently developed ecosystem maps, South Africa and
                   Mozambique share many of the same ecosystem groups, like the savannas and sandy
