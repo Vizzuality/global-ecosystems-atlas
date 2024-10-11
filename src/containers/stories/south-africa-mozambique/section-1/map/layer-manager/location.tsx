@@ -3,14 +3,8 @@
 import { useMemo } from "react";
 
 import { GeoJsonLayer } from "@deck.gl/layers";
-import { useQueries } from "@tanstack/react-query";
-import { GeoJSON, MultiPolygon, Polygon } from "geojson";
 
-import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
-
-import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
-
-import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
+import { useGeojson } from "@/containers/stories/south-africa-mozambique/section-1/map/utils";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
 
@@ -19,29 +13,7 @@ export type LocationProps = {
 };
 
 export const Location = ({ beforeId }: LocationProps) => {
-  const [step] = useSyncStep();
-  const s = Math.min(STEPS.length - 1, step);
-  const STEP = STEPS[s];
-
-  const locationsQueries = useQueries({
-    queries: STEP.locations.map((location) => {
-      return getApiLocationsLocationGetQueryOptions(location);
-    }),
-  });
-
-  const GEOJSON = useMemo<GeoJSON>(() => {
-    return {
-      type: "FeatureCollection",
-      features: locationsQueries.map((query) => {
-        const { data } = query;
-        return {
-          type: "Feature",
-          properties: {},
-          geometry: data as Polygon | MultiPolygon,
-        };
-      }),
-    };
-  }, [locationsQueries]);
+  const GEOJSON = useGeojson();
 
   const m = useMemo(() => {
     return new GeoJsonLayer({

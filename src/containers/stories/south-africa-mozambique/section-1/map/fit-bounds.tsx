@@ -1,17 +1,13 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 import { LngLatBoundsLike, useMap } from "react-map-gl";
 
-import { useQueries } from "@tanstack/react-query";
-import turfBbox from "@turf/bbox";
-import { GeoJSON, MultiPolygon, Polygon } from "geojson";
 import { usePreviousDifferent } from "rooks";
-
-import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
+import { useBbox } from "@/containers/stories/south-africa-mozambique/section-1/map/utils";
 
 export const FitBounds = () => {
   const [step] = useSyncStep();
@@ -20,36 +16,16 @@ export const FitBounds = () => {
   const s = Math.min(STEPS.length - 1, step);
   const prevStep = usePreviousDifferent(s);
 
-  const STEP = STEPS[s];
-
-  const locationsQueries = useQueries({
-    queries: STEP.locations.map((location) => {
-      return getApiLocationsLocationGetQueryOptions(location);
-    }),
-  });
-
-  const GEOJSON = useMemo<GeoJSON>(() => {
-    return {
-      type: "FeatureCollection",
-      features: locationsQueries.map((query) => {
-        const { data } = query;
-        return {
-          type: "Feature",
-          properties: {},
-          geometry: data as Polygon | MultiPolygon,
-        };
-      }),
-    };
-  }, [locationsQueries]);
+  const BBOX = useBbox();
 
   useEffect(() => {
-    if (current && GEOJSON && prevStep !== s) {
-      const bbox = turfBbox(GEOJSON);
-      current.fitBounds(bbox as LngLatBoundsLike, {
+    if (current && BBOX && prevStep !== s) {
+      current.fitBounds(BBOX as LngLatBoundsLike, {
         padding: 50,
+        duration: 1000,
       });
     }
-  }, [current, s, prevStep, GEOJSON]);
+  }, [current, s, prevStep, BBOX]);
 
   return null;
 };
