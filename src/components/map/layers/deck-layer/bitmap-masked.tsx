@@ -75,6 +75,15 @@ class BitmapMaskedLayer extends BitmapLayer<{
     super.initializeState();
     const texture = this.context.device.createTexture({
       data: this.props.depthTexture,
+      width: 256,
+      height: 256,
+      sampler: {
+        minFilter: "nearest",
+        magFilter: "nearest",
+        addressModeU: "clamp-to-edge",
+        addressModeV: "clamp-to-edge",
+        addressModeW: "clamp-to-edge",
+      },
     });
 
     this.setState({
