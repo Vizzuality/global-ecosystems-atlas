@@ -55,8 +55,8 @@ export const Welcome = () => {
             <div className="space-y-10">
               <DialogDescription className="rounded-lg bg-lightblue-50 p-8 text-center font-medium">
                 Welcome to the Global Ecosystems Atlas Beta Release. We&rsquo;re thrilled to have
-                you as part of our community during this early stage. This version serves as a
-                prototype, allowing us to explore and refine the features that will be included in
+                you as part of our community during this early stage. This version serves as a proof
+                of concept, allowing us to explore and refine the features that will be included in
                 the fully functional platform. We appreciate your participation and feedback as we
                 work to make the site as effective and valuable as possible for our users.
               </DialogDescription>

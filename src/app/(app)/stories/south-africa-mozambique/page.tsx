@@ -4,6 +4,13 @@ import { Metadata } from "next";
 
 import Image from "next/image";
 
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+
+import {
+  getApiLocationsGetQueryOptions,
+  getApiLocationsLocationGetQueryOptions,
+} from "@/types/generated/locations";
+
 import Loading from "@/app/(app)/stories/south-africa-mozambique/loading";
 
 import { SAMSection1 } from "@/containers/stories/south-africa-mozambique/section-1";
@@ -17,20 +24,28 @@ export const metadata: Metadata = {
   description: "Stories: South Africa and Mozambique description",
 };
 
-export default function StoriesSouthAfricaMozambiquePage() {
+export default async function StoriesSouthAfricaMozambiquePage() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(getApiLocationsGetQueryOptions());
+  await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("ZAF_224"));
+  await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("MOZ_167"));
+
   return (
-    <Suspense fallback={<Loading />}>
-      <SAMSection1 />
-      <SAMSection2 />
-      <SAMSection3 />
-      <SAMSection4 />
-      <Image
-        src="/sam/sam-footer.jpeg"
-        alt="South Africa and Mozambique"
-        width={2878}
-        height={699}
-      />
-      <SAMSection5 />
-    </Suspense>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Suspense fallback={<Loading />}>
+        <SAMSection1 />
+        <SAMSection2 />
+        <SAMSection3 />
+        <SAMSection4 />
+        <Image
+          src="/sam/sam-footer.jpeg"
+          alt="South Africa and Mozambique"
+          width={2878}
+          height={699}
+        />
+        <SAMSection5 />
+      </Suspense>
+    </HydrationBoundary>
   );
 }
