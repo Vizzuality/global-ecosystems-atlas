@@ -11,9 +11,9 @@ import {
 
 import { env } from "@/env.mjs";
 
-import { Compare } from "@/components/map/compare";
 import Controls from "@/components/map/controls";
 import ZoomControl from "@/components/map/controls/zoom";
+import { Compare } from "@/components/ui/compare";
 
 export const SAMCollaborativeMap = () => {
   const initialViewState = {

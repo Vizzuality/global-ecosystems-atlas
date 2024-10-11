@@ -16,7 +16,7 @@ export const GlobExtent = () => {
   );
 
   const DATA = useMemo(() => {
-    return data?.data.find((d) => d.id === "GLOB");
+    return data?.data?.find((d) => d.id === "GLOB");
   }, [data]);
 
   const p = (DATA?.value ?? 0) / 100;

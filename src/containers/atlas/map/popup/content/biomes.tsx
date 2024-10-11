@@ -25,7 +25,13 @@ export const BiomesPopupLoading = () => {
 
 export const BiomesPopupError = () => {
   return (
-    <div className="space-y-3 divide-y divide-navy-100">
+    <div
+      className="space-y-3 divide-y divide-navy-100"
+      style={{
+        transform: "translateZ(0px)",
+        backfaceVisibility: "hidden",
+      }}
+    >
       <header className="space-y-0.5">
         <h3 className="text-2xs font-medium uppercase tracking-wider">Biome</h3>
         <h2 className="text-sm font-bold leading-5">Error</h2>
