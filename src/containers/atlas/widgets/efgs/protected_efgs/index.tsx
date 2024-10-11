@@ -28,8 +28,8 @@ export const WidgetEcosystemsProtectedEfgs = () => {
   );
 
   const DATA = useMemo(() => {
-    return data?.data.find((d) => d.id === ecosystemId);
-  }, [data, ecosystemId]);
+    return data?.data?.[0];
+  }, [data]);
 
   const p = (DATA?.value ?? 0) / 100;
 
@@ -52,7 +52,7 @@ export const WidgetEcosystemsProtectedEfgs = () => {
                     })}
                     style={{
                       width: `${p * 100}%`,
-                      background: "#08519C",
+                      background: DATA?.color ?? "#08519C",
                     }}
                   />
                 </div>

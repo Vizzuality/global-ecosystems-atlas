@@ -48,7 +48,7 @@ export const ByCountryExtentChart = ({ width, height }: { width: number; height:
   const DATA = useMemo(() => {
     return (
       data?.data
-        .map((d) => {
+        ?.map((d) => {
           const l = locationsData?.data.find((l) => l.location_code === d.id);
 
           return {
@@ -130,7 +130,7 @@ export const ByCountryExtentRanking = () => {
   const DATA = useMemo(() => {
     return (
       data?.data
-        .map((d) => {
+        ?.map((d) => {
           const l = locationsData?.data.find((l) => l.location_code === d.id);
 
           return {
