@@ -3,11 +3,14 @@
 import { useMemo } from "react";
 
 import { GeoJsonLayer } from "@deck.gl/layers";
-import { GeoJSON, Polygon } from "geojson";
+import { useQueries } from "@tanstack/react-query";
+import { GeoJSON, MultiPolygon, Polygon } from "geojson";
 
-import { useApiLocationsLocationGet } from "@/types/generated/locations";
+import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
-import { useSyncLocation } from "@/app/(atlas)/atlas/store";
+import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
+
+import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
 
@@ -16,26 +19,29 @@ export type LocationProps = {
 };
 
 export const Location = ({ beforeId }: LocationProps) => {
-  const [location] = useSyncLocation();
+  const [step] = useSyncStep();
+  const s = Math.min(STEPS.length - 1, step);
+  const STEP = STEPS[s];
 
-  const { data: locationData } = useApiLocationsLocationGet(location, {
-    query: {
-      enabled: !!location,
-    },
+  const locationsQueries = useQueries({
+    queries: STEP.locations.map((location) => {
+      return getApiLocationsLocationGetQueryOptions(location);
+    }),
   });
 
   const GEOJSON = useMemo<GeoJSON>(() => {
     return {
       type: "FeatureCollection",
-      features: [
-        {
+      features: locationsQueries.map((query) => {
+        const { data } = query;
+        return {
           type: "Feature",
           properties: {},
-          geometry: locationData as Polygon,
-        },
-      ],
+          geometry: data as Polygon | MultiPolygon,
+        };
+      }),
     };
-  }, [locationData]);
+  }, [locationsQueries]);
 
   const m = useMemo(() => {
     return new GeoJsonLayer({
@@ -43,14 +49,13 @@ export const Location = ({ beforeId }: LocationProps) => {
       data: GEOJSON,
       stroked: true,
       getFillColor: [0, 0, 0, 0],
-      getLineColor: [0, 0, 0, 255],
+      getLineColor: [125, 125, 125, 255],
       getLineWidth: 2,
       beforeId,
       lineWidthUnits: "pixels",
       operation: "draw",
-      visible: !!location,
     });
-  }, [beforeId, location, GEOJSON]);
+  }, [beforeId, GEOJSON]);
 
-  return <DeckLayer id="location-layer" config={m} visible={!!location} />;
+  return <DeckLayer id="location-layer" config={m} />;
 };

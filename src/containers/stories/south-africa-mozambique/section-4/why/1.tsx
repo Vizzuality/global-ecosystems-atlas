@@ -3,7 +3,7 @@ import { H2 } from "@/components/ui/h2";
 export const SAMWhy1 = () => {
   return (
     <section className="flex min-h-dvh flex-col justify-center gap-8 py-24">
-      <H2>Why is harmonized ecosystem mapping important? </H2>
+      <H2 size="sm">Why is harmonized ecosystem mapping important? </H2>
       <h3 className="text-lg font-bold uppercase">
         We Can&apos;t Conserve What We Don&apos;t Know
       </h3>

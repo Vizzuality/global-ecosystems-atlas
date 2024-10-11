@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import { LngLatBoundsLike, Map } from "react-map-gl";
 
@@ -15,21 +15,25 @@ export const STEPS = [
   {
     id: 0,
     bbox: [16.344976840698242, -34.83399963378906, 40.842735290527344, -10.317108154296875],
-    layers: ["efgs"],
+    layers: ["satellite"],
+    locations: ["ZAF_224", "MOZ_167"],
   },
   {
     id: 1,
     bbox: [16.344976840698242, -34.83399963378906, 32.89236068725586, -22.126079559326172],
     layers: ["efgs"],
+    locations: ["ZAF_224"],
   },
   {
     id: 2,
     bbox: [30.213, -26.907, 40.842, -10.317],
     layers: ["efgs"],
+    locations: ["MOZ_167"],
   },
 ];
 
 export const SAMSection1Map = () => {
+  const [loaded, setLoaded] = useState(false);
   const [step] = useSyncStep();
 
   const s = Math.min(STEPS.length - 1, step);
@@ -60,10 +64,13 @@ export const SAMSection1Map = () => {
         }}
         mapStyle="mapbox://styles/mapbox/light-v10"
         scrollZoom={false}
+        onLoad={() => {
+          setLoaded(true);
+        }}
       >
         <FitBounds />
 
-        <LayerManager />
+        {loaded && <LayerManager />}
       </Map>
     </div>
   );

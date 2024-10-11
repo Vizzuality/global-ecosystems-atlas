@@ -17,7 +17,9 @@ export const SAMSection3 = () => {
           <div className="container">
             <Grid>
               <div className="col-span-12 space-y-9 lg:col-span-8 lg:col-start-2">
-                <H2 className="">Turning data into decisions</H2>
+                <H2 size="sm" className="">
+                  Turning data into decisions
+                </H2>
                 <p className="text-lg">
                   The Global Ecosystems Atlas equips countries to better monitor and conserve their
                   ecosystems. With its user-friendly tools, the Atlas{" "}

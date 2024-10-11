@@ -324,4 +324,33 @@ export const LAYERS = [
     name: "Human population",
     group: "context-data",
   },
+  {
+    id: "satellite",
+    name: "Satellite",
+    group: undefined,
+    config: {
+      "@@type": "RasterLayer",
+      data: `https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.webp?sku=101tW7TDV0XEA&access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
+      maxZoom: 20,
+      minZoom: 0,
+      zoomOffset: 1,
+      refinementStrategy: "no-overlap",
+      bitmapProps: {
+        extensions: [{ "@@type": "MaskExtension" }],
+        maskId: "location-mask-layer-deck",
+      },
+    },
+    params_config: [
+      {
+        key: "opacity",
+        default: 1,
+      },
+      {
+        key: "visibility",
+        default: true,
+      },
+    ],
+  },
 ];
+
+// https://api.mapbox.com/v4/mapbox.satellite/3/7/5.webp?sku=101tW7TDV0XEA&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA

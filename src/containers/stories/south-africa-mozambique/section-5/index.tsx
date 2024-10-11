@@ -17,7 +17,9 @@ export const SAMSection5 = () => {
           <div className="container">
             <Grid>
               <div className="col-span-12 space-y-9 lg:col-span-10 lg:col-start-2">
-                <H2 className="">Make the most of the Global Ecosystems Atlas</H2>
+                <H2 size="sm" className="">
+                  Make the most of the Global Ecosystems Atlas
+                </H2>
                 <Grid>
                   <div className="col-span-12 lg:col-span-6">
                     <p className="text-lg">
