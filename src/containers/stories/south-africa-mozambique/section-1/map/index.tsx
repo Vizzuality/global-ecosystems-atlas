@@ -1,15 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { LngLatBoundsLike, Map } from "react-map-gl";
 
 import { env } from "@/env.mjs";
 
-import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
-
 import { FitBounds } from "@/containers/stories/south-africa-mozambique/section-1/map/fit-bounds";
 import { LayerManager } from "@/containers/stories/south-africa-mozambique/section-1/map/layer-manager";
+import { useBbox } from "@/containers/stories/south-africa-mozambique/section-1/map/utils";
 
 export const STEPS = [
   {
@@ -34,13 +33,7 @@ export const STEPS = [
 
 export const SAMSection1Map = () => {
   const [loaded, setLoaded] = useState(false);
-  const [step] = useSyncStep();
-
-  const s = Math.min(STEPS.length - 1, step);
-
-  const STEP = useMemo(() => {
-    return STEPS.find((s1) => s1.id === s);
-  }, [s]);
+  const BBOX = useBbox();
 
   return (
     <div className="h-full w-full">
@@ -48,7 +41,7 @@ export const SAMSection1Map = () => {
         id="section-1-map"
         mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
         initialViewState={{
-          bounds: STEP?.bbox as LngLatBoundsLike,
+          bounds: BBOX as LngLatBoundsLike,
           fitBoundsOptions: {
             padding: {
               top: 50,

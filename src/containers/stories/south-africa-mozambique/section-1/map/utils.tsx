@@ -30,7 +30,7 @@ export const useGeojson = () => {
         return {
           type: "Feature",
           properties: {},
-          geometry: data as Polygon | MultiPolygon,
+          geometry: (data as Polygon | MultiPolygon) ?? { type: "Polygon", coordinates: [] },
         };
       }),
     };
