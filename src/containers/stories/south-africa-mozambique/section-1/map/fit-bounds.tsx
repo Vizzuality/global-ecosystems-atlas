@@ -7,7 +7,7 @@ import { usePreviousDifferent } from "rooks";
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
-import { useBbox } from "@/containers/stories/south-africa-mozambique/section-1/map/utils";
+import { useBbox } from "@/containers/stories/south-africa-mozambique/utils";
 
 export const FitBounds = () => {
   const [step] = useSyncStep();
@@ -16,7 +16,9 @@ export const FitBounds = () => {
   const s = Math.min(STEPS.length - 1, step);
   const prevStep = usePreviousDifferent(s);
 
-  const BBOX = useBbox();
+  const STEP = STEPS[s];
+
+  const BBOX = useBbox({ locations: STEP.locations });
 
   useEffect(() => {
     if (current && BBOX && prevStep !== s) {

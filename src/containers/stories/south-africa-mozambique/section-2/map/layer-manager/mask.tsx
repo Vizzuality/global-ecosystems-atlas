@@ -5,9 +5,6 @@ import { useMemo } from "react";
 // import { MVTLayer } from "@deck.gl/geo-layers";
 import { GeoJsonLayer } from "@deck.gl/layers";
 
-import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
-
-import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
 import { useGeojson } from "@/containers/stories/south-africa-mozambique/utils";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
@@ -17,12 +14,7 @@ export type MaskProps = {
 };
 
 export const Mask = ({ beforeId }: MaskProps) => {
-  const [step] = useSyncStep();
-  const s = Math.min(STEPS.length - 1, step);
-
-  const STEP = STEPS[s];
-
-  const GEOJSON = useGeojson({ locations: STEP.locations });
+  const GEOJSON = useGeojson({ locations: ["ZAF_224", "MOZ_167"] });
 
   const m = useMemo(() => {
     return new GeoJsonLayer({

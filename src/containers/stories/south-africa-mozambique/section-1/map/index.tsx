@@ -6,9 +6,11 @@ import { LngLatBoundsLike, Map } from "react-map-gl";
 
 import { env } from "@/env.mjs";
 
+import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
+
 import { FitBounds } from "@/containers/stories/south-africa-mozambique/section-1/map/fit-bounds";
 import { LayerManager } from "@/containers/stories/south-africa-mozambique/section-1/map/layer-manager";
-import { useBbox } from "@/containers/stories/south-africa-mozambique/section-1/map/utils";
+import { useBbox } from "@/containers/stories/south-africa-mozambique/utils";
 
 export const STEPS = [
   {
@@ -33,7 +35,12 @@ export const STEPS = [
 
 export const SAMSection1Map = () => {
   const [loaded, setLoaded] = useState(false);
-  const BBOX = useBbox();
+  const [step] = useSyncStep();
+  const s = Math.min(STEPS.length - 1, step);
+
+  const STEP = STEPS[s];
+
+  const BBOX = useBbox({ locations: STEP.locations });
 
   return (
     <div className="h-full w-full">

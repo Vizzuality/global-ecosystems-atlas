@@ -7,10 +7,8 @@ import { Layer } from "@deck.gl/core";
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
 
-import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 import { useSyncDepth } from "@/app/(atlas)/atlas/store";
 
-import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
 import { useBbox } from "@/containers/stories/south-africa-mozambique/utils";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
@@ -24,12 +22,8 @@ interface LayerManagerItemProps {
 const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const LAYER = LAYERS.find((l) => l.id === id);
   const [depth] = useSyncDepth();
-  const [step] = useSyncStep();
-  const s = Math.min(STEPS.length - 1, step);
 
-  const STEP = STEPS[s];
-
-  const BBOX = useBbox({ locations: STEP.locations });
+  const BBOX = useBbox({ locations: ["ZAF_224", "MOZ_167"] });
 
   const { config, params_config } = LAYER ?? {};
   const c = parseConfig<Layer>({
