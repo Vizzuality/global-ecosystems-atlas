@@ -4,11 +4,10 @@ import { LngLatBoundsLike, Map, ViewState, ViewStateChangeEvent } from "react-ma
 
 import { env } from "@/env.mjs";
 
-import { LayerManager } from "@/containers/stories/south-africa-mozambique/section-2/map/layer-manager";
-import { useBbox } from "@/containers/stories/south-africa-mozambique/utils";
-
 import Controls from "@/components/map/controls";
 import ZoomControl from "@/components/map/controls/zoom";
+import { LayerManager } from "@/components/map/layer-manager";
+import { useBbox } from "@/components/map/layer-manager/utils";
 import { Compare } from "@/components/ui/compare";
 
 export const SAMCollaborativeMap = () => {
@@ -53,7 +52,7 @@ export const SAMCollaborativeMap = () => {
             <ZoomControl />
           </Controls>
 
-          <LayerManager layers={["efgs"]} />
+          <LayerManager layers={["efgs"]} locations={["ZAF_224", "MOZ_167"]} globalSettings={{}} />
         </>
       </Map>
       <Map
@@ -73,7 +72,11 @@ export const SAMCollaborativeMap = () => {
             <ZoomControl />
           </Controls>
 
-          <LayerManager layers={["biomes"]} />
+          <LayerManager
+            layers={["biomes"]}
+            locations={["ZAF_224", "MOZ_167"]}
+            globalSettings={{}}
+          />
         </>
       </Map>
     </Compare>

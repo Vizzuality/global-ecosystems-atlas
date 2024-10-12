@@ -5,16 +5,18 @@ import { useMemo } from "react";
 // import { MVTLayer } from "@deck.gl/geo-layers";
 import { GeoJsonLayer } from "@deck.gl/layers";
 
-import { useGeojson } from "@/containers/stories/south-africa-mozambique/utils";
-
+import { LayerManagerProps } from "@/components/map/layer-manager";
 import DeckLayer from "@/components/map/layers/deck-layer";
+
+import { useGeojson } from "./utils";
 
 export type MaskProps = {
   beforeId?: string;
+  locations: LayerManagerProps["locations"];
 };
 
-export const Mask = ({ beforeId }: MaskProps) => {
-  const GEOJSON = useGeojson({ locations: ["ZAF_224", "MOZ_167"] });
+export const Mask = ({ beforeId, locations }: MaskProps) => {
+  const GEOJSON = useGeojson({ locations });
 
   const m = useMemo(() => {
     return new GeoJsonLayer({

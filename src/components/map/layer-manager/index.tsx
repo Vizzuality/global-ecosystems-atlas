@@ -4,33 +4,31 @@ import { useMemo } from "react";
 
 import { Layer, useMap } from "react-map-gl";
 
-import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
-
-import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
-import { Location } from "@/containers/stories/south-africa-mozambique/section-1/map/layer-manager/location";
-import { Mask } from "@/containers/stories/south-africa-mozambique/section-1/map/layer-manager/mask";
-
 import { DeckMapboxOverlayProvider } from "@/components/map/provider";
 
 import LayerManagerItem from "./item";
+import { Location } from "./location";
+import { Mask } from "./mask";
 
-export const LayerManager = () => {
+export interface LayerManagerProps {
+  layers: string[];
+  locations: string[];
+  globalSettings: Record<string, unknown>;
+}
+
+export const LayerManager = ({ layers, locations, globalSettings }: LayerManagerProps) => {
   const { current: map } = useMap();
-  const [step] = useSyncStep();
 
   const baseLayer = useMemo(() => {
     if (map && map.isStyleLoaded()) {
-      const layers = map!.getStyle()!.layers;
+      const lys = map!.getStyle()!.layers;
       // Find the custom layer to be able to sort the layers
-      const customLayer = layers?.find((l) => l.id.includes("custom-layer"));
-      // Find the first label layer to be able to sort the layers if there is no custom layer
-      const labelLayer = layers?.find((l) => l.id.includes("label"));
+      const customLayer = lys?.find((l) => l.id.includes("custom-layer"));
+      // Find the first label layer to be able to sort the lys if there is no custom layer
+      const labelLayer = lys?.find((l) => l.id.includes("label"));
       return customLayer ? customLayer.id : labelLayer?.id;
     }
   }, [map]);
-
-  const s = Math.min(STEPS.length - 1, step);
-  const layers = STEPS[s].layers;
 
   const LAYERS = useMemo(() => {
     return ["location", ...layers.toReversed(), "mask"]; // SUPER IMPORTANT: mask should always be the last one, otherwise you won't see anything
@@ -62,14 +60,17 @@ export const LayerManager = () => {
           The first item will always be at the top of the layers stack
         */}
         {LAYERS.map((l) => {
-          if (l === "mask") return <Mask key={l} beforeId={`${l}-layer`} />;
-          if (l === "location") return <Location key={l} beforeId={`${l}-layer`} />;
+          if (l === "mask") return <Mask key={l} beforeId={`${l}-layer`} locations={locations} />;
+          if (l === "location")
+            return <Location key={l} beforeId={`${l}-layer`} locations={locations} />;
 
           return (
             <LayerManagerItem
               key={l}
               id={l}
+              locations={locations}
               settings={{
+                ...globalSettings,
                 opacity: 1,
                 visibility: true,
               }}
