@@ -11,6 +11,8 @@ import { useBbox } from "@/components/map/layer-manager/utils";
 import { Compare } from "@/components/ui/compare";
 
 export const SAMCollaborativeMap = () => {
+  const [loaded1, setLoaded1] = useState(false);
+  const [loaded2, setLoaded2] = useState(false);
   const BBOX = useBbox({ locations: ["ZAF_224", "MOZ_167"] });
 
   const initialViewState = {
@@ -46,13 +48,20 @@ export const SAMCollaborativeMap = () => {
         mapStyle={mapStyle1}
         scrollZoom={false}
         onMove={handleMove}
+        onLoad={() => setLoaded1(true)}
       >
         <>
           <Controls>
             <ZoomControl />
           </Controls>
 
-          <LayerManager layers={["efgs"]} locations={["ZAF_224", "MOZ_167"]} globalSettings={{}} />
+          {loaded1 && (
+            <LayerManager
+              layers={["efgs"]}
+              locations={["ZAF_224", "MOZ_167"]}
+              globalSettings={{}}
+            />
+          )}
         </>
       </Map>
       <Map
@@ -66,17 +75,20 @@ export const SAMCollaborativeMap = () => {
         mapStyle={mapStyle2}
         scrollZoom={false}
         onMove={handleMove}
+        onLoad={() => setLoaded2(true)}
       >
         <>
           <Controls>
             <ZoomControl />
           </Controls>
 
-          <LayerManager
-            layers={["biomes"]}
-            locations={["ZAF_224", "MOZ_167"]}
-            globalSettings={{}}
-          />
+          {loaded2 && (
+            <LayerManager
+              layers={["biomes"]}
+              locations={["ZAF_224", "MOZ_167"]}
+              globalSettings={{}}
+            />
+          )}
         </>
       </Map>
     </Compare>
