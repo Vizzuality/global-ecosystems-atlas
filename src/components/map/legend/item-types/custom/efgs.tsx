@@ -10,23 +10,25 @@ export const EfgsLegend = ({ location }: { location?: string }) => {
 
   return (
     <LegendLoader isLoading={isFetching && !isFetched}>
-      {data?.data
-        .toSorted((a, b) => {
-          return a.label.localeCompare(b.label);
-        })
-        .map((d) => {
-          return (
-            <div key={d.id} className="flex items-center gap-2">
-              <div
-                className="h-2 w-2 shrink-0 rounded-full border border-navy-700"
-                style={{
-                  backgroundColor: d.color ?? "transparent",
-                }}
-              ></div>
-              <span className="text-xs font-medium">{d.label}</span>
-            </div>
-          );
-        })}
+      <ul className="space-y-1.5">
+        {data?.data
+          .toSorted((a, b) => {
+            return a.label.localeCompare(b.label);
+          })
+          .map((d) => {
+            return (
+              <li key={d.id} className="flex gap-2">
+                <div
+                  className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full border border-navy-700"
+                  style={{
+                    backgroundColor: d.color ?? "transparent",
+                  }}
+                />
+                <span className="mt-px text-xs font-medium leading-tight">{d.label}</span>
+              </li>
+            );
+          })}
+      </ul>
     </LegendLoader>
   );
 };
