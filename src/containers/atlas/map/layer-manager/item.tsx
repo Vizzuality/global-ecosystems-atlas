@@ -26,6 +26,9 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const LOCATION = useLocationId(location);
 
   const { config, params_config } = LAYER ?? {};
+
+  if (!config) return null;
+
   const c = parseConfig<Layer>({
     config: {
       ...(config ?? {}),

@@ -11,6 +11,9 @@ import { ParamsConfig } from "@/types/layers";
 
 import RasterLayer from "@/components/map/layers/deck-layer/raster";
 import RasterMaskedLayer from "@/components/map/layers/deck-layer/raster-masked";
+import { BiomesLegend } from "@/components/map/legend/item-types/custom/biomes";
+import { EfgsLegend } from "@/components/map/legend/item-types/custom/efgs";
+import { RealmsLegend } from "@/components/map/legend/item-types/custom/realms";
 
 import FUNCTIONS from "./utils";
 
@@ -25,7 +28,11 @@ export const JSON_CONFIGURATION = new JSONConfiguration({
   functions: FUNCTIONS,
   constants: {},
   enumerations: {},
-  reactComponents: {},
+  reactComponents: {
+    EfgsLegend,
+    BiomesLegend,
+    RealmsLegend,
+  },
 });
 
 /**

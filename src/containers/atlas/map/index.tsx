@@ -7,6 +7,7 @@ import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { MapMouseEvent } from "mapbox-gl";
+import { useDebounce } from "rooks";
 
 import { env } from "@/env.mjs";
 
@@ -23,6 +24,7 @@ import {
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 import { LayerManager } from "@/containers/atlas/map/layer-manager";
+import MapLegend from "@/containers/atlas/map/legend";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
@@ -64,6 +66,8 @@ export const AtlasMap = () => {
       setTmpBbox(undefined);
     }
   };
+
+  const handleMovedDebounced = useDebounce(handleMove, 500);
 
   const handleFitBounds = useCallback(() => {
     if (tmpBbox && atlasMap) {
@@ -114,7 +118,7 @@ export const AtlasMap = () => {
           }}
           mapStyle={mapStyle}
           onClick={handleClick}
-          onMove={handleMove}
+          onMove={handleMovedDebounced}
           onLoad={async () => {
             if (location) {
               await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions(location));
@@ -138,6 +142,8 @@ export const AtlasMap = () => {
           {loaded && <AtlasPopup />}
         </Map>
       </div>
+
+      <MapLegend />
     </div>
   );
 };
