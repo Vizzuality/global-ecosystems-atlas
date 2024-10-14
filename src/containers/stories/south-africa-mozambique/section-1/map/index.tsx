@@ -9,6 +9,7 @@ import { env } from "@/env.mjs";
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { FitBounds } from "@/containers/stories/south-africa-mozambique/section-1/map/fit-bounds";
+import { useStep } from "@/containers/stories/south-africa-mozambique/utils";
 
 import { LayerManager } from "@/components/map/layer-manager";
 import { useBbox } from "@/components/map/layer-manager/utils";
@@ -16,19 +17,16 @@ import { useBbox } from "@/components/map/layer-manager/utils";
 export const STEPS = [
   {
     id: 0,
-    bbox: [16.344976840698242, -34.83399963378906, 40.842735290527344, -10.317108154296875],
     layers: ["satellite"],
     locations: ["ZAF_224", "MOZ_167"],
   },
   {
     id: 1,
-    bbox: [16.344976840698242, -34.83399963378906, 32.89236068725586, -22.126079559326172],
     layers: ["efgs"],
     locations: ["ZAF_224"],
   },
   {
     id: 2,
-    bbox: [30.213, -26.907, 40.842, -10.317],
     layers: ["efgs"],
     locations: ["MOZ_167"],
   },
@@ -37,7 +35,12 @@ export const STEPS = [
 export const SAMSection1Map = () => {
   const [loaded, setLoaded] = useState(false);
   const [step] = useSyncStep();
-  const s = Math.min(STEPS.length - 1, step);
+
+  const s = useStep({
+    steps: STEPS,
+    step,
+    offset: 0,
+  });
 
   const STEP = STEPS[s];
 

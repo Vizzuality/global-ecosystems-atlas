@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useState } from "react";
 
 import { LngLatBoundsLike, Map } from "react-map-gl";
 
@@ -9,26 +9,38 @@ import { env } from "@/env.mjs";
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { FitBounds } from "@/containers/stories/south-africa-mozambique/section-4/map/fit-bounds";
+import { useStep } from "@/containers/stories/south-africa-mozambique/utils";
+
+import { LayerManager } from "@/components/map/layer-manager";
+import { useBbox } from "@/components/map/layer-manager/utils";
 
 export const STEPS = [
   {
     id: 0,
-    bbox: [16.344976840698242, -34.83399963378906, 40.842735290527344, -10.317108154296875],
+    layers: ["efgs"],
+    locations: ["ZAF_224", "MOZ_167"],
   },
   {
     id: 1,
-    bbox: [16.344976840698242, -34.83399963378906, 32.89236068725586, -22.126079559326172],
+    layers: ["realms"],
+    locations: ["ZAF_224", "MOZ_167"],
   },
 ];
 
 export const SAMSection4Map = () => {
+  const [loaded, setLoaded] = useState(false);
+
   const [step] = useSyncStep();
 
-  const s = Math.max(0, Math.min(STEPS.length - 1, step - 5));
+  const s = useStep({
+    steps: STEPS,
+    step,
+    offset: 5,
+  });
 
-  const STEP = useMemo(() => {
-    return STEPS.find((s1) => s1.id === s);
-  }, [s]);
+  const STEP = STEPS[s];
+
+  const BBOX = useBbox({ locations: STEP.locations });
 
   return (
     <div className="h-full w-full">
@@ -36,7 +48,7 @@ export const SAMSection4Map = () => {
         id="section-4-map"
         mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
         initialViewState={{
-          bounds: STEP?.bbox as LngLatBoundsLike,
+          bounds: BBOX as LngLatBoundsLike,
           fitBoundsOptions: {
             padding: {
               top: 50,
@@ -52,8 +64,17 @@ export const SAMSection4Map = () => {
         }}
         mapStyle="mapbox://styles/mapbox/light-v10"
         scrollZoom={false}
+        onLoad={() => setLoaded(true)}
       >
         <FitBounds />
+
+        {loaded && (
+          <LayerManager
+            layers={STEP.layers}
+            locations={["ZAF_224", "MOZ_167"]}
+            globalSettings={{}}
+          />
+        )}
       </Map>
     </div>
   );

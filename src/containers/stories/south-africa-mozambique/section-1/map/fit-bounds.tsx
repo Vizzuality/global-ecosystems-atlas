@@ -7,13 +7,19 @@ import { usePreviousDifferent } from "rooks";
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
-import { useBbox } from "@/containers/stories/south-africa-mozambique/utils";
+import { useStep } from "@/containers/stories/south-africa-mozambique/utils";
+
+import { useBbox } from "@/components/map/layer-manager/utils";
 
 export const FitBounds = () => {
   const [step] = useSyncStep();
   const { current } = useMap();
 
-  const s = Math.min(STEPS.length - 1, step);
+  const s = useStep({
+    steps: STEPS,
+    step,
+    offset: 0,
+  });
   const prevStep = usePreviousDifferent(s);
 
   const STEP = STEPS[s];
