@@ -26,7 +26,7 @@ export const AtlasEcosysytemsList = () => {
 
   const searchParams = useSyncSearchParams();
 
-  const realmsData = useRealms();
+  const realmsData = useRealms({ location });
   const biomesData = useBiomes();
   const ecosysytemsData = useEcosystems();
 

@@ -8,7 +8,7 @@ import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
 import { useLocationId } from "@/lib/locations";
 
-import { useSyncDepth, useSyncLocation } from "@/app/(atlas)/atlas/store";
+import { useSyncDepth, useSyncLocation, useSyncRealms } from "@/app/(atlas)/atlas/store";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
 
@@ -22,6 +22,7 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const LAYER = LAYERS.find((l) => l.id === id);
   const [location] = useSyncLocation();
   const [depth] = useSyncDepth();
+  const [realms] = useSyncRealms();
 
   const LOCATION = useLocationId(location);
 
@@ -42,6 +43,7 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
       extent: LOCATION?.bounds || null,
       depth0: depth[0],
       depth1: depth[1],
+      realms,
     },
   });
 

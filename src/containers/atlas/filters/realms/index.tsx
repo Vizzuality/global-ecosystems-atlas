@@ -7,53 +7,61 @@ import { CheckedState } from "@radix-ui/react-checkbox";
 import { useRealms } from "@/lib/taxonomy";
 import { cn } from "@/lib/utils";
 
-import { useSyncBiomes, useSyncEcosystems, useSyncRealms } from "@/app/(atlas)/atlas/store";
+import {
+  useSyncBiomes,
+  useSyncEcosystems,
+  useSyncLocation,
+  useSyncRealms,
+} from "@/app/(atlas)/atlas/store";
 
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 export const RealmsTrigger = () => {
+  const [location] = useSyncLocation();
+  const REALMS = useRealms({ location });
+
   return (
     <div className="flex items-center gap-2">
       Realms
       <Badge variant="secondary" className="rounded-2xl">
-        4/4
+        {REALMS?.length ?? 0}/{REALMS?.length ?? 0}
       </Badge>
     </div>
   );
 };
 
 export const RealmsContent = () => {
+  const [location] = useSyncLocation();
   const [realms, setRealms] = useSyncRealms();
   const [biomes, setBiomes] = useSyncBiomes();
   const [ecosystems, setEcosystems] = useSyncEcosystems();
-  const realmsData = useRealms();
 
-  const REALMS = realmsData?.filter((r) => r.realms.length === 1);
+  const REALMS = useRealms({ location });
+
+  // const REALMS = realmsData?.filter((r) => r.realms.length === 1);
 
   const DATA = useMemo(() => {
-    if (!realms.length) {
-      return REALMS?.map((realm) => {
-        return {
-          ...realm,
-          disabled: false,
-        };
-      });
-    }
-
     return REALMS?.map((realm) => {
-      const disabled =
-        (realm.id === "S" && realms.includes("T")) ||
-        (realm.id === "T" && realms.includes("S")) ||
-        (realms.length > 1 && !realms.includes("S") && realm.id === "S") ||
-        (realms.length > 1 && realms.includes("S") && !realms.includes(realm.id));
       return {
         ...realm,
-        disabled,
+        disabled: false,
       };
     });
-  }, [realms, REALMS]);
+
+    // return REALMS?.map((realm) => {
+    //   const disabled =
+    //     (realm.id === "S" && realms.includes("T")) ||
+    //     (realm.id === "T" && realms.includes("S")) ||
+    //     (realms.length > 1 && !realms.includes("S") && realm.id === "S") ||
+    //     (realms.length > 1 && realms.includes("S") && !realms.includes(realm.id));
+    //   return {
+    //     ...realm,
+    //     disabled,
+    //   };
+    // });
+  }, [REALMS]);
 
   const handleChange = (realmId: string, checked: CheckedState) => {
     if (!checked) {

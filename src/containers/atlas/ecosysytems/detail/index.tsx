@@ -4,11 +4,14 @@ import { useParams } from "next/navigation";
 
 import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
 
+import { useSyncLocation } from "@/app/(atlas)/atlas/store";
+
 import { WidgetEcosystemsList } from "@/containers/atlas/widgets";
 
 export const AtlasEcosysytemsDetail = () => {
+  const [location] = useSyncLocation();
   const { ecosystemId } = useParams();
-  const realmsData = useRealms();
+  const realmsData = useRealms({ location });
   const biomesData = useBiomes();
   const ecosysytemsData = useEcosystems();
 

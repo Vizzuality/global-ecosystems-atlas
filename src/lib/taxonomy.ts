@@ -1,6 +1,8 @@
 import { groups } from "@visx/vendor/d3-array";
 
 import { useApiEcosystemsGet } from "@/types/generated/ecosystems";
+import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
+import { WidgetData } from "@/types/generated/strapi.schemas";
 
 export const getRealmsFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters
@@ -51,7 +53,7 @@ export const useGetGroups = (
     label: string;
   }[],
 ) => {
-  const realmsData = useRealms();
+  const realmsData = useRealms({ location: "GLOB" });
   const biomesData = useBiomes();
 
   return groups(data, (d) => d.realm?.realms.sort().join(""))
@@ -159,24 +161,19 @@ export const useBiomes = (props?: { realms?: string[] }) => {
     });
 };
 
-export const useRealms = () => {
-  const { data: ecosystemsData } = useApiEcosystemsGet();
+export const useRealms = ({ location }: { location?: string | null }) => {
+  const { data: realmsData } = useApiLocationsLocationWidgetsWidgetIdGet(
+    location ?? "GLOB",
+    "extent_realms",
+  );
 
-  return ecosystemsData?.data
-    .filter((e) => {
-      if (e.efg_code !== "0") {
-        return e.efg_code;
-      }
-      return false;
-    })
-    .filter(
-      (value, index, self) => index === self.findIndex((e) => e.realm_name === value.realm_name),
-    )
-    .map((e) => {
-      return {
-        id: getRealmsFromEFGCode(e.efg_code!).join(""),
-        name: `${e.realm_name}`,
-        realms: getRealmsFromEFGCode(e.efg_code!),
-      };
-    });
+  const DATA = realmsData?.data as (WidgetData & { realm_code: string })[] | undefined;
+
+  return DATA?.map((r) => {
+    return {
+      id: r.id,
+      name: `${r.label}`,
+      realms: getRealmsFromEFGCode(r.realm_code!),
+    };
+  });
 };

@@ -106,7 +106,7 @@ describe("taxonomy functions and hooks", () => {
   });
 
   it("useRealms filters and maps data correctly", () => {
-    const { result } = renderHook(() => useRealms());
+    const { result } = renderHook(() => useRealms({ location: null }));
     expect(result.current).toEqual([
       {
         id: "T",
