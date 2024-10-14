@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 import { LngLatBoundsLike, useMap } from "react-map-gl";
 
@@ -7,25 +7,34 @@ import { usePreviousDifferent } from "rooks";
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { STEPS } from "@/containers/stories/south-africa-mozambique/section-4/map";
+import { useStep } from "@/containers/stories/south-africa-mozambique/utils";
+
+import { useBbox } from "@/components/map/layer-manager/utils";
 
 export const FitBounds = () => {
   const [step] = useSyncStep();
   const { current } = useMap();
 
-  const s = Math.max(0, Math.min(STEPS.length - 1, step - 5));
+  const s = useStep({
+    steps: STEPS,
+    step,
+    offset: 5,
+  });
+
   const prevStep = usePreviousDifferent(s);
 
-  const STEP = useMemo(() => {
-    return STEPS.find((s1) => s1.id === s);
-  }, [s]);
+  const STEP = STEPS[s];
+
+  const BBOX = useBbox({ locations: STEP.locations });
 
   useEffect(() => {
-    if (current && STEP && prevStep !== s) {
-      current.fitBounds(STEP.bbox as LngLatBoundsLike, {
+    if (current && BBOX && prevStep !== s) {
+      current.fitBounds(BBOX as LngLatBoundsLike, {
         padding: 50,
+        duration: 1000,
       });
     }
-  }, [current, s, prevStep, STEP]);
+  }, [current, s, prevStep, BBOX]);
 
   return null;
 };

@@ -69,7 +69,7 @@ export const WidgetLocationExtentRealms = () => {
   return (
     <Widget>
       <WidgetHeader>
-        <WidgetTitle>Ecosystem functional groups</WidgetTitle>
+        <WidgetTitle>Realms</WidgetTitle>
         <Info>Hello</Info>
       </WidgetHeader>
       <WidgetContent>

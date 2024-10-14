@@ -13,7 +13,7 @@ export const SAMSection4 = () => {
   const [, setStep] = useSyncStep();
 
   return (
-    <>
+    <div className="bg-lightblue-100">
       <div className="container">
         <Grid>
           <div className="col-span-5 pr-10 lg:col-start-2">
@@ -31,6 +31,6 @@ export const SAMSection4 = () => {
           </div>
         </Grid>
       </div>
-    </>
+    </div>
   );
 };

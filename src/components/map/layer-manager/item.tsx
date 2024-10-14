@@ -7,23 +7,22 @@ import { Layer } from "@deck.gl/core";
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
 
-import { useSyncDepth } from "@/app/(atlas)/atlas/store";
-
-import { useBbox } from "@/containers/stories/south-africa-mozambique/section-1/map/utils";
-
+import { LayerManagerProps } from "@/components/map/layer-manager";
 import DeckLayer from "@/components/map/layers/deck-layer";
+
+import { useBbox } from "./utils";
 
 interface LayerManagerItemProps {
   beforeId?: string;
   settings: Record<string, unknown>;
+  locations: LayerManagerProps["locations"];
   id: string;
 }
 
-const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
+const LayerManagerItem = ({ id, locations, settings }: LayerManagerItemProps) => {
   const LAYER = LAYERS.find((l) => l.id === id);
-  const [depth] = useSyncDepth();
 
-  const BBOX = useBbox();
+  const BBOX = useBbox({ locations });
 
   const { config, params_config } = LAYER ?? {};
   const c = parseConfig<Layer>({
@@ -37,8 +36,6 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
     settings: {
       ...settings,
       extent: BBOX,
-      depth0: depth[0],
-      depth1: depth[1],
     },
   });
 

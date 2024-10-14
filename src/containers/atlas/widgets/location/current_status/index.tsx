@@ -80,7 +80,9 @@ export const WidgetLocationStatus = () => {
                   </div>
                   <div className="p-4 pb-0">
                     <div className="text-4xl font-semibold leading-none">{DATA?.efgs}</div>
-                    <div className="text-sm font-medium leading-none">ecosystems groups</div>
+                    <div className="text-sm font-medium leading-none">
+                      ecosystem functional groups
+                    </div>
                   </div>
                 </div>
               </div>

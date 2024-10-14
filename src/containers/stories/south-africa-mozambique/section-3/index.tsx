@@ -2,6 +2,8 @@
 
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
+import { SAMTabs } from "@/containers/stories/south-africa-mozambique/section-3/tabs";
+
 import { Step } from "@/components/scroll/step";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
@@ -13,7 +15,7 @@ export const SAMSection3 = () => {
   return (
     <>
       <Step id="decisions" offset={0.5} onEnter={() => setStep(4)}>
-        <Section>
+        <Section className="space-y-9">
           <div className="container">
             <Grid>
               <div className="col-span-12 space-y-9 lg:col-span-8 lg:col-start-2">
@@ -35,6 +37,26 @@ export const SAMSection3 = () => {
                   shared ecosystems like savannas and highlight areas most at risk. This information
                   is crucial not only for governments but also for businesses that depend or impact
                   on nature.
+                </p>
+              </div>
+            </Grid>
+          </div>
+          <div className="container">
+            <Grid>
+              <div className="col-span-12 space-y-9 lg:col-span-10 lg:col-start-2">
+                <SAMTabs />
+              </div>
+            </Grid>
+          </div>
+          <div className="container pt-20">
+            <Grid>
+              <div className="col-span-12 space-y-9 lg:col-span-8 lg:col-start-4">
+                <p className="text-xl">
+                  The Atlas serves as a valuable resource for both government reporting on GBF
+                  indicators and companies nature-related disclosure needs. It summarises key
+                  metrics and indicators needed by governments for consistent reporting on global
+                  commitments while while guiding the private sector in making informed conservation
+                  investments that align with regulations and contribute to global sustainability.
                 </p>
               </div>
             </Grid>
