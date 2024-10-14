@@ -194,8 +194,6 @@ export const LAYERS = [
         },
       ],
     },
-    interaction_config: {},
-    metadata: {},
   },
   {
     id: "overlap-index",
@@ -259,8 +257,6 @@ export const LAYERS = [
         },
       ],
     },
-    interaction_config: {},
-    metadata: {},
   },
   {
     id: "country-contribution",
@@ -323,6 +319,17 @@ export const LAYERS = [
     id: "human-population",
     name: "Human population",
     group: "context-data",
+    config: {},
+    params_config: [
+      {
+        key: "opacity",
+        default: 1,
+      },
+      {
+        key: "visibility",
+        default: true,
+      },
+    ],
   },
   {
     id: "satellite",
@@ -351,6 +358,8 @@ export const LAYERS = [
       },
     ],
   },
-];
+] as const;
 
 // https://api.mapbox.com/v4/mapbox.satellite/3/7/5.webp?sku=101tW7TDV0XEA&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA
+
+export type LayerIds = (typeof LAYERS)[number]["id"];

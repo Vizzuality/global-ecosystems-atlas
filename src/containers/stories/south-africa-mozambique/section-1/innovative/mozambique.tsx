@@ -1,6 +1,6 @@
 export const SAMInnovativeMozambique = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center gap-4 py-24">
+    <section className="flex min-h-dvh flex-col justify-center gap-4 py-48">
       <p className="text-xl">
         <strong>Mozambique</strong>, more recently, has developed national ecosystem maps, building
         on initial work undertaken in the 1950s and 60s and involving a dedicated working group of

@@ -6,18 +6,9 @@ import { GeoJSON, MultiPolygon, Polygon } from "geojson";
 
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
-import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
-
-import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
-
-export const useGeojson = () => {
-  const [step] = useSyncStep();
-  const s = Math.min(STEPS.length - 1, step);
-
-  const STEP = STEPS[s];
-
+export const useGeojson = ({ locations }: { locations: string[] }) => {
   const locationsQueries = useQueries({
-    queries: STEP.locations.map((location) => {
+    queries: locations.map((location) => {
       return getApiLocationsLocationGetQueryOptions(location);
     }),
   });
@@ -39,8 +30,8 @@ export const useGeojson = () => {
   return GEOJSON;
 };
 
-export const useBbox = () => {
-  const GEOJSON = useGeojson();
+export const useBbox = ({ locations }: { locations: string[] }) => {
+  const GEOJSON = useGeojson({ locations });
   if (!GEOJSON) {
     return null;
   }

@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const Widget = ({ children }: PropsWithChildren) => {
-  return <div>{children}</div>;
+export const Widget = ({ children, className }: PropsWithChildren<{ className?: string }>) => {
+  return <div className={cn(className)}>{children}</div>;
 };
 
 export const WidgetTitle = ({ children }: PropsWithChildren) => {
