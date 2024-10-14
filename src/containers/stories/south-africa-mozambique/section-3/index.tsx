@@ -2,6 +2,8 @@
 
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
+import { SAMTabs } from "@/containers/stories/south-africa-mozambique/section-3/tabs";
+
 import { Step } from "@/components/scroll/step";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
@@ -36,6 +38,8 @@ export const SAMSection3 = () => {
                   is crucial not only for governments but also for businesses that depend or impact
                   on nature.
                 </p>
+
+                <SAMTabs />
               </div>
             </Grid>
           </div>
