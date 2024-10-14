@@ -48,6 +48,19 @@ export const SAMSection3 = () => {
               </div>
             </Grid>
           </div>
+          <div className="container pt-20">
+            <Grid>
+              <div className="col-span-12 space-y-9 lg:col-span-8 lg:col-start-4">
+                <p className="text-xl">
+                  The Atlas serves as a valuable resource for both government reporting on GBF
+                  indicators and companies nature-related disclosure needs. It summarises key
+                  metrics and indicators needed by governments for consistent reporting on global
+                  commitments while while guiding the private sector in making informed conservation
+                  investments that align with regulations and contribute to global sustainability.
+                </p>
+              </div>
+            </Grid>
+          </div>
         </Section>
       </Step>
     </>
