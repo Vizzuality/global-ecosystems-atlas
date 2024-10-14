@@ -9,6 +9,7 @@ export type LegendConfig = {
   type: "basic" | "gradient" | "choropleth";
   items: {
     value: number;
+    label: string;
     color: string;
   }[];
 };

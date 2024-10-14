@@ -62,7 +62,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],
@@ -130,7 +131,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],
@@ -198,7 +200,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],
@@ -264,7 +267,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],
@@ -308,7 +312,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],
@@ -344,7 +349,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],
@@ -370,7 +376,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],
@@ -409,7 +416,8 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
+          label: "Test",
+          value: 0,
           color: "#000",
         },
       ],

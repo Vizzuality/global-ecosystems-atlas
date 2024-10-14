@@ -1,6 +1,6 @@
 import React from "react";
 
-import { cn, formatNumber } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 import { LegendTypeProps } from "../../types";
 
@@ -12,15 +12,15 @@ export const LegendTypeBasic: React.FC<LegendTypeProps> = ({ className = "", ite
       })}
     >
       <ul className="flex w-full flex-col space-y-1">
-        {items.map(({ value, color }) => (
+        {items.map(({ value, label, color }) => (
           <li key={`${value}`} className="flex space-x-2 text-xs">
             <div
-              className="mt-1 h-2 w-2 flex-shrink-0 border border-slate-500"
+              className="mt-1.5 h-2 w-2 flex-shrink-0 border border-slate-500"
               style={{
                 backgroundColor: color,
               }}
             />
-            <div>{formatNumber(value)}</div>
+            <div>{label}</div>
           </li>
         ))}
       </ul>
