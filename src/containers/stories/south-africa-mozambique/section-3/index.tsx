@@ -15,7 +15,7 @@ export const SAMSection3 = () => {
   return (
     <>
       <Step id="decisions" offset={0.5} onEnter={() => setStep(4)}>
-        <Section>
+        <Section className="space-y-9">
           <div className="container">
             <Grid>
               <div className="col-span-12 space-y-9 lg:col-span-8 lg:col-start-2">
@@ -38,7 +38,12 @@ export const SAMSection3 = () => {
                   is crucial not only for governments but also for businesses that depend or impact
                   on nature.
                 </p>
-
+              </div>
+            </Grid>
+          </div>
+          <div className="container">
+            <Grid>
+              <div className="col-span-12 space-y-9 lg:col-span-10 lg:col-start-2">
                 <SAMTabs />
               </div>
             </Grid>

@@ -3,8 +3,6 @@ import { useMemo } from "react";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
-import { useSyncLocation } from "@/app/(atlas)/atlas/store";
-
 import { Info } from "@/containers/atlas/info";
 import {
   Widget,
@@ -16,9 +14,7 @@ import {
   WidgetTitle,
 } from "@/containers/atlas/widgets/item";
 
-export const WidgetLocationStatus = () => {
-  const [location] = useSyncLocation();
-
+export const WidgetLocationStatus = ({ location }: { location: string }) => {
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
     "current_status",
@@ -45,42 +41,18 @@ export const WidgetLocationStatus = () => {
           <WidgetError isError={isError}>
             <WidgetNoData isNoData={!DATA}>
               <div className="flex flex-col gap-3">
-                <div className="space-y-2 rounded-md bg-navy-700 p-4 text-white">
-                  <div className="flex items-start justify-between">
-                    <div className="space-x-2">
-                      <span className="space-x-1">
-                        <span className="text-4xl font-semibold leading-none">
-                          {DATA?.mapped_coverage}
-                        </span>
-                        <span className="text-lg leading-none">%</span>
-                      </span>
-                      <span className="text-xs font-medium leading-none">
-                        {!location && "global"} coverage
-                      </span>
-                    </div>
-                  </div>
-                  <div className="h-2 w-full rounded-sm bg-white/20">
-                    <div
-                      className="h-full rounded-sm"
-                      style={{
-                        width: `${DATA?.mapped_coverage}%`,
-                        background: "#C3DF09",
-                      }}
-                    />
-                  </div>
+                <div className="border border-navy-50 p-4">
+                  <div className="text-4xl font-semibold leading-none">{DATA?.realms}</div>
+                  <div className="text-sm font-medium leading-none">realms</div>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="p-4 pb-0">
-                    <div className="text-4xl font-semibold leading-none">{DATA?.realms}</div>
-                    <div className="text-sm font-medium leading-none">realms</div>
-                  </div>
-                  <div className="p-4 pb-0">
-                    <div className="text-4xl font-semibold leading-none">{DATA?.biomes}</div>
-                    <div className="text-sm font-medium leading-none">biomes</div>
-                  </div>
-                  <div className="p-4 pb-0">
-                    <div className="text-4xl font-semibold leading-none">{DATA?.efgs}</div>
-                    <div className="text-sm font-medium leading-none">ecosystems groups</div>
+                <div className="border border-navy-50 p-4">
+                  <div className="text-4xl font-semibold leading-none">{DATA?.biomes}</div>
+                  <div className="text-sm font-medium leading-none">biomes</div>
+                </div>
+                <div className="border border-navy-50 p-4">
+                  <div className="text-4xl font-semibold leading-none">{DATA?.efgs}</div>
+                  <div className="text-sm font-medium leading-none">
+                    ecosystem functional groups
                   </div>
                 </div>
               </div>
