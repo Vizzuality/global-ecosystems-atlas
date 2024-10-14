@@ -1,7 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
-
 import { useRouter } from "next/navigation";
 
 import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
@@ -33,15 +31,6 @@ export const AtlasEcosysytemsList = () => {
   const { push } = useRouter();
 
   const LOCATION = locationsData?.data.find((l) => l.location_code === location);
-  const ECOSYSTEMS = useMemo(() => {
-    return ecosysytemsData?.filter((e) => {
-      if (!LOCATION) {
-        return true;
-      }
-
-      return LOCATION.efgs?.map((e) => e.efg_code).includes(e.code);
-    });
-  }, [ecosysytemsData, LOCATION]);
 
   const handleRowClick = (code: EcosystemEfgCode | undefined) => {
     push(`/atlas/ecosystems/${code}${searchParams}`);
@@ -64,7 +53,7 @@ export const AtlasEcosysytemsList = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {ECOSYSTEMS?.map((e) => (
+          {ecosysytemsData?.map((e) => (
             <TableRow
               key={e.name}
               className="w-full cursor-pointer overflow-hidden hover:bg-lightblue-50"
@@ -72,9 +61,9 @@ export const AtlasEcosysytemsList = () => {
             >
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 pl-0 text-xs font-medium"
-                title={`${e.code} ${e.name}`}
+                title={`${e.name}`}
               >
-                {e.code} {e.name}
+                {e.name}
               </TableCell>
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 text-xs font-medium"

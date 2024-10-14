@@ -15,7 +15,7 @@ export const getBiomeFromEFGCode = (efgCode: string) => {
     .replace(/[0-9.]/g, "")
     .split("")
     .sort();
-  const biomeNumber = efgCode.replace(/[A-Z]/g, "").split(".")[0];
+  const biomeNumber = efgCode.replace(/[A-Z]/g, "").split(".")[0].split("").sort().join("");
 
   return `${realmIds.join("")}${biomeNumber}`;
 };
@@ -93,8 +93,6 @@ export const useEcosystems = ({ location }: { location?: string | null }) => {
     "extent_efgs",
   );
 
-  console.log(efgsData);
-
   return efgsData?.data
     .map((e) => {
       return {
@@ -120,7 +118,7 @@ export const useBiomes = ({ location }: { location?: string | null }) => {
 
   return DATA?.map((b) => {
     return {
-      id: b.biome_code,
+      id: getBiomeFromEFGCode(b.biome_code!),
       name: `${b.biome_code} ${b.label}`.trim(),
       biome: b.biome_code,
       realms: getRealmsFromEFGCode(b.biome_code!),
