@@ -18,7 +18,10 @@ export const AtlasLayersAtlas = () => {
 
   const handleAtlasLayerChange = (value: string) => {
     setLayers((prev) => {
-      const filtered = prev.filter((layer) => !ATLAS_LAYERS.map((l) => l.id).includes(layer));
+      const filtered = prev.filter(
+        (layer) =>
+          !ATLAS_LAYERS.map((l) => l.id).includes(layer as (typeof ATLAS_LAYERS)[number]["id"]),
+      );
 
       return [...filtered, value];
     });

@@ -6,6 +6,8 @@ import { LngLatBoundsLike, Map } from "react-map-gl";
 
 import { env } from "@/env.mjs";
 
+import { LayerIds } from "@/lib/layers";
+
 import { useSyncStep } from "@/app/(app)/stories/south-africa-mozambique/store";
 
 import { FitBounds } from "@/containers/stories/south-africa-mozambique/section-1/map/fit-bounds";
@@ -14,7 +16,12 @@ import { useStep } from "@/containers/stories/south-africa-mozambique/utils";
 import { LayerManager } from "@/components/map/layer-manager";
 import { useBbox } from "@/components/map/layer-manager/utils";
 
-export const STEPS = [
+export const STEPS: {
+  id: number;
+  // layers is an array of id from LAYERS
+  layers: LayerIds[];
+  locations: string[];
+}[] = [
   {
     id: 0,
     layers: ["satellite"],

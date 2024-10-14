@@ -4,6 +4,8 @@ import { useMemo } from "react";
 
 import { Layer, useMap } from "react-map-gl";
 
+import { LayerIds } from "@/lib/layers";
+
 import { DeckMapboxOverlayProvider } from "@/components/map/provider";
 
 import LayerManagerItem from "./item";
@@ -11,7 +13,7 @@ import { Location } from "./location";
 import { Mask } from "./mask";
 
 export interface LayerManagerProps {
-  layers: string[];
+  layers: LayerIds[];
   locations: string[];
   globalSettings: Record<string, unknown>;
 }
