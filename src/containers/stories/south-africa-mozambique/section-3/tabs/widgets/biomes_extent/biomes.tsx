@@ -13,7 +13,7 @@ import RankingChart from "@/components/charts/ranking";
 
 export const BiomesExtent = ({ location }: { location: string }) => {
   return (
-    <div className="space-y-4 pt-4">
+    <div className="space-y-4 pt-1.5">
       <div className="h-4">
         <ParentSize>
           {({ width, height }) => (

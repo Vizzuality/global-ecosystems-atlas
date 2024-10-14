@@ -41,15 +41,15 @@ export const WidgetLocationStatus = ({ location }: { location: string }) => {
           <WidgetError isError={isError}>
             <WidgetNoData isNoData={!DATA}>
               <div className="flex flex-col gap-3">
-                <div className="border border-navy-50 p-4">
+                <div className="rounded-lg border border-navy-50 p-4">
                   <div className="text-4xl font-semibold leading-none">{DATA?.realms}</div>
                   <div className="text-sm font-medium leading-none">realms</div>
                 </div>
-                <div className="border border-navy-50 p-4">
+                <div className="rounded-lg border border-navy-50 p-4">
                   <div className="text-4xl font-semibold leading-none">{DATA?.biomes}</div>
                   <div className="text-sm font-medium leading-none">biomes</div>
                 </div>
-                <div className="border border-navy-50 p-4">
+                <div className="rounded-lg border border-navy-50 p-4">
                   <div className="text-4xl font-semibold leading-none">{DATA?.efgs}</div>
                   <div className="text-sm font-medium leading-none">
                     ecosystem functional groups

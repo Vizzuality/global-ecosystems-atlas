@@ -23,7 +23,7 @@ export const WidgetLocationExtent = ({ location }: { location: string }) => {
   } = useApiLocationsLocationWidgetsWidgetIdGet(location ?? "GLOB", "extent_biomes");
 
   return (
-    <Widget>
+    <Widget className="rounded-lg border border-navy-50 p-4">
       <WidgetHeader>
         <WidgetTitle>Biomes Extent</WidgetTitle>
         <Info>Hello</Info>
