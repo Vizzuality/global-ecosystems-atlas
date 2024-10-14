@@ -87,7 +87,7 @@ const MapLegend = ({ className = "" }) => {
         <CollapsibleContent>
           <Legend
             className={cn(
-              "max-h-[calc(100vh_-_theme(space.16)_-_theme(space.6)_-_theme(space.48))]",
+              "max-h-[calc(100vh_-_theme(space.48)_-_theme(space.6)_-_theme(space.48))]",
               className,
             )}
             sortable={{

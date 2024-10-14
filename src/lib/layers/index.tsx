@@ -197,14 +197,7 @@ export const LAYERS = [
       },
     ],
     legend_config: {
-      type: "basic",
-      items: [
-        {
-          label: "Test",
-          value: 0,
-          color: "#000",
-        },
-      ],
+      "@@type": "EfgsLegend",
     },
   },
   {

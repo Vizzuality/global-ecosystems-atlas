@@ -6,7 +6,7 @@ import { LAYERS } from "@/lib/layers";
 
 import { LegendConfig, ParamsConfig } from "@/types/layers";
 
-import { useSyncLayers, useSyncLayersSettings } from "@/app/(atlas)/atlas/store";
+import { useSyncLayers, useSyncLayersSettings, useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import LegendItem from "@/components/map/legend/item";
 import {
@@ -27,12 +27,14 @@ type MapLegendItemProps = LegendItemProps;
 type ConfigType =
   | LegendConfig
   | ReactElement<{
+      location: string | null;
       paramsConfig: ParamsConfig;
       onChangeSettings: (settings: Record<string, unknown>) => unknown;
     }>
   | null;
 
 export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
+  const [location] = useSyncLocation();
   const [, setLayers] = useSyncLayers();
   const [layersSettings, setLayersSettings] = useSyncLayersSettings();
 
@@ -57,6 +59,7 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
 
     if (isValidElement(l)) {
       return cloneElement(l, {
+        location,
         paramsConfig: params_config,
         onChangeSettings: (settings: Record<string, unknown>) => {
           setLayersSettings((prev) => ({
@@ -76,7 +79,7 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     }
 
     return null;
-  }, [config, params_config, setLayersSettings, id]);
+  }, [location, config, params_config, setLayersSettings, id]);
 
   return (
     <LegendItem

@@ -11,6 +11,7 @@ import { ParamsConfig } from "@/types/layers";
 
 import RasterLayer from "@/components/map/layers/deck-layer/raster";
 import RasterMaskedLayer from "@/components/map/layers/deck-layer/raster-masked";
+import { EfgsLegend } from "@/components/map/legend/item-types/custom/efgs";
 
 import FUNCTIONS from "./utils";
 
@@ -25,7 +26,9 @@ export const JSON_CONFIGURATION = new JSONConfiguration({
   functions: FUNCTIONS,
   constants: {},
   enumerations: {},
-  reactComponents: {},
+  reactComponents: {
+    EfgsLegend,
+  },
 });
 
 /**
