@@ -246,9 +246,9 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          label: "Test",
+          label: "Overlap",
           value: 0,
-          color: "#000",
+          color: "#BADDBD",
         },
       ],
     },
@@ -341,9 +341,9 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          label: "Test",
+          label: "Protected areas",
           value: 0,
-          color: "#000",
+          color: "#ef4444",
         },
       ],
     },
