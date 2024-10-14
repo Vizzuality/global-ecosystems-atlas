@@ -20,13 +20,14 @@ import { Label } from "@/components/ui/label";
 
 export const RealmsTrigger = () => {
   const [location] = useSyncLocation();
-  const REALMS = useRealms({ location });
+  const realmsData = useRealms({ location: "GLOB" });
+  const realmsDataFiltered = useRealms({ location });
 
   return (
     <div className="flex items-center gap-2">
       Realms
       <Badge variant="secondary" className="rounded-2xl">
-        {REALMS?.length ?? 0}/{REALMS?.length ?? 0}
+        {realmsDataFiltered?.length}/{realmsData?.length}
       </Badge>
     </div>
   );

@@ -83,7 +83,14 @@ export const LAYERS = [
     config: {
       "@@type": "RasterMaskedLayer",
       data: [
-        `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png?asset=biomes`,
+        {
+          "@@function": "setQueryParams",
+          url: `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png`,
+          query: {
+            asset: "biomes",
+            classes: "@@#params.biomes",
+          },
+        },
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 20,
@@ -129,6 +136,10 @@ export const LAYERS = [
       {
         key: "extent",
         default: null,
+      },
+      {
+        key: "biomes",
+        default: [],
       },
     ],
     legend_config: {

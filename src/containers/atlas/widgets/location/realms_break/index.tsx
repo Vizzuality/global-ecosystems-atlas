@@ -28,7 +28,7 @@ export const WidgetLocationRealmsBreak = () => {
   const [location] = useSyncLocation();
 
   const realmsData = useRealms({ location });
-  const biomesData = useBiomes();
+  const biomesData = useBiomes({ location });
 
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",

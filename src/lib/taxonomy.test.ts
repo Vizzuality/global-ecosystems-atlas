@@ -2,6 +2,7 @@ import { renderHook } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach, Mock } from "vitest";
 
 import { useApiEcosystemsGet } from "@/types/generated/ecosystems";
+import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
 import {
   getRealmsFromEFGCode,
@@ -13,6 +14,7 @@ import {
 
 // Mock the useApiEcosystemsGet hook
 vi.mock("@/types/generated/ecosystems", () => ({
+  useApiLocationsLocationWidgetsWidgetIdGet: vi.fn(),
   useApiEcosystemsGet: vi.fn(),
 }));
 
@@ -42,6 +44,7 @@ const mockEcosystemsData = {
 describe("taxonomy functions and hooks", () => {
   beforeEach(() => {
     (useApiEcosystemsGet as Mock).mockReturnValue({ data: mockEcosystemsData });
+    (useApiLocationsLocationWidgetsWidgetIdGet as Mock).mockReturnValue({ data: null });
   });
 
   it("getRealmsFromEFGCode removes numbers and dots, then splits by letters", () => {
@@ -82,7 +85,7 @@ describe("taxonomy functions and hooks", () => {
   });
 
   it("useBiomes filters and maps data correctly", () => {
-    const { result } = renderHook(() => useBiomes());
+    const { result } = renderHook(() => useBiomes({ location: null }));
     expect(result.current).toEqual([
       {
         id: "T1",

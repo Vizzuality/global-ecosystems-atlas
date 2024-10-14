@@ -12,7 +12,7 @@ export const AtlasEcosysytemsDetail = () => {
   const [location] = useSyncLocation();
   const { ecosystemId } = useParams();
   const realmsData = useRealms({ location });
-  const biomesData = useBiomes();
+  const biomesData = useBiomes({ location });
   const ecosysytemsData = useEcosystems();
 
   const ECOSYSYTEM = ecosysytemsData?.find((e) => e.code === ecosystemId);

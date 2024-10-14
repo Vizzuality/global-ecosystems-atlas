@@ -54,7 +54,7 @@ export const useGetGroups = (
   }[],
 ) => {
   const realmsData = useRealms({ location: "GLOB" });
-  const biomesData = useBiomes();
+  const biomesData = useBiomes({ location: "GLOB" });
 
   return groups(data, (d) => d.realm?.realms.sort().join(""))
     .map(([key, value]) => {
@@ -129,36 +129,24 @@ export const useEcosystems = (props?: { realms?: string[]; biomes?: string[] }) 
     });
 };
 
-export const useBiomes = (props?: { realms?: string[] }) => {
-  const { data: ecosystemsData } = useApiEcosystemsGet();
+export const useBiomes = ({ location }: { location?: string | null }) => {
+  const { data: biomesData } = useApiLocationsLocationWidgetsWidgetIdGet(
+    location ?? "GLOB",
+    "extent_biomes",
+  );
 
-  return ecosystemsData?.data
-    .filter((e) => {
-      if (e.efg_code !== "0") {
-        return e.efg_code;
-      }
-      return false;
-    })
-    .filter(
-      (value, index, self) => index === self.findIndex((e) => e.biome_name === value.biome_name),
-    )
-    .map((e) => {
-      return {
-        id: getBiomeFromEFGCode(e.efg_code!),
-        name: `${e.biome_name}`.trim(),
-        biome: getBiomeFromEFGCode(e.efg_code!),
-        realms: getRealmsFromEFGCode(e.efg_code!),
-      };
-    })
-    .filter((b) => {
-      if (props?.realms?.length) {
-        const brls = b.realms.sort().toString();
-        const rls = props.realms.sort().toString();
+  const DATA = biomesData?.data as (WidgetData & { biome_code: string })[] | undefined;
 
-        return rls === brls;
-      }
-      return true;
-    });
+  return DATA?.map((b) => {
+    return {
+      id: b.biome_code,
+      name: `${b.biome_code} ${b.label}`.trim(),
+      biome: b.biome_code,
+      realms: getRealmsFromEFGCode(b.biome_code!),
+    };
+  })?.toSorted((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
 };
 
 export const useRealms = ({ location }: { location?: string | null }) => {
