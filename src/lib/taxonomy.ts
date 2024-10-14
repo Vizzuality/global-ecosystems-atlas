@@ -1,6 +1,5 @@
 import { groups } from "@visx/vendor/d3-array";
 
-import { useApiEcosystemsGet } from "@/types/generated/ecosystems";
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 import { WidgetData } from "@/types/generated/strapi.schemas";
 
@@ -88,44 +87,26 @@ export const useGetGroups = (
     });
 };
 
-export const useEcosystems = (props?: { realms?: string[]; biomes?: string[] }) => {
-  const { data: ecosystemsData } = useApiEcosystemsGet();
+export const useEcosystems = ({ location }: { location?: string | null }) => {
+  const { data: efgsData } = useApiLocationsLocationWidgetsWidgetIdGet(
+    location ?? "GLOB",
+    "extent_efgs",
+  );
 
-  return ecosystemsData?.data
-    .filter((e) => {
-      if (e.efg_code !== "0") {
-        return e.efg_code;
-      }
-      return false;
-    })
+  console.log(efgsData);
+
+  return efgsData?.data
     .map((e) => {
       return {
-        id: `${e.efg_code}`,
-        name: e.efg_name,
-        code: e.efg_code,
-        biome: getBiomeFromEFGCode(e.efg_code!),
-        realms: getRealmsFromEFGCode(e.efg_code!),
+        id: `${e.id}`,
+        name: e.label,
+        code: e.id,
+        biome: getBiomeFromEFGCode(e.id!),
+        realms: getRealmsFromEFGCode(e.id!),
       };
     })
-    .filter((e) => {
-      if (!props?.biomes?.length && !props?.realms?.length) {
-        return true;
-      }
-
-      const brls = e.realms.sort().toString();
-      const rls = props?.realms?.sort().toString();
-
-      const bbms = e.biome;
-
-      if (!props?.biomes?.length) {
-        return rls === brls;
-      }
-
-      if (!props?.realms?.length) {
-        return props.biomes.includes(bbms);
-      }
-
-      return rls === brls && props.biomes.includes(bbms);
+    .toSorted((a, b) => {
+      return a.name.localeCompare(b.name);
     });
 };
 

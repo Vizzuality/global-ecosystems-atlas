@@ -58,7 +58,7 @@ describe("taxonomy functions and hooks", () => {
   });
 
   it("useEcosystems filters and maps data correctly", () => {
-    const { result } = renderHook(() => useEcosystems());
+    const { result } = renderHook(() => useEcosystems({ location: null }));
     expect(result.current).toEqual([
       {
         id: "T1.1",
