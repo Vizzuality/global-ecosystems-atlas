@@ -50,8 +50,6 @@ const MapLegend = ({ className = "" }) => {
     [setLayersSettings],
   );
 
-  const sortable = layers?.length > 1;
-
   const ITEMS = useMemo(() => {
     return layers.toReversed().map((layer) => {
       const settings = (layersSettings && layersSettings[layer]) ?? {
@@ -71,13 +69,13 @@ const MapLegend = ({ className = "" }) => {
             handleChangeVisibility(layer, visibility);
           }}
           sortable={{
-            enabled: sortable,
+            enabled: true,
             handle: layers.length > 1,
           }}
         />
       );
     });
-  }, [layers, layersSettings, sortable, handleChangeOpacity, handleChangeVisibility]);
+  }, [layers, layersSettings, handleChangeOpacity, handleChangeVisibility]);
 
   return (
     <div className="absolute bottom-10 right-6 z-10 w-full max-w-sm">
@@ -93,7 +91,7 @@ const MapLegend = ({ className = "" }) => {
               className,
             )}
             sortable={{
-              enabled: sortable,
+              enabled: true,
               handle: true,
             }}
             onChangeOrder={handleChangeOrder}

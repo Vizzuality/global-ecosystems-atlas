@@ -329,11 +329,14 @@ export const LAYERS = [
       data: `https://api.mapbox.com/v4/vizzgea.wdpa_preprocessed_simple/{z}/{x}/{y}.mvt?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       stroked: true,
       filled: true,
+      binary: true,
       getFillColor: [239, 68, 68, 180],
       getLineColor: [239, 68, 68, 255],
       lineWidthUnits: "pixels",
       opacity: "@@#params.opacity",
       visible: "@@#params.visibility",
+      extensions: [{ "@@type": "MaskExtension" }],
+      maskId: "location-mask-layer-deck",
     },
     params_config: [
       {
@@ -361,7 +364,7 @@ export const LAYERS = [
     name: "Human population",
     type: "deckgl",
     group: "context-data",
-    config: {},
+    config: null,
     params_config: [
       {
         key: "opacity",
