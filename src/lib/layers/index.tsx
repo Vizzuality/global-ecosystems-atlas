@@ -291,9 +291,19 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          label: "Test",
+          label: "National map included",
           value: 0,
-          color: "#000",
+          color: "#86efac",
+        },
+        {
+          label: "Subnational map(s) included",
+          value: 0,
+          color: "#f0abfc",
+        },
+        {
+          label: "Engagement underway",
+          value: 0,
+          color: "#a5b4fc",
         },
       ],
     },
