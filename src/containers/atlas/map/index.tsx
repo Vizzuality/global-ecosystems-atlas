@@ -21,6 +21,7 @@ import {
   useSyncLocation,
 } from "@/app/(atlas)/atlas/store";
 
+import MapLegend from "@/containers/atlas/legend";
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 import { LayerManager } from "@/containers/atlas/map/layer-manager";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
@@ -138,6 +139,8 @@ export const AtlasMap = () => {
           {loaded && <AtlasPopup />}
         </Map>
       </div>
+
+      <MapLegend />
     </div>
   );
 };

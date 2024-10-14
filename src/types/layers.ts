@@ -3,12 +3,12 @@ export type ParamsConfigValue = {
   default: unknown;
 };
 
-export type ParamsConfig = ParamsConfigValue[];
+export type ParamsConfig = readonly ParamsConfigValue[];
 
 export type LegendConfig = {
   type: "basic" | "gradient" | "choropleth";
   items: {
-    value: string;
+    value: number;
     color: string;
   }[];
 };
