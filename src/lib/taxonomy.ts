@@ -5,7 +5,11 @@ import { WidgetData } from "@/types/generated/strapi.schemas";
 
 export const getRealmFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters
-  const realmIds = efgCode.replace(/[0-9.]/g, "");
+  const realmIds = efgCode
+    .replace(/[0-9.]/g, "")
+    .split("")
+    .sort()
+    .join("");
 
   return realmIds;
 };
