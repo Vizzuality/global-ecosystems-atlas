@@ -7,7 +7,7 @@ import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { MapMouseEvent } from "mapbox-gl";
-import { useDebounce } from "rooks";
+import { useDebounce, usePreviousDifferent } from "rooks";
 
 import { env } from "@/env.mjs";
 
@@ -19,6 +19,7 @@ import {
   tmpBboxAtom,
   useSyncBasemap,
   useSyncBbox,
+  useSyncFilters,
   useSyncLocation,
 } from "@/app/(atlas)/atlas/store";
 
@@ -43,6 +44,9 @@ export const AtlasMap = () => {
   const [loaded, setLoaded] = useState(false);
 
   const [location] = useSyncLocation();
+  const { reset } = useSyncFilters();
+  const prevLocation = usePreviousDifferent(location);
+
   const [basemap] = useSyncBasemap();
   const [bbox, setBbox] = useSyncBbox();
 
@@ -94,6 +98,13 @@ export const AtlasMap = () => {
       handleFitBounds();
     }
   }, [tmpBbox, handleFitBounds]);
+
+  useEffect(() => {
+    if (location !== prevLocation) {
+      reset();
+      // console.log("Location changed", location, prevLocation);
+    }
+  }, [location, prevLocation, reset]);
 
   return (
     <div className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50">
