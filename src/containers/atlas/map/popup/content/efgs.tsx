@@ -37,7 +37,7 @@ export const EFGSPopupError = () => {
 
       <div className="pt-3">
         <div className="flex h-40 items-center justify-center">
-          <p className="max-w-36 text-center text-xs leading-snug">
+          <p className="max-w-40 text-center text-xs font-medium leading-snug">
             An error occurred while fetching the data.
           </p>
         </div>
@@ -85,25 +85,25 @@ export const EFGSPopup = () => {
           <ul className="space-y-2">
             <li>
               <h4 className="text-xs font-bold tracking-wide">Source dataset</h4>
-              <p className="text-xs leading-snug">{dataset.label}</p>
+              <p className="text-xs font-medium leading-snug">{dataset.label}</p>
             </li>
             <li>
               <h4 className="text-xs font-bold tracking-wide">Map class in source dataset</h4>
-              <p className="text-xs leading-snug">{dataset.map_class_name}</p>
+              <p className="text-xs font-medium leading-snug">{dataset.map_class_name}</p>
             </li>
             <li>
               <h4 className="text-xs font-bold tracking-wide">Sources agreement</h4>
-              <p className="text-xs leading-snug">{data.sources_agreement}</p>
+              <p className="text-xs font-medium leading-snug">{data.sources_agreement}</p>
             </li>
             <li>
               <h4 className="text-xs font-bold tracking-wide">
                 Spatial resolution in source dataset
               </h4>
-              <p className="text-xs leading-snug">{dataset.spatial_resolution}m</p>
+              <p className="text-xs font-medium leading-snug">{dataset.spatial_resolution}m</p>
             </li>
             <li>
               <h4 className="text-xs font-bold tracking-wide">Year of publication</h4>
-              <p className="text-xs leading-snug">{dataset.year}</p>
+              <p className="text-xs font-medium leading-snug">{dataset.year}</p>
             </li>
           </ul>
         </div>

@@ -33,7 +33,7 @@ export default function HomeStories() {
             <div className="space-y-2">
               <div className="flex items-end justify-between">
                 <div>
-                  <span className="text-6xl font-semibold leading-none">78</span>
+                  <span className="text-6xl font-semibold leading-none">94.23</span>
                   <span className="text-2xl leading-none"> %</span>
                 </div>
 
@@ -44,21 +44,15 @@ export default function HomeStories() {
                 <div
                   className="h-full bg-navy-700"
                   style={{
-                    width: "78%",
+                    width: "94.23%",
                   }}
                 />
-              </div>
-
-              <div className="flex gap-2">
-                <p className="text-xs font-bold">
-                  <span className="font-bold">terrestial surface</span>
-                </p>
               </div>
             </div>
             <div className="space-y-2">
               <div className="flex items-end justify-between">
                 <div>
-                  <span className="text-6xl font-semibold leading-none">13</span>
+                  <span className="text-6xl font-semibold leading-none">14.46</span>
                   <span className="text-2xl leading-none"> %</span>
                 </div>
 
@@ -69,7 +63,7 @@ export default function HomeStories() {
                 <div
                   className="h-full bg-navy-700"
                   style={{
-                    width: "13%",
+                    width: "14.46%",
                   }}
                 />
               </div>

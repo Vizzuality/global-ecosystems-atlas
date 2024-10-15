@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { ParentSize } from "@visx/responsive";
 import { scaleOrdinal } from "@visx/scale";
 
-import { RealmsIds } from "@/lib/colors";
 import { formatPercentage } from "@/lib/utils";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
@@ -22,28 +21,48 @@ import {
 
 import { PieChart } from "@/components/charts/pie";
 
-export const WidgetLocationProtection = ({ location }: { location: string }) => {
-  const [selected, setSelected] = useState<RealmsIds>();
+const DATUM = {
+  ZAF_224: [
+    {
+      id: "protected",
+      label: "is protected",
+      value: 0.1277,
+      color: "#D94801",
+    },
+    {
+      id: "not-protected",
+      label: "is not protected",
+      value: 0.8723,
+      color: "#e5e9ed",
+    },
+  ],
+  MOZ_167: [
+    {
+      id: "protected",
+      label: "is protected",
+      value: 0.1788,
+      color: "#D94801",
+    },
+    {
+      id: "not-protected",
+      label: "is not protected",
+      value: 0.8212,
+      color: "#e5e9ed",
+    },
+  ],
+};
 
-  const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
+export const WidgetLocationProtection = ({ location }: { location: string }) => {
+  const [selected, setSelected] = useState<string>();
+
+  const { isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
     "extent_realms",
   );
 
-  const TOTAL = useMemo(() => {
-    return data?.data?.reduce((acc, item) => acc + (item.value ?? 0), 0);
-  }, [data]);
-
   const DATA = useMemo(() => {
-    return data?.data.map((d) => {
-      return {
-        id: d.id as RealmsIds,
-        label: d.label,
-        value: (d.value ?? 0) / (TOTAL ?? 1),
-        color: d.color,
-      };
-    });
-  }, [data, TOTAL]);
+    return DATUM[location as keyof typeof DATUM];
+  }, [location]);
 
   const SELECTED = useMemo(() => {
     const s = DATA?.find((d) => d.id === selected);
@@ -85,6 +104,11 @@ export const WidgetLocationProtection = ({ location }: { location: string }) => 
                           colorScale={colorScale}
                           format={formatPercentage}
                           interactive
+                          pieProps={{
+                            pieSort: (a, b) => {
+                              return b.id.localeCompare(a.id);
+                            },
+                          }}
                           onPathMouseEnter={(d) => {
                             setSelected(d.id);
                           }}
