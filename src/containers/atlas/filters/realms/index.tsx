@@ -43,7 +43,7 @@ export const RealmsContent = () => {
   const BIOMES = useBiomes({ location });
   const ECOSYSTEMS = useEcosystems({ location });
 
-  // const REALMS = REALMS?.filter((r) => r.realms.length === 1);
+  // const REALMS = REALMS?.filter((r) => r.realm.length === 1);
 
   const DATA = useMemo(() => {
     return REALMS?.map((realm) => {
@@ -78,7 +78,7 @@ export const RealmsContent = () => {
 
         // Sync biomes
         const bs = BIOMES?.filter((b) => {
-          return newRealms.includes(b.realms);
+          return newRealms.includes(b.realm);
         })?.map((b) => b.id);
         if (!!bs?.length) {
           setBiomes(bs);
@@ -86,7 +86,7 @@ export const RealmsContent = () => {
 
         // Sync ecosystems
         const ecosystems = ECOSYSTEMS?.filter((e) => {
-          return newRealms.includes(e.realms);
+          return newRealms.includes(e.realm);
         })?.map((e) => e.id);
 
         if (!!ecosystems?.length) {
@@ -101,7 +101,7 @@ export const RealmsContent = () => {
 
         // Sync biomes
         const bs = BIOMES?.filter((b) => {
-          return newRealms.includes(b.realms);
+          return newRealms.includes(b.realm);
         })?.map((b) => b.id);
 
         if (!!bs?.length) {
@@ -110,7 +110,7 @@ export const RealmsContent = () => {
 
         // Sync ecosystems
         const ecosystems = ECOSYSTEMS?.filter((e) => {
-          return newRealms.includes(e.realms);
+          return newRealms.includes(e.realm);
         })?.map((e) => e.id);
 
         if (!!ecosystems?.length) {

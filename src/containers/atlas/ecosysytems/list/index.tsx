@@ -73,9 +73,9 @@ export const AtlasEcosysytemsList = () => {
               </TableCell>
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 pr-0 text-xs font-medium"
-                title={REALMS?.find((r) => r.id === e.realms)?.name}
+                title={REALMS?.find((r) => r.id === e.realm)?.name}
               >
-                {REALMS?.find((r) => r.id === e.realms)?.name}
+                {REALMS?.find((r) => r.id === e.realm)?.name}
               </TableCell>
             </TableRow>
           ))}

@@ -17,7 +17,7 @@ export const AtlasEcosysytemsDetail = () => {
 
   const ECOSYSYTEM = ecosysytemsData?.find((e) => e.code === ecosystemId);
   const BIOME = BIOMES?.find((biome) => biome.id === ECOSYSYTEM?.biome);
-  const REALM = realmsData?.find((r) => r.id === ECOSYSYTEM?.realms);
+  const REALM = realmsData?.find((r) => r.id === ECOSYSYTEM?.realm);
 
   return (
     <div>

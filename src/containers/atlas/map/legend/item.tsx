@@ -6,7 +6,14 @@ import { LAYERS } from "@/lib/layers";
 
 import { LegendConfig, ParamsConfig } from "@/types/layers";
 
-import { useSyncLayers, useSyncLayersSettings, useSyncLocation } from "@/app/(atlas)/atlas/store";
+import {
+  useSyncBiomes,
+  useSyncEcosystems,
+  useSyncLayers,
+  useSyncLayersSettings,
+  useSyncLocation,
+  useSyncRealms,
+} from "@/app/(atlas)/atlas/store";
 
 import LegendItem from "@/components/map/legend/item";
 import {
@@ -28,6 +35,9 @@ type ConfigType =
   | LegendConfig
   | ReactElement<{
       location: string | null;
+      realms: string[];
+      biomes: string[];
+      ecosystems: string[];
       paramsConfig: ParamsConfig;
       onChangeSettings: (settings: Record<string, unknown>) => unknown;
     }>
@@ -35,6 +45,9 @@ type ConfigType =
 
 export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
   const [location] = useSyncLocation();
+  const [realms] = useSyncRealms();
+  const [biomes] = useSyncBiomes();
+  const [ecosystems] = useSyncEcosystems();
   const [, setLayers] = useSyncLayers();
   const [layersSettings, setLayersSettings] = useSyncLayersSettings();
 
@@ -60,6 +73,9 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     if (isValidElement(l)) {
       return cloneElement(l, {
         location,
+        realms,
+        biomes,
+        ecosystems,
         paramsConfig: params_config,
         onChangeSettings: (settings: Record<string, unknown>) => {
           setLayersSettings((prev) => ({
@@ -79,7 +95,7 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     }
 
     return null;
-  }, [location, config, params_config, setLayersSettings, id]);
+  }, [location, realms, biomes, ecosystems, config, params_config, setLayersSettings, id]);
 
   return (
     <LegendItem

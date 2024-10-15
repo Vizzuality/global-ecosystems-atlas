@@ -3,7 +3,7 @@ import { groups } from "@visx/vendor/d3-array";
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 import { WidgetData } from "@/types/generated/strapi.schemas";
 
-export const getRealmsFromEFGCode = (efgCode: string) => {
+export const getRealmFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters
   const realmIds = efgCode.replace(/[0-9.]/g, "");
 
@@ -38,7 +38,7 @@ export const useGetGroups = (
       | {
           id: string;
           name: string;
-          realms: string[];
+          realm: string;
         }
       | undefined;
     biome:
@@ -46,7 +46,7 @@ export const useGetGroups = (
           id: string;
           name: string;
           biome: string;
-          realms: string[];
+          realm: string;
         }
       | undefined;
     label: string;
@@ -55,11 +55,11 @@ export const useGetGroups = (
   const REALMS = useRealms({ location: "GLOB" });
   const BIOMES = useBiomes({ location: "GLOB" });
 
-  return groups(data, (d) => d.realm?.realms.sort().join(""))
+  return groups(data, (d) => d.realm?.realm)
     .map(([key, value]) => {
       return {
         id: key,
-        name: REALMS?.find((r) => r.id === key)?.name,
+        name: REALMS?.find((r) => r.realm === key)?.name,
         items: groups(value, (d) => d.biome?.id)
           .map(([key, value]) => {
             const b = BIOMES?.find((b) => b.id === key);
@@ -100,7 +100,7 @@ export const useEcosystems = ({ location }: { location?: string | null }) => {
         name: e.label,
         code: e.id,
         biome: getBiomeFromEFGCode(e.id!),
-        realms: getRealmsFromEFGCode(e.id!),
+        realm: getRealmFromEFGCode(e.id!),
       };
     })
     .toSorted((a, b) => {
@@ -121,7 +121,7 @@ export const useBiomes = ({ location }: { location?: string | null }) => {
       id: getBiomeFromEFGCode(b.biome_code!),
       name: `${b.biome_code} ${b.label}`.trim(),
       biome: b.biome_code,
-      realms: getRealmsFromEFGCode(b.biome_code!),
+      realm: getRealmFromEFGCode(b.biome_code!),
     };
   })?.toSorted((a, b) => {
     return a.name.localeCompare(b.name);
@@ -140,7 +140,7 @@ export const useRealms = ({ location }: { location?: string | null }) => {
     return {
       id: r.id,
       name: `${r.label}`,
-      realms: r.realm_code,
+      realm: r.realm_code,
     };
   });
 };
