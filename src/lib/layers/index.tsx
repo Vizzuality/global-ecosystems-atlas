@@ -4,12 +4,20 @@ export const LAYERS = [
   {
     id: "realms",
     name: "Realms",
+    type: "deckgl",
     group: "atlas-data",
     config: {
       "@@type": "RasterMaskedLayer",
 
       data: [
-        `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png?asset=realms`,
+        {
+          "@@function": "setQueryParams",
+          url: `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png`,
+          query: {
+            asset: "realms",
+            classes: "@@#params.realms",
+          },
+        },
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 20,
@@ -19,6 +27,8 @@ export const LAYERS = [
       depthStart: "@@#params.depth0",
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
       bitmapProps: {
         textureParameters: {
           minFilter: "nearest",
@@ -54,15 +64,13 @@ export const LAYERS = [
         key: "extent",
         default: null,
       },
+      {
+        key: "realms",
+        default: [],
+      },
     ],
     legend_config: {
-      type: "basic",
-      items: [
-        {
-          value: "Test",
-          color: "#000",
-        },
-      ],
+      "@@type": "RealmsLegend",
     },
     interaction_config: {},
     metadata: {},
@@ -70,11 +78,19 @@ export const LAYERS = [
   {
     id: "biomes",
     name: "Biomes",
+    type: "deckgl",
     group: "atlas-data",
     config: {
       "@@type": "RasterMaskedLayer",
       data: [
-        `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png?asset=biomes`,
+        {
+          "@@function": "setQueryParams",
+          url: `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png`,
+          query: {
+            asset: "biomes",
+            classes: "@@#params.biomes",
+          },
+        },
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 20,
@@ -84,6 +100,8 @@ export const LAYERS = [
       depthStart: "@@#params.depth0",
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
       bitmapProps: {
         textureParameters: {
           minFilter: "nearest",
@@ -119,15 +137,13 @@ export const LAYERS = [
         key: "extent",
         default: null,
       },
+      {
+        key: "biomes",
+        default: [],
+      },
     ],
     legend_config: {
-      type: "basic",
-      items: [
-        {
-          value: "Test",
-          color: "#000",
-        },
-      ],
+      "@@type": "BiomesLegend",
     },
     interaction_config: {},
     metadata: {},
@@ -135,11 +151,19 @@ export const LAYERS = [
   {
     id: "efgs",
     name: "Ecosystem Functional Groups",
+    type: "deckgl",
     group: "atlas-data",
     config: {
       "@@type": "RasterMaskedLayer",
       data: [
-        `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png?asset=efgs`,
+        {
+          "@@function": "setQueryParams",
+          url: `${env.NEXT_PUBLIC_API_URL}/custom/tiler/tiles/{z}/{x}/{y}.png`,
+          query: {
+            asset: "efgs",
+            classes: "@@#params.efgs",
+          },
+        },
         `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       ],
       maxZoom: 20,
@@ -149,6 +173,8 @@ export const LAYERS = [
       depthStart: "@@#params.depth0",
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
       bitmapProps: {
         textureParameters: {
           minFilter: "nearest",
@@ -184,20 +210,19 @@ export const LAYERS = [
         key: "extent",
         default: null,
       },
+      {
+        key: "efgs",
+        default: [],
+      },
     ],
     legend_config: {
-      type: "basic",
-      items: [
-        {
-          value: "Test",
-          color: "#000",
-        },
-      ],
+      "@@type": "EfgsLegend",
     },
   },
   {
     id: "overlap-index",
     name: "Overlap Index",
+    type: "deckgl",
     group: "status-data",
     config: {
       "@@type": "RasterMaskedLayer",
@@ -212,6 +237,8 @@ export const LAYERS = [
       depthStart: "@@#params.depth0",
       depthEnd: "@@#params.depth1",
       extent: "@@#params.extent",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
       bitmapProps: {
         textureParameters: {
           minFilter: "nearest",
@@ -252,8 +279,9 @@ export const LAYERS = [
       type: "basic",
       items: [
         {
-          value: "Test",
-          color: "#000",
+          label: "Overlap",
+          value: 0,
+          color: "#BADDBD",
         },
       ],
     },
@@ -261,11 +289,14 @@ export const LAYERS = [
   {
     id: "country-contribution",
     name: "Country contribution",
+    type: "deckgl",
     group: "status-data",
     config: {
       "@@type": "MVTLayer",
       data: `https://api.mapbox.com/v4/vizzgea.0kkwfp3y/{z}/{x}/{y}.mvt?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       filled: true,
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
       getFillColor: (d: { properties: { PoC_Status: string } }) => {
         switch (d.properties.PoC_Status) {
           case "National map included":
@@ -289,20 +320,45 @@ export const LAYERS = [
         default: true,
       },
     ],
-    //
+    legend_config: {
+      type: "basic",
+      items: [
+        {
+          label: "National map included",
+          value: 0,
+          color: "#86efac",
+        },
+        {
+          label: "Subnational map(s) included",
+          value: 0,
+          color: "#f0abfc",
+        },
+        {
+          label: "Engagement underway",
+          value: 0,
+          color: "#a5b4fc",
+        },
+      ],
+    },
   },
   {
     id: "protected-areas",
     name: "Protected areas",
+    type: "deckgl",
     group: "context-data",
     config: {
       "@@type": "MVTLayer",
       data: `https://api.mapbox.com/v4/vizzgea.wdpa_preprocessed_simple/{z}/{x}/{y}.mvt?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       stroked: true,
       filled: true,
+      binary: true,
       getFillColor: [239, 68, 68, 180],
       getLineColor: [239, 68, 68, 255],
       lineWidthUnits: "pixels",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
+      extensions: [{ "@@type": "MaskExtension" }],
+      maskId: "location-mask-layer-deck",
     },
     params_config: [
       {
@@ -314,12 +370,23 @@ export const LAYERS = [
         default: true,
       },
     ],
+    legend_config: {
+      type: "basic",
+      items: [
+        {
+          label: "Protected areas",
+          value: 0,
+          color: "#ef4444",
+        },
+      ],
+    },
   },
   {
     id: "human-population",
     name: "Human population",
+    type: "deckgl",
     group: "context-data",
-    config: {},
+    config: null,
     params_config: [
       {
         key: "opacity",
@@ -330,10 +397,21 @@ export const LAYERS = [
         default: true,
       },
     ],
+    legend_config: {
+      type: "basic",
+      items: [
+        {
+          label: "Test",
+          value: 0,
+          color: "#000",
+        },
+      ],
+    },
   },
   {
     id: "satellite",
     name: "Satellite",
+    type: "deckgl",
     group: undefined,
     config: {
       "@@type": "RasterLayer",
@@ -342,6 +420,8 @@ export const LAYERS = [
       minZoom: 0,
       zoomOffset: 1,
       refinementStrategy: "no-overlap",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
       bitmapProps: {
         extensions: [{ "@@type": "MaskExtension" }],
         maskId: "location-mask-layer-deck",
@@ -357,6 +437,16 @@ export const LAYERS = [
         default: true,
       },
     ],
+    legend_config: {
+      type: "basic",
+      items: [
+        {
+          label: "Test",
+          value: 0,
+          color: "#000",
+        },
+      ],
+    },
   },
 ] as const;
 

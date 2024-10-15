@@ -4,70 +4,108 @@ import { useMemo } from "react";
 
 import { CheckedState } from "@radix-ui/react-checkbox";
 
-import { useRealms } from "@/lib/taxonomy";
+import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
 import { cn } from "@/lib/utils";
 
-import { useSyncBiomes, useSyncEcosystems, useSyncRealms } from "@/app/(atlas)/atlas/store";
+import {
+  useSyncBiomes,
+  useSyncEcosystems,
+  useSyncLocation,
+  useSyncRealms,
+} from "@/app/(atlas)/atlas/store";
 
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 export const RealmsTrigger = () => {
+  const [location] = useSyncLocation();
+  const [realms] = useSyncRealms();
+  // const REALMS = useRealms({ location: "GLOB" });
+  const REALMSFiltered = useRealms({ location });
+
   return (
     <div className="flex items-center gap-2">
       Realms
       <Badge variant="secondary" className="rounded-2xl">
-        4/4
+        {realms?.length || REALMSFiltered?.length}/{REALMSFiltered?.length}
       </Badge>
     </div>
   );
 };
 
 export const RealmsContent = () => {
+  const [location] = useSyncLocation();
   const [realms, setRealms] = useSyncRealms();
   const [biomes, setBiomes] = useSyncBiomes();
   const [ecosystems, setEcosystems] = useSyncEcosystems();
-  const realmsData = useRealms();
 
-  const REALMS = realmsData?.filter((r) => r.realms.length === 1);
+  const REALMS = useRealms({ location });
+  const BIOMES = useBiomes({ location });
+  const ECOSYSTEMS = useEcosystems({ location });
 
   const DATA = useMemo(() => {
-    if (!realms.length) {
-      return REALMS?.map((realm) => {
-        return {
-          ...realm,
-          disabled: false,
-        };
-      });
-    }
-
-    return REALMS?.map((realm) => {
-      const disabled =
-        (realm.id === "S" && realms.includes("T")) ||
-        (realm.id === "T" && realms.includes("S")) ||
-        (realms.length > 1 && !realms.includes("S") && realm.id === "S") ||
-        (realms.length > 1 && realms.includes("S") && !realms.includes(realm.id));
+    return REALMS?.toSorted((a, b) => {
+      return a.name.localeCompare(b.name);
+    })?.map((realm) => {
       return {
         ...realm,
-        disabled,
+        disabled: false,
       };
     });
-  }, [realms, REALMS]);
+
+    // return REALMS?.map((realm) => {
+    //   const disabled =
+    //     (realm.id === "S" && realms.includes("T")) ||
+    //     (realm.id === "T" && realms.includes("S")) ||
+    //     (realms.length > 1 && !realms.includes("S") && realm.id === "S") ||
+    //     (realms.length > 1 && realms.includes("S") && !realms.includes(realm.id));
+    //   return {
+    //     ...realm,
+    //     disabled,
+    //   };
+    // });
+  }, [REALMS]);
 
   const handleChange = (realmId: string, checked: CheckedState) => {
     if (!checked) {
-      setRealms((prev) => prev.filter((realm) => realm !== realmId));
+      setRealms((prev) => {
+        const newRealms = prev.filter((realm) => realm !== realmId);
+
+        if (newRealms.length === 0) {
+          setBiomes([]);
+          setEcosystems([]);
+        }
+
+        // Remove the biomes that belong to the realm that was unchecked
+        if (biomes.length > 0) {
+          setBiomes((prev) => {
+            return prev.filter((biome) => {
+              const b = BIOMES?.find((b) => {
+                return b.id === biome;
+              });
+              return b?.realm !== realmId;
+            });
+          });
+        }
+
+        if (ecosystems.length > 0) {
+          setEcosystems((prev) => {
+            return prev.filter((ecosystem) => {
+              const e = ECOSYSTEMS?.find((e) => {
+                return e.id === ecosystem;
+              });
+              return e?.realm !== realmId;
+            });
+          });
+        }
+
+        return newRealms;
+      });
     } else {
-      setRealms((prev) => [...prev, realmId]);
-    }
-
-    if (biomes.length) {
-      setBiomes([]);
-    }
-
-    if (ecosystems.length) {
-      setEcosystems([]);
+      setRealms((prev) => {
+        return [...prev, realmId]; // // Sync biomes
+      });
     }
   };
 

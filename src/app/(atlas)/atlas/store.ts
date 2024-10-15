@@ -97,5 +97,29 @@ export const useSyncSearchParams = () => {
   });
 };
 
+export const useSyncFilters = () => {
+  const [realms, setRealms] = useSyncRealms();
+  const [biomes, setBiomes] = useSyncBiomes();
+  const [ecosystems, setEcosystems] = useSyncEcosystems();
+  const [depth, setDepth] = useSyncDepth();
+
+  const reset = useMemo(() => {
+    return () => {
+      setRealms([]);
+      setBiomes([]);
+      setEcosystems([]);
+      setDepth(depthParser.defaultValue);
+    };
+  }, [setRealms, setBiomes, setEcosystems, setDepth]);
+
+  return {
+    realms,
+    biomes,
+    ecosystems,
+    depth,
+    reset,
+  };
+};
+
 export const tmpBboxAtom = atom<number[]>();
 export const popupAtom = atom<LngLat | null>(null);

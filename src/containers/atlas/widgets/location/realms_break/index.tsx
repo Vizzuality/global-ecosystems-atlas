@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 import {
   getBiomeFromEFGCode,
-  getRealmsFromEFGCode,
+  getRealmFromEFGCode,
   useBiomes,
   useGetGroups,
   useRealms,
@@ -24,11 +24,14 @@ import {
   WidgetTitle,
 } from "@/containers/atlas/widgets/item";
 
+const CORE_REALMS_IDS = ["S", "T", "M", "F"];
+const TRANSACTIONAL_REALMS_IDS = ["MS", "FS", "FT", "MT", "FM", "FMT"];
+
 export const WidgetLocationRealmsBreak = () => {
   const [location] = useSyncLocation();
 
-  const realmsData = useRealms();
-  const biomesData = useBiomes();
+  const REALMS = useRealms({ location });
+  const BIOMES = useBiomes({ location });
 
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
@@ -38,13 +41,13 @@ export const WidgetLocationRealmsBreak = () => {
   const DATA = useMemo(() => {
     return (
       data?.data.map((d) => {
-        const realms = getRealmsFromEFGCode(d.id);
+        const realm = getRealmFromEFGCode(d.id);
         const biome = getBiomeFromEFGCode(d.id);
 
-        const r = realmsData?.find((r) => {
-          return r.realms.sort().join("") === realms.sort().join("");
+        const r = REALMS?.find((r) => {
+          return r.id === realm;
         });
-        const b = biomesData?.find((r) => {
+        const b = BIOMES?.find((r) => {
           return r.id === biome;
         });
 
@@ -56,10 +59,14 @@ export const WidgetLocationRealmsBreak = () => {
         };
       }) ?? []
     );
-  }, [data, realmsData, biomesData]);
+  }, [data, REALMS, BIOMES]);
 
-  const CORE_REALMS = useGetGroups(DATA?.filter((r) => (r.realm?.realms.length ?? 0) === 1));
-  const TRANSACTIONAL_REALMS = useGetGroups(DATA?.filter((r) => (r.realm?.realms.length ?? 0) > 1));
+  const CORE_REALMS = useGetGroups(DATA.filter((d) => CORE_REALMS_IDS.includes(d.realm?.id ?? "")));
+  const TRANSACTIONAL_REALMS = useGetGroups(
+    DATA.filter((d) => {
+      return TRANSACTIONAL_REALMS_IDS.includes(d.realm?.id ?? "");
+    }),
+  );
 
   return (
     <Widget>
@@ -88,9 +95,7 @@ export const WidgetLocationRealmsBreak = () => {
                                   key={biome.id}
                                   className="flex items-center justify-between border-b border-navy-50"
                                 >
-                                  <h6 className="py-1 text-xs font-medium">
-                                    {biome.id} {biome.name}
-                                  </h6>
+                                  <h6 className="py-1 text-xs font-medium">{biome.name}</h6>
                                   <span className="text-xs font-bold">{biome.items.length}</span>
                                 </li>
                               );
@@ -117,9 +122,7 @@ export const WidgetLocationRealmsBreak = () => {
                                   key={biome.id}
                                   className="flex items-center justify-between border-b border-navy-50"
                                 >
-                                  <h6 className="py-1 text-xs font-medium">
-                                    {biome.id} {biome.name}
-                                  </h6>
+                                  <h6 className="py-1 text-xs font-medium">{biome.name}</h6>
                                   <span className="text-xs font-bold">{biome.items.length}</span>
                                 </li>
                               );

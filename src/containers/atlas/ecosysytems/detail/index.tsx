@@ -4,17 +4,20 @@ import { useParams } from "next/navigation";
 
 import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
 
+import { useSyncLocation } from "@/app/(atlas)/atlas/store";
+
 import { WidgetEcosystemsList } from "@/containers/atlas/widgets";
 
 export const AtlasEcosysytemsDetail = () => {
+  const [location] = useSyncLocation();
   const { ecosystemId } = useParams();
-  const realmsData = useRealms();
-  const biomesData = useBiomes();
-  const ecosysytemsData = useEcosystems();
+  const realmsData = useRealms({ location });
+  const BIOMES = useBiomes({ location });
+  const ecosysytemsData = useEcosystems({ location });
 
   const ECOSYSYTEM = ecosysytemsData?.find((e) => e.code === ecosystemId);
-  const BIOME = biomesData?.find((biome) => biome.id === ECOSYSYTEM?.biome);
-  const REALMS = ECOSYSYTEM?.realms.map((realm) => realmsData?.find((r) => r.id === realm));
+  const BIOME = BIOMES?.find((biome) => biome.id === ECOSYSYTEM?.biome);
+  const REALM = realmsData?.find((r) => r.id === ECOSYSYTEM?.realm);
 
   return (
     <div>
@@ -24,7 +27,7 @@ export const AtlasEcosysytemsDetail = () => {
       <p>
         {BIOME?.id} {BIOME?.name}
       </p>
-      <p>{REALMS?.map((realm) => realm?.name).join(", ")}</p>
+      <p>{REALM?.name}</p>
 
       <WidgetEcosystemsList />
     </div>

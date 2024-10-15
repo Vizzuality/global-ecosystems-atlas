@@ -43,8 +43,8 @@ const Slider = React.forwardRef<
       </SliderPrimitive.Track>
 
       {/* Create as many thumbs as the defaultValueLenght */}
-      {Array.isArray(defaultValue) &&
-        defaultValue.map((_, index) => (
+      {(Array.isArray(defaultValue) || Array.isArray(value)) &&
+        (defaultValue || value).map((_, index) => (
           <SliderPrimitive.Thumb
             key={index}
             className="relative block h-4 w-4 cursor-pointer rounded-full border-4 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"

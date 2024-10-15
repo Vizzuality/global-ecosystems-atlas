@@ -7,8 +7,15 @@ import { Layer } from "@deck.gl/core";
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
 import { useLocationId } from "@/lib/locations";
+import { useBiomesIds, useEcosystemsIds } from "@/lib/taxonomy";
 
-import { useSyncDepth, useSyncLocation } from "@/app/(atlas)/atlas/store";
+import {
+  useSyncBiomes,
+  useSyncDepth,
+  useSyncEcosystems,
+  useSyncLocation,
+  useSyncRealms,
+} from "@/app/(atlas)/atlas/store";
 
 import DeckLayer from "@/components/map/layers/deck-layer";
 
@@ -22,10 +29,19 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const LAYER = LAYERS.find((l) => l.id === id);
   const [location] = useSyncLocation();
   const [depth] = useSyncDepth();
+  const [realms] = useSyncRealms();
+  const [biomes] = useSyncBiomes();
+  const [ecosystems] = useSyncEcosystems();
+
+  const BIOMES_IDS = useBiomesIds({ location, realms, biomes });
+  const ECOSYSTEMS_IDS = useEcosystemsIds({ location, realms, biomes, ecosystems });
 
   const LOCATION = useLocationId(location);
 
   const { config, params_config } = LAYER ?? {};
+
+  if (!config) return null;
+
   const c = parseConfig<Layer>({
     config: {
       ...(config ?? {}),
@@ -39,6 +55,9 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
       extent: LOCATION?.bounds || null,
       depth0: depth[0],
       depth1: depth[1],
+      realms,
+      biomes: BIOMES_IDS,
+      efgs: ECOSYSTEMS_IDS,
     },
   });
 

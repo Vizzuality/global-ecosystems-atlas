@@ -7,6 +7,7 @@ import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { MapMouseEvent } from "mapbox-gl";
+import { useDebounce, usePreviousDifferent } from "rooks";
 
 import { env } from "@/env.mjs";
 
@@ -18,11 +19,13 @@ import {
   tmpBboxAtom,
   useSyncBasemap,
   useSyncBbox,
+  useSyncFilters,
   useSyncLocation,
 } from "@/app/(atlas)/atlas/store";
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 import { LayerManager } from "@/containers/atlas/map/layer-manager";
+import MapLegend from "@/containers/atlas/map/legend";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
@@ -41,6 +44,9 @@ export const AtlasMap = () => {
   const [loaded, setLoaded] = useState(false);
 
   const [location] = useSyncLocation();
+  const { reset } = useSyncFilters();
+  const prevLocation = usePreviousDifferent(location);
+
   const [basemap] = useSyncBasemap();
   const [bbox, setBbox] = useSyncBbox();
 
@@ -64,6 +70,8 @@ export const AtlasMap = () => {
       setTmpBbox(undefined);
     }
   };
+
+  const handleMovedDebounced = useDebounce(handleMove, 500);
 
   const handleFitBounds = useCallback(() => {
     if (tmpBbox && atlasMap) {
@@ -91,6 +99,12 @@ export const AtlasMap = () => {
     }
   }, [tmpBbox, handleFitBounds]);
 
+  useEffect(() => {
+    if (location !== prevLocation) {
+      reset();
+    }
+  }, [location, prevLocation, reset]);
+
   return (
     <div className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50">
       <div className="h-full w-full grow bg-lightblue-50">
@@ -114,7 +128,7 @@ export const AtlasMap = () => {
           }}
           mapStyle={mapStyle}
           onClick={handleClick}
-          onMove={handleMove}
+          onMove={handleMovedDebounced}
           onLoad={async () => {
             if (location) {
               await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions(location));
@@ -138,6 +152,8 @@ export const AtlasMap = () => {
           {loaded && <AtlasPopup />}
         </Map>
       </div>
+
+      <MapLegend />
     </div>
   );
 };

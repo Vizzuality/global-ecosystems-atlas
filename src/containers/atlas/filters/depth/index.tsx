@@ -6,7 +6,7 @@ import { useSyncDepth } from "@/app/(atlas)/atlas/store";
 import { Slider } from "@/components/ui/slider";
 
 export const DepthTrigger = () => {
-  return <div className="flex items-center gap-2">Depth - sea level</div>;
+  return <div className="flex items-center gap-2">Elevation</div>;
 };
 
 export const DepthContent = () => {
@@ -19,7 +19,7 @@ export const DepthContent = () => {
   return (
     <div className="space-y-1.5 pt-3">
       <Slider
-        defaultValue={depth}
+        value={depth}
         min={depthParser.defaultValue[0]}
         max={depthParser.defaultValue[1]}
         step={1}
