@@ -28,6 +28,7 @@ export default async function StoriesSouthAfricaMozambiquePage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(getApiLocationsGetQueryOptions());
+  await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("GLOB"));
   await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("ZAF_224"));
   await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("MOZ_167"));
 

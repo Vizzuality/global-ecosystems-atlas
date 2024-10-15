@@ -14,6 +14,31 @@ export const useGeojson = ({ locations }: { locations: string[] }) => {
   });
 
   const GEOJSON = useMemo<GeoJSON>(() => {
+    if (locationsQueries.length === 0) {
+      return {
+        type: "FeatureCollection",
+        features: [
+          // whole world
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-140, -60],
+                  [140, -60],
+                  [140, 60],
+                  [-140, 60],
+                  [-140, -60],
+                ],
+              ],
+            },
+          },
+        ],
+      };
+    }
+
     return {
       type: "FeatureCollection",
       features: locationsQueries.map((query) => {

@@ -84,7 +84,7 @@ export const SAMCollaborativeMap = () => {
 
           {loaded2 && (
             <LayerManager
-              layers={["biomes"]}
+              layers={["story_sa", "story_mozambique"]}
               locations={["ZAF_224", "MOZ_167"]}
               globalSettings={{}}
             />

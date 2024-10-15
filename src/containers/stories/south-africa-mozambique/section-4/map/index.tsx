@@ -30,7 +30,7 @@ export const STEPS: {
   {
     id: 1,
     layers: ["country-contribution"],
-    locations: ["ZAF_224", "MOZ_167"],
+    locations: [],
   },
 ];
 
