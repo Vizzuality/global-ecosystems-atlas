@@ -3,10 +3,18 @@ import { ReactElement, cloneElement, createElement, isValidElement, useMemo } fr
 
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
+import { useBiomesIds, useEcosystemsIds } from "@/lib/taxonomy";
 
 import { LegendConfig, ParamsConfig } from "@/types/layers";
 
-import { useSyncLayers, useSyncLayersSettings, useSyncLocation } from "@/app/(atlas)/atlas/store";
+import {
+  useSyncBiomes,
+  useSyncEcosystems,
+  useSyncLayers,
+  useSyncLayersSettings,
+  useSyncLocation,
+  useSyncRealms,
+} from "@/app/(atlas)/atlas/store";
 
 import LegendItem from "@/components/map/legend/item";
 import {
@@ -28,6 +36,9 @@ type ConfigType =
   | LegendConfig
   | ReactElement<{
       location: string | null;
+      realms: string[];
+      biomes: string[];
+      ecosystems: string[];
       paramsConfig: ParamsConfig;
       onChangeSettings: (settings: Record<string, unknown>) => unknown;
     }>
@@ -35,6 +46,13 @@ type ConfigType =
 
 export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
   const [location] = useSyncLocation();
+  const [realms] = useSyncRealms();
+  const [biomes] = useSyncBiomes();
+  const [ecosystems] = useSyncEcosystems();
+
+  const BIOMES_IDS = useBiomesIds({ location, realms, biomes });
+  const ECOSYSTEMS_IDS = useEcosystemsIds({ location, realms, biomes, ecosystems });
+
   const [, setLayers] = useSyncLayers();
   const [layersSettings, setLayersSettings] = useSyncLayersSettings();
 
@@ -60,6 +78,9 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     if (isValidElement(l)) {
       return cloneElement(l, {
         location,
+        realms,
+        biomes: BIOMES_IDS,
+        ecosystems: ECOSYSTEMS_IDS,
         paramsConfig: params_config,
         onChangeSettings: (settings: Record<string, unknown>) => {
           setLayersSettings((prev) => ({
@@ -79,7 +100,7 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     }
 
     return null;
-  }, [location, config, params_config, setLayersSettings, id]);
+  }, [id, location, realms, config, params_config, ECOSYSTEMS_IDS, BIOMES_IDS, setLayersSettings]);
 
   return (
     <LegendItem

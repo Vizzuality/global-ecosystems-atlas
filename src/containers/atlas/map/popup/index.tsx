@@ -27,6 +27,7 @@ export const AtlasPopup = () => {
       longitude={popup.lng}
       closeOnClick={false}
       maxWidth={"none"}
+      className="font-sans"
       style={{
         padding: 0,
       }}

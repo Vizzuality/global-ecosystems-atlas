@@ -1,3 +1,18 @@
+import qs, { StringifiableRecord, StringifyOptions } from "query-string";
+
+/**
+ * *`setQueryParams`*
+ * Set opacity
+ * @param {String} url
+ * @param {Object} queryParams
+ * @returns {String} url
+ */
+type SetQueryParamsProps = { url: string; query: StringifiableRecord; options: StringifyOptions };
+export const setQueryParams = ({ url = "", query = {}, options }: SetQueryParamsProps) => {
+  const u = qs.stringifyUrl({ url, query }, options);
+  return u;
+};
+
 /**
  * *`setOpacity`*
  * Set opacity
@@ -27,6 +42,7 @@ export const setVisibility = ({ v = true, type = "mapbox" }: SetVisibilityProps)
 };
 
 const SETTERS = {
+  setQueryParams,
   setOpacity,
   setVisibility,
 } as const;

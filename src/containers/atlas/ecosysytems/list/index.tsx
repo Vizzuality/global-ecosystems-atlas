@@ -1,7 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
-
 import { useRouter } from "next/navigation";
 
 import { useBiomes, useEcosystems, useRealms } from "@/lib/taxonomy";
@@ -26,22 +24,13 @@ export const AtlasEcosysytemsList = () => {
 
   const searchParams = useSyncSearchParams();
 
-  const realmsData = useRealms();
-  const biomesData = useBiomes();
-  const ecosysytemsData = useEcosystems();
+  const REALMS = useRealms({ location });
+  const BIOMES = useBiomes({ location });
+  const ecosysytemsData = useEcosystems({ location });
 
   const { push } = useRouter();
 
   const LOCATION = locationsData?.data.find((l) => l.location_code === location);
-  const ECOSYSTEMS = useMemo(() => {
-    return ecosysytemsData?.filter((e) => {
-      if (!LOCATION) {
-        return true;
-      }
-
-      return LOCATION.efgs?.map((e) => e.efg_code).includes(e.code);
-    });
-  }, [ecosysytemsData, LOCATION]);
 
   const handleRowClick = (code: EcosystemEfgCode | undefined) => {
     push(`/atlas/ecosystems/${code}${searchParams}`);
@@ -64,7 +53,7 @@ export const AtlasEcosysytemsList = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {ECOSYSTEMS?.map((e) => (
+          {ecosysytemsData?.map((e) => (
             <TableRow
               key={e.name}
               className="w-full cursor-pointer overflow-hidden hover:bg-lightblue-50"
@@ -72,23 +61,21 @@ export const AtlasEcosysytemsList = () => {
             >
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 pl-0 text-xs font-medium"
-                title={`${e.code} ${e.name}`}
+                title={`${e.name}`}
               >
-                {e.code} {e.name}
+                {e.name}
               </TableCell>
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 text-xs font-medium"
-                title={biomesData?.find((biome) => biome.id === e.biome)?.name}
+                title={BIOMES?.find((biome) => biome.id === e.biome)?.name}
               >
-                {biomesData?.find((biome) => biome.id === e.biome)?.name}
+                {BIOMES?.find((biome) => biome.id === e.biome)?.name}
               </TableCell>
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 pr-0 text-xs font-medium"
-                title={e.realms
-                  .map((realm) => realmsData?.find((r) => r.id === realm)?.name)
-                  .join(", ")}
+                title={REALMS?.find((r) => r.id === e.realm)?.name}
               >
-                {e.realms.map((realm) => realmsData?.find((r) => r.id === realm)?.name).join(", ")}
+                {REALMS?.find((r) => r.id === e.realm)?.name}
               </TableCell>
             </TableRow>
           ))}

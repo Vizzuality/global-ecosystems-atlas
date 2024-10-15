@@ -2,33 +2,42 @@ import { CheckedState } from "@radix-ui/react-checkbox";
 
 import { useEcosystems } from "@/lib/taxonomy";
 
-import { useSyncBiomes, useSyncEcosystems, useSyncRealms } from "@/app/(atlas)/atlas/store";
+import {
+  useSyncBiomes,
+  useSyncEcosystems,
+  useSyncLocation,
+  useSyncRealms,
+} from "@/app/(atlas)/atlas/store";
 
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 export const EcosystemsTrigger = () => {
+  const [location] = useSyncLocation();
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
-  const ecosystemsData = useEcosystems();
-  const ecosystemsDataFiltered = useEcosystems({ realms, biomes });
+  const [ecosystems] = useSyncEcosystems();
+
+  const ECOSYSTEMSFiltered = useEcosystems({ location, realms, biomes });
 
   return (
     <div className="flex items-center gap-2">
       Ecosystems
       <Badge variant="secondary" className="rounded-2xl">
-        {ecosystemsDataFiltered?.length}/{ecosystemsData?.length}
+        {ecosystems?.length || ECOSYSTEMSFiltered?.length}/{ECOSYSTEMSFiltered?.length}
       </Badge>
     </div>
   );
 };
 
 export const EcosystemsContent = () => {
+  const [location] = useSyncLocation();
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
   const [ecosystems, setEcosystems] = useSyncEcosystems();
-  const ecosystemsDataFiltered = useEcosystems({ realms, biomes });
+
+  const ECOSYSTEMSFiltered = useEcosystems({ location, realms, biomes });
 
   const handleChange = (ecosystemId: string, checked: CheckedState) => {
     if (!checked) {
@@ -40,7 +49,7 @@ export const EcosystemsContent = () => {
 
   return (
     <ul className="flex flex-col">
-      {ecosystemsDataFiltered?.map((ecosystem) => {
+      {ECOSYSTEMSFiltered?.map((ecosystem) => {
         return (
           <li key={ecosystem.id} className="flex">
             <Checkbox
@@ -51,7 +60,7 @@ export const EcosystemsContent = () => {
               onCheckedChange={(checked: CheckedState) => handleChange(ecosystem.id, checked)}
             />
             <Label htmlFor={ecosystem.id} className="grow cursor-pointer py-2 pl-2 leading-tight">
-              {ecosystem.id} {ecosystem.name}
+              {ecosystem.name}
             </Label>
           </li>
         );
