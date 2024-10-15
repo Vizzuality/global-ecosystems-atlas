@@ -102,7 +102,6 @@ export const AtlasMap = () => {
   useEffect(() => {
     if (location !== prevLocation) {
       reset();
-      // console.log("Location changed", location, prevLocation);
     }
   }, [location, prevLocation, reset]);
 
