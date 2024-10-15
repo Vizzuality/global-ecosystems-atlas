@@ -33,7 +33,6 @@ export const AtlasFilters = () => {
   }, [realms, biomes, ecosystems, depth]);
 
   const handleClearAll = useCallback(() => {
-    // Clear all filters
     reset();
   }, [reset]);
 
@@ -45,13 +44,16 @@ export const AtlasFilters = () => {
         </div>
       )}
 
-      {clearAll && (
-        <div className="flex justify-end text-sm font-medium">
-          <button onClick={handleClearAll}>Clear all</button>
-        </div>
-      )}
-
       <div>
+        <div className="flex justify-end">
+          <button
+            className="py-2 text-sm font-medium text-navy-700 hover:underline disabled:pointer-events-none disabled:text-navy-300"
+            disabled={!clearAll}
+            onClick={handleClearAll}
+          >
+            Clear all
+          </button>
+        </div>
         <FilterItem defaultOpen={true} trigger={<RealmsTrigger />} component={<RealmsContent />} />
         <FilterItem trigger={<BiomesTrigger />} component={<BiomesContent />} />
         <FilterItem trigger={<EcosystemsTrigger />} component={<EcosystemsContent />} />

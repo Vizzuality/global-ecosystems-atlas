@@ -37,14 +37,12 @@ export const RealmsTrigger = () => {
 export const RealmsContent = () => {
   const [location] = useSyncLocation();
   const [realms, setRealms] = useSyncRealms();
-  const [, setBiomes] = useSyncBiomes();
-  const [, setEcosystems] = useSyncEcosystems();
+  const [biomes, setBiomes] = useSyncBiomes();
+  const [ecosystems, setEcosystems] = useSyncEcosystems();
 
   const REALMS = useRealms({ location });
   const BIOMES = useBiomes({ location });
   const ECOSYSTEMS = useEcosystems({ location });
-
-  // const REALMS = REALMS?.filter((r) => r.realm.length === 1);
 
   const DATA = useMemo(() => {
     return REALMS?.toSorted((a, b) => {
@@ -79,48 +77,34 @@ export const RealmsContent = () => {
           setEcosystems([]);
         }
 
-        // Sync biomes
-        const bs = BIOMES?.filter((b) => {
-          return newRealms.includes(b.realm);
-        })?.map((b) => b.id);
-        if (!!bs?.length) {
-          setBiomes(bs);
+        // Remove the biomes that belong to the realm that was unchecked
+        if (biomes.length > 0) {
+          setBiomes((prev) => {
+            return prev.filter((biome) => {
+              const b = BIOMES?.find((b) => {
+                return b.id === biome;
+              });
+              return b?.realm !== realmId;
+            });
+          });
         }
 
-        // Sync ecosystems
-        const ecosystems = ECOSYSTEMS?.filter((e) => {
-          return newRealms.includes(e.realm);
-        })?.map((e) => e.id);
-
-        if (!!ecosystems?.length) {
-          setEcosystems(ecosystems);
+        if (ecosystems.length > 0) {
+          setEcosystems((prev) => {
+            return prev.filter((ecosystem) => {
+              const e = ECOSYSTEMS?.find((e) => {
+                return e.id === ecosystem;
+              });
+              return e?.realm !== realmId;
+            });
+          });
         }
 
         return newRealms;
       });
     } else {
       setRealms((prev) => {
-        const newRealms = [...prev, realmId];
-
-        // Sync biomes
-        const bs = BIOMES?.filter((b) => {
-          return newRealms.includes(b.realm);
-        })?.map((b) => b.id);
-
-        if (!!bs?.length) {
-          setBiomes(bs);
-        }
-
-        // Sync ecosystems
-        const ecosystems = ECOSYSTEMS?.filter((e) => {
-          return newRealms.includes(e.realm);
-        })?.map((e) => e.id);
-
-        if (!!ecosystems?.length) {
-          setEcosystems(ecosystems);
-        }
-
-        return newRealms;
+        return [...prev, realmId]; // // Sync biomes
       });
     }
   };

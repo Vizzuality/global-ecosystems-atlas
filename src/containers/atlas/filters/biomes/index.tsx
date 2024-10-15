@@ -4,7 +4,12 @@ import { CheckedState } from "@radix-ui/react-checkbox";
 
 import { useBiomes, useEcosystems } from "@/lib/taxonomy";
 
-import { useSyncBiomes, useSyncEcosystems, useSyncLocation } from "@/app/(atlas)/atlas/store";
+import {
+  useSyncBiomes,
+  useSyncEcosystems,
+  useSyncLocation,
+  useSyncRealms,
+} from "@/app/(atlas)/atlas/store";
 
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -12,9 +17,9 @@ import { Label } from "@/components/ui/label";
 
 export const BiomesTrigger = () => {
   const [location] = useSyncLocation();
+  const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
-  // const BIOMES = useBiomes({ location: "GLOB" });
-  const BIOMESFiltered = useBiomes({ location });
+  const BIOMESFiltered = useBiomes({ location, realms });
 
   return (
     <div className="flex items-center gap-2">
@@ -28,11 +33,10 @@ export const BiomesTrigger = () => {
 
 export const BiomesContent = () => {
   const [location] = useSyncLocation();
-
+  const [realms] = useSyncRealms();
   const [biomes, setBiomes] = useSyncBiomes();
-  const [, setEcosystems] = useSyncEcosystems();
-  const BIOMESFiltered = useBiomes({ location });
-
+  const [ecosystems, setEcosystems] = useSyncEcosystems();
+  const BIOMESFiltered = useBiomes({ location, realms });
   const ECOSYSTEMS = useEcosystems({ location });
 
   const handleChange = (biomeId: string, checked: CheckedState) => {
@@ -44,13 +48,15 @@ export const BiomesContent = () => {
           setEcosystems([]);
         }
 
-        // Sync ecosystems
-        const ecosystems = ECOSYSTEMS?.filter((e) => {
-          return newBiomes.includes(e.biome);
-        })?.map((e) => e.id);
-
-        if (!!ecosystems?.length) {
-          setEcosystems(ecosystems);
+        if (ecosystems.length > 0) {
+          setEcosystems((prev) => {
+            return prev.filter((ecosystem) => {
+              const e = ECOSYSTEMS?.find((e) => {
+                return e.id === ecosystem;
+              });
+              return e?.biome !== biomeId;
+            });
+          });
         }
 
         return newBiomes;
@@ -58,15 +64,6 @@ export const BiomesContent = () => {
     } else {
       setBiomes((prev) => {
         const newBiomes = [...prev, biomeId];
-
-        // Sync ecosystems
-        const ecosystems = ECOSYSTEMS?.filter((e) => {
-          return newBiomes.includes(e.biome);
-        })?.map((e) => e.id);
-
-        if (!!ecosystems?.length) {
-          setEcosystems(ecosystems);
-        }
 
         return newBiomes;
       });

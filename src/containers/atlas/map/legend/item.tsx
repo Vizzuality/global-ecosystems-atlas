@@ -3,6 +3,7 @@ import { ReactElement, cloneElement, createElement, isValidElement, useMemo } fr
 
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
+import { useBiomesIds, useEcosystemsIds } from "@/lib/taxonomy";
 
 import { LegendConfig, ParamsConfig } from "@/types/layers";
 
@@ -48,6 +49,10 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
   const [ecosystems] = useSyncEcosystems();
+
+  const BIOMES_IDS = useBiomesIds({ location, realms, biomes });
+  const ECOSYSTEMS_IDS = useEcosystemsIds({ location, realms, biomes, ecosystems });
+
   const [, setLayers] = useSyncLayers();
   const [layersSettings, setLayersSettings] = useSyncLayersSettings();
 
@@ -74,8 +79,8 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
       return cloneElement(l, {
         location,
         realms,
-        biomes,
-        ecosystems,
+        biomes: BIOMES_IDS,
+        ecosystems: ECOSYSTEMS_IDS,
         paramsConfig: params_config,
         onChangeSettings: (settings: Record<string, unknown>) => {
           setLayersSettings((prev) => ({
@@ -95,7 +100,7 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     }
 
     return null;
-  }, [location, realms, biomes, ecosystems, config, params_config, setLayersSettings, id]);
+  }, [id, location, realms, config, params_config, ECOSYSTEMS_IDS, BIOMES_IDS, setLayersSettings]);
 
   return (
     <LegendItem

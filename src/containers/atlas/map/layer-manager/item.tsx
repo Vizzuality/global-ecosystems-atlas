@@ -7,6 +7,7 @@ import { Layer } from "@deck.gl/core";
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
 import { useLocationId } from "@/lib/locations";
+import { useBiomesIds, useEcosystemsIds } from "@/lib/taxonomy";
 
 import {
   useSyncBiomes,
@@ -30,7 +31,10 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const [depth] = useSyncDepth();
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
-  const [efgs] = useSyncEcosystems();
+  const [ecosystems] = useSyncEcosystems();
+
+  const BIOMES_IDS = useBiomesIds({ location, realms, biomes });
+  const ECOSYSTEMS_IDS = useEcosystemsIds({ location, realms, biomes, ecosystems });
 
   const LOCATION = useLocationId(location);
 
@@ -52,8 +56,8 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
       depth0: depth[0],
       depth1: depth[1],
       realms,
-      biomes,
-      efgs,
+      biomes: BIOMES_IDS,
+      efgs: ECOSYSTEMS_IDS,
     },
   });
 

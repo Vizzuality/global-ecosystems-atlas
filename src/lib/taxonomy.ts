@@ -87,14 +87,22 @@ export const useGetGroups = (
     });
 };
 
-export const useEcosystems = ({ location }: { location?: string | null }) => {
+export const useEcosystems = ({
+  location,
+  realms = [],
+  biomes = [],
+}: {
+  location?: string | null;
+  realms?: string[];
+  biomes?: string[];
+}) => {
   const { data: efgsData } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
     "extent_efgs",
   );
 
   return efgsData?.data
-    .map((e) => {
+    ?.map((e) => {
       return {
         id: `${e.id}`,
         name: e.label,
@@ -105,10 +113,49 @@ export const useEcosystems = ({ location }: { location?: string | null }) => {
     })
     .toSorted((a, b) => {
       return a.name.localeCompare(b.name);
+    })
+    .filter((e) => {
+      if (!!biomes?.length) {
+        return biomes?.includes(e.biome);
+      }
+
+      if (!!realms?.length) {
+        return realms?.includes(e.realm);
+      }
+
+      return true;
     });
 };
 
-export const useBiomes = ({ location }: { location?: string | null }) => {
+export const useEcosystemsIds = ({
+  location,
+  realms = [],
+  biomes = [],
+  ecosystems = [],
+}: {
+  location?: string | null;
+  realms?: string[];
+  biomes?: string[];
+  ecosystems?: string[];
+}) => {
+  const es = useEcosystems({ location, realms, biomes });
+
+  if (!!ecosystems.length) return ecosystems;
+
+  if (realms.length === 0 && biomes.length === 0 && ecosystems.length === 0) {
+    return [];
+  }
+
+  return es?.map((e) => e.id) ?? [];
+};
+
+export const useBiomes = ({
+  location,
+  realms = [],
+}: {
+  location?: string | null;
+  realms?: string[];
+}) => {
   const { data: BIOMES } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
     "extent_biomes",
@@ -123,9 +170,37 @@ export const useBiomes = ({ location }: { location?: string | null }) => {
       biome: b.biome_code,
       realm: getRealmFromEFGCode(b.biome_code!),
     };
-  })?.toSorted((a, b) => {
-    return a.name.localeCompare(b.name);
-  });
+  })
+    ?.toSorted((a, b) => {
+      return a.name.localeCompare(b.name);
+    })
+    .filter((b) => {
+      if (!!realms?.length) {
+        return realms?.includes(b.realm);
+      }
+
+      return true;
+    });
+};
+
+export const useBiomesIds = ({
+  location,
+  realms = [],
+  biomes = [],
+}: {
+  location?: string | null;
+  realms?: string[];
+  biomes?: string[];
+}) => {
+  const bs = useBiomes({ location, realms });
+
+  if (!!biomes.length) return biomes;
+
+  if (realms.length === 0 && biomes.length === 0) {
+    return [];
+  }
+
+  return bs?.map((b) => b.id) ?? [];
 };
 
 export const useRealms = ({ location }: { location?: string | null }) => {
