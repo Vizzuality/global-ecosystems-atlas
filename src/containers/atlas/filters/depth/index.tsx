@@ -19,7 +19,7 @@ export const DepthContent = () => {
   return (
     <div className="space-y-1.5 pt-3">
       <Slider
-        defaultValue={depth}
+        value={depth}
         min={depthParser.defaultValue[0]}
         max={depthParser.defaultValue[1]}
         step={1}

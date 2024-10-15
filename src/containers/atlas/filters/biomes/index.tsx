@@ -12,15 +12,15 @@ import { Label } from "@/components/ui/label";
 
 export const BiomesTrigger = () => {
   const [location] = useSyncLocation();
-
-  const BIOMES = useBiomes({ location: "GLOB" });
+  const [biomes] = useSyncBiomes();
+  // const BIOMES = useBiomes({ location: "GLOB" });
   const BIOMESFiltered = useBiomes({ location });
 
   return (
     <div className="flex items-center gap-2">
       Biomes{" "}
       <Badge variant="secondary" className="rounded-2xl">
-        {BIOMESFiltered?.length}/{BIOMES?.length}
+        {biomes?.length || BIOMESFiltered?.length}/{BIOMESFiltered?.length}
       </Badge>
     </div>
   );

@@ -10,14 +10,15 @@ import { Label } from "@/components/ui/label";
 
 export const EcosystemsTrigger = () => {
   const [location] = useSyncLocation();
-  const ecosystemsData = useEcosystems({ location: "GLOB" });
-  const ecosystemsDataFiltered = useEcosystems({ location });
+  const [ecosystems] = useSyncEcosystems();
+  // const ECOSYSTEMS = useEcosystems({ location: "GLOB" });
+  const ECOSYSTEMSFiltered = useEcosystems({ location });
 
   return (
     <div className="flex items-center gap-2">
       Ecosystems
       <Badge variant="secondary" className="rounded-2xl">
-        {ecosystemsDataFiltered?.length}/{ecosystemsData?.length}
+        {ecosystems?.length || ECOSYSTEMSFiltered?.length}/{ECOSYSTEMSFiltered?.length}
       </Badge>
     </div>
   );
@@ -26,7 +27,7 @@ export const EcosystemsTrigger = () => {
 export const EcosystemsContent = () => {
   const [location] = useSyncLocation();
   const [ecosystems, setEcosystems] = useSyncEcosystems();
-  const ecosystemsDataFiltered = useEcosystems({ location });
+  const ECOSYSTEMSFiltered = useEcosystems({ location });
 
   const handleChange = (ecosystemId: string, checked: CheckedState) => {
     if (!checked) {
@@ -38,7 +39,7 @@ export const EcosystemsContent = () => {
 
   return (
     <ul className="flex flex-col">
-      {ecosystemsDataFiltered?.map((ecosystem) => {
+      {ECOSYSTEMSFiltered?.map((ecosystem) => {
         return (
           <li key={ecosystem.id} className="flex">
             <Checkbox
