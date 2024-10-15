@@ -2,7 +2,7 @@
 
 import { CheckedState } from "@radix-ui/react-checkbox";
 
-import { useBiomes } from "@/lib/taxonomy";
+import { useBiomes, useEcosystems } from "@/lib/taxonomy";
 
 import { useSyncBiomes, useSyncEcosystems, useSyncLocation } from "@/app/(atlas)/atlas/store";
 
@@ -13,14 +13,14 @@ import { Label } from "@/components/ui/label";
 export const BiomesTrigger = () => {
   const [location] = useSyncLocation();
 
-  const biomesData = useBiomes({ location: "GLOB" });
-  const biomesDataFiltered = useBiomes({ location });
+  const BIOMES = useBiomes({ location: "GLOB" });
+  const BIOMESFiltered = useBiomes({ location });
 
   return (
     <div className="flex items-center gap-2">
       Biomes{" "}
       <Badge variant="secondary" className="rounded-2xl">
-        {biomesDataFiltered?.length}/{biomesData?.length}
+        {BIOMESFiltered?.length}/{BIOMES?.length}
       </Badge>
     </div>
   );
@@ -30,24 +30,52 @@ export const BiomesContent = () => {
   const [location] = useSyncLocation();
 
   const [biomes, setBiomes] = useSyncBiomes();
-  const [ecosystems, setEcosystems] = useSyncEcosystems();
-  const biomesDataFiltered = useBiomes({ location });
+  const [, setEcosystems] = useSyncEcosystems();
+  const BIOMESFiltered = useBiomes({ location });
+
+  const ECOSYSTEMS = useEcosystems({ location });
 
   const handleChange = (biomeId: string, checked: CheckedState) => {
     if (!checked) {
-      setBiomes((prev) => prev.filter((biome) => biome !== biomeId));
-    } else {
-      setBiomes((prev) => [...prev, biomeId]);
-    }
+      setBiomes((prev) => {
+        const newBiomes = prev.filter((biome) => biome !== biomeId);
 
-    if (ecosystems.length) {
-      setEcosystems([]);
+        if (newBiomes.length === 0) {
+          setEcosystems([]);
+        }
+
+        // Sync ecosystems
+        const ecosystems = ECOSYSTEMS?.filter((e) => {
+          return newBiomes.includes(e.biome);
+        })?.map((e) => e.id);
+
+        if (!!ecosystems?.length) {
+          setEcosystems(ecosystems);
+        }
+
+        return newBiomes;
+      });
+    } else {
+      setBiomes((prev) => {
+        const newBiomes = [...prev, biomeId];
+
+        // Sync ecosystems
+        const ecosystems = ECOSYSTEMS?.filter((e) => {
+          return newBiomes.includes(e.biome);
+        })?.map((e) => e.id);
+
+        if (!!ecosystems?.length) {
+          setEcosystems(ecosystems);
+        }
+
+        return newBiomes;
+      });
     }
   };
 
   return (
     <ul className="flex flex-col">
-      {biomesDataFiltered?.map((biome) => {
+      {BIOMESFiltered?.map((biome) => {
         return (
           <li key={biome.id} className="flex">
             <Checkbox

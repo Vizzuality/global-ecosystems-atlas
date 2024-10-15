@@ -24,8 +24,8 @@ export const AtlasEcosysytemsList = () => {
 
   const searchParams = useSyncSearchParams();
 
-  const realmsData = useRealms({ location });
-  const biomesData = useBiomes({ location });
+  const REALMS = useRealms({ location });
+  const BIOMES = useBiomes({ location });
   const ecosysytemsData = useEcosystems({ location });
 
   const { push } = useRouter();
@@ -67,17 +67,15 @@ export const AtlasEcosysytemsList = () => {
               </TableCell>
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 text-xs font-medium"
-                title={biomesData?.find((biome) => biome.id === e.biome)?.name}
+                title={BIOMES?.find((biome) => biome.id === e.biome)?.name}
               >
-                {biomesData?.find((biome) => biome.id === e.biome)?.name}
+                {BIOMES?.find((biome) => biome.id === e.biome)?.name}
               </TableCell>
               <TableCell
                 className="max-w-0 overflow-hidden text-ellipsis whitespace-nowrap p-2 pr-0 text-xs font-medium"
-                title={e.realms
-                  .map((realm) => realmsData?.find((r) => r.id === realm)?.name)
-                  .join(", ")}
+                title={REALMS?.find((r) => r.id === e.realms)?.name}
               >
-                {e.realms.map((realm) => realmsData?.find((r) => r.id === realm)?.name).join(", ")}
+                {REALMS?.find((r) => r.id === e.realms)?.name}
               </TableCell>
             </TableRow>
           ))}

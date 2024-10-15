@@ -25,10 +25,11 @@ import {
 } from "@/containers/atlas/widgets/item";
 
 export const WidgetLocationRealmsBreak = () => {
+  return null;
   const [location] = useSyncLocation();
 
-  const realmsData = useRealms({ location });
-  const biomesData = useBiomes({ location });
+  const REALMS = useRealms({ location });
+  const BIOMES = useBiomes({ location });
 
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
@@ -41,10 +42,10 @@ export const WidgetLocationRealmsBreak = () => {
         const realms = getRealmsFromEFGCode(d.id);
         const biome = getBiomeFromEFGCode(d.id);
 
-        const r = realmsData?.find((r) => {
-          return r.realms.sort().join("") === realms.sort().join("");
+        const r = REALMS?.find((r) => {
+          return r.realms === realms;
         });
-        const b = biomesData?.find((r) => {
+        const b = BIOMES?.find((r) => {
           return r.id === biome;
         });
 
@@ -56,7 +57,7 @@ export const WidgetLocationRealmsBreak = () => {
         };
       }) ?? []
     );
-  }, [data, realmsData, biomesData]);
+  }, [data, REALMS, BIOMES]);
 
   const CORE_REALMS = useGetGroups(DATA?.filter((r) => (r.realm?.realms.length ?? 0) === 1));
   const TRANSACTIONAL_REALMS = useGetGroups(DATA?.filter((r) => (r.realm?.realms.length ?? 0) > 1));

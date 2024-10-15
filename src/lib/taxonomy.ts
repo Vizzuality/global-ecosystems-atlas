@@ -5,7 +5,7 @@ import { WidgetData } from "@/types/generated/strapi.schemas";
 
 export const getRealmsFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters
-  const realmIds = efgCode.replace(/[0-9.]/g, "").split("");
+  const realmIds = efgCode.replace(/[0-9.]/g, "");
 
   return realmIds;
 };
@@ -52,17 +52,17 @@ export const useGetGroups = (
     label: string;
   }[],
 ) => {
-  const realmsData = useRealms({ location: "GLOB" });
-  const biomesData = useBiomes({ location: "GLOB" });
+  const REALMS = useRealms({ location: "GLOB" });
+  const BIOMES = useBiomes({ location: "GLOB" });
 
   return groups(data, (d) => d.realm?.realms.sort().join(""))
     .map(([key, value]) => {
       return {
         id: key,
-        name: realmsData?.find((r) => r.realms.sort().join("") === key)?.name,
+        name: REALMS?.find((r) => r.id === key)?.name,
         items: groups(value, (d) => d.biome?.id)
           .map(([key, value]) => {
-            const b = biomesData?.find((b) => b.id === key);
+            const b = BIOMES?.find((b) => b.id === key);
             return {
               id: b?.id,
               name: b?.name,
@@ -109,12 +109,12 @@ export const useEcosystems = ({ location }: { location?: string | null }) => {
 };
 
 export const useBiomes = ({ location }: { location?: string | null }) => {
-  const { data: biomesData } = useApiLocationsLocationWidgetsWidgetIdGet(
+  const { data: BIOMES } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
     "extent_biomes",
   );
 
-  const DATA = biomesData?.data as (WidgetData & { biome_code: string })[] | undefined;
+  const DATA = BIOMES?.data as (WidgetData & { biome_code: string })[] | undefined;
 
   return DATA?.map((b) => {
     return {
@@ -129,18 +129,18 @@ export const useBiomes = ({ location }: { location?: string | null }) => {
 };
 
 export const useRealms = ({ location }: { location?: string | null }) => {
-  const { data: realmsData } = useApiLocationsLocationWidgetsWidgetIdGet(
+  const { data: REALMS } = useApiLocationsLocationWidgetsWidgetIdGet(
     location ?? "GLOB",
     "extent_realms",
   );
 
-  const DATA = realmsData?.data as (WidgetData & { realm_code: string })[] | undefined;
+  const DATA = REALMS?.data as (WidgetData & { realm_code: string })[] | undefined;
 
   return DATA?.map((r) => {
     return {
       id: r.id,
       name: `${r.label}`,
-      realms: getRealmsFromEFGCode(r.realm_code!),
+      realms: r.realm_code,
     };
   });
 };
