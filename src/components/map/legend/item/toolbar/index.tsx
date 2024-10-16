@@ -1,12 +1,16 @@
 import { useState } from "react";
 
 import { PopoverArrow } from "@radix-ui/react-popover";
-import { LuEye, LuEyeOff, LuDroplet, LuInfo, LuX } from "react-icons/lu";
+import { FiX } from "react-icons/fi";
 
 import { cn } from "@/lib/utils";
 
 import { LegendItemToolbarProps } from "@/components/map/legend/types";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { HiddenIcon } from "@/components/ui/icons/hidden";
+import { InfoIcon } from "@/components/ui/icons/info";
+import { OpacityIcon } from "@/components/ui/icons/opacity";
+import { VisibleIcon } from "@/components/ui/icons/visible";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -43,7 +47,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                       "pointer-events-none": popoverOpen,
                     })}
                   >
-                    <LegendItemButton Icon={LuDroplet} value={opacity} selected />
+                    <LegendItemButton Icon={OpacityIcon} value={opacity} selected />
                   </TooltipTrigger>
                 </PopoverTrigger>
 
@@ -94,7 +98,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   if (onChangeVisibility) onChangeVisibility(!visibility);
                 }}
               >
-                <LegendItemButton Icon={visibility ? LuEye : LuEyeOff} />
+                <LegendItemButton Icon={visibility ? VisibleIcon : HiddenIcon} />
               </TooltipTrigger>
 
               <TooltipContent side="top" align="end" alignOffset={-10}>
@@ -118,7 +122,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                       "pointer-events-none": popoverOpen,
                     })}
                   >
-                    <LegendItemButton Icon={LuInfo} />
+                    <LegendItemButton Icon={InfoIcon} />
                   </TooltipTrigger>
                 </DialogTrigger>
 
@@ -149,7 +153,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   if (onRemove) onRemove();
                 }}
               >
-                <LegendItemButton Icon={LuX} />
+                <LegendItemButton Icon={FiX} />
               </TooltipTrigger>
 
               <TooltipContent side="top" align="end" alignOffset={-10}>
