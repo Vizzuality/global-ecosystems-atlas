@@ -295,8 +295,12 @@ export const LAYERS = [
       "@@type": "MVTLayer",
       data: `https://api.mapbox.com/v4/vizzgea.0kkwfp3y/{z}/{x}/{y}.mvt?access_token=${env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
       filled: true,
+      stroked: true,
       opacity: "@@#params.opacity",
       visible: "@@#params.visibility",
+      getLineColor: [255, 255, 255, 255],
+      getLineWidth: 1,
+      lineWidthUnits: "pixels",
       getFillColor: (d: { properties: { PoC_Status: string } }) => {
         switch (d.properties.PoC_Status) {
           case "National map included":
