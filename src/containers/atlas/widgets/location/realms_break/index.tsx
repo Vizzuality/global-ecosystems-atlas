@@ -24,9 +24,6 @@ import {
   WidgetTitle,
 } from "@/containers/atlas/widgets/item";
 
-const CORE_REALMS_IDS = ["S", "T", "M", "F"];
-const TRANSACTIONAL_REALMS_IDS = ["MS", "FS", "FT", "MT", "FM", "FMT"];
-
 export const WidgetLocationRealmsBreak = () => {
   const [location] = useSyncLocation();
 
@@ -44,11 +41,11 @@ export const WidgetLocationRealmsBreak = () => {
         const realm = getRealmFromEFGCode(d.id);
         const biome = getBiomeFromEFGCode(d.id);
 
-        const r = REALMS?.find((r) => {
-          return r.id === realm;
+        const r = REALMS?.find((r1) => {
+          return r1.id === realm;
         });
-        const b = BIOMES?.find((r) => {
-          return r.id === biome;
+        const b = BIOMES?.find((b1) => {
+          return b1.id === biome;
         });
 
         return {
@@ -61,12 +58,8 @@ export const WidgetLocationRealmsBreak = () => {
     );
   }, [data, REALMS, BIOMES]);
 
-  const CORE_REALMS = useGetGroups(DATA.filter((d) => CORE_REALMS_IDS.includes(d.realm?.id ?? "")));
-  const TRANSACTIONAL_REALMS = useGetGroups(
-    DATA.filter((d) => {
-      return TRANSACTIONAL_REALMS_IDS.includes(d.realm?.id ?? "");
-    }),
-  );
+  const CORE_REALMS = useGetGroups(DATA.filter((d) => (d.realm?.id ?? "").length === 1));
+  const TRANSACTIONAL_REALMS = useGetGroups(DATA.filter((d) => (d.realm?.id ?? "").length > 1));
 
   return (
     <Widget>

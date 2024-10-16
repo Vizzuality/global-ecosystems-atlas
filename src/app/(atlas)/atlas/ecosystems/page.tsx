@@ -10,7 +10,7 @@ export default function AtlasEcosysytemsListPage() {
   return (
     <AtlasSidebarSection>
       <AtlasSidebarHeader>
-        <AtlasSidebarTitle>Ecosysytems list</AtlasSidebarTitle>
+        <AtlasSidebarTitle>Ecosysytem functional groups</AtlasSidebarTitle>
       </AtlasSidebarHeader>
       <AtlasSidebarContainer>
         <AtlasEcosysytemsList />

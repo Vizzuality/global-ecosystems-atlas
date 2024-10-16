@@ -1,4 +1,4 @@
-import { Children, PropsWithChildren, useEffect, useRef, useState } from "react";
+import { Children, PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
 
 import { Swipper } from "@/components/ui/compare/swipper";
 
@@ -7,11 +7,21 @@ export const Compare = ({ children }: PropsWithChildren) => {
   const [x, setX] = useState(0.5);
   const [rect, setRect] = useState<DOMRect>();
 
-  useEffect(() => {
+  const handleResize = useCallback(() => {
     if (ref.current) {
       setRect(ref.current.getBoundingClientRect());
     }
   }, []);
+
+  useEffect(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [handleResize]);
 
   if (Children.count(children) !== 2) {
     throw new Error("Compare should have exactly two children");

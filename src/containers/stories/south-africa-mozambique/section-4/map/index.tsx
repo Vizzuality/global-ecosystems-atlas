@@ -30,7 +30,7 @@ export const STEPS: {
   {
     id: 1,
     layers: ["country-contribution"],
-    locations: ["ZAF_224", "MOZ_167"],
+    locations: [],
   },
 ];
 
@@ -76,11 +76,7 @@ export const SAMSection4Map = () => {
         <FitBounds />
 
         {loaded && (
-          <LayerManager
-            layers={STEP.layers}
-            locations={["ZAF_224", "MOZ_167"]}
-            globalSettings={{}}
-          />
+          <LayerManager layers={STEP.layers} locations={STEP.locations} globalSettings={{}} />
         )}
       </Map>
     </div>

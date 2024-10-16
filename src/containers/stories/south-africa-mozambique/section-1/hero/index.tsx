@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 import { H2 } from "@/components/ui/h2";
 
 export const SAMHero = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center gap-4 py-48">
+    <section className="flex flex-col justify-center gap-4 xl:min-h-dvh xl:py-48">
       <H2 size="sm">Mapping Nature Beyond Borders: South Africa and Mozambique</H2>
       <p className="text-xl">
         South Africa and Mozambique, though neighboring countries with shared ecosystems, have
@@ -17,6 +19,10 @@ export const SAMHero = () => {
         This story explores how these countries are using ecosystem data to protect their natural
         heritage and how the Global Ecosystems Atlas is supporting that endeavor.
       </p>
+
+      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+        <Image src="/sam/1.webp" alt="South Africa and Mozambique" width={666} height={666} />
+      </div>
     </section>
   );
 };

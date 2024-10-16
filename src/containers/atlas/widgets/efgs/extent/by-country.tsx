@@ -11,6 +11,7 @@ import { formatPercentage } from "@/lib/utils";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
 import { useApiLocationsGet } from "@/types/generated/locations";
+import { WidgetData } from "@/types/generated/strapi.schemas";
 
 import HorizontalStackedBar from "@/components/charts/horizontal-stacked-bar";
 
@@ -47,12 +48,12 @@ export const ByCountryExtentChart = ({ width, height }: { width: number; height:
   // DATA
   const DATA = useMemo(() => {
     return (
-      data?.data
+      (data?.data as (WidgetData & { location_code: string })[])
         ?.map((d) => {
-          const l = locationsData?.data.find((l) => l.location_code === d.id);
+          const l = locationsData?.data.find((l) => l.location_code === d.location_code);
 
           return {
-            id: d.id,
+            id: d.location_code,
             label: l?.gis_name ?? "-",
             value: d.value ?? 0,
             color: CHROMA.random().hex(),
@@ -129,12 +130,12 @@ export const ByCountryExtentRanking = () => {
   // DATA
   const DATA = useMemo(() => {
     return (
-      data?.data
+      (data?.data as (WidgetData & { location_code: string })[])
         ?.map((d) => {
-          const l = locationsData?.data.find((l) => l.location_code === d.id);
+          const l = locationsData?.data.find((l) => l.location_code === d.location_code);
 
           return {
-            id: d.id,
+            id: d.location_code,
             label: l?.gis_name ?? "-",
             value: d.value ?? 0,
             color: CHROMA.random().hex(),
