@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export const SAMInnovativeMozambique = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center gap-4 py-48">
+    <section className="flex flex-col justify-center gap-4 xl:min-h-dvh xl:py-48">
       <p className="text-xl">
         <strong>Mozambique</strong>, more recently, has developed national ecosystem maps, building
         on initial work undertaken in the 1950s and 60s and involving a dedicated working group of
@@ -14,6 +16,9 @@ export const SAMInnovativeMozambique = () => {
         Nature (IUCN) adopted the Global Ecosystem Typology—the first global framework for
         classifying ecosystems across all realms: terrestrial, freshwater, and marine.
       </p>
+      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+        <Image src="/sam/3.webp" alt="Mozambique" width={666} height={666} />
+      </div>
     </section>
   );
 };

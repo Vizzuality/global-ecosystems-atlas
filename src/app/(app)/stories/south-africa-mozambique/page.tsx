@@ -44,6 +44,7 @@ export default async function StoriesSouthAfricaMozambiquePage() {
           alt="South Africa and Mozambique"
           width={2878}
           height={699}
+          className="hidden xl:block"
         />
         <SAMSection5 />
       </Suspense>

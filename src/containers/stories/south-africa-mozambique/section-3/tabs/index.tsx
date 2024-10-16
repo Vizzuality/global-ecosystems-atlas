@@ -7,10 +7,10 @@ export const SAMTabs = () => {
     <>
       <Tabs defaultValue="ZAF_224">
         <TabsList>
-          <TabsTrigger className="w-full px-20" value="ZAF_224">
+          <TabsTrigger className="w-full xl:px-20" value="ZAF_224">
             South africa
           </TabsTrigger>
-          <TabsTrigger className="w-full px-20" value="MOZ_167">
+          <TabsTrigger className="w-full xl:px-20" value="MOZ_167">
             Mozambique
           </TabsTrigger>
         </TabsList>
