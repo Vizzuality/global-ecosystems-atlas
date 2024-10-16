@@ -26,17 +26,17 @@ export const SAMSection5 = () => {
                       While South Africa and Mozambique are notable examples of national ecosystem
                       mapping, they don&apos;t stand alone. A range of countries are investing in
                       mapping and classifying their ecosystems to better understand and conserve
-                      their natural environments to meet Global Biodiversity Framework (GBF)
-                      targets. At the same time, companies are becoming more aware of their
+                      their natural environments to meet Global Biodiversity Framework (GBF) goals
+                      and targets. At the same time, companies are becoming more aware of their
                       responsibility to mitigate environmental impacts.
                     </p>
                   </div>
                   <div className="col-span-12 lg:col-span-6">
                     <p className="text-lg">
                       The Global Ecosystems Atlas is designed to align these efforts globally,
-                      ensuring that actions in one area support, biodiversity efforts elsewhere. By
+                      ensuring that actions in one area support biodiversity efforts elsewhere. By
                       closing knowledge gaps and providing a shared reference point, the Atlas
-                      enables governments, businesses, and civil society to collaboratively deliver
+                      enables governments, businesses and civil society to collaboratively deliver
                       on the intertwined goals of climate action and nature preservation.
                     </p>
                   </div>
