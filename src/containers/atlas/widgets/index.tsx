@@ -1,7 +1,13 @@
+"use client";
+import { createElement } from "react";
+
 import { cn } from "@/lib/utils";
+
+import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import { WidgetEcosystemsExtent } from "@/containers/atlas/widgets/efgs/extent";
 import { WidgetEcosystemsProtectedEfgs } from "@/containers/atlas/widgets/efgs/protected_efgs";
+import { WidgetLocationCountryContribution } from "@/containers/atlas/widgets/location/country_contribution";
 import { WidgetLocationStatus } from "@/containers/atlas/widgets/location/current_status";
 import { WidgetLocationExtent } from "@/containers/atlas/widgets/location/extent";
 import { WidgetLocationExtentRealms } from "@/containers/atlas/widgets/location/extent_realms";
@@ -9,25 +15,32 @@ import { WidgetLocationProtectedEfgs } from "@/containers/atlas/widgets/location
 import { WidgetLocationRealmsBreak } from "@/containers/atlas/widgets/location/realms_break";
 
 export const WIDGETS_LOCATION = [
-  <WidgetLocationStatus key="current_status" />,
-  <WidgetLocationExtentRealms key="extent_realms" />,
-  <WidgetLocationExtent key="extent" />,
-  <WidgetLocationProtectedEfgs key="protected_efgs" />,
-  <WidgetLocationRealmsBreak key="realms_break" />,
+  { locations: [], component: WidgetLocationStatus },
+  { locations: [], component: WidgetLocationExtentRealms },
+  { locations: [], component: WidgetLocationExtent },
+  { locations: ["GLOB"], component: WidgetLocationCountryContribution },
+  { locations: [], component: WidgetLocationProtectedEfgs },
+  { locations: [], component: WidgetLocationRealmsBreak },
 ];
 
 export const WIDGETS_ECOSYSYTEMS = [
-  <WidgetEcosystemsProtectedEfgs key="protected_efgs" />,
-  <WidgetEcosystemsExtent key="extent" />,
+  { component: WidgetEcosystemsProtectedEfgs },
+  { component: WidgetEcosystemsExtent },
   // <WidgetExtentRealms key="extent_realms" />,
   // <WidgetExtent key="extent" />,
   // <WidgetProtectedEfgs key="protected_efgs" />,
 ];
 
 export const WidgetLocationList = () => {
+  const [location] = useSyncLocation();
+
   return (
     <div className="divide-y divide-navy-100">
-      {WIDGETS_LOCATION.map((Widget, index) => (
+      {WIDGETS_LOCATION.filter((Widget) => {
+        if (!Widget.locations.length) return true;
+
+        return Widget.locations.includes(location ?? "GLOB");
+      }).map((Widget, index) => (
         <div
           key={index}
           className={cn({
@@ -36,7 +49,7 @@ export const WidgetLocationList = () => {
             "pb-0": index === WIDGETS_LOCATION.length - 1,
           })}
         >
-          {Widget}
+          {createElement(Widget.component)}
         </div>
       ))}
     </div>
@@ -55,7 +68,7 @@ export const WidgetEcosystemsList = () => {
             "pb-0": index === WIDGETS_LOCATION.length - 1,
           })}
         >
-          {Widget}
+          {createElement(Widget.component)}
         </div>
       ))}
     </div>
