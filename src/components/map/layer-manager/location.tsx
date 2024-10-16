@@ -28,8 +28,9 @@ export const Location = ({ beforeId, locations }: LocationProps) => {
       beforeId,
       lineWidthUnits: "pixels",
       operation: "draw",
+      visible: !!locations.length,
     });
-  }, [beforeId, GEOJSON]);
+  }, [beforeId, locations, GEOJSON]);
 
   return <DeckLayer id="location-layer" config={m} />;
 };

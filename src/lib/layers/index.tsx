@@ -456,7 +456,7 @@ export const LAYERS = [
     group: undefined,
     config: {
       "@@type": "RasterLayer",
-      data: `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=indiv_sa_gea_current_cog&resampling=mode&colormap_name=efgs`,
+      data: `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=indiv_sa_gea_current_cog&resampling=mode&colormap_name=rainbow_r`,
       maxZoom: 20,
       minZoom: 0,
       zoomOffset: 1,
@@ -501,7 +501,7 @@ export const LAYERS = [
     group: undefined,
     config: {
       "@@type": "RasterLayer",
-      data: `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=indiv_current_vegetation_map_of_mozambique_cog&resampling=mode&colormap_name=tab10`,
+      data: `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=indiv_current_vegetation_map_of_mozambique_cog&resampling=mode&colormap_name=rainbow_r`,
       maxZoom: 20,
       minZoom: 0,
       zoomOffset: 1,
