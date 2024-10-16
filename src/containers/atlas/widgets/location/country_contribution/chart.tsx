@@ -45,8 +45,6 @@ export const CountryContributionNumber = () => {
     "country_con_stat",
   );
 
-  console.log(data?.data);
-
   // DATA
   const DATA = useMemo(() => {
     return (
@@ -65,13 +63,16 @@ export const CountryContributionNumber = () => {
     (acc, curr) => acc + (curr.value ?? 0),
     0,
   );
-  const TOTAL = DATA.reduce((acc, curr) => acc + (curr.value ?? 0), 0);
+  const TOTAL = 195;
 
   return (
     <div className="leading-none">
       <span className="text-4xl font-semibold leading-none">{CURRENT}</span>
       <span className="text-lg leading-none"> / {TOTAL} </span>
-      <span className="text-xs font-medium leading-none"> have contributed their data</span>
+      <span className="text-xs font-medium leading-none">
+        {" "}
+        countries have contributed their data
+      </span>
     </div>
   );
 };
@@ -84,15 +85,27 @@ export const CountryContributionChart = ({ width, height }: { width: number; hei
     "country_con_stat",
   );
 
+  const TOTAL = 195;
+
   // DATA
   const DATA = useMemo(() => {
     return (
       data?.data
-        .map((d) => {
+        .map((d, i, arr) => {
+          let v = d.value ?? 0;
+
+          if (d.label === "Unknown / no Map") {
+            v =
+              TOTAL -
+              arr
+                .filter((d) => d.label !== "Unknown / no Map")
+                .reduce((acc, curr) => acc + (curr.value ?? 0), 0);
+          }
+
           return {
             id: d.id,
             label: d.label,
-            value: d.value ?? 0,
+            value: v,
             color: d.color ?? CHROMA.random().hex(),
           };
         })
@@ -106,8 +119,6 @@ export const CountryContributionChart = ({ width, height }: { width: number; hei
   const KEYS = useMemo(() => {
     return DATA.map((d) => d.id);
   }, [DATA]);
-
-  const TOTAL = DATA.reduce((acc, curr) => acc + (curr.value ?? 0), 0);
 
   // SCALES
   const xScale = useMemo(() => {
@@ -140,13 +151,13 @@ export const CountryContributionChart = ({ width, height }: { width: number; hei
       width={width}
       height={height}
       // selected={selected}
-      // interactive={interactive}
+      // interactive={true}
       xScale={xScale}
       yScale={yScale}
       colorScale={colorScale}
       TooltipComponent={({ bar }) => (
         <>
-          <h2>{DATA.find((d) => d.id === bar.key)?.id}</h2>
+          <h2>{DATA.find((d) => d.id === bar.key)?.label}</h2>
           <p>{DATA.find((d) => d.id === bar.key)?.value}</p>
           <p>{TOTAL}</p>
         </>
@@ -163,20 +174,25 @@ export const CountryContributionRanking = () => {
     "country_con_stat",
   );
 
+  // DATA
   const DATA = useMemo(() => {
     return (
       data?.data
-        .sort((a, b) => (b.value ?? 0) - (a.value ?? 0))
-        .slice(0, 5)
         .map((d) => {
+          let v = d.value ?? 0;
+
+          if (d.label === "Unknown / no Map") {
+            v = 0;
+          }
+
           return {
             id: d.id,
             label: d.label,
-            value: d.value ?? 0,
+            value: v,
             color: d.color ?? CHROMA.random().hex(),
           };
         })
-        .toSorted((a, b) => {
+        ?.toSorted((a, b) => {
           return SORT.indexOf(a.label) - SORT.indexOf(b.label);
         }) ?? []
     );
@@ -219,7 +235,7 @@ export const CountryContributionRanking = () => {
                 </div>
                 <div className="align-bottom">
                   <div className="shrink-0 whitespace-nowrap text-right text-xs font-medium text-navy-700">
-                    {formatNumber(value)}
+                    {!!value && formatNumber(value)}
                   </div>
                 </div>
               </div>
