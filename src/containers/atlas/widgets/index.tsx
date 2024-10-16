@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 
 import { WidgetEcosystemsExtent } from "@/containers/atlas/widgets/efgs/extent";
 import { WidgetEcosystemsProtectedEfgs } from "@/containers/atlas/widgets/efgs/protected_efgs";
+import { WidgetLocationCountryContribution } from "@/containers/atlas/widgets/location/country_contribution";
 import { WidgetLocationStatus } from "@/containers/atlas/widgets/location/current_status";
 import { WidgetLocationExtent } from "@/containers/atlas/widgets/location/extent";
 import { WidgetLocationExtentRealms } from "@/containers/atlas/widgets/location/extent_realms";
@@ -12,6 +13,7 @@ export const WIDGETS_LOCATION = [
   <WidgetLocationStatus key="current_status" />,
   <WidgetLocationExtentRealms key="extent_realms" />,
   <WidgetLocationExtent key="extent" />,
+  <WidgetLocationCountryContribution key="country_contribution" />,
   <WidgetLocationProtectedEfgs key="protected_efgs" />,
   <WidgetLocationRealmsBreak key="realms_break" />,
 ];
