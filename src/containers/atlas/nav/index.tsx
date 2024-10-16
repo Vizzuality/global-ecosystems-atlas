@@ -103,7 +103,7 @@ export const AtlasNav = () => {
           </ul>
 
           <ul className="space-y-3 py-3">
-            <AtlasNavItem href="/atlas/ecosystems" label="Ecosystems list" index={4}>
+            <AtlasNavItem href="/atlas/ecosystems" label="Ecosysytem functional groups" index={4}>
               <ListIcon className="h-5 w-5" />
             </AtlasNavItem>
           </ul>

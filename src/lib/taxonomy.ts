@@ -1,20 +1,19 @@
 import { groups } from "@visx/vendor/d3-array";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
-import { WidgetData } from "@/types/generated/strapi.schemas";
 
 export const getRealmFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters
-  const realmIds = efgCode
-    .replace(/[0-9.]/g, "")
-    .split("")
-    .sort()
-    .join("");
+  if (!efgCode) return "";
+
+  const realmIds = efgCode.replace(/[0-9.]/g, "");
 
   return realmIds;
 };
 
 export const getBiomeFromEFGCode = (efgCode: string) => {
+  if (!efgCode) return "";
+
   const realmIds = efgCode
     .replace(/[0-9.]/g, "")
     .split("")
@@ -25,6 +24,8 @@ export const getBiomeFromEFGCode = (efgCode: string) => {
 };
 
 export const getEFGSortedFromEFGCode = (efgCode: string) => {
+  if (!efgCode) return "";
+
   const realmIds = efgCode
     .replace(/[0-9.]/g, "")
     .split("")
@@ -42,7 +43,6 @@ export const useGetGroups = (
       | {
           id: string;
           name: string;
-          realm: string;
         }
       | undefined;
     biome:
@@ -59,11 +59,11 @@ export const useGetGroups = (
   const REALMS = useRealms({ location: "GLOB" });
   const BIOMES = useBiomes({ location: "GLOB" });
 
-  return groups(data, (d) => d.realm?.realm)
+  return groups(data, (d) => d.realm?.id)
     .map(([key, value]) => {
       return {
         id: key,
-        name: REALMS?.find((r) => r.realm === key)?.name,
+        name: REALMS?.find((r) => r.id === key)?.name,
         items: groups(value, (d) => d.biome?.id)
           .map(([key, value]) => {
             const b = BIOMES?.find((b) => b.id === key);
@@ -165,16 +165,15 @@ export const useBiomes = ({
     "extent_biomes",
   );
 
-  const DATA = BIOMES?.data as (WidgetData & { biome_code: string })[] | undefined;
-
-  return DATA?.map((b) => {
-    return {
-      id: getBiomeFromEFGCode(b.biome_code!),
-      name: `${b.biome_code} ${b.label}`.trim(),
-      biome: b.biome_code,
-      realm: getRealmFromEFGCode(b.biome_code!),
-    };
-  })
+  return BIOMES?.data
+    ?.map((b) => {
+      return {
+        id: getBiomeFromEFGCode(b.id!),
+        name: `${b.id} ${b.label}`.trim(),
+        biome: b.id,
+        realm: getRealmFromEFGCode(b.id!),
+      };
+    })
     ?.toSorted((a, b) => {
       return a.name.localeCompare(b.name);
     })
@@ -213,13 +212,10 @@ export const useRealms = ({ location }: { location?: string | null }) => {
     "extent_realms",
   );
 
-  const DATA = REALMS?.data as (WidgetData & { realm_code: string })[] | undefined;
-
-  return DATA?.map((r) => {
+  return REALMS?.data?.map((r) => {
     return {
       id: r.id,
       name: `${r.label}`,
-      realm: r.realm_code,
     };
   });
 };

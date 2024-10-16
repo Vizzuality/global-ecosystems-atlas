@@ -422,6 +422,7 @@ export const LAYERS = [
       refinementStrategy: "no-overlap",
       opacity: "@@#params.opacity",
       visible: "@@#params.visibility",
+      extent: "@@#params.extent",
       bitmapProps: {
         extensions: [{ "@@type": "MaskExtension" }],
         maskId: "location-mask-layer-deck",
@@ -435,6 +436,96 @@ export const LAYERS = [
       {
         key: "visibility",
         default: true,
+      },
+    ],
+    legend_config: {
+      type: "basic",
+      items: [
+        {
+          label: "Test",
+          value: 0,
+          color: "#000",
+        },
+      ],
+    },
+  },
+  {
+    id: "story_sa",
+    name: "South Africa",
+    type: "deckgl",
+    group: undefined,
+    config: {
+      "@@type": "RasterLayer",
+      data: `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=indiv_sa_gea_current_cog&resampling=mode&colormap_type=linear&colormap_name=tab20&rescale=0,2945&nodata=0`,
+      maxZoom: 20,
+      minZoom: 0,
+      zoomOffset: 1,
+      refinementStrategy: "no-overlap",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
+      extent: "@@#params.extent",
+      bitmapProps: {
+        extensions: [{ "@@type": "MaskExtension" }],
+        maskId: "location-mask-layer-deck",
+      },
+    },
+    params_config: [
+      {
+        key: "opacity",
+        default: 1,
+      },
+      {
+        key: "visibility",
+        default: true,
+      },
+      {
+        key: "extent",
+        default: null,
+      },
+    ],
+    legend_config: {
+      type: "basic",
+      items: [
+        {
+          label: "Test",
+          value: 0,
+          color: "#000",
+        },
+      ],
+    },
+  },
+  {
+    id: "story_mozambique",
+    name: "South Africa",
+    type: "deckgl",
+    group: undefined,
+    config: {
+      "@@type": "RasterLayer",
+      data: `${env.NEXT_PUBLIC_API_URL}/tiler/tiles/WebMercatorQuad/{z}/{x}/{y}.png?asset=indiv_current_vegetation_map_of_mozambique_cog&resampling=mode&colormap_type=linear&colormap_name=tab20&rescale=1,255&nodata=0`,
+      maxZoom: 20,
+      minZoom: 0,
+      zoomOffset: 1,
+      refinementStrategy: "no-overlap",
+      opacity: "@@#params.opacity",
+      visible: "@@#params.visibility",
+      extent: "@@#params.extent",
+      bitmapProps: {
+        extensions: [{ "@@type": "MaskExtension" }],
+        maskId: "location-mask-layer-deck",
+      },
+    },
+    params_config: [
+      {
+        key: "opacity",
+        default: 1,
+      },
+      {
+        key: "visibility",
+        default: true,
+      },
+      {
+        key: "extent",
+        default: null,
       },
     ],
     legend_config: {

@@ -28,6 +28,7 @@ export default async function StoriesSouthAfricaMozambiquePage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(getApiLocationsGetQueryOptions());
+  await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("GLOB"));
   await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("ZAF_224"));
   await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("MOZ_167"));
 
@@ -43,6 +44,7 @@ export default async function StoriesSouthAfricaMozambiquePage() {
           alt="South Africa and Mozambique"
           width={2878}
           height={699}
+          className="hidden xl:block"
         />
         <SAMSection5 />
       </Suspense>

@@ -27,7 +27,7 @@ export const AtlasEcosysytemsDetail = () => {
 
   return (
     <div className="space-y-5">
-      <div className="space-y-1 border-b border-navy-100 pb-6">
+      <div className="space-y-2 border-b border-navy-100 pb-6">
         {LOCATION && (
           <div className="text-sm font-medium leading-snug">
             Location: <strong>{LOCATION.gis_name}</strong>
@@ -38,7 +38,7 @@ export const AtlasEcosysytemsDetail = () => {
           Ecosystem: <strong>{ECOSYSYTEM?.name}</strong>
         </div>
         <div className="text-sm font-medium leading-snug">
-          Biome code: <strong>{BIOME?.name}</strong>
+          Biome: <strong>{BIOME?.name}</strong>
         </div>
         <div className="text-sm font-medium leading-snug">
           Realm: <strong>{REALM?.name}</strong>
