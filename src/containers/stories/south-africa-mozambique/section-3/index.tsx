@@ -24,13 +24,30 @@ export const SAMSection3 = () => {
                 </H2>
                 <p className="text-lg">
                   The Global Ecosystems Atlas equips countries to better monitor and conserve their
-                  ecosystems. With its user-friendly tools, the Atlas{" "}
+                  ecosystems. With user-friendly tools, the Atlas{" "}
                   <strong>
-                    helps track progress toward the Global Biodiversity Framework (GBF)
+                    helps track progress toward the{" "}
+                    <a
+                      href="https://www.cbd.int/gbf"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline"
+                    >
+                      Global Biodiversity Framework (GBF)
+                    </a>
                   </strong>{" "}
-                  goals and targets, allowing for easy reporting on headline indicators like natural
-                  ecosystem extent, ecosystem risk status, and protected area coverage in the format
-                  required by the Convention on Biological Diversity (CBD).
+                  goals and targets, allowing for easy reporting on headline indicators like extent
+                  of natural ecosystems, ecosystem risk status and protected area coverage in the
+                  format required by the{" "}
+                  <a
+                    href="https://www.cbd.int/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline"
+                  >
+                    Convention on Biological Diversity (CBD)
+                  </a>
+                  .
                 </p>
                 <p className="text-lg">
                   For instance, by comparing South Africa and Mozambique data, the Atlas can reveal

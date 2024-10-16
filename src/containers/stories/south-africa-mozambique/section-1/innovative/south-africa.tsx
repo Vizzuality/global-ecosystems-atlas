@@ -12,9 +12,9 @@ export const SAMInnovativeSouthAfrica = () => {
       </p>
       <p className="text-xl">
         <strong>South Africa&apos;s</strong> mapping efforts date back several decades, involving
-        many ecologists using a wide range of data sources, resulting in maps of around 1000
+        many ecologists and using a wide range of data sources, resulting in maps of around 1,000
         ecosystem types across all realms. This provides a wealth of data that has guided
-        conservation action, integrated spatial planning, environmental impact assessments and more.
+        conservation action, spatial planning, environmental impact assessments and more.
       </p>
       <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
         <Image src="/sam/2.webp" alt="South Africa" width={666} height={666} />
