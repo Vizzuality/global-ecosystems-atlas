@@ -9,7 +9,9 @@ import {
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 
-export const bboxParser = parseAsArrayOf(parseAsFloat).withDefault([-144.3, -63.28, 171.76, 77.94]);
+export const bboxParser = parseAsArrayOf(parseAsFloat).withDefault([
+  -101.13, -49.37, 149.05, 71.19,
+]);
 
 export const basemapParser = parseAsStringLiteral(BASEMAPS.map((b) => b.value)).withDefault(
   "light",
