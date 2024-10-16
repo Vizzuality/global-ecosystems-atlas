@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 import { H2 } from "@/components/ui/h2";
 
 export const SAMInnovativeSouthAfrica = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center gap-4 py-48">
+    <section className="flex flex-col justify-center gap-4 xl:min-h-dvh xl:py-48">
       <H2 size="sm">Innovative ecosystem mapping</H2>
       <p className="text-xl">
         Both South Africa and Mozambique have made significant strides in mapping and classifying
@@ -14,6 +16,9 @@ export const SAMInnovativeSouthAfrica = () => {
         ecosystem types across all realms. This provides a wealth of data that has guided
         conservation action, integrated spatial planning, environmental impact assessments and more.
       </p>
+      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+        <Image src="/sam/2.webp" alt="South Africa" width={666} height={666} />
+      </div>
     </section>
   );
 };

@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export const SAMWhy2 = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center gap-8 py-24">
+    <section className="flex flex-col justify-center gap-4 xl:min-h-dvh xl:py-48">
       <h3 className="text-lg font-bold uppercase">Bridging Data Gaps Globally So All Can Use</h3>
 
       <div className="space-y-4">
@@ -14,6 +16,9 @@ export const SAMWhy2 = () => {
           participation in biodiversity conservation and fostering a more accurate understanding of
           our planet&apos;s ecosystems.
         </p>
+      </div>
+      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+        <Image src="/sam/3.webp" alt="Mozambique" width={666} height={666} />
       </div>
     </section>
   );

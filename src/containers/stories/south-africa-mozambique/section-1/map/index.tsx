@@ -29,12 +29,12 @@ export const STEPS: {
   },
   {
     id: 1,
-    layers: ["efgs"],
+    layers: ["story_sa"],
     locations: ["ZAF_224"],
   },
   {
     id: 2,
-    layers: ["efgs"],
+    layers: ["story_mozambique"],
     locations: ["MOZ_167"],
   },
 ];

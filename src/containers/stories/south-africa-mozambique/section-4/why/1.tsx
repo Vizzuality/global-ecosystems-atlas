@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 import { H2 } from "@/components/ui/h2";
 
 export const SAMWhy1 = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center gap-8 py-24">
+    <section className="flex flex-col justify-center gap-4 xl:min-h-dvh xl:py-48">
       <H2 size="sm">Why is harmonized ecosystem mapping important? </H2>
       <h3 className="text-lg font-bold uppercase">
         We Can&apos;t Conserve What We Don&apos;t Know
@@ -19,6 +21,10 @@ export const SAMWhy1 = () => {
           harmonized across countries. Even with global indicators for ecosystem monitoring,
           there&apos;s no consistent way to apply them worldwide.
         </p>
+      </div>
+
+      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+        <Image src="/sam/3.webp" alt="Mozambique" width={666} height={666} />
       </div>
     </section>
   );
