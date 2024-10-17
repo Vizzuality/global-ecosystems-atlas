@@ -73,7 +73,7 @@ export const LAYERS = [
       "@@type": "RealmsLegend",
     },
     interaction_config: {},
-    metadata: {},
+    metadata: "gea_realms",
   },
   {
     id: "biomes",
@@ -146,7 +146,7 @@ export const LAYERS = [
       "@@type": "BiomesLegend",
     },
     interaction_config: {},
-    metadata: {},
+    metadata: "gea_biomes",
   },
   {
     id: "efgs",
@@ -218,6 +218,7 @@ export const LAYERS = [
     legend_config: {
       "@@type": "EfgsLegend",
     },
+    metadata: "gea_efgs",
   },
   {
     id: "overlap-index",
@@ -285,6 +286,7 @@ export const LAYERS = [
         },
       ],
     },
+    metadata: "gea_qa_oi",
   },
   {
     id: "country-contribution",
@@ -344,6 +346,7 @@ export const LAYERS = [
         },
       ],
     },
+    metadata: "gea_qa_cs",
   },
   {
     id: "protected-areas",
@@ -384,6 +387,7 @@ export const LAYERS = [
         },
       ],
     },
+    metadata: "wdpa",
   },
   {
     id: "human-population",
@@ -411,6 +415,7 @@ export const LAYERS = [
         },
       ],
     },
+    metadata: "ciesin_pop_dens",
   },
   {
     id: "satellite",
@@ -452,6 +457,7 @@ export const LAYERS = [
         },
       ],
     },
+    metadata: "satellite",
   },
   {
     id: "story_sa",
@@ -497,6 +503,7 @@ export const LAYERS = [
         },
       ],
     },
+    metadata: "story_sa",
   },
   {
     id: "story_mozambique",
@@ -542,9 +549,11 @@ export const LAYERS = [
         },
       ],
     },
+    metadata: "story_mozambique",
   },
 ] as const;
 
 // https://api.mapbox.com/v4/mapbox.satellite/3/7/5.webp?sku=101tW7TDV0XEA&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA
 
 export type LayerIds = (typeof LAYERS)[number]["id"];
+export type LayerMetadataIds = (typeof LAYERS)[number]["metadata"];
