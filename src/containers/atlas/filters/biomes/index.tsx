@@ -65,6 +65,8 @@ export const BiomesContent = () => {
       setBiomes((prev) => {
         const newBiomes = [...prev, biomeId];
 
+        setEcosystems([]);
+
         return newBiomes;
       });
     }
