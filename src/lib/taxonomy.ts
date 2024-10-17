@@ -2,7 +2,7 @@ import { groups } from "@visx/vendor/d3-array";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
-const REALM_ORDER = ["T", "S", "SF", "SM", "TF", "F", "FM", "M", "MT", "MFT"];
+export const REALM_ORDER = ["T", "S", "SF", "SM", "TF", "F", "FM", "M", "MT", "MFT"];
 
 export const getRealmFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters

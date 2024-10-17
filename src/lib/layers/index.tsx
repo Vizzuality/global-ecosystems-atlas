@@ -150,7 +150,7 @@ export const LAYERS = [
   },
   {
     id: "efgs",
-    name: "Ecosystem Functional Groups",
+    name: "Ecosystem functional groups",
     type: "deckgl",
     group: "atlas-data",
     config: {
@@ -221,7 +221,7 @@ export const LAYERS = [
   },
   {
     id: "overlap-index",
-    name: "Overlap Index",
+    name: "Dataset count",
     type: "deckgl",
     group: "status-data",
     config: {
@@ -288,7 +288,7 @@ export const LAYERS = [
   },
   {
     id: "country-contribution",
-    name: "Country contribution",
+    name: "Contribution status",
     type: "deckgl",
     group: "status-data",
     config: {
@@ -389,7 +389,7 @@ export const LAYERS = [
     id: "human-population",
     name: "Human population",
     type: "deckgl",
-    group: "context-data",
+    group: undefined,
     config: null,
     params_config: [
       {
