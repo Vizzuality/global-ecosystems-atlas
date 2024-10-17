@@ -2,10 +2,17 @@
 
 import { PropsWithChildren } from "react";
 
+import Markdown from "react-markdown";
+
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
+import { useApiWidgetsGet } from "@/types/generated/widgets";
+
+import { Info } from "@/containers/atlas/info";
+
+import { H3 } from "@/components/ui/h3";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const Widget = ({ children, className }: PropsWithChildren<{ className?: string }>) => {
@@ -71,5 +78,26 @@ export const WidgetNoData = ({ children, isNoData }: PropsWithChildren<{ isNoDat
         </p>
       </div>
     </div>
+  );
+};
+
+export const WidgetInfo = ({ id }: { id: string }) => {
+  const { data: widgetsData } = useApiWidgetsGet();
+
+  const WIDGET = widgetsData?.data?.find((widget) => widget.id === id);
+  if (!WIDGET) return null;
+
+  const { metadata } = WIDGET;
+  if (!metadata || !metadata.length) return null;
+
+  const markdown = metadata[0].abstract;
+
+  if (!markdown) return null;
+
+  return (
+    <Info>
+      <H3>{WIDGET.name}</H3>
+      <Markdown className="prose">{markdown}</Markdown>
+    </Info>
   );
 };

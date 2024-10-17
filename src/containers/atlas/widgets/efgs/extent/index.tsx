@@ -6,7 +6,6 @@ import { getEFGSortedFromEFGCode } from "@/lib/taxonomy";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
 
-import { Info } from "@/containers/atlas/info";
 import { ByCountryExtent } from "@/containers/atlas/widgets/efgs/extent/by-country";
 import { GlobExtent } from "@/containers/atlas/widgets/efgs/extent/glob";
 import {
@@ -14,6 +13,7 @@ import {
   WidgetContent,
   WidgetError,
   WidgetHeader,
+  WidgetInfo,
   WidgetLoader,
   WidgetNoData,
   WidgetTitle,
@@ -31,7 +31,7 @@ export const WidgetEcosystemsExtent = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>Global Ecosystem group extent</WidgetTitle>
-        <Info>Hello</Info>
+        <WidgetInfo id="extent_efgs" />
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
