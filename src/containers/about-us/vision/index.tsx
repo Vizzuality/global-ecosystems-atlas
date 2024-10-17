@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/section";
 export default function AboutUsVision() {
   return (
     <Section className="relative z-0 overflow-hidden bg-lightblue-50">
-      <div className="container space-y-16 lg:space-y-60">
+      <div className="container space-y-16 lg:space-y-72">
         <Grid>
           <div className="col-span-12 lg:col-span-5 lg:col-start-2">
             <div className="space-y-6 lg:space-y-9">

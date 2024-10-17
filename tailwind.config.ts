@@ -78,6 +78,7 @@ const config = {
         lightblue: {
           "50": "#EFF8FF",
           "100": "#D9EEFF",
+          "200": "#ADDAFF",
         },
         navy: {
           "10": "#F9FAFC",
