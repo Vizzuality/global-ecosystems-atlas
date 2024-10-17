@@ -45,9 +45,7 @@ export const RealmsContent = () => {
   const ECOSYSTEMS = useEcosystems({ location });
 
   const DATA = useMemo(() => {
-    return REALMS?.toSorted((a, b) => {
-      return a.name.localeCompare(b.name);
-    })?.map((realm) => {
+    return REALMS?.map((realm) => {
       return {
         ...realm,
         disabled: false,

@@ -2,7 +2,6 @@ import { useMemo } from "react";
 
 import { useParams } from "next/navigation";
 
-import { getEFGSortedFromEFGCode } from "@/lib/taxonomy";
 import { cn, formatPercentage } from "@/lib/utils";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
@@ -10,10 +9,7 @@ import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated
 export const GlobExtent = () => {
   const { ecosystemId } = useParams();
 
-  const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(
-    getEFGSortedFromEFGCode(`${ecosystemId}`),
-    "extent_efgs",
-  );
+  const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(`${ecosystemId}`, "extent_efgs");
 
   const DATA = useMemo(() => {
     return data?.data?.find((d) => d.id === "GLOB");

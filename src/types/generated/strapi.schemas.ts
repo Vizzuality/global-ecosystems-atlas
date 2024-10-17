@@ -69,7 +69,7 @@ export type PointCustomTilerPointGetParams = {
   /**
    * Overwrite internal Nodata value
    */
-  nodata?: string | number | number | null;
+  nodata?: number | number | string | null;
   /**
    * Apply internal Scale/Offset. Defaults to `False`.
    */

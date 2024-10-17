@@ -6,7 +6,6 @@ import { ParentSize } from "@visx/responsive";
 import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
 import CHROMA from "chroma-js";
 
-import { getEFGSortedFromEFGCode } from "@/lib/taxonomy";
 import { formatPercentage } from "@/lib/utils";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
@@ -28,7 +27,7 @@ export const ByCountryExtent = () => {
       </div>
 
       <div className="space-y-2.5">
-        <h4 className="text-xs font-semibold">Proportion of country</h4>
+        <h4 className="text-xs font-semibold">Proportion of location</h4>
         <ByCountryExtentRanking />
       </div>
     </div>
@@ -40,10 +39,7 @@ export const ByCountryExtentChart = ({ width, height }: { width: number; height:
 
   const { data: locationsData } = useApiLocationsGet();
 
-  const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(
-    getEFGSortedFromEFGCode(`${ecosystemId}`),
-    "extent_efgs",
-  );
+  const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(`${ecosystemId}`, "extent_efgs");
 
   // DATA
   const DATA = useMemo(() => {
@@ -122,10 +118,7 @@ export const ByCountryExtentRanking = () => {
 
   const { data: locationsData } = useApiLocationsGet();
 
-  const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(
-    getEFGSortedFromEFGCode(`${ecosystemId}`),
-    "extent_efgs",
-  );
+  const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(`${ecosystemId}`, "extent_efgs");
 
   // DATA
   const DATA = useMemo(() => {

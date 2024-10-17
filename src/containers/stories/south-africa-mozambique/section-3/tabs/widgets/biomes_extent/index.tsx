@@ -32,7 +32,7 @@ export const WidgetLocationExtent = ({ location }: { location: string }) => {
       <WidgetContent>
         <WidgetLoader isLoading={biomesWidgetIsFetching && !biomesWidgetIsFetched}>
           <WidgetError isError={biomesWidgetIsError}>
-            <WidgetNoData isNoData={!!data?.data}>
+            <WidgetNoData isNoData={!data?.data}>
               <BiomesExtent location={location} />
             </WidgetNoData>
           </WidgetError>
