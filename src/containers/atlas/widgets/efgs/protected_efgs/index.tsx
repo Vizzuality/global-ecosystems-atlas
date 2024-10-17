@@ -3,7 +3,6 @@ import { useMemo } from "react";
 
 import { useParams } from "next/navigation";
 
-import { getEFGSortedFromEFGCode } from "@/lib/taxonomy";
 import { cn, formatPercentage } from "@/lib/utils";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
@@ -23,7 +22,7 @@ export const WidgetEcosystemsProtectedEfgs = () => {
   const { ecosystemId } = useParams();
 
   const { data, isFetched, isFetching, isError } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(
-    getEFGSortedFromEFGCode(`${ecosystemId}`),
+    `${ecosystemId}`,
     "protected_efgs",
   );
 
@@ -36,7 +35,7 @@ export const WidgetEcosystemsProtectedEfgs = () => {
   return (
     <Widget>
       <WidgetHeader>
-        <WidgetTitle>Protection level</WidgetTitle>
+        <WidgetTitle>Global Protection level</WidgetTitle>
         <WidgetInfo id="protected_efgs" />
       </WidgetHeader>
       <WidgetContent>

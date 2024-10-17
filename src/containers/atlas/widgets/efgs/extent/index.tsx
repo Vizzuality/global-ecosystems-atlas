@@ -2,8 +2,6 @@
 
 import { useParams } from "next/navigation";
 
-import { getEFGSortedFromEFGCode } from "@/lib/taxonomy";
-
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
 
 import { ByCountryExtent } from "@/containers/atlas/widgets/efgs/extent/by-country";
@@ -23,7 +21,7 @@ export const WidgetEcosystemsExtent = () => {
   const { ecosystemId } = useParams();
 
   const { isFetched, isFetching, isError } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(
-    getEFGSortedFromEFGCode(`${ecosystemId}`),
+    `${ecosystemId}`,
     "extent_efgs",
   );
 
