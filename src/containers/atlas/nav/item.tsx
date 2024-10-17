@@ -41,7 +41,7 @@ export const AtlasNavItem = ({
             prefetch
             className={cn({
               "flex items-center gap-3 rounded-sm p-2.5": true,
-              "hover:bg-lightblue-200 text-navy-500 hover:text-navy-700": true,
+              "text-navy-500 hover:bg-lightblue-200 hover:text-navy-700": true,
               "bg-lightblue-100 text-navy-700":
                 (href !== "/atlas" && pathname.includes(href)) || pathname === href,
             })}
