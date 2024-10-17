@@ -33,7 +33,14 @@ export const FeedbackControl: FC<PropsWithChildren<FeedbackControlProps>> = ({
             aria-label="Map settings"
             type="button"
           >
-            <FeedbackIcon className="relative h-full w-full" />
+            <a
+              href="https://forms.office.com/pages/responsepage.aspx?id=yA7859y2M0-hdLo1Xg--6zzUvHLjRP5NlSTxlkHhpdJUMExINlExQlg2Wjk1QTM4T002QVlYNk8yWS4u&route=shorturl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative h-full w-full"
+            >
+              <FeedbackIcon className="relative h-full w-full" />
+            </a>
           </button>
         </TooltipTrigger>
         {/* </PopoverTrigger> */}
