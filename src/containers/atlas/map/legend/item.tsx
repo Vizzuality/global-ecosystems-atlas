@@ -1,6 +1,8 @@
 "use-client";
 import { ReactElement, cloneElement, createElement, isValidElement, useMemo } from "react";
 
+import { useParams } from "next/navigation";
+
 import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
 import { useBiomesIds, useEcosystemsIds } from "@/lib/taxonomy";
@@ -45,18 +47,30 @@ type ConfigType =
   | null;
 
 export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
+  const { ecosystemId } = useParams();
+
   const [location] = useSyncLocation();
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
   const [ecosystems] = useSyncEcosystems();
 
   const BIOMES_IDS = useBiomesIds({ location, realms, biomes });
-  const ECOSYSTEMS_IDS = useEcosystemsIds({ location, realms, biomes, ecosystems });
+  const ECOSYSTEMS_IDS = useEcosystemsIds({
+    location,
+    realms,
+    biomes,
+    ecosystems: ecosystemId ? [`${ecosystemId}`] : ecosystems,
+  });
 
   const [, setLayers] = useSyncLayers();
   const [layersSettings, setLayersSettings] = useSyncLayersSettings();
 
-  const LAYER = LAYERS.find((layer) => layer.id === id);
+  const LAYER = useMemo(() => {
+    if (ecosystemId && (id === "realms" || id === "biomes")) {
+      return LAYERS.find((l) => l.id === "efgs");
+    }
+    return LAYERS.find((l) => l.id === id);
+  }, [id, ecosystemId]);
 
   const legend_config = LAYER?.legend_config;
   const params_config = LAYER?.params_config;

@@ -1,6 +1,8 @@
 "use client";
 
-import { cloneElement, isValidElement } from "react";
+import { cloneElement, isValidElement, useMemo } from "react";
+
+import { useParams } from "next/navigation";
 
 import { Layer } from "@deck.gl/core";
 
@@ -26,15 +28,28 @@ interface LayerManagerItemProps {
 }
 
 const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
-  const LAYER = LAYERS.find((l) => l.id === id);
+  const { ecosystemId } = useParams();
+
   const [location] = useSyncLocation();
   const [depth] = useSyncDepth();
   const [realms] = useSyncRealms();
   const [biomes] = useSyncBiomes();
   const [ecosystems] = useSyncEcosystems();
 
+  const LAYER = useMemo(() => {
+    if (ecosystemId && (id === "realms" || id === "biomes")) {
+      return LAYERS.find((l) => l.id === "efgs");
+    }
+    return LAYERS.find((l) => l.id === id);
+  }, [id, ecosystemId]);
+
   const BIOMES_IDS = useBiomesIds({ location, realms, biomes });
-  const ECOSYSTEMS_IDS = useEcosystemsIds({ location, realms, biomes, ecosystems });
+  const ECOSYSTEMS_IDS = useEcosystemsIds({
+    location,
+    realms,
+    biomes,
+    ecosystems: ecosystemId ? [`${ecosystemId}`] : ecosystems,
+  });
 
   const LOCATION = useLocationId(location);
 
