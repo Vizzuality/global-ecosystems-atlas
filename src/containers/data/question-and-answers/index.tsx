@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 
-import Markdown from "react-markdown";
-
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 import { FAQS } from "@/lib/faqs";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Grid } from "@/components/ui/grid";
+import { Markdown } from "@/components/ui/markdown";
 import { Section } from "@/components/ui/section";
 
 const FaqItem = ({ question, answer }: { question: string; answer: string }) => {
