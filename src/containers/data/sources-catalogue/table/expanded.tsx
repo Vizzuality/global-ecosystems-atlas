@@ -1,9 +1,8 @@
-import Markdown from "react-markdown";
-
 import { Row } from "@tanstack/react-table";
 
 import { Dataset } from "@/types/dataset";
 
+import { Markdown } from "@/components/ui/markdown";
 import { TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
 export const Expanded = (row: Row<Dataset>) => {

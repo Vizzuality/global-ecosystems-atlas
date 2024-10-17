@@ -11,12 +11,12 @@ import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/loc
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
-import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
   WidgetError,
   WidgetHeader,
+  WidgetInfo,
   WidgetLoader,
   WidgetNoData,
   WidgetTitle,
@@ -74,12 +74,7 @@ export const WidgetLocationEcosystemAssesment = () => {
         <WidgetTitle>
           Ecosystems Risk status <span className="font-medium normal-case">(Type level)</span>
         </WidgetTitle>
-        <Info>
-          This widget shows the proportion of national ecosystem types assessed under each risk
-          category in the Red List of Ecosystems. Ecosystem types are sub-units within the ecosystem
-          functional groups displayed on the Atlas, and represent the level at which risk status is
-          assessed. More information on https://www.iucnrle.org/
-        </Info>
+        <WidgetInfo id="ecosystem_assesment" />
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
