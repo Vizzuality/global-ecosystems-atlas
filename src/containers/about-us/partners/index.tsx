@@ -122,6 +122,13 @@ export default function AboutUsPartners() {
               In partnership with
             </h3>
             <ul className="col-span-12 grid grid-cols-2 gap-x-2 gap-y-24 md:grid-cols-3 lg:col-span-10 lg:col-start-2 lg:grid-cols-4 xl:grid-cols-5">
+              <PartnerItem
+                src="/partners/ai2.webp"
+                alt="Ai2"
+                width={1400}
+                height={444}
+                href="https://allenai.org/"
+              />
               <div className="col-span-2 flex gap-x-4 divide-x">
                 <PartnerItem
                   src="/partners/center-for-ecosystem-science.webp"
