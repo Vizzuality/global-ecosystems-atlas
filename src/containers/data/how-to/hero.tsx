@@ -1,14 +1,14 @@
 import { Grid } from "@/components/ui/grid";
 import { H3 } from "@/components/ui/h3";
 import { Section } from "@/components/ui/section";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+// import {
+//   Table,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableHeader,
+//   TableRow,
+// } from "@/components/ui/table";
 
 export const HowToHero = () => {
   return (
@@ -21,15 +21,15 @@ export const HowToHero = () => {
 
           <div className="col-span-12 lg:col-span-7 lg:col-start-5">
             <p className="text-lg">
-              The Global Ecosystems Atlas Basemap (gea_basemap) is a data product designed to
-              support environmental initiatives by providing a{" "}
-              <strong>consistent spatial dataset</strong> representing ecosystems worldwide. The
-              development of the basemap involved the compilation and harmonization of existing,
-              publicly available assets that are known to represent ecosystems and that meet
-              stringent data quality standards. Key processes in the development of the basemap
-              include data compilation, quality assurance, assigning map classes to their
-              corresponding IUCN Global Ecosystem Typology class, and integration into a data
-              product that can support a variety of use cases. 
+              The <strong>Global Ecosystems Atlas synthesis map</strong> is a data product designed
+              to support a range of environmental initiatives through the provision of a spatially
+              and thematically consistent geospatial data product that represents the distribution
+              of the world&apos;s ecosystems. The data product is a set of 119 Cloud-optimised
+              Geotiffs that include three synthesis, which represent the ecosystem functional group,
+              biomes and realms of the IUCN Global Ecosystem Typology, 110 binary layers that
+              represent the 110 individual ecosystem functional groups of the Global Ecosystem
+              Typology, a data mask, and a set of quality assurance data layers that indicate the
+              data provenance, development year and other relevant aspects of data quality.
             </p>
           </div>
         </Grid>
@@ -37,9 +37,9 @@ export const HowToHero = () => {
         <Grid>
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <p className="text-2xl font-light italic text-navy-600 lg:text-4xl">
-              The development of the basemap involved the compilation and harmonization of existing,
-              publicly available geospatial data products that are known to represent ecosystems and
-              that meet stringent data quality standards.
+              The development of the synthesis map data product involved compiling and harmonising
+              existing, publicly available datasets that are known to represent ecosystems and that
+              meet rigorous data quality standards.
             </p>
           </div>
         </Grid>
@@ -47,14 +47,23 @@ export const HowToHero = () => {
         <Grid>
           <div className="col-span-12 space-y-10 lg:col-span-7 lg:col-start-5">
             <p className="text-lg">
-              The Global Ecosystems Atlas Basemap is not static; it is{" "}
-              <strong>designed for continuous</strong> updates to maintain relevance and accuracy. A
-              versioning system allows for the continuous integration of new ecosystem spatial
-              datasets, enabling the continuous submission of newly developed datasets from
-              ecosystem mapping teams around the world.
+              Key processes in the development of the gea_synthesis data product include
+              wide-ranging data searches, data catalogue, quality assurance, cross-referencing map
+              classes from source datasets to IUCN Global Ecosystem Typology ecosystem functional
+              groups, and geospatial data processing into a data product that can support a variety
+              of use cases.
+            </p>
+            <p className="text-lg">
+              The specification of the synthesis map data product was designed to enable both
+              estimates of ecosystem extent and distribution and to support ecosystem extent
+              monitoring over time. The <strong>Global Ecosystems Atlas synthesis map</strong> is
+              not a static data publication; it is designed for regular updates to maintain
+              relevance and accuracy. A versioning system allows for the ongoing integration of new
+              submissions of spatial datasets that represent ecosystems, enabling regular updates
+              that reflect new ecosystem mapping efforts by mapping teams worldwide.
             </p>
 
-            <div className="rounded-md border">
+            {/* <div className="rounded-md border">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -112,7 +121,7 @@ export const HowToHero = () => {
                   </TableRow>
                 </TableBody>
               </Table>
-            </div>
+            </div> */}
           </div>
         </Grid>
       </div>
