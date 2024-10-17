@@ -2,8 +2,6 @@
 
 import { PropsWithChildren } from "react";
 
-import Markdown from "react-markdown";
-
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
@@ -13,6 +11,7 @@ import { useApiWidgetsGet } from "@/types/generated/widgets";
 import { Info } from "@/containers/atlas/info";
 
 import { H3 } from "@/components/ui/h3";
+import { Markdown } from "@/components/ui/markdown";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const Widget = ({ children, className }: PropsWithChildren<{ className?: string }>) => {

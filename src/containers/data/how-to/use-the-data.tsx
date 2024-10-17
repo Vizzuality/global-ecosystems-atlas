@@ -1,7 +1,6 @@
-import Markdown from "react-markdown";
-
 import { Grid } from "@/components/ui/grid";
 import { H3 } from "@/components/ui/h3";
+import { Markdown } from "@/components/ui/markdown";
 import { Section } from "@/components/ui/section";
 import {
   Table,
