@@ -37,7 +37,7 @@ export const WidgetLocationRealmsBreak = () => {
 
   const DATA = useMemo(() => {
     return (
-      data?.data.map((d) => {
+      data?.data?.map((d) => {
         const realm = getRealmFromEFGCode(d.id);
         const biome = getBiomeFromEFGCode(d.id);
 
@@ -70,7 +70,7 @@ export const WidgetLocationRealmsBreak = () => {
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
           <WidgetError isError={isError}>
-            <WidgetNoData isNoData={!DATA}>
+            <WidgetNoData isNoData={!DATA || !DATA?.length}>
               <div className="space-y-7">
                 <div className="space-y-4">
                   <h4 className="text-2xs font-bold uppercase">Core realms</h4>

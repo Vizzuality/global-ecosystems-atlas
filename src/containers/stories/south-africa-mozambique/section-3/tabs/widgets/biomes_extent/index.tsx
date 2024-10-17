@@ -17,6 +17,7 @@ import { BiomesExtent } from "./biomes";
 
 export const WidgetLocationExtent = ({ location }: { location: string }) => {
   const {
+    data,
     isFetched: biomesWidgetIsFetched,
     isFetching: biomesWidgetIsFetching,
     isError: biomesWidgetIsError,
@@ -31,7 +32,7 @@ export const WidgetLocationExtent = ({ location }: { location: string }) => {
       <WidgetContent>
         <WidgetLoader isLoading={biomesWidgetIsFetching && !biomesWidgetIsFetched}>
           <WidgetError isError={biomesWidgetIsError}>
-            <WidgetNoData isNoData={false}>
+            <WidgetNoData isNoData={!!data?.data}>
               <BiomesExtent location={location} />
             </WidgetNoData>
           </WidgetError>

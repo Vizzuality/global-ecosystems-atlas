@@ -35,7 +35,7 @@ export const EFGSExtentChart = ({ width, height }: { width: number; height: numb
   // DATA
   const DATA = useMemo(() => {
     return (
-      data?.data.map((d) => {
+      data?.data?.map((d) => {
         return {
           id: d.id,
           label: d.label,
@@ -106,9 +106,9 @@ export const EFGSExtentRanking = () => {
   const DATA = useMemo(() => {
     return (
       data?.data
-        .sort((a, b) => (b.value ?? 0) - (a.value ?? 0))
-        .slice(0, 5)
-        .map((d) => {
+        ?.sort((a, b) => (b.value ?? 0) - (a.value ?? 0))
+        ?.slice(0, 5)
+        ?.map((d) => {
           return {
             id: d.id,
             label: d.label,
