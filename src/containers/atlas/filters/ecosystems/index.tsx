@@ -23,7 +23,7 @@ export const EcosystemsTrigger = () => {
 
   return (
     <div className="flex items-center gap-2">
-      Ecosystems
+      Ecosystem functional groups
       <Badge variant="secondary" className="rounded-2xl">
         {ecosystems?.length || ECOSYSTEMSFiltered?.length}/{ECOSYSTEMSFiltered?.length}
       </Badge>

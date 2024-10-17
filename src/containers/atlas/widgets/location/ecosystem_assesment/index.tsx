@@ -69,7 +69,8 @@ export const WidgetLocationEcosystemAssesment = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>
-          Ecosystem Assesment <span className="font-medium normal-case">(Threat status)</span>
+          Ecosystem risk status{" "}
+          <span className="font-medium normal-case">(Red List of Ecosystems)</span>
         </WidgetTitle>
         <WidgetInfo id="ecosystem_assesment" />
       </WidgetHeader>
@@ -99,7 +100,7 @@ export const WidgetLocationEcosystemAssesment = () => {
                             </div>
                             <div className="text-center leading-none">
                               <span className="text-center text-xs font-medium leading-none">
-                                are threatened
+                                threatened ecosystem types
                               </span>
                             </div>
                           </div>
