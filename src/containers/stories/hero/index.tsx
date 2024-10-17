@@ -66,10 +66,13 @@ export default function StoriesHero() {
                   <StoriesItem title="South Africa & Mozambique" />
                 </Link>
               </div>
-              <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
+              {/* <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
                 <Link href="/stories/maldives" className="flex grow flex-col">
                   <StoriesItem title="Maldives" />
                 </Link>
+              </div> */}
+              <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
+                <StoriesItem title="Coming soon" comingSoon />
               </div>
               <div className="col-span-12 flex h-full min-h-60 flex-col md:col-span-6">
                 <StoriesItem title="Coming soon" comingSoon />

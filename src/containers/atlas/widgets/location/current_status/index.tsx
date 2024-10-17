@@ -25,7 +25,7 @@ export const WidgetLocationStatus = () => {
   );
 
   const DATA = useMemo(() => {
-    return data?.data.reduce(
+    return data?.data?.reduce(
       (acc, item) => {
         acc[item.label] = item.value ?? 0;
         return acc;

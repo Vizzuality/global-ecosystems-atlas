@@ -17,13 +17,14 @@ import { BiomesExtent } from "./biomes";
 
 export const WidgetLocationExtent = ({ location }: { location: string }) => {
   const {
+    data,
     isFetched: biomesWidgetIsFetched,
     isFetching: biomesWidgetIsFetching,
     isError: biomesWidgetIsError,
   } = useApiLocationsLocationWidgetsWidgetIdGet(location ?? "GLOB", "extent_biomes");
 
   return (
-    <Widget className="rounded-lg border border-navy-50 p-4">
+    <Widget className="grow rounded-lg border border-navy-50 p-4">
       <WidgetHeader>
         <WidgetTitle>Biomes Extent</WidgetTitle>
         <Info>Hello</Info>
@@ -31,7 +32,7 @@ export const WidgetLocationExtent = ({ location }: { location: string }) => {
       <WidgetContent>
         <WidgetLoader isLoading={biomesWidgetIsFetching && !biomesWidgetIsFetched}>
           <WidgetError isError={biomesWidgetIsError}>
-            <WidgetNoData isNoData={false}>
+            <WidgetNoData isNoData={!!data?.data}>
               <BiomesExtent location={location} />
             </WidgetNoData>
           </WidgetError>

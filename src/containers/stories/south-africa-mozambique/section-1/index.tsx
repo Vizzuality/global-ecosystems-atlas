@@ -15,7 +15,7 @@ export const SAMSection1 = () => {
   const [, setStep] = useSyncStep();
 
   return (
-    <div className="container -mt-12 py-16 xl:-mt-28 xl:py-0">
+    <div className="container -mt-12 pt-16 sm:py-16 xl:-mt-28 xl:py-0">
       <Grid>
         <div className="col-span-12 space-y-16 xl:col-span-5 xl:col-start-2 xl:pr-10">
           <Step id="hero" offset={0.5} onEnter={() => setStep(0)}>

@@ -24,12 +24,14 @@ export const WidgetLocationExtent = () => {
   const [location] = useSyncLocation();
 
   const {
+    data: biomesData,
     isFetched: biomesWidgetIsFetched,
     isFetching: biomesWidgetIsFetching,
     isError: biomesWidgetIsError,
   } = useApiLocationsLocationWidgetsWidgetIdGet(location ?? "GLOB", "extent_biomes");
 
   const {
+    data: efgsData,
     isFetched: efgsWidgetIsFetched,
     isFetching: efgsWidgetIsFetching,
     isError: efgsWidgetIsError,
@@ -49,7 +51,7 @@ export const WidgetLocationExtent = () => {
           }
         >
           <WidgetError isError={biomesWidgetIsError || efgsWidgetIsError}>
-            <WidgetNoData isNoData={false}>
+            <WidgetNoData isNoData={!biomesData?.data && !efgsData?.data}>
               <Tabs defaultValue="efgs">
                 <TabsList className="w-full">
                   <TabsTrigger className="w-full" value="biomes">

@@ -52,7 +52,7 @@ export const CountryContributionNumber = () => {
   // DATA
   const DATA = useMemo(() => {
     return (
-      data?.data.map((d) => {
+      data?.data?.map((d) => {
         return {
           id: d.id,
           label: d.label,

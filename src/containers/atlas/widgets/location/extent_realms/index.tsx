@@ -38,7 +38,7 @@ export const WidgetLocationExtentRealms = () => {
   }, [data]);
 
   const DATA = useMemo(() => {
-    return data?.data.map((d) => {
+    return data?.data?.map((d) => {
       return {
         id: d.id as RealmsIds,
         label: d.label,

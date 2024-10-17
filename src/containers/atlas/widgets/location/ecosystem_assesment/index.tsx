@@ -39,7 +39,7 @@ export const WidgetLocationEcosystemAssesment = () => {
 
   const DATA = useMemo(() => {
     return data?.data
-      .map((d) => {
+      ?.map((d) => {
         return {
           id: d.id as RealmsIds,
           label: d.label,
