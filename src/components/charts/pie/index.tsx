@@ -121,6 +121,7 @@ export const PieChart = <T extends PieChartData>({
             outerRadius={getOuterRadius}
             cornerRadius={0}
             startAngle={0}
+            pieSort={null}
             {...pieProps}
           >
             {(pie) => {

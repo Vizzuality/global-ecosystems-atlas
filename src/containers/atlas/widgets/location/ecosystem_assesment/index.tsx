@@ -1,10 +1,9 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { ParentSize } from "@visx/responsive";
 import { scaleOrdinal } from "@visx/scale";
 
-import { RealmsIds } from "@/lib/colors";
 import { formatPercentage } from "@/lib/utils";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
@@ -25,7 +24,6 @@ import {
 import { PieChart } from "@/components/charts/pie";
 
 export const WidgetLocationEcosystemAssesment = () => {
-  const [selected, setSelected] = useState<RealmsIds>();
   const [location] = useSyncLocation();
 
   const { data, isFetched, isFetching, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
@@ -41,20 +39,23 @@ export const WidgetLocationEcosystemAssesment = () => {
     return data?.data
       ?.map((d) => {
         return {
-          id: d.id as RealmsIds,
+          id: d.id,
           label: d.label,
           value: (d.value ?? 0) / (TOTAL ?? 1),
-          color: d.color,
+          color: d.color ?? "transparent",
         };
       })
-      .toSorted((a, b) => b.value - a.value);
+      ?.toSorted((a, b) => {
+        return +a.id - +b.id;
+      });
   }, [data, TOTAL]);
 
   const SELECTED = useMemo(() => {
-    const s = DATA?.find((d) => d.id === selected);
-
-    return s ?? DATA?.[0];
-  }, [DATA, selected]);
+    // sum values
+    return DATA?.filter((d) => d.label !== "Least concern")?.reduce((acc, curr) => {
+      return acc + curr.value;
+    }, 0);
+  }, [DATA]);
 
   // SCALES
   const colorScale = useMemo(() => {
@@ -62,10 +63,6 @@ export const WidgetLocationEcosystemAssesment = () => {
       domain: DATA?.map((e) => `${e.id}`),
       range: DATA?.map((e) => `${e.color}`),
     });
-  }, [DATA]);
-
-  useEffect(() => {
-    setSelected(DATA?.[0]?.id);
   }, [DATA]);
 
   return (
@@ -92,21 +89,17 @@ export const WidgetLocationEcosystemAssesment = () => {
                             data={DATA ?? []}
                             colorScale={colorScale}
                             format={formatPercentage}
-                            interactive
-                            onPathMouseEnter={(d) => {
-                              setSelected(d.id);
-                            }}
                           />
                           <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center px-8">
                             <div className="space-x-1">
                               <span className="text-4xl font-semibold leading-none">
-                                {formatPercentage(SELECTED?.value ?? 0, {}, false)}
+                                {formatPercentage(SELECTED ?? 0, {}, false)}
                               </span>
                               <span className="text-lg leading-none">%</span>
                             </div>
                             <div className="text-center leading-none">
                               <span className="text-center text-xs font-medium leading-none">
-                                {SELECTED?.label}
+                                are threatened
                               </span>
                             </div>
                           </div>
@@ -119,11 +112,7 @@ export const WidgetLocationEcosystemAssesment = () => {
                 {/* Legend */}
                 <ul className="col-span-1 space-y-2">
                   {DATA?.map((d) => (
-                    <li
-                      key={d.id}
-                      className="flex items-start gap-2.5"
-                      onMouseEnter={() => setSelected(d.id)}
-                    >
+                    <li key={d.id} className="flex items-start gap-2.5">
                       <div
                         className="mt-0.5 h-2 w-2 shrink-0 rounded-full"
                         style={{

@@ -72,11 +72,11 @@ export const useGetGroups = (
           }),
       };
     })
-    .sort((a, b) => {
-      if (!a.name || !b.name) {
-        return 0;
-      }
-      return a.name.localeCompare(b.name);
+    .toSorted((a, b) => {
+      const aRealm = REALM_ORDER.indexOf(a.id ?? "");
+      const bRealm = REALM_ORDER.indexOf(b.id ?? "");
+
+      return aRealm - bRealm;
     });
 };
 
