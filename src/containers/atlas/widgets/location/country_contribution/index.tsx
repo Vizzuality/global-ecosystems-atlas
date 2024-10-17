@@ -28,7 +28,7 @@ export const WidgetLocationCountryContribution = () => {
   return (
     <Widget>
       <WidgetHeader>
-        <WidgetTitle>Country Contribution status</WidgetTitle>
+        <WidgetTitle>Contribution status</WidgetTitle>
         <WidgetInfo id="country_con_stat" />
       </WidgetHeader>
       <WidgetContent>

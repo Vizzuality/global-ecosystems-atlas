@@ -304,13 +304,13 @@ export const LAYERS = [
       getFillColor: (d: { properties: { PoC_Status: string } }) => {
         switch (d.properties.PoC_Status) {
           case "National map included":
-            return [134, 239, 172, 255];
+            return [134, 239, 172, 200];
           case "Subnational map(s) included":
-            return [240, 171, 252, 255];
+            return [240, 171, 252, 200];
           case "Engagement underway":
-            return [165, 180, 252, 255];
+            return [165, 180, 252, 200];
           default:
-            return [0, 0, 0, 0];
+            return [226, 232, 240, 200];
         }
       },
     },
