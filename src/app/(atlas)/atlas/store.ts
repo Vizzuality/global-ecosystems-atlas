@@ -123,3 +123,4 @@ export const useSyncFilters = () => {
 
 export const tmpBboxAtom = atom<number[]>();
 export const popupAtom = atom<LngLat | null>(null);
+export const tourAtom = atom<boolean>(false);
