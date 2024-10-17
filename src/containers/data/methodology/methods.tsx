@@ -22,10 +22,13 @@ export const MethodologyMethods = () => {
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Source Data Review</h4>
               <p className="text-sm text-navy-600">
-                Each dataset is thoroughly reviewed to understand its classification system and how
-                it relates to the IUCN Global Ecosystem Typology. In most cases, the GEO Ecosystem
-                Atlas science team works with mapping teams to understand the provenance and intent
-                of the data.
+                Each source dataset is thoroughly reviewed to understand its classification system
+                and how it relates to the Global Ecosystem Typology. In most cases, the Atlas
+                science team works with the team who developed the source map to understand the
+                provenance and intent of the data. Only datasets that are conceptually aligned to
+                the Global Ecosystem Typology (i.e. that were developed to represent ecosystems),
+                either as a whole or in part, proceed to formal evaluation for inclusion in the
+                gea_synthesis data product.
               </p>
             </div>
           </div>
@@ -36,14 +39,20 @@ export const MethodologyMethods = () => {
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Logical Mapping</h4>
               <p className="text-sm text-navy-600">
-                Both short and long class descriptions of input datasets are recorded in GEO Atlas
-                correspondence tables, and a logical mapping is developed to assign source data
-                classifications into the corresponding Ecosystem Functional Groups (EFGs) of the
-                IUCN framework. This may involve matching similar classes or creating composite
-                classes from multiple source data categories. This process is typically conducted by
-                the GEO Atlas science team with input from the authors of the IUCN Global Ecosystem
-                Typology, or directly by the map developers themselves with guidance by the GEO
-                Atlas and IUCN Global Ecosystem Typology science teams.
+                Cross-referencing is typically conducted by the source map developer or by the Atlas
+                science team with extensive input and review by the source map developer. Firstly,
+                short and long descriptions of source map classes are recorded in the Global
+                Ecosystems Atlas cross-reference tables. Each class is systematically assigned to an
+                ecosystem functional group through the analysis of a range of properties of the
+                data. Some source data classes correspond directly with one ecosystem functional
+                group, while other source classes may only partially correspond to an ecosystem
+                functional group. Partial mismatches, where one map class from a source dataset is
+                evaluated as potentially corresponding to more than one ecosystem functional group,
+                may occur. In these cases, the cross-reference protocol uses expert advice on the
+                most likely match as the final assignment in the synthesis map (&gt;50% match). The
+                cross-reference tables, one per source dataset, enable each class in a source
+                dataset to be assigned to its corresponding ecosystem functional group and are used
+                as input into the geospatial data processing pipeline.
               </p>
             </div>
           </div>
@@ -54,12 +63,9 @@ export const MethodologyMethods = () => {
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Expert review</h4>
               <p className="text-sm text-navy-600">
-                Each class correspondence decision is reviewed by a qualified expert from the GEO
-                Atlas scientific committee and offered back to the source data developers for
-                additional review and comment. The reclassified data is then validated to ensure
-                that the crosswalking process accurately reflects the ecological characteristics
-                intended by the IUCN Typology. This step may involve expert review and comparison
-                with known ecosystem distributions.
+                Each cross-reference decision is reviewed by a qualified expert from the Atlas
+                science team and offered back to the source data developers for additional review
+                and comment.
               </p>
             </div>
           </div>
@@ -70,9 +76,21 @@ export const MethodologyMethods = () => {
             <div className="space-y-1.5">
               <h4 className="text-xl font-semibold">Technical Approach</h4>
               <p className="text-sm text-navy-600">
-                The logical mapping is technically applied to the data using GIS tools within a
-                broader data synthesis pipeline. The ecosystem data is reclassified, with each pixel
-                or vector element assigned a value corresponding to a specific EFG.
+                For each dataset, cross-reference tables are formatted by a scripted processing
+                pipeline into the text inputs necessary for implementing geospatial reclassification
+                tools, which are then implemented directly within the broader data synthesis
+                pipeline. A numerical system that specifies{" "}
+                <a
+                  href="https://github.com/geo-global-ecosystem-atlas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  numeric values
+                </a>{" "}
+                of each ecosystem functional group enables the processing of both vector and image
+                data into the gea_synthesis data product, where each pixel or vector element is
+                assigned a pixel value that corresponds to a specific ecosystem functional group.
               </p>
             </div>
           </div>

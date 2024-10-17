@@ -21,11 +21,9 @@ export const WidgetLocationCountryContribution = () => {
   const [location] = useSyncLocation();
 
   const { isFetching, isFetched, isError } = useApiLocationsLocationWidgetsWidgetIdGet(
-    "GLOB",
+    location ?? "GLOB",
     "country_con_stat",
   );
-
-  if (location) return null;
 
   return (
     <Widget>

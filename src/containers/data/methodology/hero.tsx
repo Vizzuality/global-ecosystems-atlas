@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Grid } from "@/components/ui/grid";
 import { H3 } from "@/components/ui/h3";
 import { Section } from "@/components/ui/section";
@@ -13,15 +15,11 @@ export const MethodologyHero = () => {
 
           <div className="col-span-12 lg:col-span-7 lg:col-start-5">
             <p className="text-lg">
-              The gea_basemap was created by searching for and compiling existing spatial data
-              products that were developed to represent ecosystems. Searches focused on publicly
-              available data repositories, the scientific literature, and through a coordinated
-              program of targeted outreach focused primarily on national ecosystem mapping
-              organisations. Each dataset was subjected to a <strong>rigorous evaluation</strong>{" "}
-              and quality assessment protocol that included formal assessment of license conditions,
-              class definitions, validations and accuracy assessment, data freshness, and spatial
-              resolution. The evaluation protocol ensured the inclusion of only the highest-quality
-              data into the gea_basemap. 
+              The Global Ecosystems Atlas synthesis map is developed by searching for, and
+              compiling, existing spatial data products that are intended to represent ecosystems
+              (&apos;source datasets&apos;). Searches focus on publicly available data repositories,
+              datasets associated with the scientific literature, and through a program of
+              coordinated outreach to national environment agencies and ecosystem map developers.
             </p>
           </div>
         </Grid>
@@ -29,9 +27,23 @@ export const MethodologyHero = () => {
         <Grid>
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <p className="text-2xl font-light italic text-navy-600 lg:text-4xl">
-              Each dataset was subjected to a rigorous evaluation and quality assessment protocol
-              that included formal assessment of license conditions, class definitions, validations
-              and accuracy assessment, data freshness, and spatial resolution.
+              Each source dataset is subject to a rigorous evaluation and quality assessment that
+              includes assessment of class definitions, validation protocols, accuracy assessments,
+              data currency, spatial resolution and licensing conditions.
+            </p>
+          </div>
+        </Grid>
+
+        <Grid>
+          <div className="col-span-12 lg:col-span-7 lg:col-start-5">
+            <p className="text-lg">
+              The evaluation protocol ensures the inclusion of data that is suitable for
+              representing ecosystems and meets consistent data quality and metadata reporting
+              standards. The results of the data compilation phase, prior to the application of the
+              evaluation protocol, are included in the{" "}
+              <Link href="/data/sources-catalogue" className="underline">
+                Sources Catalogue
+              </Link>
             </p>
           </div>
         </Grid>

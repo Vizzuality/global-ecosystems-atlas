@@ -78,7 +78,7 @@ const MapLegend = ({ className = "" }) => {
   }, [layers, layersSettings, handleChangeOpacity, handleChangeVisibility]);
 
   return (
-    <div className="absolute bottom-10 right-6 z-10 w-full max-w-sm">
+    <div className="absolute bottom-10 right-6 z-10 w-full max-w-sm shadow-lg">
       <Collapsible className="rounded-lg bg-white" onOpenChange={setExpanded}>
         <CollapsibleTrigger className="flex w-full items-center justify-between p-4">
           <span className="text-xs font-bold uppercase">Layers</span>

@@ -1,57 +1,41 @@
 export const FAQS = [
   {
-    question: "What is the primary goal of the Global Ecosystems Atlas Basemap?",
+    question: "What is the primary purpose of the Global Ecosystems Atlas Synthesis Map?",
     answer:
-      "The primary goal of the gea_basemap is to create a dynamic and high-resolution global map of ecosystems. This map is intended to support environmental management and biodiversity monitoring by providing detailed and accurate ecosystem classifications.",
+      "The primary purpose of the gea_synthesis data product is to create a harmonised, regularly updated, global map of the world’s ecosystems. The data are intended to support a range of different purposes, from conservation to environmental management to ecosystem accounting.",
   },
   {
-    question: "What makes the gea_basemap unique?",
+    question: "What makes the gea_synthesis data product unique?",
     answer:
-      "The gea_basemap stands out due to its combination of high-resolution data, dynamic updates, and integration of multiple datasets into a unified framework. This makes it an essential tool for global environmental monitoring and management efforts.",
+      "The gea_synthesis data product was designed to (1) build on decades of investments in ecosystem mapping through the discovery and compilation of existing datasets while (2) enabling new datasets on the distribution of ecosystems to be incorporated into a global map. It offers a rigorous and open-access processing protocol, is regularly updated to enable the incorporation of new data, and integrates multiple datasets into a unified framework to achieve the broadest coverage of high-quality ecosystem maps to date. This makes it an essential tool for global ecosystem monitoring and management efforts.",
   },
   {
-    question: "How was the data for the basemap compiled?",
+    question: "How was the data for the gea_synthesis data product compiled?",
     answer:
-      "The data was compiled by aggregating existing ecosystem maps. These maps underwent a rigorous evaluation process, including quality assessment based on spatial resolution, accuracy, and ecological relevance. Experts reviewed the data to ensure alignment with the IUCN Global Ecosystems Typology, and the datasets were then reclassified, resampled, and compiled into the gea_basemap.",
+      "Existing ecosystem maps were compiled and processed into a single data product suitable for a range of purposes. Candidate datasets underwent a rigorous evaluation process, including a quality assessment, which incorporated reviews by experts and map developers to ensure conceptual alignment with the Global Ecosystem Typology. Ecosystem classes in datasets that met evaluation criteria were cross-referenced to ecosystem functional groups in the Global Ecosystem Typology. After the evaluation and cross-referencing process, the datasets were then subjected to a spatial processing pipeline that yielded the gea_synthesis data product, which is a set of 119 data layers that depict the distribution of ecosystems on Earth.",
   },
   {
-    question: "What is correspondence analysis, and why is it important?",
+    question: "What is cross-referencing, and why is it important?",
     answer:
-      "Estimating the correspondence of map classes from various source datasets to the IUCN Global Ecosystems Typology framework is an essential step in the harmonisation procedure developed for the Global Ecosystems Atlas. This step, which is sometimes called a crosswalk, is crucial to integrating data from a very large variety of different datasets and allows for a unified global representation of ecosystems in the geo_basemap data product.",
+      "Referencing map classes from source datasets to ecosystem functional groups defined by the Global Ecosystem Typology is an essential step in developing the Global Ecosystems Atlas ecosystem synthesis map. This process is frequently termed “crosswalking”. The cross-referencing process is crucial for integrating data from a large variety of source datasets into a single data product and allows for a unified global representation of ecosystems in the gea_synthesis data product. Map classes that have little or no relationship to ecosystem functional groups, such as “bare earth”, cannot proceed through the cross-referencing analysis and are identified as no data or unresolved pixels in the gea_synthesis data mask.",
   },
   {
-    question: "How is the gea_basemap kept up to date?",
+    question: "How is the gea_synthesis kept up to date?",
     answer:
-      "The gea_basemap is designed to be a dynamic data product, continuously updated with new data. A versioning system is in place to integrate the latest ecosystem information, ensuring that the basemap remains a current and valuable resource.",
-  },
-  {
-    question: "What visual aids are available to help understand the methodology?",
-    answer: `The following visual aids are available:
--   [Insert Image: Data Processing Workflow]: A diagram illustrating the entire data processing workflow.
--   [Insert Image: Crosswalking Process]: A flowchart detailing how data is mapped from source datasets to the final ecosystem classifications.`,
+      "The gea_synthesis is designed to be regularly updated with new data. A versioning system is in place to track all updates, ensuring that the Global Ecosystem Atlas synthesis map remains a current and relevant resource.",
   },
   {
     question: "Where can I find more information on the tools and methodologies used?",
     answer: `Additional resources include:
-- Link to a PDF technical report
-- IUCN Global Ecosystems Typology
-- Something from CBD?
-- Something from UN SEEA
-- Something linking back to each source dataset
-- Something linking to any crosswalk tables we publish
-- Github Organisation https://github.com/geo-global-ecosystem-atlas
+- [IUCN Global Ecosystems Typology](https://global-ecosystems.org/)
+- Link to source datasets are available via tooltips and the [sources catalogue](/data/sources-catalogue)
+- [Github Organisation](https://github.com/geo-global-ecosystem-atlas)
 `,
   },
   {
-    question: "What are the known issues on the data?",
-    answer: "Known issues are tracked in [link to the known issues document]",
-  },
-  {
     question: "How can I report any issue?",
-    answer: `If you notice If you notice incorrect values or missing data or if the platform isn't working correctly, like a broken feature or a technical problem, you can report it to us through [reporting methods define].
-Make sure to include as much detail about the problem as possible in your report.
-- If the issue relates the data [reporting data issues define].
-- If the issue relates the platform, Information like the kind of device you were using, what you were doing when the problem occurred and adding a screenshot may help us address the issue.
+    answer: `We value your feedback. If you want to report errors, missing data or if you are experiencing issues with the platform, you can report it to us through our [feedback form](https://forms.office.com/e/xCnX7HyVgy).\n
+Please include as much detail as possible in your report.
 `,
   },
 ];

@@ -8,17 +8,17 @@ const QAs = [
   {
     title: "Spatial Processing",
     description:
-      "The geo_basemap is developed with a fully scripted processing pipeline that ingests source data, transforms them into a common coordinate system (WGS 1984), aligns to a common spatial origin, and is downsampled to the required 100-meter pixel resolution of the geo_basemap data specification.",
+      "The gea_synthesis data product is developed with a fully scripted processing pipeline that ingests source data, projects to a common coordinate system, transforms to a common spatial data format (Cloud-Optimised Geotiff) and aligns to a common spatial origin. All source datasets are resampled to the 100m pixel resolution of the gea_synthesis data product.",
   },
   {
     title: "Reclassification",
     description:
-      "Each source dataset is reclassified using the correspondence tables described above (see Logical Mapping) and processed into the multiple data layers that represent 3 upper levels of the hierarchical IUCN Global Ecosystem Typology, resulting in a final set of GeoTIFFs where each pixel value corresponds to a specific ecosystem, biome and realm type.",
+      "Each source dataset is reclassified using the cross-reference tables described above (see logical mapping) and processed into the multiple data layers that represent the three upper levels of the hierarchical Global Ecosystem Typology (realms, biomes and ecosystem functional groups). The result is the set of data layers that make up the synthesis data product: a set of cloud-optimised GeoTIFFs where each pixel value corresponds to a specific ecosystem functional group, biome and realm.",
   },
   {
     title: "Quality Assurance",
     description:
-      "Multiple layers of quality control are applied, including spatial accuracy checks, logical consistency tests, expert reviews and comparison with reference data. A set of QA data layers propogate information about the spatial resolution and period that the source data was produced, areas where there are data overlaps and processing steps of the geo_basemap processing pipeline.",
+      "Multiple layers of quality control are applied, including spatial accuracy checks, logical consistency tests, and expert reviews. A set of quality assurance data layers propagate per-pixel information about the source data, including the spatial resolution, time period of source data production, and areas where there are overlaps and/or disagreement among independently developed source datasets. A data mask depicts pixels with valid data, which are pixels where an ecosystem functional group has been identified and served in the synthesis product; no data, where data has yet to be obtained for the synthesis product; and unresolved cross-referencing outcomes, which are pixels that could only be partially matched (<50% membership analysis), were not able to be cross-referenced to an ecosystem functional group, or where further work is required to resolve uncertainties about their membership to an ecosystem functional group.",
   },
 ];
 
