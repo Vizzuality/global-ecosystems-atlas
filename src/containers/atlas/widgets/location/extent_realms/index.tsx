@@ -5,6 +5,7 @@ import { ParentSize } from "@visx/responsive";
 import { scaleOrdinal } from "@visx/scale";
 
 import { RealmsIds } from "@/lib/colors";
+import { REALM_ORDER } from "@/lib/taxonomy";
 import { formatPercentage } from "@/lib/utils";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
@@ -38,14 +39,25 @@ export const WidgetLocationExtentRealms = () => {
   }, [data]);
 
   const DATA = useMemo(() => {
-    return data?.data?.map((d) => {
-      return {
-        id: d.id as RealmsIds,
-        label: d.label,
-        value: (d.value ?? 0) / (TOTAL ?? 1),
-        color: d.color,
-      };
-    });
+    return data?.data
+      ?.map((d) => {
+        return {
+          id: d.id as RealmsIds,
+          label: d.label,
+          value: (d.value ?? 0) / (TOTAL ?? 1),
+          color: d.color,
+        };
+      })
+      .toSorted((a, b) => {
+        const aRealm = REALM_ORDER.indexOf(a.id);
+        const bRealm = REALM_ORDER.indexOf(b.id);
+
+        if (aRealm === bRealm) {
+          return a.id.localeCompare(b.id);
+        }
+
+        return aRealm - bRealm;
+      });
   }, [data, TOTAL]);
 
   const SELECTED = useMemo(() => {
