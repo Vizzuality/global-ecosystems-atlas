@@ -7,6 +7,7 @@ import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import { WidgetEcosystemsExtent } from "@/containers/atlas/widgets/efgs/extent";
 import { WidgetEcosystemsProtectedEfgs } from "@/containers/atlas/widgets/efgs/protected_efgs";
+// import { WidgetEcosystemsSourceSynthesis } from "@/containers/atlas/widgets/efgs/source_synth";
 import { WidgetLocationCountryContribution } from "@/containers/atlas/widgets/location/country_contribution";
 import { WidgetLocationStatus } from "@/containers/atlas/widgets/location/current_status";
 import { WidgetLocationEcosystemAssesment } from "@/containers/atlas/widgets/location/ecosystem_assesment";
@@ -30,6 +31,7 @@ export const WIDGETS_LOCATION = [
 export const WIDGETS_ECOSYSYTEMS = [
   { component: WidgetEcosystemsProtectedEfgs },
   { component: WidgetEcosystemsExtent },
+  // { component: WidgetEcosystemsSourceSynthesis },
 ];
 
 export const WidgetLocationList = () => {
