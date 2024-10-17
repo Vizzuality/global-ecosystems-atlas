@@ -9,6 +9,7 @@ import { WidgetEcosystemsExtent } from "@/containers/atlas/widgets/efgs/extent";
 import { WidgetEcosystemsProtectedEfgs } from "@/containers/atlas/widgets/efgs/protected_efgs";
 import { WidgetLocationCountryContribution } from "@/containers/atlas/widgets/location/country_contribution";
 import { WidgetLocationStatus } from "@/containers/atlas/widgets/location/current_status";
+import { WidgetLocationEcosystemAssesment } from "@/containers/atlas/widgets/location/ecosystem_assesment";
 import { WidgetLocationExtent } from "@/containers/atlas/widgets/location/extent";
 import { WidgetLocationExtentRealms } from "@/containers/atlas/widgets/location/extent_realms";
 import { WidgetLocationProtectedEfgs } from "@/containers/atlas/widgets/location/protected_efgs";
@@ -20,6 +21,7 @@ export const WIDGETS_LOCATION = [
   { locations: [], component: WidgetLocationExtent },
   { locations: ["GLOB"], component: WidgetLocationCountryContribution },
   { locations: [], component: WidgetLocationProtectedEfgs },
+  { locations: ["ZAF_224", "MOZ_167"], component: WidgetLocationEcosystemAssesment },
   { locations: [], component: WidgetLocationRealmsBreak },
 ];
 
