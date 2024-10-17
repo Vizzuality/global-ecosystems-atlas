@@ -6,7 +6,7 @@ import { ParentSize } from "@visx/responsive";
 import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
 import CHROMA from "chroma-js";
 
-import { cn, formatNumber } from "@/lib/utils";
+import { cn, formatPercentage } from "@/lib/utils";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
@@ -14,110 +14,59 @@ import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import HorizontalStackedBar from "@/components/charts/horizontal-stacked-bar";
 
-const SORT = [
-  "National map included",
-  "Subnational map(s) included",
-  "Engagement underway",
-  "Unknown / no Map",
-];
+const COLORS = ["#CCEBC5", "#98D3B8", "#62BAB1", "#249FAE", "#0082A8", "#00649B"];
+const COLORS_SCALE = CHROMA.scale(COLORS.toReversed());
 
-export const CountryContribution = () => {
+export const SourceSynthesisContribution = () => {
   const [location] = useSyncLocation();
 
   return (
     <div className="space-y-4">
-      {!location && <CountryContributionNumber />}
-
-      {!location && (
+      {!!location && (
         <div className="h-4">
           <ParentSize>
-            {({ width, height }) => <CountryContributionChart width={width} height={height} />}
+            {({ width, height }) => (
+              <SourceSynthesisContributionChart width={width} height={height} />
+            )}
           </ParentSize>
         </div>
       )}
 
-      <CountryContributionRanking />
+      <SourceSynthesisContributionRanking />
     </div>
   );
 };
 
-export const CountryContributionNumber = () => {
+export const SourceSynthesisContributionChart = ({
+  width,
+  height,
+}: {
+  width: number;
+  height: number;
+}) => {
   const [location] = useSyncLocation();
 
-  const { data } = useApiLocationsLocationWidgetsWidgetIdGet(
-    location ?? "GLOB",
-    "country_con_stat",
-  );
-
-  // DATA
-  const DATA = useMemo(() => {
-    return (
-      data?.data?.map((d) => {
-        return {
-          id: d.id,
-          label: d.label,
-          value: d.value ?? 0,
-          color: d.color ?? CHROMA.random().hex(),
-        };
-      }) ?? []
-    );
-  }, [data]);
-
-  const CURRENT = DATA.filter((d) => d.label !== "Unknown / no Map").reduce(
-    (acc, curr) => acc + (curr.value ?? 0),
-    0,
-  );
-  const TOTAL = 195;
-
-  return (
-    <div className="leading-none">
-      <span className="text-4xl font-semibold leading-none">{CURRENT}</span>
-      <span className="text-lg leading-none"> / {TOTAL} </span>
-      <span className="text-xs font-medium leading-none">
-        {" "}
-        countries have contributed their data
-      </span>
-    </div>
-  );
-};
-
-export const CountryContributionChart = ({ width, height }: { width: number; height: number }) => {
-  const [location] = useSyncLocation();
-
-  const { data } = useApiLocationsLocationWidgetsWidgetIdGet(
-    location ?? "GLOB",
-    "country_con_stat",
-  );
-
-  const TOTAL = 195;
+  const { data } = useApiLocationsLocationWidgetsWidgetIdGet(location ?? "GLOB", "source_synth");
 
   // DATA
   const DATA = useMemo(() => {
     return (
       data?.data
-        .map((d, i, arr) => {
-          let v = d.value ?? 0;
-
-          if (d.label === "Unknown / no Map") {
-            v =
-              TOTAL -
-              arr
-                .filter((d) => d.label !== "Unknown / no Map")
-                .reduce((acc, curr) => acc + (curr.value ?? 0), 0);
-          }
-
+        .map((d) => {
           return {
             id: d.id,
             label: d.label,
-            value: v,
+            value: d.value ?? 0,
             color: d.color ?? CHROMA.random().hex(),
           };
         })
-        ?.toSorted((a, b) => {
-          return SORT.indexOf(a.label) - SORT.indexOf(b.label);
-        }) ?? []
+        ?.filter((d) => !!d.value) ?? []
     );
   }, [data]);
+
+  const TOTAL = useMemo(() => {
+    return DATA.reduce((acc, curr) => acc + (curr.value ?? 0), 0);
+  }, [DATA]);
 
   // CONFIG
   const KEYS = useMemo(() => {
@@ -143,11 +92,11 @@ export const CountryContributionChart = ({ width, height }: { width: number; hei
   const colorScale = useMemo(() => {
     return scaleOrdinal<string, string>({
       domain: KEYS.map((key) => key.toString()),
-      range: KEYS.map((key) => {
-        return DATA.find((d) => d.id === key)?.color ?? CHROMA.random().hex();
+      range: COLORS_SCALE.colors(KEYS.length).map((color) => {
+        return color;
       }),
     });
-  }, [DATA, KEYS]);
+  }, [KEYS]);
 
   return (
     <HorizontalStackedBar
@@ -170,35 +119,24 @@ export const CountryContributionChart = ({ width, height }: { width: number; hei
   );
 };
 
-export const CountryContributionRanking = () => {
+export const SourceSynthesisContributionRanking = () => {
   const [location] = useSyncLocation();
 
-  const { data } = useApiLocationsLocationWidgetsWidgetIdGet(
-    location ?? "GLOB",
-    "country_con_stat",
-  );
+  const { data } = useApiLocationsLocationWidgetsWidgetIdGet(location ?? "GLOB", "source_synth");
 
   // DATA
   const DATA = useMemo(() => {
     return (
       data?.data
         .map((d) => {
-          let v = d.value ?? 0;
-
-          if (d.label === "Unknown / no Map") {
-            v = 0;
-          }
-
           return {
             id: d.id,
             label: d.label,
-            value: v,
+            value: d.value ?? 0,
             color: d.color ?? CHROMA.random().hex(),
           };
         })
-        ?.toSorted((a, b) => {
-          return SORT.indexOf(a.label) - SORT.indexOf(b.label);
-        }) ?? []
+        ?.filter((d) => !!d.value) ?? []
     );
   }, [data]);
 
@@ -210,9 +148,11 @@ export const CountryContributionRanking = () => {
   const colorScale = useMemo(() => {
     return scaleOrdinal<string, string>({
       domain: KEYS.map((key) => key.toString()),
-      range: DATA.map((d) => d.color),
+      range: COLORS_SCALE.colors(KEYS.length).map((color) => {
+        return color;
+      }),
     });
-  }, [DATA, KEYS]);
+  }, [KEYS]);
 
   return (
     <div className="relative z-0">
@@ -239,7 +179,9 @@ export const CountryContributionRanking = () => {
                 </div>
                 <div className="align-bottom">
                   <div className="shrink-0 whitespace-nowrap text-right text-xs font-medium text-navy-700">
-                    {!!value && typeof value === "number" && formatNumber(value)}
+                    {!!value &&
+                      typeof value === "number" &&
+                      formatPercentage(value / 100, { minimumFractionDigits: 2 })}
                   </div>
                 </div>
               </div>
