@@ -18,7 +18,7 @@ export const SAMWhy2 = () => {
         </p>
       </div>
       <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
-        <Image src="/sam/3.webp" alt="Mozambique" width={666} height={666} />
+        <Image src="/sam/5.webp" alt="Country contribution status" width={1266} height={1146} />
       </div>
     </section>
   );
