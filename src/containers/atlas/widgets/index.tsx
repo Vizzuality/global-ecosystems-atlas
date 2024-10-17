@@ -48,7 +48,7 @@ export const WidgetLocationList = () => {
         <div
           key={index}
           className={cn({
-            "py-6": true,
+            "py-8": true,
             "pt-0": index === 0,
             "pb-0": index === WIDGETS_LOCATION.length - 1,
           })}
@@ -67,7 +67,7 @@ export const WidgetEcosystemsList = () => {
         <div
           key={index}
           className={cn({
-            "py-6": true,
+            "py-8": true,
             "pt-0": index === 0,
             "pb-0": index === WIDGETS_LOCATION.length - 1,
           })}
