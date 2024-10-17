@@ -72,7 +72,7 @@ export const WidgetLocationEcosystemAssesment = () => {
     <Widget>
       <WidgetHeader>
         <WidgetTitle>
-          Ecosystems Risk status <span className="font-medium normal-case">(Type level)</span>
+          Ecosystem Assesment <span className="font-medium normal-case">(Threat status)</span>
         </WidgetTitle>
         <WidgetInfo id="ecosystem_assesment" />
       </WidgetHeader>
