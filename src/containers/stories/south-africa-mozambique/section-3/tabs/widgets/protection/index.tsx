@@ -83,7 +83,7 @@ export const WidgetLocationProtection = ({ location }: { location: string }) => 
   }, [DATA]);
 
   return (
-    <Widget className="rounded-lg border border-navy-50 p-4">
+    <Widget className="grow rounded-lg border border-navy-50 p-4">
       <WidgetHeader>
         <WidgetTitle>Protection level</WidgetTitle>
         <Info>Hello</Info>
