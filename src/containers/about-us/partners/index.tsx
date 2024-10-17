@@ -163,13 +163,15 @@ export default function AboutUsPartners() {
                 href="https://iucn.org/"
               />
 
-              <PartnerItem
-                src="/partners/jcu.webp"
-                alt="James Cook University"
-                width={131}
-                height={59}
-                href="https://www.jcu.edu.au/"
-              />
+              <div className="col-span-2 flex gap-x-4 divide-x">
+                <PartnerItem
+                  src="/partners/gel-jcu.webp"
+                  alt="James Cook University"
+                  width={5063}
+                  height={1163}
+                  href="https://www.jcu.edu.au/"
+                />
+              </div>
 
               <PartnerItem
                 src="/partners/nature-positive-initiative.webp"
