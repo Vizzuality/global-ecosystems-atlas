@@ -2,6 +2,8 @@ import { groups } from "@visx/vendor/d3-array";
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
+const REALM_ORDER = ["T", "S", "SF", "SM", "TF", "F", "FM", "M", "MT", "MFT"];
+
 export const getRealmFromEFGCode = (efgCode: string) => {
   // remove numbers and dots, then split by letters
   if (!efgCode) return "";
@@ -21,19 +23,6 @@ export const getBiomeFromEFGCode = (efgCode: string) => {
   const biomeNumber = efgCode.replace(/[A-Z]/g, "").split(".")[0].split("").sort().join("");
 
   return `${realmIds.join("")}${biomeNumber}`;
-};
-
-export const getEFGSortedFromEFGCode = (efgCode: string) => {
-  if (!efgCode) return "";
-
-  const realmIds = efgCode
-    .replace(/[0-9.]/g, "")
-    .split("")
-    .sort();
-  const biomeNumber = efgCode.replace(/[A-Z]/g, "").split(".")[0];
-  const efgNumber = efgCode.replace(/[A-Z]/g, "").split(".")[1];
-
-  return `${realmIds.join("")}${biomeNumber}.${efgNumber}`;
 };
 
 export const useGetGroups = (
@@ -116,7 +105,14 @@ export const useEcosystems = ({
       };
     })
     .toSorted((a, b) => {
-      return a.name.localeCompare(b.name);
+      const aRealm = REALM_ORDER.indexOf(a.realm);
+      const bRealm = REALM_ORDER.indexOf(b.realm);
+
+      if (aRealm === bRealm) {
+        return a.name.localeCompare(b.name);
+      }
+
+      return aRealm - bRealm;
     })
     .filter((e) => {
       if (!!biomes?.length) {
@@ -175,7 +171,14 @@ export const useBiomes = ({
       };
     })
     ?.toSorted((a, b) => {
-      return a.name.localeCompare(b.name);
+      const aRealm = REALM_ORDER.indexOf(a.realm);
+      const bRealm = REALM_ORDER.indexOf(b.realm);
+
+      if (aRealm === bRealm) {
+        return a.name.localeCompare(b.name);
+      }
+
+      return aRealm - bRealm;
     })
     .filter((b) => {
       if (!!realms?.length) {
@@ -212,10 +215,17 @@ export const useRealms = ({ location }: { location?: string | null }) => {
     "extent_realms",
   );
 
-  return REALMS?.data?.map((r) => {
-    return {
-      id: r.id,
-      name: `${r.label}`,
-    };
-  });
+  return REALMS?.data
+    ?.map((r) => {
+      return {
+        id: r.id,
+        name: `${r.label}`,
+      };
+    })
+    .toSorted((a, b) => {
+      const aIndex = REALM_ORDER.indexOf(a.id);
+      const bIndex = REALM_ORDER.indexOf(b.id);
+
+      return aIndex - bIndex;
+    });
 };
