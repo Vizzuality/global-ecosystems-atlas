@@ -22,15 +22,19 @@ const SORT = [
 ];
 
 export const CountryContribution = () => {
+  const [location] = useSyncLocation();
+
   return (
     <div className="space-y-4">
-      <CountryContributionNumber />
+      {!location && <CountryContributionNumber />}
 
-      <div className="h-4">
-        <ParentSize>
-          {({ width, height }) => <CountryContributionChart width={width} height={height} />}
-        </ParentSize>
-      </div>
+      {!location && (
+        <div className="h-4">
+          <ParentSize>
+            {({ width, height }) => <CountryContributionChart width={width} height={height} />}
+          </ParentSize>
+        </div>
+      )}
 
       <CountryContributionRanking />
     </div>
@@ -235,7 +239,7 @@ export const CountryContributionRanking = () => {
                 </div>
                 <div className="align-bottom">
                   <div className="shrink-0 whitespace-nowrap text-right text-xs font-medium text-navy-700">
-                    {!!value && formatNumber(value)}
+                    {!!value && typeof value === "number" && formatNumber(value)}
                   </div>
                 </div>
               </div>
