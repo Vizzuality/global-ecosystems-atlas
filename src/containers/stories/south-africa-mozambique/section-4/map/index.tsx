@@ -24,7 +24,7 @@ export const STEPS: {
 }[] = [
   {
     id: 0,
-    layers: ["efgs"],
+    layers: ["efgs", "protected-areas"],
     locations: ["ZAF_224", "MOZ_167"],
   },
   {
