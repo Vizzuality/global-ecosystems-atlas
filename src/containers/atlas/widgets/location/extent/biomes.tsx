@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import { ParentSize } from "@visx/responsive";
 import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
@@ -12,6 +12,7 @@ import { useSyncLocation } from "@/app/(atlas)/atlas/store";
 
 import HorizontalStackedBar from "@/components/charts/horizontal-stacked-bar";
 import RankingChart from "@/components/charts/ranking";
+import { Button } from "@/components/ui/button";
 
 export const BiomesExtent = () => {
   return (
@@ -100,6 +101,8 @@ export const BiomesExtentChart = ({ width, height }: { width: number; height: nu
 };
 
 export const BiomesExtentRanking = () => {
+  const [more, setMore] = useState(false);
+
   const [location] = useSyncLocation();
 
   const { data } = useApiLocationsLocationWidgetsWidgetIdGet(location ?? "GLOB", "extent_biomes");
@@ -108,7 +111,6 @@ export const BiomesExtentRanking = () => {
     return (
       data?.data
         ?.sort((a, b) => (b.value ?? 0) - (a.value ?? 0))
-        ?.slice(0, 5)
         ?.map((d) => {
           return {
             id: d.id,
@@ -143,11 +145,19 @@ export const BiomesExtentRanking = () => {
   }, [DATA, KEYS]);
 
   return (
-    <RankingChart
-      data={DATA}
-      xScale={xScale}
-      colorScale={colorScale}
-      format={(d) => formatPercentage(d.value / TOTAL)}
-    />
+    <div className="space-y-6">
+      <RankingChart
+        data={DATA.slice(0, more ? DATA.length : 5)}
+        xScale={xScale}
+        colorScale={colorScale}
+        format={(d) => formatPercentage(d.value / TOTAL)}
+      />
+
+      {DATA.length > 5 && (
+        <Button variant="outline" size="default" className="w-full" onClick={() => setMore(!more)}>
+          {more ? "View less" : "View more"}
+        </Button>
+      )}
+    </div>
   );
 };

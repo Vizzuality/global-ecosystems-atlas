@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
 import { getApiEcosystemsGetQueryOptions } from "@/types/generated/ecosystems";
+import { getApiLayersGetQueryOptions } from "@/types/generated/layers";
 import { getApiLocationsGetQueryOptions } from "@/types/generated/locations";
 import { getApiWidgetsGetQueryOptions } from "@/types/generated/widgets";
 
@@ -24,6 +25,7 @@ export default async function AtlasLayoutRoot({ children }: PropsWithChildren) {
   await queryClient.prefetchQuery(getApiLocationsGetQueryOptions());
   await queryClient.prefetchQuery(getApiEcosystemsGetQueryOptions());
   await queryClient.prefetchQuery(getApiWidgetsGetQueryOptions());
+  await queryClient.prefetchQuery(getApiLayersGetQueryOptions());
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

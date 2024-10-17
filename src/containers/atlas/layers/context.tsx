@@ -4,7 +4,7 @@ import { LAYERS } from "@/lib/layers";
 
 import { useSyncLayers } from "@/app/(atlas)/atlas/store";
 
-import { Info } from "@/containers/atlas/info";
+import { LayersInfo } from "@/containers/atlas/layers/info";
 
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -43,7 +43,7 @@ export const AtlasLayersContext = () => {
             </Label>
           </div>
 
-          <Info>{layer.name}</Info>
+          <LayersInfo metadata={layer.metadata} />
         </div>
       ))}
     </div>

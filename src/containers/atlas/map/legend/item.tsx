@@ -7,6 +7,7 @@ import { parseConfig } from "@/lib/json-converter";
 import { LAYERS } from "@/lib/layers";
 import { useBiomesIds, useEcosystemsIds } from "@/lib/taxonomy";
 
+import { useApiLayersGet } from "@/types/generated/layers";
 import { LegendConfig, ParamsConfig } from "@/types/layers";
 
 import {
@@ -25,6 +26,8 @@ import {
   LegendTypeGradient,
 } from "@/components/map/legend/item-types";
 import { LegendItemProps, LegendTypeProps, SettingsManager } from "@/components/map/legend/types";
+import { H3 } from "@/components/ui/h3";
+import { Markdown } from "@/components/ui/markdown";
 
 const LEGEND_TYPES: Record<"basic" | "choropleth" | "gradient", React.FC<LegendTypeProps>> = {
   basic: LegendTypeBasic,
@@ -74,6 +77,7 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
 
   const legend_config = LAYER?.legend_config;
   const params_config = LAYER?.params_config;
+  const metadata = LAYER?.metadata;
 
   const config = useMemo(() => {
     const settings = (layersSettings && layersSettings[`${id}`]) ?? {};
@@ -128,6 +132,7 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
           remove: !(id === "realms" || id === "biomes" || id === "efgs"),
         } as SettingsManager
       }
+      InfoContent={<LegendInfo metadata={metadata} />}
       onRemove={() => {
         setLayers((prev) => {
           const current = [...prev];
@@ -142,5 +147,31 @@ export const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     >
       {LEGEND_COMPONENT}
     </LegendItem>
+  );
+};
+
+export const LegendInfo = ({ metadata }: { metadata?: string }): ReactElement | null => {
+  const { data: layersData } = useApiLayersGet();
+
+  // @ts-expect-error id is a string
+  const LAYER = layersData?.data?.find((l) => l.id === metadata);
+  if (!LAYER) return null;
+
+  const { metadata: lMetadata } = LAYER;
+  if (!lMetadata) return null;
+
+  const m = lMetadata as unknown as {
+    abstract: string;
+  };
+
+  const markdown = m.abstract;
+
+  if (!markdown) return null;
+
+  return (
+    <>
+      <H3>{LAYER.name}</H3>
+      <Markdown className="prose">{markdown}</Markdown>
+    </>
   );
 };

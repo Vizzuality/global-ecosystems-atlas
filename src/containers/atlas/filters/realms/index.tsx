@@ -102,7 +102,12 @@ export const RealmsContent = () => {
       });
     } else {
       setRealms((prev) => {
-        return [...prev, realmId]; // // Sync biomes
+        const newRealms = [...prev, realmId]; // // Sync biomes
+
+        setBiomes([]);
+        setEcosystems([]);
+
+        return newRealms;
       });
     }
   };

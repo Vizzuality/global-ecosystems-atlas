@@ -140,7 +140,7 @@ export const useEcosystemsIds = ({
 }) => {
   const es = useEcosystems({ location, realms, biomes });
 
-  if (!!ecosystems.length) return ecosystems;
+  if (!!ecosystems.length) return es?.map((e) => e.id).filter((e) => ecosystems.includes(e));
 
   if (realms.length === 0 && biomes.length === 0 && ecosystems.length === 0) {
     return [];

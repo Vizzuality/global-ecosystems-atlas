@@ -16,6 +16,12 @@ export default function HomeWhy() {
               threats from climate change, biodiversity loss, and land degradation.
             </p>
             <p className="text-xl text-navy-100 lg:text-2xl">
+              <strong>
+                <i>
+                  Understanding the world&apos;s ecosystems is an essential part of driving
+                  effective action to address these challenges.
+                </i>
+              </strong>{" "}
               But we lack fundamental knowledge of the majority of ecosystems at the global scale.
             </p>
             <p className="text-xl text-navy-100 lg:text-2xl">

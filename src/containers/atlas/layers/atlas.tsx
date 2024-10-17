@@ -4,7 +4,7 @@ import { LAYERS } from "@/lib/layers";
 
 import { useSyncLayers } from "@/app/(atlas)/atlas/store";
 
-import { Info } from "@/containers/atlas/info";
+import { LayersInfo } from "@/containers/atlas/layers/info";
 
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -46,7 +46,7 @@ export const AtlasLayersAtlas = () => {
               </Label>
             </div>
 
-            <Info>{layer.name}</Info>
+            <LayersInfo metadata={layer.metadata} />
           </div>
         ))}
       </RadioGroup>
