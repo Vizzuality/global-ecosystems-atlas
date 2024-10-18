@@ -22,8 +22,11 @@ export const WidgetTitle = ({ children }: PropsWithChildren) => {
   return <h3 className="text-xs font-semibold uppercase">{children}</h3>;
 };
 
-export const WidgetContent = ({ children }: PropsWithChildren) => {
-  return <div className="mt-4">{children}</div>;
+export const WidgetContent = ({
+  children,
+  className,
+}: PropsWithChildren<{ className?: string }>) => {
+  return <div className={cn("mt-4", className)}>{children}</div>;
 };
 
 export const WidgetHeader = ({ children }: PropsWithChildren) => {

@@ -37,7 +37,7 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
       scroll={false}
       prefetch
       onClick={() => {
-        if (pathname.includes(`${props.href}`)) {
+        if (pathname.includes(`${props.href}`) || `${props.href}`.includes(pathname)) {
           setOpen(false);
         }
       }}
@@ -104,7 +104,9 @@ export const Nav = () => {
                       <ul className="ml-12 mt-2 flex flex-col gap-2 2xl:ml-16">
                         {item.children.map((child) => (
                           <li key={child.href}>
-                            <NavItem href={child.href}>{child.name}</NavItem>
+                            <NavItem href={child.href} scroll={child.scroll ?? true}>
+                              {child.name}
+                            </NavItem>
                           </li>
                         ))}
                       </ul>

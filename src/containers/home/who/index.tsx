@@ -44,7 +44,7 @@ const WHO = [
   {
     title: "Academics and researchers",
     description:
-      "Researchers will be able to use the Atlas and its underlying open-access data products as a comprehensive resource to support the study of ecosystems, contributing to advancement in global ecological knowledge.",
+      "Researchers will be able to use the Atlas and its underlying open access data products as a comprehensive resource to support the study of ecosystems, contributing to advancement in global ecological knowledge.",
   },
   {
     title: "Individuals",
