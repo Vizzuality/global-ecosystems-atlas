@@ -23,9 +23,7 @@ export default async function ResourcesPage() {
                 </header>
                 <div className="space-y-8 text-white">
                   <p className="text-xl">
-                    The Global Ecosystems Atlas is a platform for sharing and exploring data and
-                    insights about the world&apos;s ecosystems. Here you can find a range of
-                    resources to help you understand and use the Atlas.
+                    Here you can find a range of resources to help you understand and use the Atlas.
                   </p>
                 </div>
               </div>
