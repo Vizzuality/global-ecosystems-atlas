@@ -14,7 +14,7 @@ export const SAMSection4 = () => {
   const [, setStep] = useSyncStep();
 
   return (
-    <div className="bg-lightblue-100 pt-16 sm:py-16 xl:pt-0">
+    <div className="bg-lightblue-100 pt-16 sm:py-16 xl:py-0">
       <div className="container">
         <Grid>
           <div className="col-span-12 space-y-16 xl:col-span-5 xl:col-start-2 xl:pr-10">
