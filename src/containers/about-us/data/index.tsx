@@ -27,14 +27,14 @@ export default function AboutUsData() {
               </div>
               <ul className="flex flex-col gap-5 pt-6 sm:flex-row">
                 <li className="w-full sm:w-1/2">
-                  <Link href="/data/sources-catalogue">
+                  <Link href="/data/sources-catalogue#tabs">
                     <Button className="w-full" size="lg" variant="outline">
                       Go to Sources Catalogue
                     </Button>
                   </Link>
                 </li>
                 <li className="w-full sm:w-1/2">
-                  <Link href="/data/methodology">
+                  <Link href="/data/methodology#tabs">
                     <Button className="w-full" size="lg" variant="primary">
                       Go to Methodology
                     </Button>

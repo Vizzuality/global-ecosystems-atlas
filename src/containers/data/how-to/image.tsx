@@ -16,7 +16,7 @@ export const HowToImage = () => {
         }}
       >
         <Image
-          src="/data/how-to.avif"
+          src="/data/how-to.webp"
           alt="HowTo"
           fill
           className="max-w-none scale-150 object-cover"
