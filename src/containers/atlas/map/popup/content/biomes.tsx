@@ -1,12 +1,17 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { useAtomValue } from "jotai";
 
 import { usePointCustomTilerPointGet } from "@/types/generated/custom-tiler";
+import { HTTPValidationError } from "@/types/generated/strapi.schemas";
 
 import { popupAtom } from "@/app/(atlas)/atlas/store";
 
 import { Skeleton } from "@/components/ui/skeleton";
+
+import { ErrorType } from "@/services/api";
 
 export const BiomesPopupLoading = () => {
   return (
@@ -23,7 +28,21 @@ export const BiomesPopupLoading = () => {
   );
 };
 
-export const BiomesPopupError = () => {
+export const BiomesPopupError = ({ error }: { error: ErrorType<HTTPValidationError> | null }) => {
+  const MESSAGE = useMemo(() => {
+    if (error?.status === 400) {
+      return {
+        title: "Not found",
+        message: "No data found for this location.",
+      };
+    }
+
+    return {
+      title: "Error",
+      message: "An error occurred while fetching the data.",
+    };
+  }, [error]);
+
   return (
     <div
       className="space-y-3 divide-y divide-navy-100"
@@ -34,14 +53,12 @@ export const BiomesPopupError = () => {
     >
       <header className="space-y-0.5">
         <h3 className="text-2xs font-medium uppercase tracking-wider">Biome</h3>
-        <h2 className="text-sm font-bold leading-5">Error</h2>
+        <h2 className="text-sm font-bold leading-5">{MESSAGE.title}</h2>
       </header>
 
       <div className="pt-3">
         <div className="flex h-40 items-center justify-center">
-          <p className="max-w-36 text-center text-xs leading-snug">
-            An error occurred while fetching the data.
-          </p>
+          <p className="max-w-36 text-center text-xs leading-snug">{MESSAGE.message}</p>
         </div>
       </div>
     </div>
@@ -50,7 +67,7 @@ export const BiomesPopupError = () => {
 
 export const BiomesPopup = () => {
   const popup = useAtomValue(popupAtom);
-  const { data, isFetching, isError } = usePointCustomTilerPointGet(
+  const { data, isFetching, isError, error } = usePointCustomTilerPointGet(
     {
       lat: popup?.lat ?? 0,
       lon: popup?.lng ?? 0,
@@ -66,7 +83,7 @@ export const BiomesPopup = () => {
 
   if (isFetching) return <BiomesPopupLoading />;
 
-  if (isError) return <BiomesPopupError />;
+  if (isError) return <BiomesPopupError error={error} />;
 
   return (
     <div className="space-y-3 divide-y divide-navy-100">
