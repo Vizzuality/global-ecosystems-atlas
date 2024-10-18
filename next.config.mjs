@@ -10,25 +10,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Basic redirect
       {
-        source: "/atlas/:path*",
-        destination: "/coming-soon",
-        permanent: false,
-      },
-      {
-        source: "/stories/:path*",
-        destination: "/coming-soon",
-        permanent: false,
-      },
-      {
-        source: "/data/:path*",
-        destination: "/coming-soon",
-        permanent: false,
-      },
-      {
-        source: "/resources",
-        destination: "/coming-soon",
-        permanent: false,
+        source: "/data",
+        destination: "/data/methodology",
+        permanent: true,
       },
     ];
   },

@@ -27,7 +27,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const NavItem = (props: PropsWithChildren<LinkProps>) => {
-  // const pathname = usePathname();
+  const pathname = usePathname();
   const setOpen = useSetAtom(menuOpenAtom);
 
   return (
@@ -37,9 +37,9 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
       scroll={false}
       prefetch
       onClick={() => {
-        // if (pathname.includes(`${props.href}`)) {
-        setOpen(false);
-        // }
+        if (pathname.includes(`${props.href}`)) {
+          setOpen(false);
+        }
       }}
     >
       <FiArrowRight className="shrink-0 transition-transform group-hover:translate-x-1 2xl:group-hover:translate-x-2" />
