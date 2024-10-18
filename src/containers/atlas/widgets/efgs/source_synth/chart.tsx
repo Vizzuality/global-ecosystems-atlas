@@ -12,6 +12,8 @@ import { cn, formatPercentage } from "@/lib/utils";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
 
+import { useSyncLocation } from "@/app/(atlas)/atlas/store";
+
 import HorizontalStackedBar from "@/components/charts/horizontal-stacked-bar";
 
 const COLORS = ["#CCEBC5", "#98D3B8", "#62BAB1", "#249FAE", "#0082A8", "#00649B"];
@@ -40,6 +42,7 @@ export const SourceSynthesisContributionChart = ({
   width: number;
   height: number;
 }) => {
+  const [location] = useSyncLocation();
   const { ecosystemId } = useParams();
 
   const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(`${ecosystemId}`, "source_synth");
@@ -48,20 +51,20 @@ export const SourceSynthesisContributionChart = ({
   const DATA = useMemo(() => {
     return (
       data?.data
-        .map((d) => {
+        ?.filter((d) => !!d.value && d.id === (location ?? "GLOB"))
+        ?.map((d) => {
           return {
-            id: d.id,
+            id: `${d.id}-${d.label}`,
             label: d.label,
             value: d.value ?? 0,
             color: d.color ?? CHROMA.random().hex(),
           };
         })
-        ?.filter((d) => !!d.value)
         ?.toSorted((a, b) => {
           return b.value - a.value;
         }) ?? []
     );
-  }, [data]);
+  }, [data, location]);
 
   const TOTAL = useMemo(() => {
     return DATA.reduce((acc, curr) => acc + (curr.value ?? 0), 0);
@@ -119,6 +122,7 @@ export const SourceSynthesisContributionChart = ({
 };
 
 export const SourceSynthesisContributionRanking = () => {
+  const [location] = useSyncLocation();
   const { ecosystemId } = useParams();
 
   const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(`${ecosystemId}`, "source_synth");
@@ -127,7 +131,8 @@ export const SourceSynthesisContributionRanking = () => {
   const DATA = useMemo(() => {
     return (
       data?.data
-        .map((d) => {
+        ?.filter((d) => !!d.value && d.id === (location ?? "GLOB"))
+        ?.map((d) => {
           return {
             id: `${d.id}${d.label}`,
             label: d.label,
@@ -135,12 +140,11 @@ export const SourceSynthesisContributionRanking = () => {
             color: d.color ?? CHROMA.random().hex(),
           };
         })
-        ?.filter((d) => !!d.value)
         ?.toSorted((a, b) => {
           return b.value - a.value;
         }) ?? []
     );
-  }, [data]);
+  }, [data, location]);
 
   // CONFIG
   const KEYS = useMemo(() => {
