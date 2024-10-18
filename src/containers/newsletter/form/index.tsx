@@ -66,7 +66,7 @@ export function NewsletterForm() {
   }
 
   return (
-    <div className="space-y-10 p-4">
+    <div className="space-y-5 px-2 2xl:space-y-10 2xl:p-4">
       {state.success && (
         <div className="space-y-11 duration-500 animate-in fade-in-0">
           <header className="space-y-1">
@@ -80,14 +80,14 @@ export function NewsletterForm() {
       {!state.success && (
         <>
           <header className="space-y-2 text-center">
-            <DialogTitle className="text-4xl font-semibold">Stay tuned</DialogTitle>
-            <p className="text-xl">
+            <DialogTitle className="text-3xl font-semibold 2xl:text-4xl">Stay tuned</DialogTitle>
+            <p className="text-lg 2xl:text-xl">
               By signing up, you are making the Global Ecosystems Atlas a reality.
             </p>
           </header>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 2xl:space-y-5">
               <FormField
                 control={form.control}
                 name="name"
@@ -141,7 +141,7 @@ export function NewsletterForm() {
                 )}
               />
 
-              <div className="pt-8">
+              <div className="pt-6 2xl:pt-8">
                 {!state.success && (
                   <Button
                     variant="primary"
