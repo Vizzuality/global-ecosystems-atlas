@@ -19,7 +19,11 @@ export const TourTooltip = (props: TooltipRenderProps) => {
       </header>
 
       <div className="space-y-6 pt-4">
-        <div>{typeof step.content === "string" && <Markdown>{step.content}</Markdown>}</div>
+        <div>
+          {typeof step.content === "string" && (
+            <Markdown className="prose prose-sm">{step.content}</Markdown>
+          )}
+        </div>
 
         <footer className="flex justify-end gap-2">
           {index > 0 && (
