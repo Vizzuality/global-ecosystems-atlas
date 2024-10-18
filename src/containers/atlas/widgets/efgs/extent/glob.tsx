@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { cn, formatPercentage } from "@/lib/utils";
 
 import { useApiEcosystemsEcosystemIdWidgetsWidgetIdGet } from "@/types/generated/ecosystems";
+import { WidgetData } from "@/types/generated/strapi.schemas";
 
 export const GlobExtent = () => {
   const { ecosystemId } = useParams();
@@ -12,7 +13,8 @@ export const GlobExtent = () => {
   const { data } = useApiEcosystemsEcosystemIdWidgetsWidgetIdGet(`${ecosystemId}`, "extent_efgs");
 
   const DATA = useMemo(() => {
-    return data?.data?.find((d) => d.id === "GLOB");
+    const d1 = data?.data as (WidgetData & { location_code: string })[];
+    return d1?.find((d) => d.location_code === "GLOB");
   }, [data]);
 
   const p = (DATA?.value ?? 0) / 100;

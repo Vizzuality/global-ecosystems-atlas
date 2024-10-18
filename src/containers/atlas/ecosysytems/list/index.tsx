@@ -26,7 +26,7 @@ export const AtlasEcosysytemsList = () => {
 
   const REALMS = useRealms({ location });
   const BIOMES = useBiomes({ location });
-  const ecosysytemsData = useEcosystems({ location });
+  const ECOSYSTEMS = useEcosystems({ location });
 
   const { push } = useRouter();
 
@@ -53,7 +53,7 @@ export const AtlasEcosysytemsList = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {ecosysytemsData?.map((e) => (
+          {ECOSYSTEMS?.map((e) => (
             <TableRow
               key={e.name}
               className="w-full cursor-pointer overflow-hidden hover:bg-lightblue-50"
