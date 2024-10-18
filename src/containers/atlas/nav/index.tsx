@@ -6,13 +6,13 @@ import { useCookies } from "react-cookie";
 import Link from "next/link";
 
 import { motion } from "framer-motion";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { FiHelpCircle } from "react-icons/fi";
 import { PiStackBold } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
 
-import { navOpenAtom } from "@/app/(atlas)/atlas/store";
+import { navOpenAtom, tourAtom } from "@/app/(atlas)/atlas/store";
 
 import { AtlasNavItem } from "@/containers/atlas/nav/item";
 import { LogoNoText } from "@/containers/logo";
@@ -30,6 +30,7 @@ export const AtlasNav = () => {
   const [, setCookie] = useCookies(["welcome"]);
 
   const [navOpen, setNavExpanded] = useAtom(navOpenAtom);
+  const setTour = useSetAtom(tourAtom);
 
   const handleBetaClick = (e: MouseEvent<HTMLSpanElement>) => {
     e.preventDefault();
@@ -123,13 +124,14 @@ export const AtlasNav = () => {
           </ul> */}
 
           <ul className="space-y-3 py-3">
-            <AtlasNavItem label="Help center" onClick={() => console.info("button")} index={7}>
+            <AtlasNavItem label="Help center" onClick={() => setTour(true)} index={7}>
               <FiHelpCircle className="h-5 w-5" />
             </AtlasNavItem>
           </ul>
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem
+              id="tour-atlas-expand"
               label={navOpen ? "Collapse side menu" : "Expand side menu"}
               onClick={() => setNavExpanded(!navOpen)}
               index={8}

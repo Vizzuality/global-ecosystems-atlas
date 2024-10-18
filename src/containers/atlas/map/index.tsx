@@ -139,13 +139,13 @@ export const AtlasMap = () => {
           <Controls>
             <MenuControl />
             <ZoomControl />
-            <SettingsControl>
+            <SettingsControl id="tour-atlas-basemap">
               <MapSettings />
             </SettingsControl>
-            <ShareControl>
+            <ShareControl id="tour-atlas-share">
               <MapShare />
             </ShareControl>
-            <FeedbackControl />
+            <FeedbackControl id="tour-atlas-feedback" />
           </Controls>
 
           {loaded && <LayerManager />}

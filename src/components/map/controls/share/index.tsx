@@ -14,10 +14,12 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { CONTROL_BUTTON_STYLES } from "../constants";
 
 interface ShareControlProps {
+  id?: string;
   className?: HTMLAttributes<HTMLDivElement>["className"];
 }
 
 export const ShareControl: FC<PropsWithChildren<ShareControlProps>> = ({
+  id,
   className,
   children,
 }: PropsWithChildren<ShareControlProps>) => {
@@ -28,6 +30,7 @@ export const ShareControl: FC<PropsWithChildren<ShareControlProps>> = ({
           <PopoverTrigger asChild>
             <TooltipTrigger asChild>
               <button
+                id={id}
                 className={cn({
                   [CONTROL_BUTTON_STYLES.default]: true,
                   [CONTROL_BUTTON_STYLES.hover]: true,
