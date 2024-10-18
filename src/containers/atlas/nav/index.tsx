@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { navOpenAtom } from "@/app/(atlas)/atlas/store";
 
 import { AtlasNavItem } from "@/containers/atlas/nav/item";
-import { LogoSmall } from "@/containers/logo";
+import { LogoNoText } from "@/containers/logo";
 
 import { CollapseIcon } from "@/components/ui/icons/collapse";
 import { DrawPolygonIcon } from "@/components/ui/icons/draw-polygon";
@@ -52,7 +52,7 @@ export const AtlasNav = () => {
           <div className="flex flex-col items-start pb-3">
             <Link href="/" className="flex flex-col items-center space-y-1">
               <div className="relative flex h-10 w-10 flex-col items-center space-y-1">
-                <LogoSmall />
+                <LogoNoText />
 
                 <motion.span
                   initial={"initial"}
@@ -61,7 +61,7 @@ export const AtlasNav = () => {
                     initial: { opacity: 0 },
                     animate: { opacity: 1 },
                   }}
-                  className="absolute -top-1 left-full block translate-x-0.5 text-[7px] font-bold uppercase leading-[8px] opacity-0"
+                  className="absolute left-full top-0 block translate-x-0.5 text-[7px] font-bold uppercase leading-[8px] opacity-0"
                 >
                   Global ecosystems atlas
                 </motion.span>
