@@ -28,7 +28,7 @@ export const FAQS = [
     question: "Where can I find more information on the tools and methodologies used?",
     answer: `Additional resources include:
 - [IUCN Global Ecosystems Typology](https://global-ecosystems.org/)
-- Link to source datasets are available via tooltips and the [sources catalogue](/data/sources-catalogue)
+- Link to source datasets are available via tooltips and the [Sources Catalogue](/data/sources-catalogue#tabs)
 - [Github Organisation](https://github.com/geo-global-ecosystem-atlas)
 `,
   },

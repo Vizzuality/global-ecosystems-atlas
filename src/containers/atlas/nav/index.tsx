@@ -24,7 +24,7 @@ import { FilterIcon } from "@/components/ui/icons/filter";
 import { GlobeIcon } from "@/components/ui/icons/globe";
 import { ListIcon } from "@/components/ui/icons/list";
 import { UploadShapefileIcon } from "@/components/ui/icons/upload-shapefile";
-import { UserIcon } from "@/components/ui/icons/user";
+// import { UserIcon } from "@/components/ui/icons/user";
 
 export const AtlasNav = () => {
   const [, setCookie] = useCookies(["welcome"]);
@@ -116,11 +116,11 @@ export const AtlasNav = () => {
         </motion.div>
 
         <motion.div layout="position" className="flex flex-col divide-y divide-navy-100">
-          <ul className="space-y-3 py-3">
+          {/* <ul className="space-y-3 py-3">
             <AtlasNavItem href="/atlas/login" label="User profile" index={6}>
               <UserIcon className="h-5 w-5" />
             </AtlasNavItem>
-          </ul>
+          </ul> */}
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem label="Help center" onClick={() => console.info("button")} index={7}>

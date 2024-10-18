@@ -55,7 +55,7 @@ export const ByCountryExtentChart = ({ width, height }: { width: number; height:
             color: CHROMA.random().hex(),
           };
         })
-        .filter((d) => d.value && d.id !== "GLOB")
+        .filter((d) => d.id !== "GLOB")
         .sort((a, b) => b.value - a.value) ?? []
     );
   }, [data, locationsData]);
@@ -134,7 +134,7 @@ export const ByCountryExtentRanking = () => {
             color: CHROMA.random().hex(),
           };
         })
-        .filter((d) => d.value && d.id !== "GLOB")
+        .filter((d) => d.id !== "GLOB")
         .sort((a, b) => b.value - a.value) ?? []
     );
   }, [data, locationsData]);

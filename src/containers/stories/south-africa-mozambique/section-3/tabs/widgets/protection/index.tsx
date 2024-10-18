@@ -20,6 +20,7 @@ import {
 } from "@/containers/atlas/widgets/item";
 
 import { PieChart } from "@/components/charts/pie";
+import { H3 } from "@/components/ui/h3";
 
 const DATUM = {
   ZAF_224: [
@@ -86,7 +87,17 @@ export const WidgetLocationProtection = ({ location }: { location: string }) => 
     <Widget className="grow rounded-lg border border-navy-50 p-4">
       <WidgetHeader>
         <WidgetTitle>Protection level</WidgetTitle>
-        <Info>Hello</Info>
+        <Info>
+          <H3>Protection level</H3>
+          <p>
+            This widget highlights protected area coverage, based on the World Database of Protected
+            Areas. While an overlap between an ecosystem and a protected area does not necessarily
+            imply effective protection of the ecosystem, it does reflect efforts to conserve
+            biodiversity and maintain ecosystem integrity. Understanding the distribution of
+            protected ecosystems helps in assessing conservation priorities and identifying areas
+            where additional protection may be needed.
+          </p>
+        </Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
@@ -103,7 +114,6 @@ export const WidgetLocationProtection = ({ location }: { location: string }) => 
                           data={DATA ?? []}
                           colorScale={colorScale}
                           format={formatPercentage}
-                          interactive
                           pieProps={{
                             pieSort: (a, b) => {
                               return b.id.localeCompare(a.id);

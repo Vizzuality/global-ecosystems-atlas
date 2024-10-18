@@ -28,7 +28,7 @@ export function formatPercentage(
     ...options,
   });
 
-  if (value < 0.0001) {
+  if (value < 0.0001 && value > 0) {
     if (!displayUnit) {
       return "<0.01";
     }

@@ -23,9 +23,7 @@ export default async function ResourcesPage() {
                 </header>
                 <div className="space-y-8 text-white">
                   <p className="text-xl">
-                    The Global Ecosystems Atlas is a platform for sharing and exploring data and
-                    insights about the world&apos;s ecosystems. Here you can find a range of
-                    resources to help you understand and use the Atlas.
+                    Here you can find a range of resources to help you understand and use the Atlas.
                   </p>
                 </div>
               </div>
@@ -44,7 +42,7 @@ export default async function ResourcesPage() {
                     <div className="relative aspect-video">
                       <video controls className="h-full w-full" poster="/poster.webp">
                         <source
-                          src="https://global-ecosystem-atlas-staging-assets-bucket.s3.eu-west-3.amazonaws.com/app/teaser-video/GEA_teaser_Final_v2.mp4"
+                          src="https://global-ecosystem-atlas-production-assets-bucket.s3.eu-west-3.amazonaws.com/app/teaser-video/GEA_teaser_Final_v2.mp4"
                           type="video/mp4"
                         />
                       </video>
@@ -56,7 +54,7 @@ export default async function ResourcesPage() {
                     <div className="relative aspect-video">
                       <video controls className="h-full w-full" poster="/poster.webp">
                         <source
-                          src="https://global-ecosystem-atlas-staging-assets-bucket.s3.eu-west-3.amazonaws.com/app/teaser-video/GEA_teaser_Final_v2.mp4"
+                          src="https://global-ecosystem-atlas-production-assets-bucket.s3.eu-west-3.amazonaws.com/app/screencast/GEA_screencast_00.mp4"
                           type="video/mp4"
                         />
                       </video>
