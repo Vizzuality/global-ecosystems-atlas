@@ -1,6 +1,12 @@
-import { Step } from "react-joyride";
+import { useCallback } from "react";
+
+import { CallBackProps, Step } from "react-joyride";
 
 import dynamic from "next/dynamic";
+
+import { useAtom } from "jotai";
+
+import { tourAtom } from "@/app/(atlas)/atlas/store";
 
 import { TourTooltip } from "@/containers/atlas/tour/tooltip";
 
@@ -51,5 +57,25 @@ Start by choosing from realms, biomes or ecosystems groups to narrow down the sc
 ];
 
 export const AtlasTour = () => {
-  return <JoyRideNoSSR steps={STEPS} tooltipComponent={TourTooltip} continuous key="tour" />;
+  const [tour, setTour] = useAtom(tourAtom);
+
+  const handleCallback = useCallback(
+    (data: CallBackProps) => {
+      if (data.status === "finished" || data.status === "skipped") {
+        setTour(false);
+      }
+    },
+    [setTour],
+  );
+
+  return (
+    <JoyRideNoSSR
+      steps={STEPS}
+      tooltipComponent={TourTooltip}
+      continuous
+      key="tour"
+      run={tour}
+      callback={handleCallback}
+    />
+  );
 };
