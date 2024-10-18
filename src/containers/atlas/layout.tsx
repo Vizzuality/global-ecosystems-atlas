@@ -7,6 +7,7 @@ import { AtlasHero } from "@/containers/atlas/hero";
 import { AtlasMap } from "@/containers/atlas/map";
 import { AtlasNav } from "@/containers/atlas/nav";
 import { AtlasSidebar } from "@/containers/atlas/sidebar";
+import { AtlasTour } from "@/containers/atlas/tour";
 import { Footer } from "@/containers/footer";
 import { Header } from "@/containers/header";
 import { Media } from "@/containers/media";
@@ -26,6 +27,7 @@ export const AtlasLayout = ({ children }: PropsWithChildren) => {
 
       <Media greaterThanOrEqual="lg">
         <main className="flex h-dvh overflow-hidden">
+          <AtlasTour />
           <div className="pointer-events-none absolute left-0 top-0 z-10 flex h-full">
             <LayoutGroup>
               <Suspense fallback={null}>
