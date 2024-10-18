@@ -24,6 +24,7 @@ const DARK_PATHNAMES = [
   "/disclaimer",
   "/stories",
   "/resources",
+  "/atlas",
   "/data",
   "/data/methodology",
   "/data/how-to-use-the-data",
