@@ -12,10 +12,12 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { CONTROL_BUTTON_STYLES } from "../constants";
 
 interface FeedbackControlProps {
+  id?: string;
   className?: HTMLAttributes<HTMLDivElement>["className"];
 }
 
 export const FeedbackControl: FC<PropsWithChildren<FeedbackControlProps>> = ({
+  id,
   className,
 }: PropsWithChildren<FeedbackControlProps>) => {
   return (
@@ -25,6 +27,7 @@ export const FeedbackControl: FC<PropsWithChildren<FeedbackControlProps>> = ({
         {/* <PopoverTrigger asChild> */}
         <TooltipTrigger asChild>
           <button
+            id={id}
             className={cn({
               [CONTROL_BUTTON_STYLES.default]: true,
               [CONTROL_BUTTON_STYLES.hover]: true,

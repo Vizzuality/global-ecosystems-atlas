@@ -14,10 +14,12 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { CONTROL_BUTTON_STYLES } from "../constants";
 
 interface SettingsControlProps {
+  id?: string;
   className?: HTMLAttributes<HTMLDivElement>["className"];
 }
 
 export const SettingsControl: FC<PropsWithChildren<SettingsControlProps>> = ({
+  id,
   className,
   children,
 }: PropsWithChildren<SettingsControlProps>) => {
@@ -28,6 +30,7 @@ export const SettingsControl: FC<PropsWithChildren<SettingsControlProps>> = ({
           <PopoverTrigger asChild>
             <TooltipTrigger asChild>
               <button
+                id={id}
                 className={cn({
                   [CONTROL_BUTTON_STYLES.default]: true,
                   [CONTROL_BUTTON_STYLES.hover]: true,

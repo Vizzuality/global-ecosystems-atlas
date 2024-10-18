@@ -131,6 +131,7 @@ export const AtlasNav = () => {
 
           <ul className="space-y-3 py-3">
             <AtlasNavItem
+              id="tour-atlas-expand"
               label={navOpen ? "Collapse side menu" : "Expand side menu"}
               onClick={() => setNavExpanded(!navOpen)}
               index={8}

@@ -38,7 +38,7 @@ export const AtlasNavItem = ({
         <TooltipTrigger asChild>
           <Link
             // id replace all / with - to avoid id errors
-            id={`onboard${href.replace(/\//g, "-")}`}
+            id={`tour${href.replace(/\//g, "-")}`}
             href={`${href}${searchParams}`}
             prefetch
             className={cn({
