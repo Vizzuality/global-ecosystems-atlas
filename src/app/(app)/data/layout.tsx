@@ -18,7 +18,7 @@ export default function DataLayout({
 
   return (
     <>
-      <Section hero className="relative min-h-0 bg-navy-700 lg:pb-56">
+      <Section hero className="relative min-h-0 bg-navy-700">
         <div className="container">
           <Grid>
             <div className="col-span-12 lg:col-span-6 lg:col-start-2">
@@ -27,7 +27,7 @@ export default function DataLayout({
                   <h2 className="text-sm font-semibold uppercase tracking-widest text-white">
                     Data
                   </h2>
-                  <H1 className="text-white">A platform to support environmental initiatives</H1>
+                  <H1 className="text-white">Understand the data behind the platform</H1>
                 </header>
                 <div className="space-y-8 text-white">
                   <p className="text-xl">
@@ -42,70 +42,69 @@ export default function DataLayout({
             </div>
           </Grid>
         </div>
-
-        <nav className="absolute bottom-0 left-0 hidden w-full lg:block">
-          <div className="container">
-            <Grid>
-              <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-                <ul className="flex rounded-t-md bg-navy-600">
-                  <li className="basis-1/4">
-                    <Link
-                      className={cn({
-                        "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                          true,
-                        "bg-white text-navy-700": pathname === "/data/methodology",
-                        "hover:bg-white/30": pathname !== "/data/methodology",
-                      })}
-                      href="/data/methodology"
-                    >
-                      Methodology
-                    </Link>
-                  </li>
-                  <li className="basis-1/4">
-                    <Link
-                      className={cn({
-                        "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                          true,
-                        "bg-white text-navy-700": pathname === "/data/how-to-use-the-data",
-                        "hover:bg-white/30": pathname !== "/data/how-to-use-the-data",
-                      })}
-                      href="/data/how-to-use-the-data"
-                    >
-                      How to use the data
-                    </Link>
-                  </li>
-                  <li className="basis-1/4">
-                    <Link
-                      className={cn({
-                        "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                          true,
-                        "bg-white text-navy-700": pathname === "/data/sources-catalogue",
-                        "hover:bg-white/30": pathname !== "/data/sources-catalogue",
-                      })}
-                      href="/data/sources-catalogue"
-                    >
-                      Sources Catalogue
-                    </Link>
-                  </li>
-                  <li className="basis-1/4">
-                    <Link
-                      className={cn({
-                        "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                          true,
-                        "bg-white text-navy-700": pathname === "/data/questions-and-answers",
-                        "hover:bg-white/30": pathname !== "/data/questions-and-answers",
-                      })}
-                      href="/data/questions-and-answers"
-                    >
-                      Questions & Answers
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </Grid>
-          </div>
-        </nav>
       </Section>
+      <nav id="tabs" className="w-full bg-navy-700 pt-8 lg:block">
+        <div className="container">
+          <Grid>
+            <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+              <ul className="flex rounded-t-md bg-navy-600">
+                <li className="basis-1/4">
+                  <Link
+                    className={cn({
+                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
+                        true,
+                      "bg-white text-navy-700": pathname === "/data/methodology",
+                      "hover:bg-white/30": pathname !== "/data/methodology",
+                    })}
+                    href="/data/methodology#tabs"
+                  >
+                    Methodology
+                  </Link>
+                </li>
+                <li className="basis-1/4">
+                  <Link
+                    className={cn({
+                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
+                        true,
+                      "bg-white text-navy-700": pathname === "/data/how-to-use-the-data",
+                      "hover:bg-white/30": pathname !== "/data/how-to-use-the-data",
+                    })}
+                    href="/data/how-to-use-the-data#tabs"
+                  >
+                    How to use the data
+                  </Link>
+                </li>
+                <li className="basis-1/4">
+                  <Link
+                    className={cn({
+                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
+                        true,
+                      "bg-white text-navy-700": pathname === "/data/sources-catalogue",
+                      "hover:bg-white/30": pathname !== "/data/sources-catalogue",
+                    })}
+                    href="/data/sources-catalogue#tabs"
+                  >
+                    Sources Catalogue
+                  </Link>
+                </li>
+                <li className="basis-1/4">
+                  <Link
+                    className={cn({
+                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
+                        true,
+                      "bg-white text-navy-700": pathname === "/data/questions-and-answers",
+                      "hover:bg-white/30": pathname !== "/data/questions-and-answers",
+                    })}
+                    href="/data/questions-and-answers#tabs"
+                  >
+                    Questions & Answers
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </Grid>
+        </div>
+      </nav>
       {children}
     </>
   );

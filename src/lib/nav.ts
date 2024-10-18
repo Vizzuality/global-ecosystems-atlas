@@ -21,19 +21,19 @@ export const NAV = [
     children: [
       {
         name: "Methodology",
-        href: "/data/methodology",
+        href: "/data/methodology#tabs",
       },
       {
         name: "How to use the data",
-        href: "/data/how-to-use-the-data",
+        href: "/data/how-to-use-the-data#tabs",
       },
       {
         name: "Sources Catalogue",
-        href: "/data/sources-catalogue",
+        href: "/data/sources-catalogue#tabs",
       },
       {
         name: "Questions & Answers",
-        href: "/data/questions-and-answers",
+        href: "/data/questions-and-answers#tabs",
       },
     ],
   },

@@ -41,7 +41,7 @@ export const MethodologyHero = () => {
               representing ecosystems and meets consistent data quality and metadata reporting
               standards. The results of the data compilation phase, prior to the application of the
               evaluation protocol, are included in the{" "}
-              <Link href="/data/sources-catalogue" className="underline">
+              <Link href="/data/sources-catalogue#tabs" className="underline">
                 Sources Catalogue
               </Link>
             </p>
