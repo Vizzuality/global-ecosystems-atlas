@@ -117,6 +117,7 @@ export const AtlasTour = () => {
       continuous
       key="tour"
       run={tour}
+      spotlightPadding={4}
       locale={{
         back: "Previous",
         last: "Finish",
@@ -127,6 +128,8 @@ export const AtlasTour = () => {
         },
       }}
       floaterProps={{
+        disableAnimation: true,
+        eventDelay: 0,
         styles: {
           arrow: {
             length: 8,

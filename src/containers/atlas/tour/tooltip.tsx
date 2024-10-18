@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Markdown } from "@/components/ui/markdown";
 
 export const TourTooltip = (props: TooltipRenderProps) => {
-  const { backProps, continuous, index, primaryProps, skipProps, step, tooltipProps } = props;
+  const { backProps, continuous, index, size, primaryProps, skipProps, step, tooltipProps } = props;
 
   return (
     <div className="max-w-lg rounded-lg bg-white px-6 py-4" {...tooltipProps}>
@@ -25,18 +25,25 @@ export const TourTooltip = (props: TooltipRenderProps) => {
           )}
         </div>
 
-        <footer className="flex justify-end gap-2">
-          {index > 0 && (
-            <Button variant="outline" className="px-10" {...backProps}>
-              {backProps.title}
-            </Button>
-          )}
+        <footer className="flex items-end justify-between gap-2">
+          <div className="text-xs text-navy-400">
+            <span className="font-bold">{index + 1}</span>{" "}
+            <span className="font-medium">/ {size}</span>
+          </div>
 
-          {continuous && (
-            <Button variant="default" className="px-10" {...primaryProps}>
-              {primaryProps.title}
-            </Button>
-          )}
+          <div className="flex justify-end gap-2">
+            {index > 0 && (
+              <Button variant="outline" className="px-10" {...backProps}>
+                {backProps.title}
+              </Button>
+            )}
+
+            {continuous && (
+              <Button variant="default" className="px-10" {...primaryProps}>
+                {primaryProps.title}
+              </Button>
+            )}
+          </div>
         </footer>
       </div>
     </div>
