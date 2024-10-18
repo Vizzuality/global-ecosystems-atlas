@@ -74,7 +74,7 @@ export default function HomeVideo() {
 
                 <video ref={videoRef} controls loop className="h-full w-full">
                   <source
-                    src="https://global-ecosystem-atlas-staging-assets-bucket.s3.eu-west-3.amazonaws.com/app/teaser-video/GEA_teaser_Final_v2.mp4"
+                    src="https://global-ecosystem-atlas-production-assets-bucket.s3.eu-west-3.amazonaws.com/app/teaser-video/GEA_teaser_Final_v2.mp4"
                     type="video/mp4"
                   />
                 </video>
