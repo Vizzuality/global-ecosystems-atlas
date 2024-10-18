@@ -2,16 +2,18 @@
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
+import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
   WidgetError,
   WidgetHeader,
-  WidgetInfo,
   WidgetLoader,
   WidgetNoData,
   WidgetTitle,
 } from "@/containers/atlas/widgets/item";
+
+import { H3 } from "@/components/ui/h3";
 
 import { BiomesExtent } from "./biomes";
 
@@ -27,7 +29,13 @@ export const WidgetLocationExtent = ({ location }: { location: string }) => {
     <Widget className="grow rounded-lg border border-navy-50 p-4">
       <WidgetHeader>
         <WidgetTitle>Biomes Extent</WidgetTitle>
-        <WidgetInfo id="extent_biomes" />
+        <Info>
+          <H3>Biomes Extent</H3>
+          <p>
+            A biome is a component of a realm united by broad features of ecosystem structure and
+            one or a few common major ecological drivers that regulate major ecological functions.
+          </p>
+        </Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={biomesWidgetIsFetching && !biomesWidgetIsFetched}>

@@ -90,9 +90,12 @@ export const WidgetLocationProtection = ({ location }: { location: string }) => 
         <Info>
           <H3>Protection level</H3>
           <p>
-            The percentage of the location ecosystem functional groups that are protected. The
-            protection level is calculated as the sum of the area of the protected ecosystem
-            functional groups divided by the total area of the ecosystem functional groups.
+            This widget highlights protected area coverage, based on the World Database of Protected
+            Areas. While an overlap between an ecosystem and a protected area does not necessarily
+            imply effective protection of the ecosystem, it does reflect efforts to conserve
+            biodiversity and maintain ecosystem integrity. Understanding the distribution of
+            protected ecosystems helps in assessing conservation priorities and identifying areas
+            where additional protection may be needed.
           </p>
         </Info>
       </WidgetHeader>
