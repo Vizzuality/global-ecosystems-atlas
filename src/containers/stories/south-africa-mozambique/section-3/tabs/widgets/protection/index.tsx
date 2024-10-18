@@ -20,6 +20,7 @@ import {
 } from "@/containers/atlas/widgets/item";
 
 import { PieChart } from "@/components/charts/pie";
+import { H3 } from "@/components/ui/h3";
 
 const DATUM = {
   ZAF_224: [
@@ -86,7 +87,14 @@ export const WidgetLocationProtection = ({ location }: { location: string }) => 
     <Widget className="grow rounded-lg border border-navy-50 p-4">
       <WidgetHeader>
         <WidgetTitle>Protection level</WidgetTitle>
-        <Info>Hello</Info>
+        <Info>
+          <H3>Protection level</H3>
+          <p>
+            The percentage of the location ecosystem functional groups that are protected. The
+            protection level is calculated as the sum of the area of the protected ecosystem
+            functional groups divided by the total area of the ecosystem functional groups.
+          </p>
+        </Info>
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={isFetching && !isFetched}>
@@ -103,7 +111,6 @@ export const WidgetLocationProtection = ({ location }: { location: string }) => 
                           data={DATA ?? []}
                           colorScale={colorScale}
                           format={formatPercentage}
-                          interactive
                           pieProps={{
                             pieSort: (a, b) => {
                               return b.id.localeCompare(a.id);

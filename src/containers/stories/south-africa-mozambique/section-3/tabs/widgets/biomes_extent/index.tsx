@@ -2,12 +2,12 @@
 
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
-import { Info } from "@/containers/atlas/info";
 import {
   Widget,
   WidgetContent,
   WidgetError,
   WidgetHeader,
+  WidgetInfo,
   WidgetLoader,
   WidgetNoData,
   WidgetTitle,
@@ -27,7 +27,7 @@ export const WidgetLocationExtent = ({ location }: { location: string }) => {
     <Widget className="grow rounded-lg border border-navy-50 p-4">
       <WidgetHeader>
         <WidgetTitle>Biomes Extent</WidgetTitle>
-        <Info>Hello</Info>
+        <WidgetInfo id="extent_biomes" />
       </WidgetHeader>
       <WidgetContent>
         <WidgetLoader isLoading={biomesWidgetIsFetching && !biomesWidgetIsFetched}>
