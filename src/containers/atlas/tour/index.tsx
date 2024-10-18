@@ -1,14 +1,18 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 import { CallBackProps, Step } from "react-joyride";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 import { useAtom } from "jotai";
 
 import { tourAtom } from "@/app/(atlas)/atlas/store";
 
 import { TourTooltip } from "@/containers/atlas/tour/tooltip";
+
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const JoyRideNoSSR = dynamic(() => import("react-joyride"), { ssr: false });
 const STEPS: Step[] = [
@@ -100,45 +104,81 @@ Provide **thoughts or suggestions to help us understand your experience** and we
 
 export const AtlasTour = () => {
   const [tour, setTour] = useAtom(tourAtom);
+  const [run, setRun] = useState(false);
 
   const handleCallback = useCallback(
     (data: CallBackProps) => {
-      if (data.status === "finished" || data.status === "skipped") {
-        setTour(false);
+      if (data.status === "finished" || data.status === "skipped" || data.status === "error") {
+        setRun(false);
       }
     },
-    [setTour],
+    [setRun],
   );
 
   return (
-    <JoyRideNoSSR
-      steps={STEPS}
-      tooltipComponent={TourTooltip}
-      continuous
-      key="tour"
-      run={tour}
-      spotlightPadding={4}
-      locale={{
-        back: "Previous",
-        last: "Finish",
-      }}
-      styles={{
-        overlay: {
-          maxHeight: "100vh",
-        },
-      }}
-      floaterProps={{
-        disableAnimation: true,
-        eventDelay: 0,
-        styles: {
-          arrow: {
-            length: 8,
-            spread: 16,
+    <>
+      <Dialog open={tour} onOpenChange={setTour}>
+        <DialogContent className="p-10 2xl:p-14">
+          <div className="-mx-10 2xl:-mx-14">
+            <Image
+              src="/atlas/tour.webp"
+              alt="Global Ecosystems Atlas tour"
+              width={2144}
+              height={871}
+            />
+          </div>
+          <div className="space-y-2 text-center">
+            <h2 className="text-xl font-bold">Introducing Global Ecosystems Atlas</h2>
+            <p className="text-sm leading-normal">
+              This tour is a walkthrough of the Atlas key features and will help you understand what
+              you can do with the platform.
+            </p>
+          </div>
+
+          <div className="mt-4 flex justify-center gap-2">
+            <Button
+              variant="default"
+              className="px-5"
+              onClick={() => {
+                setRun(true);
+                setTour(false);
+              }}
+            >
+              Show me
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <JoyRideNoSSR
+        steps={STEPS}
+        tooltipComponent={TourTooltip}
+        continuous
+        key="tour"
+        run={run}
+        spotlightPadding={4}
+        locale={{
+          back: "Previous",
+          last: "Finish",
+        }}
+        styles={{
+          overlay: {
+            maxHeight: "100vh",
           },
-        },
-      }}
-      disableScrolling
-      callback={handleCallback}
-    />
+        }}
+        floaterProps={{
+          disableAnimation: true,
+          eventDelay: 0,
+          styles: {
+            arrow: {
+              length: 8,
+              spread: 16,
+            },
+          },
+        }}
+        disableScrolling
+        callback={handleCallback}
+      />
+    </>
   );
 };
