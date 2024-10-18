@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
+import { useCookies } from "react-cookie";
 import { CallBackProps, Step } from "react-joyride";
 
 import dynamic from "next/dynamic";
@@ -106,6 +107,8 @@ export const AtlasTour = () => {
   const [tour, setTour] = useAtom(tourAtom);
   const [run, setRun] = useState(false);
 
+  const [cookies, setCookies] = useCookies(["welcome", "tour"]);
+
   const handleCallback = useCallback(
     (data: CallBackProps) => {
       if (data.status === "finished" || data.status === "skipped" || data.status === "error") {
@@ -115,9 +118,19 @@ export const AtlasTour = () => {
     [setRun],
   );
 
+  const TOUR = useMemo(() => {
+    if (!cookies.welcome) return false;
+
+    if (tour) return tour;
+
+    if (cookies.tour) return false;
+
+    return tour || !cookies.tour;
+  }, [tour, cookies]);
+
   return (
     <>
-      <Dialog open={tour} onOpenChange={setTour}>
+      <Dialog open={TOUR} onOpenChange={setTour}>
         <DialogContent className="p-10 2xl:p-14">
           <div className="-mx-10 2xl:-mx-14">
             <Image
@@ -142,6 +155,7 @@ export const AtlasTour = () => {
               onClick={() => {
                 setRun(true);
                 setTour(false);
+                setCookies("tour", true);
               }}
             >
               Show me
