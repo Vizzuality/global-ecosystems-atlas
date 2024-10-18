@@ -43,7 +43,8 @@ export default function DataLayout({
           </Grid>
         </div>
       </Section>
-      <nav id="tabs" className="w-full bg-navy-700 pt-8 lg:block">
+
+      <nav id="tabs" className="hidden w-full bg-navy-700 pt-8 lg:block">
         <div className="container">
           <Grid>
             <div className="col-span-12 lg:col-span-10 lg:col-start-2">

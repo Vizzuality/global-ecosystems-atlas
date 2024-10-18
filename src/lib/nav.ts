@@ -22,18 +22,22 @@ export const NAV = [
       {
         name: "Methodology",
         href: "/data/methodology#tabs",
+        scroll: false,
       },
       {
         name: "How to use the data",
         href: "/data/how-to-use-the-data#tabs",
+        scroll: false,
       },
       {
         name: "Sources Catalogue",
         href: "/data/sources-catalogue#tabs",
+        scroll: false,
       },
       {
         name: "Questions & Answers",
         href: "/data/questions-and-answers#tabs",
+        scroll: false,
       },
     ],
   },
