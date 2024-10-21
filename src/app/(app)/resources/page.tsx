@@ -38,9 +38,9 @@ export default async function ResourcesPage() {
               <div className="space-y-6 lg:space-y-9">
                 <div className="space-y-16">
                   <div className="space-y-4">
-                    <H3>Global ecosystem atlas overview</H3>
+                    <H3>Global ecosystem atlas teaser</H3>
                     <div className="relative aspect-video">
-                      <video controls className="h-full w-full" poster="/poster.webp">
+                      <video controls className="h-full w-full" poster="/poster_teaser.webp">
                         <source
                           src="https://global-ecosystem-atlas-production-assets-bucket.s3.eu-west-3.amazonaws.com/app/teaser-video/GEA_teaser_Final_v2.mp4"
                           type="video/mp4"
@@ -52,7 +52,7 @@ export default async function ResourcesPage() {
                   <div className="space-y-4">
                     <H3>Global ecosystem atlas screencast</H3>
                     <div className="relative aspect-video">
-                      <video controls className="h-full w-full" poster="/poster.webp">
+                      <video controls className="h-full w-full" poster="/poster_screencast.webp">
                         <source
                           src="https://global-ecosystem-atlas-production-assets-bucket.s3.eu-west-3.amazonaws.com/app/screencast/GEA_screencast_00.mp4"
                           type="video/mp4"
