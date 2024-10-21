@@ -93,7 +93,7 @@ export const WidgetLocationEcosystemAssesment = () => {
                           />
                           <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center px-8">
                             <div className="space-x-1">
-                              <span className="text-4xl font-semibold leading-none">
+                              <span className="text-2xl font-semibold leading-none lg:text-4xl">
                                 {formatPercentage(SELECTED ?? 0, {}, false)}
                               </span>
                               <span className="text-lg leading-none">%</span>

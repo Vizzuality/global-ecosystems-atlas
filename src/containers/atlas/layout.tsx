@@ -4,53 +4,37 @@ import { PropsWithChildren, Suspense } from "react";
 import { LayoutGroup } from "framer-motion";
 import { useAtom } from "jotai";
 
-import { mobileStateAtom } from "@/app/(atlas)/atlas/store";
+import { atlasMobileSidebarAtom } from "@/app/(atlas)/atlas/store";
 
-import { AtlasHero } from "@/containers/atlas/hero";
 import { AtlasMap } from "@/containers/atlas/map";
 import { AtlasNav } from "@/containers/atlas/nav";
 import { AtlasSidebar } from "@/containers/atlas/sidebar";
 import { AtlasTour } from "@/containers/atlas/tour";
-import { Footer } from "@/containers/footer";
 import { Header } from "@/containers/header";
 import { Media } from "@/containers/media";
-import { Newsletter } from "@/containers/newsletter";
+
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
-  const [mobileState] = useAtom(mobileStateAtom);
+  const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
 
   return (
     <main className="flex min-h-dvh flex-col overflow-hidden">
       <Header />
 
-      {mobileState === "hero" && (
-        <>
-          <AtlasHero />
-          <Newsletter />
-          <Footer />
-        </>
-      )}
+      <Suspense fallback={null}>
+        <div className="flex grow flex-col">
+          <AtlasMap />
 
-      {mobileState === "map" && (
-        <Suspense fallback={null}>
-          <div className="flex grow flex-col">
-            <AtlasMap />
-          </div>
-        </Suspense>
-      )}
-
-      {mobileState === "sidebar" && (
-        <Suspense fallback={null}>
-          <div className="flex h-full w-full">
-            <LayoutGroup>
-              <Suspense fallback={null}>
-                <AtlasNav />
+          <Sheet open={atlasMobileSidebar} onOpenChange={setAtlasMobileSidebar}>
+            <SheetContent side="bottom" className="flex max-h-[80svh] min-h-0 grow flex-col">
+              <div className="flex h-full w-full grow flex-col overflow-hidden">
                 <AtlasSidebar>{children}</AtlasSidebar>
-              </Suspense>
-            </LayoutGroup>
-          </div>
-        </Suspense>
-      )}
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </Suspense>
     </main>
   );
 };

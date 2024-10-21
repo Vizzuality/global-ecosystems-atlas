@@ -49,7 +49,7 @@ export const WidgetLocationStatus = () => {
                   <div className="flex items-start justify-between">
                     <div className="space-x-2">
                       <span className="space-x-1">
-                        <span className="text-4xl font-semibold leading-none">
+                        <span className="text-2xl font-semibold leading-none lg:text-4xl">
                           {DATA?.mapped_coverage}
                         </span>
                         <span className="text-lg leading-none">%</span>
@@ -71,15 +71,21 @@ export const WidgetLocationStatus = () => {
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="p-4 pb-0">
-                    <div className="text-4xl font-semibold leading-none">{DATA?.realms}</div>
+                    <div className="text-2xl font-semibold leading-none lg:text-4xl">
+                      {DATA?.realms}
+                    </div>
                     <div className="text-sm font-medium leading-none">realms</div>
                   </div>
                   <div className="p-4 pb-0">
-                    <div className="text-4xl font-semibold leading-none">{DATA?.biomes}</div>
+                    <div className="text-2xl font-semibold leading-none lg:text-4xl">
+                      {DATA?.biomes}
+                    </div>
                     <div className="text-sm font-medium leading-none">biomes</div>
                   </div>
                   <div className="p-4 pb-0">
-                    <div className="text-4xl font-semibold leading-none">{DATA?.efgs}</div>
+                    <div className="text-2xl font-semibold leading-none lg:text-4xl">
+                      {DATA?.efgs}
+                    </div>
                     <div className="text-sm font-medium leading-none">
                       ecosystem functional groups
                     </div>

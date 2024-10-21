@@ -1,17 +1,11 @@
 import Link from "next/link";
 
-import { useSetAtom } from "jotai";
-
-import { mobileStateAtom } from "@/app/(atlas)/atlas/store";
-
 import { Button } from "@/components/ui/button";
 import { Grid } from "@/components/ui/grid";
 import { H2 } from "@/components/ui/h2";
 import { Section } from "@/components/ui/section";
 
 export const AtlasHero = () => {
-  const setMobileState = useSetAtom(mobileStateAtom);
-
   return (
     <Section hero className="min-h-0">
       <div className="container">
@@ -42,7 +36,7 @@ export const AtlasHero = () => {
                 size="lg"
                 variant="default"
                 className="w-full"
-                onClick={() => setMobileState("map")}
+                // onClick={() => setMobileState("map")}
               >
                 See Atlas
               </Button>
