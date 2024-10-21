@@ -4,7 +4,7 @@ import { PropsWithChildren, Suspense } from "react";
 import { LayoutGroup } from "framer-motion";
 import { useAtom } from "jotai";
 
-import { mobileStateAtom } from "@/app/(atlas)/atlas/store";
+import { atlasMobileSidebarAtom, atlasMobileStateAtom } from "@/app/(atlas)/atlas/store";
 
 import { AtlasHero } from "@/containers/atlas/hero";
 import { AtlasMap } from "@/containers/atlas/map";
@@ -16,14 +16,17 @@ import { Header } from "@/containers/header";
 import { Media } from "@/containers/media";
 import { Newsletter } from "@/containers/newsletter";
 
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+
 export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
-  const [mobileState] = useAtom(mobileStateAtom);
+  const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
+  const [atlasMobileState] = useAtom(atlasMobileStateAtom);
 
   return (
     <main className="flex min-h-dvh flex-col overflow-hidden">
       <Header />
 
-      {mobileState === "hero" && (
+      {atlasMobileState === "hero" && (
         <>
           <AtlasHero />
           <Newsletter />
@@ -31,23 +34,18 @@ export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
         </>
       )}
 
-      {mobileState === "map" && (
+      {atlasMobileState === "map" && (
         <Suspense fallback={null}>
           <div className="flex grow flex-col">
             <AtlasMap />
-          </div>
-        </Suspense>
-      )}
 
-      {mobileState === "sidebar" && (
-        <Suspense fallback={null}>
-          <div className="flex h-full w-full">
-            <LayoutGroup>
-              <Suspense fallback={null}>
-                <AtlasNav />
-                <AtlasSidebar>{children}</AtlasSidebar>
-              </Suspense>
-            </LayoutGroup>
+            <Sheet open={atlasMobileSidebar} onOpenChange={setAtlasMobileSidebar}>
+              <SheetContent side="bottom" className="flex max-h-[80svh] min-h-0 grow flex-col">
+                <div className="flex h-full w-full grow flex-col overflow-hidden">
+                  <AtlasSidebar>{children}</AtlasSidebar>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </Suspense>
       )}

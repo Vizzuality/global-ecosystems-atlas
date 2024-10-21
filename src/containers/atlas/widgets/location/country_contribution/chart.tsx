@@ -71,7 +71,7 @@ export const CountryContributionNumber = () => {
 
   return (
     <div className="leading-none">
-      <span className="text-4xl font-semibold leading-none">{CURRENT}</span>
+      <span className="text-2xl font-semibold leading-none lg:text-4xl">{CURRENT}</span>
       <span className="text-lg leading-none"> / {TOTAL} </span>
       <span className="text-xs font-medium leading-none">
         {" "}
