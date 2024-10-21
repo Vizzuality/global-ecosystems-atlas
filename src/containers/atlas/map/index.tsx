@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import {
-  // atlasMobileSidebarAtom,
+  atlasMobileSidebarAtom,
   popupAtom,
   sidebarOpenAtom,
   tmpBboxAtom,
@@ -32,17 +32,20 @@ import MapLegend from "@/containers/atlas/map/legend";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
-import { Media } from "@/containers/media";
 
 import Controls from "@/components/map/controls";
-// import DataControl from "@/components/map/controls/data";
+import DataControl from "@/components/map/controls/data";
 import FeedbackControl from "@/components/map/controls/feedback";
 import { MenuControl } from "@/components/map/controls/menu";
 import SettingsControl from "@/components/map/controls/settings";
 import ShareControl from "@/components/map/controls/share";
 import ZoomControl from "@/components/map/controls/zoom";
 
-export const AtlasMap = () => {
+export interface AtlasMapProps {
+  mobile?: boolean;
+}
+
+export const AtlasMap = ({ mobile }: AtlasMapProps) => {
   const queryClient = useQueryClient();
   const { atlasMap } = useMap();
 
@@ -58,7 +61,7 @@ export const AtlasMap = () => {
   const [tmpBbox, setTmpBbox] = useAtom(tmpBboxAtom);
   const setPopup = useSetAtom(popupAtom);
   const sidebarOpen = useAtomValue(sidebarOpenAtom);
-  // const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
+  const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
 
   const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
 
@@ -81,16 +84,17 @@ export const AtlasMap = () => {
 
   const handleFitBounds = useCallback(() => {
     if (tmpBbox && atlasMap) {
+      const left = mobile ? 50 : sidebarOpen ? 600 : 125;
       atlasMap.fitBounds(tmpBbox as LngLatBoundsLike, {
         padding: {
           top: 50,
           bottom: 50,
-          left: sidebarOpen ? 600 : 125,
+          left,
           right: 50,
         },
       });
     }
-  }, [atlasMap, sidebarOpen, tmpBbox]);
+  }, [mobile, atlasMap, sidebarOpen, tmpBbox]);
 
   const handleClick = useCallback(
     (e: MapMouseEvent) => {
@@ -129,7 +133,7 @@ export const AtlasMap = () => {
               padding: {
                 top: 50,
                 bottom: 50,
-                left: sidebarOpen ? 600 : 125,
+                left: mobile ? 50 : sidebarOpen ? 600 : 125,
                 right: 50,
               },
             },
@@ -148,16 +152,16 @@ export const AtlasMap = () => {
             setLoaded(true);
           }}
         >
-          {/* <Media lessThan="lg">
+          {mobile && (
             <Controls className="absolute left-4 right-auto top-4">
               <DataControl onClick={() => setAtlasMobileSidebar(!atlasMobileSidebar)} />
             </Controls>
-          </Media> */}
+          )}
+
           <Controls>
-            <Media greaterThanOrEqual="lg">
-              <MenuControl />
-            </Media>
-            <ZoomControl />
+            {!mobile && <MenuControl />}
+            {!mobile && <ZoomControl />}
+
             <SettingsControl id="tour-atlas-basemap">
               <MapSettings />
             </SettingsControl>

@@ -37,7 +37,7 @@ export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
       {atlasMobileState === "map" && (
         <Suspense fallback={null}>
           <div className="flex grow flex-col">
-            <AtlasMap />
+            <AtlasMap mobile />
 
             <Sheet open={atlasMobileSidebar} onOpenChange={setAtlasMobileSidebar}>
               <SheetContent side="bottom" className="flex max-h-[80svh] min-h-0 grow flex-col">

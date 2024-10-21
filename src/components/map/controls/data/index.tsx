@@ -6,7 +6,7 @@ import { TooltipPortal } from "@radix-ui/react-tooltip";
 
 import { cn } from "@/lib/utils";
 
-import { CollapseSidebarIcon } from "@/components/ui/icons/collapse-sidebar";
+import { ExpandIcon } from "@/components/ui/icons/expand";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 import { CONTROL_BUTTON_STYLES } from "../constants";
@@ -34,12 +34,13 @@ export const DataControl: FC<PropsWithChildren<DataControlProps>> = ({
               [CONTROL_BUTTON_STYLES.default]: true,
               [CONTROL_BUTTON_STYLES.hover]: true,
               [CONTROL_BUTTON_STYLES.active]: true,
+              "bg-pistachio-200 text-navy-700 hover:bg-pistachio-300": true,
             })}
             aria-label="Map settings"
             type="button"
             onClick={onClick}
           >
-            <CollapseSidebarIcon className="relative h-full w-full" />
+            <ExpandIcon className="relative h-full w-full rotate-90" />
           </button>
         </TooltipTrigger>
         {/* </PopoverTrigger> */}
