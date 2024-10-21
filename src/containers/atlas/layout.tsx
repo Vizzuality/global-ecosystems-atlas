@@ -16,35 +16,12 @@ import { Header } from "@/containers/header";
 import { Media } from "@/containers/media";
 import { Newsletter } from "@/containers/newsletter";
 
-import { Button } from "@/components/ui/button";
-
 export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
-  const [mobileState, setMobileState] = useAtom(mobileStateAtom);
+  const [mobileState] = useAtom(mobileStateAtom);
 
   return (
     <main className="flex min-h-dvh flex-col overflow-hidden">
       <Header />
-
-      {mobileState !== "hero" && (
-        <div className="container pb-4">
-          <div className="flex justify-center gap-2">
-            <Button
-              size="sm"
-              variant={mobileState === "map" ? "default" : "secondary"}
-              onClick={() => setMobileState("map")}
-            >
-              <span>Map</span>
-            </Button>
-            <Button
-              size="sm"
-              variant={mobileState === "sidebar" ? "default" : "secondary"}
-              onClick={() => setMobileState("sidebar")}
-            >
-              <span>Data</span>
-            </Button>
-          </div>
-        </div>
-      )}
 
       {mobileState === "hero" && (
         <>
