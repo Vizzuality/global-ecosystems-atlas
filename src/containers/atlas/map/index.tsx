@@ -29,6 +29,7 @@ import MapLegend from "@/containers/atlas/map/legend";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
+import { Media } from "@/containers/media";
 
 import Controls from "@/components/map/controls";
 import FeedbackControl from "@/components/map/controls/feedback";
@@ -106,7 +107,7 @@ export const AtlasMap = () => {
   }, [location, prevLocation, reset]);
 
   return (
-    <div className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50">
+    <div className="relative h-full overflow-hidden bg-lightblue-50 lg:left-[calc(theme(space.10)_+_theme(space.8))] lg:w-[calc(100%_-_theme(space.10)_-_theme(space.8))]">
       <div className="h-full w-full grow bg-lightblue-50">
         <Map
           id="atlasMap"
@@ -137,7 +138,9 @@ export const AtlasMap = () => {
           }}
         >
           <Controls>
-            <MenuControl />
+            <Media greaterThanOrEqual="lg">
+              <MenuControl />
+            </Media>
             <ZoomControl />
             <SettingsControl id="tour-atlas-basemap">
               <MapSettings />

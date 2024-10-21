@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/section";
 
 export const AtlasHero = () => {
   return (
-    <Section hero className="min-h-0 bg-navy-700 text-white">
+    <Section hero className="min-h-0">
       <div className="container">
         <Grid className="lg:gap-y-9">
           <div className="col-span-12 lg:col-span-10 lg:col-start-2 2xl:col-span-8 2xl:col-start-3">
@@ -25,7 +25,7 @@ export const AtlasHero = () => {
             </div>
             <div className="col-span-12 flex">
               <Link href="/" className="block w-full sm:w-auto">
-                <Button size="lg" variant="secondary" className="w-full">
+                <Button size="lg" variant="default" className="w-full">
                   Go to the Homepage
                 </Button>
               </Link>

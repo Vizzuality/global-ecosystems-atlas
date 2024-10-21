@@ -3,7 +3,7 @@ import { PropsWithChildren, Suspense } from "react";
 
 import { LayoutGroup } from "framer-motion";
 
-import { AtlasHero } from "@/containers/atlas/hero";
+// import { AtlasHero } from "@/containers/atlas/hero";
 import { AtlasMap } from "@/containers/atlas/map";
 import { AtlasNav } from "@/containers/atlas/nav";
 import { AtlasSidebar } from "@/containers/atlas/sidebar";
@@ -19,7 +19,13 @@ export const AtlasLayout = ({ children }: PropsWithChildren) => {
       <Media lessThan="lg">
         <main className="flex min-h-dvh flex-col">
           <Header />
-          <AtlasHero />
+          <Suspense fallback={null}>
+            <div className="h-dvh">
+              <AtlasMap />
+            </div>
+          </Suspense>
+
+          {/* <AtlasHero /> */}
           <Newsletter />
           <Footer />
         </main>
