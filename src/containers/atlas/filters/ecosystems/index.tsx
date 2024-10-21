@@ -22,7 +22,7 @@ export const EcosystemsTrigger = () => {
   const ECOSYSTEMSFiltered = useEcosystems({ location, realms, biomes });
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 text-left leading-snug">
       Ecosystem functional groups
       <Badge variant="secondary" className="rounded-2xl">
         {ecosystems?.length || ECOSYSTEMSFiltered?.length}/{ECOSYSTEMSFiltered?.length}

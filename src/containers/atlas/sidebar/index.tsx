@@ -24,6 +24,7 @@ const ITEMS = [
   { label: "Search", value: "/atlas" },
   { label: "Draw a polygon", value: "/atlas/draw" },
   { label: "Upload area", value: "/atlas/upload" },
+  { label: "Filters", value: "/atlas/filters" },
   { label: "Ecosysytem functional groups", value: "/atlas/ecosystems" },
   { label: "Layers", value: "/atlas/layers" },
 ];
@@ -138,11 +139,11 @@ export const AtlasSidebarTitle = ({ children }: PropsWithChildren) => {
             defaultValue={defaultValue?.value ?? "/atlas"}
             onChange={handleChange}
           >
-            <option value="/atlas">Search</option>
-            <option value="/atlas/draw">Draw a polygon</option>
-            <option value="/atlas/upload">Upload area</option>
-            <option value="/atlas/ecosystems">Ecosysytem functional groups</option>
-            <option value="/atlas/layers">Layers</option>
+            {ITEMS.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            ))}
           </select>
 
           <h1 className="flex items-center justify-between gap-4 rounded-lg bg-lightblue-100 p-2.5 text-sm font-bold uppercase leading-normal">

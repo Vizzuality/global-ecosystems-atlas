@@ -25,7 +25,7 @@ export const RealmsTrigger = () => {
   const REALMSFiltered = useRealms({ location });
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 text-left leading-snug">
       Realms
       <Badge variant="secondary" className="rounded-2xl">
         {realms?.length || REALMSFiltered?.length}/{REALMSFiltered?.length}
