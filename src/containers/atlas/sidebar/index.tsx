@@ -4,11 +4,13 @@ import { PropsWithChildren } from "react";
 
 import { motion } from "framer-motion";
 import { useAtomValue, useSetAtom } from "jotai";
+import { FiX } from "react-icons/fi";
 
-import { navOpenAtom, sidebarOpenAtom } from "@/app/(atlas)/atlas/store";
+import { atlasMobileSidebarAtom, navOpenAtom, sidebarOpenAtom } from "@/app/(atlas)/atlas/store";
+
+import { Media } from "@/containers/media";
 
 import { CollapseSidebarIcon } from "@/components/ui/icons/collapse-sidebar";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const AtlasSidebar = ({ children }: PropsWithChildren) => {
   const navOpen = useAtomValue(navOpenAtom);
@@ -22,7 +24,7 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
         duration: 0.4,
         ease: "easeInOut",
       }}
-      className="pointer-events-none relative z-0 h-full grow lg:w-[450px]"
+      className="pointer-events-none relative z-0 flex h-full w-full flex-col overflow-hidden lg:w-[450px]"
     >
       <motion.div
         initial={"open"}
@@ -35,7 +37,7 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
             x: "-100%",
           },
         }}
-        className="pointer-events-auto flex h-full w-full flex-col border-r border-gray-200 bg-white"
+        className="pointer-events-auto flex h-full w-full flex-col overflow-hidden border-r border-gray-200 bg-white"
         transition={{
           duration: 0.4,
           ease: "easeInOut",
@@ -50,26 +52,38 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
 export const AtlasSidebarSection = ({ children }: PropsWithChildren) => {
   return (
     <section className="flex grow flex-col overflow-hidden">
-      <ScrollArea className="flex grow flex-col">
+      <div className="flex grow flex-col overflow-y-auto overflow-x-hidden">
         <div className="pb-6">{children}</div>
-      </ScrollArea>
+      </div>
     </section>
   );
 };
 
 export const AtlasSidebarHeader = ({ children }: PropsWithChildren) => {
   const setSidebarOpen = useSetAtom(sidebarOpenAtom);
+  const setAtlasMobileSidebarOpen = useSetAtom(atlasMobileSidebarAtom);
 
   return (
     <header className="sticky top-0 z-10 flex justify-between gap-6 bg-gradient-to-b from-white to-white/0 p-6">
       {children}
 
-      <button
-        className="pointer-events-auto z-10 flex h-6 w-6 items-center justify-center text-navy-500 hover:text-navy-700"
-        onClick={() => setSidebarOpen(false)}
-      >
-        <CollapseSidebarIcon className="h-6 w-6" />
-      </button>
+      <Media lessThan="lg">
+        <button
+          className="pointer-events-auto z-10 flex h-6 w-6 items-center justify-center text-navy-500 hover:text-navy-700"
+          onClick={() => setAtlasMobileSidebarOpen(false)}
+        >
+          <FiX className="h-6 w-6" />
+        </button>
+      </Media>
+
+      <Media greaterThanOrEqual="lg">
+        <button
+          className="pointer-events-auto z-10 flex h-6 w-6 items-center justify-center text-navy-500 hover:text-navy-700"
+          onClick={() => setSidebarOpen(false)}
+        >
+          <CollapseSidebarIcon className="h-6 w-6" />
+        </button>
+      </Media>
     </header>
   );
 };
