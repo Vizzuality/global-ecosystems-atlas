@@ -157,7 +157,9 @@ export const AtlasMap = () => {
             <Media greaterThanOrEqual="lg">
               <MenuControl />
             </Media>
-            <ZoomControl />
+            <Media greaterThanOrEqual="lg">
+              <ZoomControl />
+            </Media>
             <SettingsControl id="tour-atlas-basemap">
               <MapSettings />
             </SettingsControl>
