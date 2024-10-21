@@ -11,6 +11,8 @@ import { useDebounce, usePreviousDifferent } from "rooks";
 
 import { env } from "@/env.mjs";
 
+import { cn } from "@/lib/utils";
+
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import {
@@ -29,6 +31,7 @@ import MapLegend from "@/containers/atlas/map/legend";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
+import { Media } from "@/containers/media";
 
 import Controls from "@/components/map/controls";
 import FeedbackControl from "@/components/map/controls/feedback";
@@ -106,8 +109,14 @@ export const AtlasMap = () => {
   }, [location, prevLocation, reset]);
 
   return (
-    <div className="relative left-[calc(theme(space.10)_+_theme(space.8))] h-full w-[calc(100%_-_theme(space.10)_-_theme(space.8))] overflow-hidden bg-lightblue-50">
-      <div className="h-full w-full grow bg-lightblue-50">
+    <div
+      className={cn({
+        "relative flex h-full w-full grow flex-col overflow-hidden bg-lightblue-50": true,
+        "lg:left-[calc(theme(space.10)_+_theme(space.8))] lg:w-[calc(100%_-_theme(space.10)_-_theme(space.8))] lg:grow-0":
+          true,
+      })}
+    >
+      <div className="flex h-full w-full grow flex-col bg-lightblue-50">
         <Map
           id="atlasMap"
           mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
@@ -122,7 +131,7 @@ export const AtlasMap = () => {
               },
             },
           }}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", flexGrow: 1 }}
           projection={{
             name: "mercator",
           }}
@@ -137,7 +146,9 @@ export const AtlasMap = () => {
           }}
         >
           <Controls>
-            <MenuControl />
+            <Media greaterThanOrEqual="lg">
+              <MenuControl />
+            </Media>
             <ZoomControl />
             <SettingsControl id="tour-atlas-basemap">
               <MapSettings />

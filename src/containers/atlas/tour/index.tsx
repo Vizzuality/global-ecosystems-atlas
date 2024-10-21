@@ -125,12 +125,18 @@ export const AtlasTour = () => {
 
     if (cookies.tour) return false;
 
-    return tour || !cookies.tour;
+    return tour ?? !cookies.tour;
   }, [tour, cookies]);
 
   return (
     <>
-      <Dialog open={TOUR} onOpenChange={setTour}>
+      <Dialog
+        open={TOUR}
+        onOpenChange={() => {
+          setTour(false);
+          setCookies("tour", true);
+        }}
+      >
         <DialogContent className="p-10 2xl:p-14">
           <div className="-mx-10 2xl:-mx-14">
             <Image

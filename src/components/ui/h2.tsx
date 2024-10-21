@@ -16,7 +16,7 @@ export const H2 = ({
   return (
     <h2
       className={cn({
-        "text-4xl font-semibold sm:text-5xl": true,
+        "text-4xl font-semibold leading-snug sm:text-5xl": true,
         "text-3xl sm:text-4xl": size === "sm",
         [`${className}`]: className,
       })}

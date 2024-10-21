@@ -25,7 +25,7 @@ export const SAMInnovativeMozambique = () => {
         —the first global framework for classifying ecosystems across all realms: terrestrial,
         freshwater and marine.
       </p>
-      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+      <div className="-mx-4 mt-5 block sm:mx-auto xl:hidden">
         <Image src="/sam/3.webp" alt="Mozambique" width={666} height={666} />
       </div>
     </section>

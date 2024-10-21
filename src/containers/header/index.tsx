@@ -24,7 +24,6 @@ const DARK_PATHNAMES = [
   "/disclaimer",
   "/stories",
   "/resources",
-  "/atlas",
   "/data",
   "/data/methodology",
   "/data/how-to-use-the-data",
@@ -51,29 +50,31 @@ export const Header = () => {
   };
 
   return (
-    <header className="relative z-20 py-8">
+    <header className="relative z-20 py-4 lg:py-8">
       <div className="container">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 divide-x divide-neutral-200 md:gap-6">
             <Link href="/">
               <h1 className="flex items-center space-x-3 md:space-x-6">
-                <Media greaterThanOrEqual="md">
-                  <Logo
-                    className={cn({
-                      "fill-navy-700": !isDark,
-                      "fill-white": isDark,
-                    })}
-                  />
-                </Media>
+                <div>
+                  <Media greaterThanOrEqual="md">
+                    <Logo
+                      className={cn({
+                        "fill-navy-700": !isDark,
+                        "fill-white": isDark,
+                      })}
+                    />
+                  </Media>
 
-                <Media lessThan="md">
-                  <LogoNoText
-                    className={cn({
-                      "fill-navy-700": !isDark,
-                      "fill-white": isDark,
-                    })}
-                  />
-                </Media>
+                  <Media lessThan="md">
+                    <LogoNoText
+                      className={cn({
+                        "fill-navy-700": !isDark,
+                        "fill-white": isDark,
+                      })}
+                    />
+                  </Media>
+                </div>
                 <span
                   className={cn({
                     "rounded border border-navy-700 px-2 py-1 text-2xs font-bold uppercase italic":

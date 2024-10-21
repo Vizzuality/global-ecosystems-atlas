@@ -74,7 +74,7 @@ export const Nav = () => {
       <RemoveScroll enabled={open} forwardProps>
         <ScrollArea className="h-full">
           <div className="container">
-            <div className="flex items-center justify-end py-8">
+            <div className="flex items-center justify-end py-4 lg:py-8">
               <button
                 type="button"
                 aria-label="menu"
@@ -86,7 +86,7 @@ export const Nav = () => {
             </div>
           </div>
 
-          <div className="container p-4 2xl:p-10">
+          <div className="container pb-4 2xl:p-10">
             <nav
               className={cn({
                 "transition-transform": true,

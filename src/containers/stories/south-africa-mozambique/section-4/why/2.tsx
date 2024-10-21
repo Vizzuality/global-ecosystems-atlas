@@ -17,7 +17,7 @@ export const SAMWhy2 = () => {
           our planet&apos;s ecosystems.
         </p>
       </div>
-      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+      <div className="-mx-4 mt-5 block sm:mx-auto xl:hidden">
         <Image src="/sam/5.webp" alt="Country contribution status" width={1266} height={1146} />
       </div>
     </section>

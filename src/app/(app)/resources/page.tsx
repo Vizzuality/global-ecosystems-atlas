@@ -37,7 +37,7 @@ export default async function ResourcesPage() {
             <div className="col-span-12 lg:col-span-10 lg:col-start-2">
               <div className="space-y-6 lg:space-y-9">
                 <div className="space-y-16">
-                  <div className="space-y-4">
+                  <div id="global-ecosystem-atlas-teaser" className="space-y-4">
                     <H3>Global ecosystem atlas teaser</H3>
                     <div className="relative aspect-video">
                       <video controls className="h-full w-full" poster="/poster_teaser.webp">
@@ -49,7 +49,7 @@ export default async function ResourcesPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div id="global-ecosystem-atlas-screencast" className="space-y-4">
                     <H3>Global ecosystem atlas screencast</H3>
                     <div className="relative aspect-video">
                       <video controls className="h-full w-full" poster="/poster_screencast.webp">
