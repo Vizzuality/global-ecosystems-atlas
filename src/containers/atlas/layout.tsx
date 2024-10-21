@@ -4,37 +4,51 @@ import { PropsWithChildren, Suspense } from "react";
 import { LayoutGroup } from "framer-motion";
 import { useAtom } from "jotai";
 
-import { atlasMobileSidebarAtom } from "@/app/(atlas)/atlas/store";
+import { atlasMobileSidebarAtom, atlasMobileStateAtom } from "@/app/(atlas)/atlas/store";
 
+import { AtlasHero } from "@/containers/atlas/hero";
 import { AtlasMap } from "@/containers/atlas/map";
 import { AtlasNav } from "@/containers/atlas/nav";
 import { AtlasSidebar } from "@/containers/atlas/sidebar";
 import { AtlasTour } from "@/containers/atlas/tour";
+import { Footer } from "@/containers/footer";
 import { Header } from "@/containers/header";
 import { Media } from "@/containers/media";
+import { Newsletter } from "@/containers/newsletter";
 
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
   const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
+  const [atlasMobileState] = useAtom(atlasMobileStateAtom);
 
   return (
     <main className="flex min-h-dvh flex-col overflow-hidden">
       <Header />
 
-      <Suspense fallback={null}>
-        <div className="flex grow flex-col">
-          <AtlasMap />
+      {atlasMobileState === "hero" && (
+        <>
+          <AtlasHero />
+          <Newsletter />
+          <Footer />
+        </>
+      )}
 
-          <Sheet open={atlasMobileSidebar} onOpenChange={setAtlasMobileSidebar}>
-            <SheetContent side="bottom" className="flex max-h-[80svh] min-h-0 grow flex-col">
-              <div className="flex h-full w-full grow flex-col overflow-hidden">
-                <AtlasSidebar>{children}</AtlasSidebar>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </Suspense>
+      {atlasMobileState === "map" && (
+        <Suspense fallback={null}>
+          <div className="flex grow flex-col">
+            <AtlasMap />
+
+            <Sheet open={atlasMobileSidebar} onOpenChange={setAtlasMobileSidebar}>
+              <SheetContent side="bottom" className="flex max-h-[80svh] min-h-0 grow flex-col">
+                <div className="flex h-full w-full grow flex-col overflow-hidden">
+                  <AtlasSidebar>{children}</AtlasSidebar>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </Suspense>
+      )}
     </main>
   );
 };

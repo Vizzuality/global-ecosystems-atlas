@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import {
-  atlasMobileSidebarAtom,
+  // atlasMobileSidebarAtom,
   popupAtom,
   sidebarOpenAtom,
   tmpBboxAtom,
@@ -35,7 +35,7 @@ import { MapShare } from "@/containers/atlas/map/share";
 import { Media } from "@/containers/media";
 
 import Controls from "@/components/map/controls";
-import DataControl from "@/components/map/controls/data";
+// import DataControl from "@/components/map/controls/data";
 import FeedbackControl from "@/components/map/controls/feedback";
 import { MenuControl } from "@/components/map/controls/menu";
 import SettingsControl from "@/components/map/controls/settings";
@@ -58,7 +58,7 @@ export const AtlasMap = () => {
   const [tmpBbox, setTmpBbox] = useAtom(tmpBboxAtom);
   const setPopup = useSetAtom(popupAtom);
   const sidebarOpen = useAtomValue(sidebarOpenAtom);
-  const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
+  // const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
 
   const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
 
@@ -148,11 +148,11 @@ export const AtlasMap = () => {
             setLoaded(true);
           }}
         >
-          <Media lessThan="lg">
+          {/* <Media lessThan="lg">
             <Controls className="absolute left-4 right-auto top-4">
               <DataControl onClick={() => setAtlasMobileSidebar(!atlasMobileSidebar)} />
             </Controls>
-          </Media>
+          </Media> */}
           <Controls>
             <Media greaterThanOrEqual="lg">
               <MenuControl />

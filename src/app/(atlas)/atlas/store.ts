@@ -126,7 +126,7 @@ export const popupAtom = atom<LngLat | null>(null);
 export const tourAtom = atom<boolean>();
 
 // mobile
+export const atlasMobileStateAtom = atom<"hero" | "map">("hero");
 export const atlasMobileSidebarAtom = atom<boolean>(false);
 
 // export const atlasPopupAtom = atom<boolean>(false);
-// export const mobileStateAtom = atom<"hero" | "map" | "sidebar">("map");
