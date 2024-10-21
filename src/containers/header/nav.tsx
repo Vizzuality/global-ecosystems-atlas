@@ -86,7 +86,7 @@ export const Nav = () => {
             </div>
           </div>
 
-          <div className="container p-4 2xl:p-10">
+          <div className="container pb-4 2xl:p-10">
             <nav
               className={cn({
                 "transition-transform": true,

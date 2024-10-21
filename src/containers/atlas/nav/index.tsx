@@ -46,9 +46,9 @@ export const AtlasNav = () => {
         duration: 0.4,
         ease: "easeInOut",
       }}
-      className="pointer-events-auto relative z-10 h-full overflow-hidden"
+      className="pointer-events-auto relative z-10 h-full shrink-0 overflow-hidden"
     >
-      <div className="relative z-20 flex h-full flex-col justify-between bg-navy-10 px-4 py-6">
+      <div className="relative z-20 flex h-full w-full flex-col justify-between bg-navy-10 px-4 py-6">
         <motion.div layout="position" className="flex flex-col divide-y divide-navy-100">
           <div className="flex flex-col items-start pb-3">
             <Link href="/" className="flex flex-col items-center space-y-1">
