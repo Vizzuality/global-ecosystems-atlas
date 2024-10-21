@@ -11,6 +11,8 @@ import { useDebounce, usePreviousDifferent } from "rooks";
 
 import { env } from "@/env.mjs";
 
+import { cn } from "@/lib/utils";
+
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import {
@@ -107,8 +109,14 @@ export const AtlasMap = () => {
   }, [location, prevLocation, reset]);
 
   return (
-    <div className="relative h-full overflow-hidden bg-lightblue-50 lg:left-[calc(theme(space.10)_+_theme(space.8))] lg:w-[calc(100%_-_theme(space.10)_-_theme(space.8))]">
-      <div className="h-full w-full grow bg-lightblue-50">
+    <div
+      className={cn({
+        "relative flex h-full w-full grow flex-col overflow-hidden bg-lightblue-50": true,
+        "lg:left-[calc(theme(space.10)_+_theme(space.8))] lg:w-[calc(100%_-_theme(space.10)_-_theme(space.8))] lg:grow-0":
+          true,
+      })}
+    >
+      <div className="flex h-full w-full grow flex-col bg-lightblue-50">
         <Map
           id="atlasMap"
           mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
@@ -123,7 +131,7 @@ export const AtlasMap = () => {
               },
             },
           }}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", flexGrow: 1 }}
           projection={{
             name: "mercator",
           }}
