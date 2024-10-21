@@ -22,8 +22,8 @@ export const AtlasHero = () => {
           <div className="col-span-12 space-y-10 lg:col-span-8 lg:col-start-3">
             <div className="space-y-2">
               <p className="text-xl lg:text-2xl">
-                For the best experience, we recommend accessing this initial release of the Atlas on
-                a desktop.
+                This initial release of the Atlas is best viewed on desktop for an optimal
+                experience due to its complexity and size.
               </p>
               <p className="text-xl lg:text-2xl">
                 While we are actively working to enhance mobile support, you can get an exclusive
@@ -38,19 +38,20 @@ export const AtlasHero = () => {
               </p>
             </div>
             <div className="col-span-12 space-y-2">
-              <Link href="/" className="block w-full sm:w-auto">
-                <Button size="lg" variant="default" className="w-full">
-                  See Homepage
-                </Button>
-              </Link>
               <Button
                 size="lg"
-                variant="outline"
+                variant="default"
                 className="w-full"
                 onClick={() => setMobileState("map")}
               >
                 See Atlas
               </Button>
+
+              <Link href="/" className="block w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full">
+                  See Homepage
+                </Button>
+              </Link>
             </div>
           </div>
         </Grid>

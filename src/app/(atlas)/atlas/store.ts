@@ -126,4 +126,4 @@ export const popupAtom = atom<LngLat | null>(null);
 export const tourAtom = atom<boolean>();
 
 // mobile
-export const mobileStateAtom = atom<"hero" | "map" | "sidebar">("hero");
+export const mobileStateAtom = atom<"hero" | "map" | "sidebar">("map");
