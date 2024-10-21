@@ -3,25 +3,25 @@
 import { FC, HTMLAttributes, PropsWithChildren } from "react";
 
 import { TooltipPortal } from "@radix-ui/react-tooltip";
+import { FiLayers } from "react-icons/fi";
 
 import { cn } from "@/lib/utils";
 
-import { ExpandIcon } from "@/components/ui/icons/expand";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 import { CONTROL_BUTTON_STYLES } from "../constants";
 
-interface DataControlProps {
+interface LegendControlProps {
   id?: string;
   className?: HTMLAttributes<HTMLDivElement>["className"];
   onClick?: () => void;
 }
 
-export const DataControl: FC<PropsWithChildren<DataControlProps>> = ({
+export const LegendControl: FC<PropsWithChildren<LegendControlProps>> = ({
   id,
   className,
   onClick,
-}: PropsWithChildren<DataControlProps>) => {
+}: PropsWithChildren<LegendControlProps>) => {
   return (
     <div className={cn("flex flex-col space-y-0.5", className)}>
       {/* <Popover> */}
@@ -34,31 +34,24 @@ export const DataControl: FC<PropsWithChildren<DataControlProps>> = ({
               [CONTROL_BUTTON_STYLES.default]: true,
               [CONTROL_BUTTON_STYLES.hover]: true,
               [CONTROL_BUTTON_STYLES.active]: true,
-              "bg-pistachio-200 text-navy-700 hover:bg-pistachio-300": true,
             })}
             aria-label="Map settings"
             type="button"
             onClick={onClick}
           >
-            <ExpandIcon className="relative h-full w-full rotate-90" />
+            <FiLayers className="h-6 w-6" />
           </button>
         </TooltipTrigger>
         {/* </PopoverTrigger> */}
 
         <TooltipPortal>
           <TooltipContent side="left" align="center">
-            <div className="text-xxs">Data</div>
+            <div className="text-xxs">Legend</div>
           </TooltipContent>
         </TooltipPortal>
-
-        {/* <PopoverContent side="left" align="start">
-          {children}
-          <PopoverArrow className="fill-white" width={10} height={5} />
-        </PopoverContent> */}
       </Tooltip>
-      {/* </Popover> */}
     </div>
   );
 };
 
-export default DataControl;
+export default LegendControl;

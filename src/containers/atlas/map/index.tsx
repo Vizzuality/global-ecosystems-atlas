@@ -7,6 +7,7 @@ import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { MapMouseEvent } from "mapbox-gl";
+import { FiChevronUp } from "react-icons/fi";
 import { useDebounce, usePreviousDifferent } from "rooks";
 
 import { env } from "@/env.mjs";
@@ -16,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { getApiLocationsLocationGetQueryOptions } from "@/types/generated/locations";
 
 import {
+  atlasMobileLegendAtom,
   atlasMobileSidebarAtom,
   popupAtom,
   sidebarOpenAtom,
@@ -28,18 +30,21 @@ import {
 
 import { BASEMAPS } from "@/containers/atlas/map/basemaps";
 import { LayerManager } from "@/containers/atlas/map/layer-manager";
-import MapLegend from "@/containers/atlas/map/legend";
+import { MapLegendDesktop, MapLegendMobile } from "@/containers/atlas/map/legend";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
+import { Media } from "@/containers/media";
 
 import Controls from "@/components/map/controls";
-import DataControl from "@/components/map/controls/data";
 import FeedbackControl from "@/components/map/controls/feedback";
+import { LegendControl } from "@/components/map/controls/legend";
 import { MenuControl } from "@/components/map/controls/menu";
 import SettingsControl from "@/components/map/controls/settings";
 import ShareControl from "@/components/map/controls/share";
 import ZoomControl from "@/components/map/controls/zoom";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 
 export interface AtlasMapProps {
   mobile?: boolean;
@@ -62,6 +67,7 @@ export const AtlasMap = ({ mobile }: AtlasMapProps) => {
   const setPopup = useSetAtom(popupAtom);
   const sidebarOpen = useAtomValue(sidebarOpenAtom);
   const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
+  const [atlasMobileLegend, setAtlasMobileLegend] = useAtom(atlasMobileLegendAtom);
 
   const mapStyle = BASEMAPS.find((b) => b.value === basemap)?.mapStyle;
 
@@ -152,12 +158,6 @@ export const AtlasMap = ({ mobile }: AtlasMapProps) => {
             setLoaded(true);
           }}
         >
-          {mobile && (
-            <Controls className="absolute left-4 right-auto top-4">
-              <DataControl onClick={() => setAtlasMobileSidebar(!atlasMobileSidebar)} />
-            </Controls>
-          )}
-
           <Controls>
             {!mobile && <MenuControl />}
             {!mobile && <ZoomControl />}
@@ -169,6 +169,8 @@ export const AtlasMap = ({ mobile }: AtlasMapProps) => {
               <MapShare />
             </ShareControl>
             <FeedbackControl id="tour-atlas-feedback" />
+
+            {mobile && <LegendControl onClick={() => setAtlasMobileLegend(true)} />}
           </Controls>
 
           {loaded && <LayerManager />}
@@ -176,7 +178,32 @@ export const AtlasMap = ({ mobile }: AtlasMapProps) => {
         </Map>
       </div>
 
-      <MapLegend />
+      <Media lessThan="lg">
+        <>
+          <div className="absolute bottom-10 right-4 z-10 w-full max-w-[calc(100%_-_theme(space.8))] shadow-lg">
+            <Button
+              variant="default"
+              className="flex w-full items-center justify-between"
+              onClick={() => setAtlasMobileSidebar(!atlasMobileSidebar)}
+            >
+              <span className="uppercase">Tools</span>
+              <FiChevronUp className="h-5 w-5" />
+            </Button>
+          </div>
+
+          <Sheet open={atlasMobileLegend} onOpenChange={setAtlasMobileLegend}>
+            <SheetContent side="bottom" className="flex max-h-[80svh] min-h-0 grow flex-col">
+              <SheetTitle hidden>Legend</SheetTitle>
+              <SheetDescription hidden>Explore the map legend</SheetDescription>
+              <MapLegendMobile />
+            </SheetContent>
+          </Sheet>
+        </>
+      </Media>
+
+      <Media greaterThanOrEqual="lg">
+        <MapLegendDesktop />
+      </Media>
     </div>
   );
 };
