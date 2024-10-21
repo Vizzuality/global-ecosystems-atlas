@@ -22,7 +22,7 @@ export const BiomesTrigger = () => {
   const BIOMESFiltered = useBiomes({ location, realms });
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 text-left leading-snug">
       Biomes{" "}
       <Badge variant="secondary" className="rounded-2xl">
         {biomes?.length || BIOMESFiltered?.length}/{BIOMESFiltered?.length}

@@ -6,7 +6,7 @@ import { useSyncDepth } from "@/app/(atlas)/atlas/store";
 import { Slider } from "@/components/ui/slider";
 
 export const DepthTrigger = () => {
-  return <div className="flex items-center gap-2">Elevation</div>;
+  return <div className="flex items-center gap-2 text-left leading-snug">Elevation</div>;
 };
 
 export const DepthContent = () => {
