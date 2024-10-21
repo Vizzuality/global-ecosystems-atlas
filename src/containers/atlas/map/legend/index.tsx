@@ -9,8 +9,35 @@ import { MapLegendItem } from "@/containers/atlas/map/legend/item";
 import Legend from "@/components/map/legend";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
-const MapLegend = ({ className = "" }) => {
+export const MapLegendDesktop = () => {
   const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="absolute bottom-10 right-4 z-10 w-full max-w-[calc(100%_-_theme(space.8))] shadow-lg lg:right-6 lg:max-w-sm">
+      <Collapsible className="rounded-lg bg-white" onOpenChange={setExpanded}>
+        <CollapsibleTrigger className="flex w-full items-center justify-between p-4">
+          <span className="text-xs font-bold uppercase">Legend</span>
+          <span className="text-xs font-medium">{expanded ? "Collapse" : "Expand"}</span>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <MapLegend />
+        </CollapsibleContent>
+      </Collapsible>
+    </div>
+  );
+};
+
+export const MapLegendMobile = () => {
+  return (
+    <div className="flex grow flex-col overflow-hidden">
+      <span className="p-4 text-sm font-bold uppercase leading-none">Legend</span>
+
+      <MapLegend />
+    </div>
+  );
+};
+
+const MapLegend = ({ className = "" }) => {
   const [layers, setLayers] = useSyncLayers();
   const [layersSettings, setLayersSettings] = useSyncLayersSettings();
 
@@ -82,29 +109,19 @@ const MapLegend = ({ className = "" }) => {
   }, [LAYERS, layersSettings, handleChangeOpacity, handleChangeVisibility]);
 
   return (
-    <div className="absolute bottom-10 right-4 z-10 w-full max-w-[calc(100%_-_theme(space.8))] shadow-lg lg:right-6 lg:max-w-sm">
-      <Collapsible className="rounded-lg bg-white" onOpenChange={setExpanded}>
-        <CollapsibleTrigger className="flex w-full items-center justify-between p-4">
-          <span className="text-xs font-bold uppercase">Layers</span>
-          <span className="text-xs font-medium">{expanded ? "Collapse all" : "Expand all"}</span>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <Legend
-            className={cn(
-              "max-h-[calc(100vh_-_theme(space.48)_-_theme(space.6)_-_theme(space.60))]",
-              className,
-            )}
-            sortable={{
-              enabled: true,
-              handle: true,
-            }}
-            onChangeOrder={handleChangeOrder}
-          >
-            {ITEMS}
-          </Legend>
-        </CollapsibleContent>
-      </Collapsible>
-    </div>
+    <Legend
+      className={cn(
+        "lg:max-h-[calc(100vh_-_theme(space.48)_-_theme(space.6)_-_theme(space.60))]",
+        className,
+      )}
+      sortable={{
+        enabled: true,
+        handle: true,
+      }}
+      onChangeOrder={handleChangeOrder}
+    >
+      {ITEMS}
+    </Legend>
   );
 };
 

@@ -16,7 +16,7 @@ import { Header } from "@/containers/header";
 import { Media } from "@/containers/media";
 import { Newsletter } from "@/containers/newsletter";
 
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 
 export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
   const [atlasMobileSidebar, setAtlasMobileSidebar] = useAtom(atlasMobileSidebarAtom);
@@ -41,6 +41,8 @@ export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
 
             <Sheet open={atlasMobileSidebar} onOpenChange={setAtlasMobileSidebar}>
               <SheetContent side="bottom" className="flex max-h-[80svh] min-h-0 grow flex-col">
+                <SheetTitle hidden>Tools</SheetTitle>
+                <SheetDescription hidden>Explore the map tools</SheetDescription>
                 <div className="flex h-full w-full grow flex-col overflow-hidden">
                   <AtlasSidebar>{children}</AtlasSidebar>
                 </div>
