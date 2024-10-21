@@ -131,7 +131,7 @@ export const AtlasSidebarTitle = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <div className="relative w-full">
+      <div className="relative w-full" tabIndex={1}>
         <Media lessThan="lg">
           <select
             className="absolute left-0 top-0 h-full w-full opacity-0"
