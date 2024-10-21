@@ -27,7 +27,14 @@ export const AtlasHero = () => {
               </p>
               <p className="text-xl lg:text-2xl">
                 While we are actively working to enhance mobile support, you can get an exclusive
-                preview by watching this video demonstration.
+                preview by watching{" "}
+                <Link
+                  href="/resources/#global-ecosystem-atlas-screencast"
+                  className="font-semibold underline"
+                >
+                  this video demonstration
+                </Link>
+                .
               </p>
             </div>
             <div className="col-span-12 space-y-2">
