@@ -32,7 +32,6 @@ import MapLegend from "@/containers/atlas/map/legend";
 import { AtlasPopup } from "@/containers/atlas/map/popup";
 import { MapSettings } from "@/containers/atlas/map/settings";
 import { MapShare } from "@/containers/atlas/map/share";
-import { Media } from "@/containers/media";
 
 import Controls from "@/components/map/controls";
 import DataControl from "@/components/map/controls/data";
@@ -153,35 +152,24 @@ export const AtlasMap = ({ mobile }: AtlasMapProps) => {
             setLoaded(true);
           }}
         >
-          <Media lessThan="lg">
+          {mobile && (
             <Controls className="absolute left-4 right-auto top-4">
               <DataControl onClick={() => setAtlasMobileSidebar(!atlasMobileSidebar)} />
             </Controls>
-          </Media>
-          <Media greaterThanOrEqual="lg">
-            <Controls>
-              <MenuControl />
-              <ZoomControl />
-              <SettingsControl id="tour-atlas-basemap">
-                <MapSettings />
-              </SettingsControl>
-              <ShareControl id="tour-atlas-share">
-                <MapShare />
-              </ShareControl>
-              <FeedbackControl id="tour-atlas-feedback" />
-            </Controls>
-          </Media>
-          <Media lessThan="lg">
-            <Controls>
-              <SettingsControl id="tour-atlas-basemap">
-                <MapSettings />
-              </SettingsControl>
-              <ShareControl id="tour-atlas-share">
-                <MapShare />
-              </ShareControl>
-              <FeedbackControl id="tour-atlas-feedback" />
-            </Controls>
-          </Media>
+          )}
+
+          <Controls>
+            {!mobile && <MenuControl />}
+            {!mobile && <ZoomControl />}
+
+            <SettingsControl id="tour-atlas-basemap">
+              <MapSettings />
+            </SettingsControl>
+            <ShareControl id="tour-atlas-share">
+              <MapShare />
+            </ShareControl>
+            <FeedbackControl id="tour-atlas-feedback" />
+          </Controls>
 
           {loaded && <LayerManager />}
           {loaded && <AtlasPopup />}
