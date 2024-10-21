@@ -2,6 +2,9 @@
 import { PropsWithChildren, Suspense } from "react";
 
 import { LayoutGroup } from "framer-motion";
+import { useAtom } from "jotai";
+
+import { mobileStateAtom } from "@/app/(atlas)/atlas/store";
 
 import { AtlasHero } from "@/containers/atlas/hero";
 import { AtlasMap } from "@/containers/atlas/map";
@@ -13,22 +16,32 @@ import { Header } from "@/containers/header";
 import { Media } from "@/containers/media";
 import { Newsletter } from "@/containers/newsletter";
 
-export const AtlasLayout = ({ children }: PropsWithChildren) => {
+export const AtlasLayoutMobile = ({ children }: PropsWithChildren) => {
+  const [mobileState] = useAtom(mobileStateAtom);
+
   return (
-    <>
-      <Media lessThan="lg">
-        <main className="flex min-h-dvh flex-col">
-          <Header />
+    <main className="flex min-h-dvh flex-col overflow-hidden">
+      <Header />
+
+      {mobileState === "hero" && (
+        <>
           <AtlasHero />
           <Newsletter />
           <Footer />
-        </main>
-      </Media>
+        </>
+      )}
 
-      <Media greaterThanOrEqual="lg">
-        <main className="flex h-dvh overflow-hidden">
-          <AtlasTour />
-          <div className="pointer-events-none absolute left-0 top-0 z-10 flex h-full">
+      {mobileState === "map" && (
+        <Suspense fallback={null}>
+          <div className="flex grow flex-col">
+            <AtlasMap />
+          </div>
+        </Suspense>
+      )}
+
+      {mobileState === "sidebar" && (
+        <Suspense fallback={null}>
+          <div className="flex h-full w-full">
             <LayoutGroup>
               <Suspense fallback={null}>
                 <AtlasNav />
@@ -36,10 +49,40 @@ export const AtlasLayout = ({ children }: PropsWithChildren) => {
               </Suspense>
             </LayoutGroup>
           </div>
+        </Suspense>
+      )}
+    </main>
+  );
+};
+
+export const AtlasLayoutDesktop = ({ children }: PropsWithChildren) => {
+  return (
+    <main className="flex h-dvh overflow-hidden">
+      <AtlasTour />
+      <div className="pointer-events-none absolute left-0 top-0 z-10 flex h-full">
+        <LayoutGroup>
           <Suspense fallback={null}>
-            <AtlasMap />
+            <AtlasNav />
+            <AtlasSidebar>{children}</AtlasSidebar>
           </Suspense>
-        </main>
+        </LayoutGroup>
+      </div>
+      <Suspense fallback={null}>
+        <AtlasMap />
+      </Suspense>
+    </main>
+  );
+};
+
+export const AtlasLayout = ({ children }: PropsWithChildren) => {
+  return (
+    <>
+      <Media lessThan="lg">
+        <AtlasLayoutMobile>{children}</AtlasLayoutMobile>
+      </Media>
+
+      <Media greaterThanOrEqual="lg">
+        <AtlasLayoutDesktop>{children}</AtlasLayoutDesktop>
       </Media>
     </>
   );

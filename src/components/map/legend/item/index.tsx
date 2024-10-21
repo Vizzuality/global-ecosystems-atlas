@@ -66,7 +66,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
 
               <div
                 className={cn({
-                  "mt-px text-xs font-bold text-navy-700": true,
+                  "mt-px text-xs font-bold leading-snug text-navy-700": true,
                 })}
               >
                 {name}

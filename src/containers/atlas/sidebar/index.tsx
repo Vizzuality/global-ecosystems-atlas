@@ -22,7 +22,7 @@ export const AtlasSidebar = ({ children }: PropsWithChildren) => {
         duration: 0.4,
         ease: "easeInOut",
       }}
-      className="pointer-events-none relative z-0 h-full w-[450px]"
+      className="pointer-events-none relative z-0 h-full grow lg:w-[450px]"
     >
       <motion.div
         initial={"open"}

@@ -20,7 +20,7 @@ export const SAMHero = () => {
         heritage and how the Global Ecosystems Atlas is supporting that endeavour.
       </p>
 
-      <div className="-mx-8 mt-5 block sm:mx-auto xl:hidden">
+      <div className="-mx-4 mt-5 block sm:mx-auto xl:hidden">
         <Image src="/sam/1.webp" alt="South Africa and Mozambique" width={666} height={666} />
       </div>
     </section>
