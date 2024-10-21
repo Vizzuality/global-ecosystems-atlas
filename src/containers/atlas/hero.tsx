@@ -32,13 +32,13 @@ export const AtlasHero = () => {
             </div>
             <div className="col-span-12 space-y-2">
               <Link href="/" className="block w-full sm:w-auto">
-                <Button size="lg" variant="secondary" className="w-full">
+                <Button size="lg" variant="default" className="w-full">
                   See Homepage
                 </Button>
               </Link>
               <Button
                 size="lg"
-                variant="default"
+                variant="outline"
                 className="w-full"
                 onClick={() => setMobileState("map")}
               >
