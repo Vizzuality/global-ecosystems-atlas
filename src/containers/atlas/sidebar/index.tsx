@@ -80,7 +80,7 @@ export const AtlasSidebarHeader = ({ children }: PropsWithChildren) => {
   // const setAtlasMobileSidebarOpen = useSetAtom(atlasMobileSidebarAtom);
 
   return (
-    <header className="sticky top-0 z-10 flex justify-between gap-6 bg-gradient-to-b from-white to-white/0 p-6">
+    <header className="sticky top-0 z-10 flex justify-between gap-4 bg-gradient-to-b from-white to-white/0 p-4 lg:gap-6 lg:p-6">
       {children}
 
       {/* <Media lessThan="lg">
@@ -105,7 +105,7 @@ export const AtlasSidebarHeader = ({ children }: PropsWithChildren) => {
 };
 
 export const AtlasSidebarContainer = ({ children }: PropsWithChildren) => {
-  return <div className="px-6">{children}</div>;
+  return <div className="px-4 lg:px-6">{children}</div>;
 };
 
 export const AtlasSidebarTitle = ({ children }: PropsWithChildren) => {

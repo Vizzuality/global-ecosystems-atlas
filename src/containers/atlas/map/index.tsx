@@ -42,7 +42,11 @@ import SettingsControl from "@/components/map/controls/settings";
 import ShareControl from "@/components/map/controls/share";
 import ZoomControl from "@/components/map/controls/zoom";
 
-export const AtlasMap = () => {
+export interface AtlasMapProps {
+  mobile?: boolean;
+}
+
+export const AtlasMap = ({ mobile }: AtlasMapProps) => {
   const queryClient = useQueryClient();
   const { atlasMap } = useMap();
 
@@ -81,16 +85,17 @@ export const AtlasMap = () => {
 
   const handleFitBounds = useCallback(() => {
     if (tmpBbox && atlasMap) {
+      const left = mobile ? 50 : sidebarOpen ? 600 : 125;
       atlasMap.fitBounds(tmpBbox as LngLatBoundsLike, {
         padding: {
           top: 50,
           bottom: 50,
-          left: sidebarOpen ? 600 : 125,
+          left,
           right: 50,
         },
       });
     }
-  }, [atlasMap, sidebarOpen, tmpBbox]);
+  }, [mobile, atlasMap, sidebarOpen, tmpBbox]);
 
   const handleClick = useCallback(
     (e: MapMouseEvent) => {
@@ -129,7 +134,7 @@ export const AtlasMap = () => {
               padding: {
                 top: 50,
                 bottom: 50,
-                left: sidebarOpen ? 600 : 125,
+                left: mobile ? 50 : sidebarOpen ? 600 : 125,
                 right: 50,
               },
             },
@@ -153,21 +158,30 @@ export const AtlasMap = () => {
               <DataControl onClick={() => setAtlasMobileSidebar(!atlasMobileSidebar)} />
             </Controls>
           </Media>
-          <Controls>
-            <Media greaterThanOrEqual="lg">
+          <Media greaterThanOrEqual="lg">
+            <Controls>
               <MenuControl />
-            </Media>
-            <Media greaterThanOrEqual="lg">
               <ZoomControl />
-            </Media>
-            <SettingsControl id="tour-atlas-basemap">
-              <MapSettings />
-            </SettingsControl>
-            <ShareControl id="tour-atlas-share">
-              <MapShare />
-            </ShareControl>
-            <FeedbackControl id="tour-atlas-feedback" />
-          </Controls>
+              <SettingsControl id="tour-atlas-basemap">
+                <MapSettings />
+              </SettingsControl>
+              <ShareControl id="tour-atlas-share">
+                <MapShare />
+              </ShareControl>
+              <FeedbackControl id="tour-atlas-feedback" />
+            </Controls>
+          </Media>
+          <Media lessThan="lg">
+            <Controls>
+              <SettingsControl id="tour-atlas-basemap">
+                <MapSettings />
+              </SettingsControl>
+              <ShareControl id="tour-atlas-share">
+                <MapShare />
+              </ShareControl>
+              <FeedbackControl id="tour-atlas-feedback" />
+            </Controls>
+          </Media>
 
           {loaded && <LayerManager />}
           {loaded && <AtlasPopup />}
