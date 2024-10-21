@@ -19,7 +19,7 @@ export default function AtlasUploadPage() {
       <AtlasSidebarHeader>
         <AtlasSidebarTitle>
           Upload area
-          <Badge variant="alert" className="relative -top-0.5 normal-case">
+          <Badge variant="alert" className="relative normal-case lg:-top-0.5">
             Coming soon
           </Badge>
         </AtlasSidebarTitle>
