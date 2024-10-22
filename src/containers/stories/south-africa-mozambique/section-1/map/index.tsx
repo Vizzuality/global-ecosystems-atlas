@@ -53,7 +53,7 @@ export const STEPS: {
     legend: [
       {
         id: "story_sa",
-        name: "Mozambiques's national ecosystem types",
+        name: "Mozambique's national ecosystem types",
         sortable: {
           enabled: false,
         },

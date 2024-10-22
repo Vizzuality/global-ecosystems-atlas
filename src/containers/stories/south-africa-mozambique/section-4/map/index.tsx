@@ -32,13 +32,6 @@ export const STEPS: {
     locations: ["ZAF_224", "MOZ_167"],
     legend: [
       {
-        id: "efgs",
-        name: "Ecosystem Functional Groups",
-        sortable: {
-          enabled: false,
-        },
-      },
-      {
         id: "protected-areas",
         name: "Protected Areas",
         sortable: {
@@ -54,7 +47,7 @@ export const STEPS: {
     legend: [
       {
         id: "country-contribution",
-        name: "Country contribution",
+        name: "Contribution status",
         sortable: {
           enabled: false,
         },

@@ -123,7 +123,7 @@ export const SAMCollaborativeMap = () => {
           >
             <LegendItem
               id="efgs"
-              name="Global Ecosystems Atlas"
+              name="Global Ecosystem Atlas synthesis map"
               sortable={{
                 enabled: false,
               }}
