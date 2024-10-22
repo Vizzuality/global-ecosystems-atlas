@@ -10,7 +10,7 @@ export default function HomeHero() {
     <Section hero className="min-h-0">
       <div className="container">
         <Grid className="lg:gap-y-9">
-          <div className="col-span-12 lg:col-span-10 lg:col-start-2 2xl:col-span-8 2xl:col-start-3">
+          <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <H1 className="text-center">Mapping the world&apos;s ecosystems for action</H1>
           </div>
           <div className="col-span-12 lg:col-span-8 lg:col-start-3">
