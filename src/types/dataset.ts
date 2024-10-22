@@ -20,4 +20,5 @@ export interface Dataset {
   stage_1_pass: string;
   stage1_comments: string;
   in_geoatlas: string;
+  crosswalk_acknowledgement: string;
 }

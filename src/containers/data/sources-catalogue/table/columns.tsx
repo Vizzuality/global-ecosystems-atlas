@@ -42,7 +42,7 @@ export const columns: ColumnDef<Dataset>[] = [
   },
   {
     id: "expanded",
-    accessorFn: (props) => props.tags,
+    accessorFn: (props) => props.GET_realm_tag,
     minSize: 60,
     maxSize: 60,
     header: () => null,

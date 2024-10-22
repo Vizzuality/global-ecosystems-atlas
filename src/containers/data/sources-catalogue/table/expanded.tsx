@@ -27,20 +27,16 @@ export const Expanded = (row: Row<Dataset>) => {
             </TableCell>
           </TableRow>
           <TableRow className="table-row border-b-transparent">
-            <TableHead className="table-cell leading-6">Contact name</TableHead>
-            <TableCell className="table-cell">{row.original.contact_name}</TableCell>
-          </TableRow>
-          <TableRow className="table-row border-b-transparent">
-            <TableHead className="table-cell leading-6">License</TableHead>
-            <TableCell className="table-cell">{row.original.licence}</TableCell>
+            <TableHead className="table-cell leading-6">Crosswalk acknowledgement</TableHead>
+            <TableCell className="table-cell">
+              <Markdown className="prose prose-sm">
+                {row.original.crosswalk_acknowledgement}
+              </Markdown>
+            </TableCell>
           </TableRow>
           <TableRow className="table-row border-b-transparent">
             <TableHead className="table-cell leading-6">DOI</TableHead>
             <TableCell className="table-cell">{row.original.DOI}</TableCell>
-          </TableRow>
-          <TableRow className="table-row border-b-transparent">
-            <TableHead className="table-cell leading-6">TAGS</TableHead>
-            <TableCell className="table-cell">{row.original.GET_realm_tag}</TableCell>
           </TableRow>
         </TableBody>
       </table>
