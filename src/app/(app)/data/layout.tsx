@@ -125,7 +125,7 @@ export default function DataLayout({
         </div>
       </nav>
 
-      <div className="-mt-8">{children}</div>
+      <div className="-mt-8 lg:-mt-16">{children}</div>
     </>
   );
 }
