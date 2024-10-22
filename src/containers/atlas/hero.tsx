@@ -41,6 +41,7 @@ export const AtlasHero = () => {
             </div>
             <div className="col-span-12 space-y-2">
               <Button
+                size="lg"
                 variant="default"
                 className="w-full"
                 onClick={() => setAtlasMobileState("map")}
@@ -52,7 +53,7 @@ export const AtlasHero = () => {
                 href="/resources/#global-ecosystem-atlas-screencast"
                 className="block w-full sm:w-auto"
               >
-                <Button variant="outline" className="w-full">
+                <Button size="lg" variant="outline" className="w-full">
                   Watch the Atlas demonstration
                 </Button>
               </Link>

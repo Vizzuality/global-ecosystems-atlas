@@ -36,7 +36,7 @@ export const MethodologyQA = () => {
               {QAs.map((qa) => (
                 <li
                   key={qa.title}
-                  className="flex flex-col gap-8 rounded-2xl border border-navy-700/10 p-6 lg:flex-row"
+                  className="flex flex-col gap-8 rounded-2xl border border-navy-700/10 p-4 lg:flex-row lg:p-6"
                 >
                   <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-green-50">
                     <FiCheckCircle className="h-8 w-8 text-green-500" />

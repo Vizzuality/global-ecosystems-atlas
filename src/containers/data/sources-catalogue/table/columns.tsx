@@ -42,8 +42,10 @@ export const columns: ColumnDef<Dataset>[] = [
   },
   {
     id: "expanded",
+    accessorFn: (props) => props.tags,
     minSize: 60,
     maxSize: 60,
+    header: () => null,
     cell: ({ row }) => (
       <button
         onClick={row.getToggleExpandedHandler()}

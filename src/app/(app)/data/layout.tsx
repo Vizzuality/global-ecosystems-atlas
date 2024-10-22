@@ -1,7 +1,11 @@
 "use client";
+import { ChangeEvent } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
+import { FiChevronDown } from "react-icons/fi";
 
 import { cn } from "@/lib/utils";
 
@@ -9,12 +13,36 @@ import { Grid } from "@/components/ui/grid";
 import { H1 } from "@/components/ui/h1";
 import { Section } from "@/components/ui/section";
 
+const ITEMS = [
+  {
+    title: "Methodology",
+    href: "/data/methodology",
+  },
+  {
+    title: "How to use the data",
+    href: "/data/how-to-use-the-data",
+  },
+  {
+    title: "Sources Catalogue",
+    href: "/data/sources-catalogue",
+  },
+  {
+    title: "Questions & Answers",
+    href: "/data/questions-and-answers",
+  },
+];
+
 export default function DataLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+  const { push } = useRouter();
+
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    push(event.target.value);
+  };
 
   return (
     <>
@@ -44,69 +72,60 @@ export default function DataLayout({
         </div>
       </Section>
 
-      <nav id="tabs" className="hidden w-full bg-navy-700 pt-8 lg:block">
+      <div className="relative z-10 -mt-16 block bg-navy-700 py-8 lg:hidden" tabIndex={1}>
+        <div className="container space-y-1">
+          <label htmlFor="tabs-mobile" className="block text-sm font-medium text-white">
+            Select category:
+          </label>
+          <div className="relative">
+            <span className="flex w-full items-center justify-between rounded bg-white px-3 py-2 text-navy-700">
+              {ITEMS.find((item) => item.href === pathname)?.title}
+
+              <FiChevronDown className="h-5 w-5" />
+            </span>
+            <select
+              id="tabs-mobile"
+              className="absolute left-0 top-0 h-full w-full opacity-0"
+              defaultValue={pathname}
+              onChange={handleChange}
+            >
+              {ITEMS.map((item, index) => (
+                <option key={index} value={item.href}>
+                  {item.title}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <nav id="tabs" className="relative z-10 hidden w-full bg-navy-700 pt-8 lg:block">
         <div className="container">
           <Grid>
             <div className="col-span-12 lg:col-span-10 lg:col-start-2">
               <ul className="flex rounded-t-md bg-navy-600">
-                <li className="basis-1/4">
-                  <Link
-                    className={cn({
-                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                        true,
-                      "bg-white text-navy-700": pathname === "/data/methodology",
-                      "hover:bg-white/30": pathname !== "/data/methodology",
-                    })}
-                    href="/data/methodology#tabs"
-                  >
-                    Methodology
-                  </Link>
-                </li>
-                <li className="basis-1/4">
-                  <Link
-                    className={cn({
-                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                        true,
-                      "bg-white text-navy-700": pathname === "/data/how-to-use-the-data",
-                      "hover:bg-white/30": pathname !== "/data/how-to-use-the-data",
-                    })}
-                    href="/data/how-to-use-the-data#tabs"
-                  >
-                    How to use the data
-                  </Link>
-                </li>
-                <li className="basis-1/4">
-                  <Link
-                    className={cn({
-                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                        true,
-                      "bg-white text-navy-700": pathname === "/data/sources-catalogue",
-                      "hover:bg-white/30": pathname !== "/data/sources-catalogue",
-                    })}
-                    href="/data/sources-catalogue#tabs"
-                  >
-                    Sources Catalogue
-                  </Link>
-                </li>
-                <li className="basis-1/4">
-                  <Link
-                    className={cn({
-                      "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
-                        true,
-                      "bg-white text-navy-700": pathname === "/data/questions-and-answers",
-                      "hover:bg-white/30": pathname !== "/data/questions-and-answers",
-                    })}
-                    href="/data/questions-and-answers#tabs"
-                  >
-                    Questions & Answers
-                  </Link>
-                </li>
+                {ITEMS.map((item, index) => (
+                  <li key={index} className="basis-1/4">
+                    <Link
+                      className={cn({
+                        "block rounded-t-md py-4 text-center text-sm font-semibold uppercase text-white/70 transition-colors":
+                          true,
+                        "bg-white text-navy-700": pathname === item.href,
+                        "hover:bg-white/30": pathname !== item.href,
+                      })}
+                      href={`${item.href}#tabs`}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </Grid>
         </div>
       </nav>
-      {children}
+
+      <div className="-mt-8 lg:-mt-16">{children}</div>
     </>
   );
 }
