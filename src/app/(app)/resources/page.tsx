@@ -54,6 +54,10 @@ export default async function ResourcesPage() {
                     <div className="relative aspect-video">
                       <video controls className="h-full w-full" poster="/poster_screencast.webp">
                         <source
+                          src="https://global-ecosystem-atlas-production-assets-bucket.s3.eu-west-3.amazonaws.com/app/screencast/GEA_screencast_00.webm"
+                          type="video/webm"
+                        />
+                        <source
                           src="https://global-ecosystem-atlas-production-assets-bucket.s3.eu-west-3.amazonaws.com/app/screencast/GEA_screencast_00.mp4"
                           type="video/mp4"
                         />
