@@ -9,6 +9,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query
 import {
   getApiLocationsGetQueryOptions,
   getApiLocationsLocationGetQueryOptions,
+  getApiLocationsLocationWidgetsWidgetIdGetQueryOptions,
 } from "@/types/generated/locations";
 
 import Loading from "@/app/(app)/stories/south-africa-mozambique/loading";
@@ -31,6 +32,13 @@ export default async function StoriesSouthAfricaMozambiquePage() {
   await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("GLOB"));
   await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("ZAF_224"));
   await queryClient.prefetchQuery(getApiLocationsLocationGetQueryOptions("MOZ_167"));
+
+  await queryClient.prefetchQuery(
+    getApiLocationsLocationWidgetsWidgetIdGetQueryOptions("ZAF_224", "current_status"),
+  );
+  await queryClient.prefetchQuery(
+    getApiLocationsLocationWidgetsWidgetIdGetQueryOptions("MOZ_167", "current_status"),
+  );
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
