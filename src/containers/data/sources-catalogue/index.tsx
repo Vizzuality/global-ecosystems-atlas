@@ -15,7 +15,7 @@ export async function SourcesCatalogue() {
     <Section>
       <div className="container">
         <Grid>
-          <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+          <div className="col-span-12 overflow-hidden lg:col-span-10 lg:col-start-2">
             <DatasetTable data={DATA} columns={columns} />
           </div>
         </Grid>

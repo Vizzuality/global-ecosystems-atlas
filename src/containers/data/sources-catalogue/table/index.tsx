@@ -62,9 +62,9 @@ export function DatasetTable<TData, TValue>({ columns, data }: DatasetTableProps
   const [sort] = table.getState().sorting;
 
   return (
-    <div className="flex flex-col items-center justify-center gap-10">
+    <div className="space-y-5 lg:space-y-10">
       <div className="rounded-md border">
-        <Table>
+        <Table className="min-w-[1000px]">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -137,14 +137,16 @@ export function DatasetTable<TData, TValue>({ columns, data }: DatasetTableProps
           </TableBody>
         </Table>
       </div>
-      <DataPagination
-        pageIndex={pageIndex}
-        pageCount={table.getPageCount()}
-        totalPagesToDisplay={5}
-        onPagePrevious={table.previousPage}
-        onPageNext={table.nextPage}
-        onPageIndex={table.setPageIndex}
-      />
+      <div className="flex justify-center">
+        <DataPagination
+          pageIndex={pageIndex}
+          pageCount={table.getPageCount()}
+          totalPagesToDisplay={5}
+          onPagePrevious={table.previousPage}
+          onPageNext={table.nextPage}
+          onPageIndex={table.setPageIndex}
+        />
+      </div>
     </div>
   );
 }
