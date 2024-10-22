@@ -55,7 +55,7 @@ const WHO = [
 
 const WhoItem = (who: { title: string; description: string }) => (
   <div className="group relative grow rounded-2xl bg-lightblue-100 transition-colors duration-500 hover:bg-navy-700">
-    <div className="space-y-3 p-8">
+    <div className="space-y-3 p-6 lg:p-8">
       <h3 className="text-xl font-semibold transition-colors duration-500 group-hover:text-white lg:text-2xl">
         {who.title}
       </h3>

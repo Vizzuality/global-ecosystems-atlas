@@ -55,7 +55,7 @@ export function Search<T extends Option>({
         <div className="flex h-10 w-full min-w-0 items-center overflow-hidden">
           <span
             className={cn(
-              "block w-full min-w-0 items-center overflow-hidden overflow-ellipsis whitespace-nowrap text-left text-sm leading-none",
+              "flex h-10 w-full min-w-0 items-center overflow-hidden overflow-ellipsis whitespace-nowrap text-left text-sm leading-none",
               !value && "text-navy-500",
             )}
           >

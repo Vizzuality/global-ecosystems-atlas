@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import Map, { LngLatBoundsLike, useMap } from "react-map-gl";
+import Map, { AttributionControl, LngLatBoundsLike, useMap } from "react-map-gl";
 
 import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
@@ -157,7 +157,13 @@ export const AtlasMap = ({ mobile }: AtlasMapProps) => {
             }
             setLoaded(true);
           }}
+          attributionControl={false}
         >
+          <AttributionControl
+            customAttribution={[
+              "<a class='font-bold' target='_blank' rel='noopener noreferer' href='/disclaimer'>Disclaimer</a>",
+            ]}
+          />
           <Controls>
             {!mobile && <MenuControl />}
             {!mobile && <ZoomControl />}

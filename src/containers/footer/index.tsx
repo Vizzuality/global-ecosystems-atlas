@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
   return (
-    <footer className="bg-lightblue-50 py-16">
+    <footer className="bg-lightblue-100 py-16">
       <div className="container">
         <div className="flex justify-center lg:justify-start">
           <div className="flex items-center gap-6 divide-x divide-neutral-200 md:gap-6">
