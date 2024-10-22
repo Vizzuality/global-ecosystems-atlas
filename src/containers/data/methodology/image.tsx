@@ -4,7 +4,7 @@ import { TranslateY } from "@/components/animations/translateY";
 
 export const MethodologyImage = () => {
   return (
-    <div className="relative aspect-video max-h-[400px] overflow-hidden 2xl:max-h-[544px]">
+    <div className="relative aspect-video max-h-[400px] w-full overflow-hidden 2xl:max-h-[544px]">
       <TranslateY
         className="h-full w-full"
         scrollOptions={{
