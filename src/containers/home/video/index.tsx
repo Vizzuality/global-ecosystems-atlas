@@ -57,7 +57,7 @@ export default function HomeVideo() {
               <div className="relative aspect-video">
                 {!playing && (
                   <div className="absolute z-10 h-full w-full">
-                    <Image src="/poster.jpg" alt="Video poster" fill priority />
+                    <Image src="/poster.webp" alt="Video poster" fill priority />
                   </div>
                 )}
 
