@@ -1,6 +1,8 @@
 "use client";
 import { useMemo } from "react";
 
+import { formatPercentage } from "@/lib/utils";
+
 import { useApiLocationsLocationWidgetsWidgetIdGet } from "@/types/generated/locations";
 
 import { useSyncLocation } from "@/app/(atlas)/atlas/store";
@@ -50,7 +52,7 @@ export const WidgetLocationStatus = () => {
                     <div className="space-x-2">
                       <span className="space-x-1">
                         <span className="text-2xl font-semibold leading-none lg:text-4xl">
-                          {DATA?.mapped_coverage}
+                          {formatPercentage((DATA?.mapped_coverage ?? 0) / 100, {}, false)}
                         </span>
                         <span className="text-lg leading-none">%</span>
                       </span>
