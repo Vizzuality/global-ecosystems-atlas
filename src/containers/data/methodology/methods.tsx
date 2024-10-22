@@ -15,7 +15,7 @@ export const MethodologyMethods = () => {
         </Grid>
 
         <Grid>
-          <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-2 lg:p-9">
+          <div className="col-span-12 space-y-8 rounded-lg bg-white p-4 lg:col-span-5 lg:col-start-2 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
               <PiHardDrives className="h-8 w-8" />
             </div>
@@ -32,7 +32,7 @@ export const MethodologyMethods = () => {
               </p>
             </div>
           </div>
-          <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-7 lg:p-9">
+          <div className="col-span-12 space-y-8 rounded-lg bg-white p-4 lg:col-span-5 lg:col-start-7 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
               <PiMapTrifold className="h-8 w-8" />
             </div>
@@ -56,7 +56,7 @@ export const MethodologyMethods = () => {
               </p>
             </div>
           </div>
-          <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-2 lg:p-9">
+          <div className="col-span-12 space-y-8 rounded-lg bg-white p-4 lg:col-span-5 lg:col-start-2 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
               <PiSealCheck className="h-8 w-8" />
             </div>
@@ -69,7 +69,7 @@ export const MethodologyMethods = () => {
               </p>
             </div>
           </div>
-          <div className="col-span-12 space-y-8 rounded-lg bg-white p-6 lg:col-span-5 lg:col-start-7 lg:p-9">
+          <div className="col-span-12 space-y-8 rounded-lg bg-white p-4 lg:col-span-5 lg:col-start-7 lg:p-9">
             <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-lightblue-100">
               <PiGridNine className="h-8 w-8" />
             </div>

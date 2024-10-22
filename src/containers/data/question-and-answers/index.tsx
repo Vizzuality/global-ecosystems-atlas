@@ -16,7 +16,7 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
 
   return (
     <Collapsible asChild onOpenChange={setOpen}>
-      <li className="space-y-4 rounded-lg border border-navy-100 p-6">
+      <li className="space-y-4 rounded-lg border border-navy-100 p-4 lg:p-6">
         <CollapsibleTrigger className="flex w-full items-start justify-between gap-6 text-left">
           <h2 className="text-xl font-medium">{question}</h2>
           {!open && <FiChevronDown className="relative top-1 h-6 w-6 shrink-0 text-navy-700" />}
@@ -37,7 +37,7 @@ export const Faqs = () => {
       <div className="container">
         <Grid>
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <ul className="space-y-6">
+            <ul className="space-y-4 lg:space-y-6">
               {FAQS.map((faq, index) => (
                 <FaqItem key={index} {...faq} />
               ))}
