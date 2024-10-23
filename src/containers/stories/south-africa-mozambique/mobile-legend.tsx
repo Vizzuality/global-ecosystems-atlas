@@ -10,7 +10,7 @@ export interface SAMLegendMobileProps {
 export const SAMLegendMobile = ({ legends, theme = "light" }: SAMLegendMobileProps) => {
   return (
     <div className="w-full">
-      <div className="container">
+      <div className="container sm:-mx-4">
         {!!legends.length &&
           legends.map((l) => (
             <p
