@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+import { SAMLegendMobile } from "@/containers/stories/south-africa-mozambique/mobile-legend";
+import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
+
 export const SAMInnovativeMozambique = () => {
   return (
     <section className="flex flex-col justify-center gap-4 xl:min-h-dvh xl:py-48">
@@ -25,7 +28,8 @@ export const SAMInnovativeMozambique = () => {
         —the first global framework for classifying ecosystems across all realms: terrestrial,
         freshwater and marine.
       </p>
-      <div className="-mx-4 mt-5 block sm:mx-auto xl:hidden">
+      <div className="relative -mx-4 mt-5 block space-y-1 sm:mx-auto xl:hidden">
+        <SAMLegendMobile legends={STEPS[2].legend} />
         <Image src="/sam/3.webp" alt="Mozambique" width={666} height={666} />
       </div>
     </section>
