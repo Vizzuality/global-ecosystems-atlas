@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+import { SAMLegendMobile } from "@/containers/stories/south-africa-mozambique/mobile-legend";
+import { STEPS } from "@/containers/stories/south-africa-mozambique/section-4/map";
+
 export const SAMWhy2 = () => {
   return (
     <section className="flex flex-col justify-center gap-4 xl:min-h-dvh xl:py-48">
@@ -18,6 +21,7 @@ export const SAMWhy2 = () => {
         </p>
       </div>
       <div className="-mx-4 mt-5 block sm:mx-auto xl:hidden">
+        <SAMLegendMobile legends={STEPS[1].legend} />
         <Image src="/sam/5.webp" alt="Country contribution status" width={1266} height={1146} />
       </div>
     </section>

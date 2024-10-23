@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+import { SAMLegendMobile } from "@/containers/stories/south-africa-mozambique/mobile-legend";
+import { STEPS } from "@/containers/stories/south-africa-mozambique/section-1/map";
+
 import { H2 } from "@/components/ui/h2";
 
 export const SAMInnovativeSouthAfrica = () => {
@@ -16,7 +19,8 @@ export const SAMInnovativeSouthAfrica = () => {
         ecosystem types across all realms. This provides a wealth of data that has guided
         conservation action, spatial planning, environmental impact assessments and more.
       </p>
-      <div className="-mx-4 mt-5 block sm:mx-auto xl:hidden">
+      <div className="relative -mx-4 mt-5 block space-y-1 sm:mx-auto xl:hidden">
+        <SAMLegendMobile legends={STEPS[1].legend} />
         <Image src="/sam/2.webp" alt="South Africa" width={666} height={666} />
       </div>
     </section>

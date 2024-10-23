@@ -4,6 +4,8 @@ import { LngLatBoundsLike, Map, ViewState, ViewStateChangeEvent } from "react-ma
 
 import { env } from "@/env.mjs";
 
+import { SAMLegendMobile } from "@/containers/stories/south-africa-mozambique/mobile-legend";
+
 import Controls from "@/components/map/controls";
 import ZoomControl from "@/components/map/controls/zoom";
 import { LayerManager } from "@/components/map/layer-manager";
@@ -38,99 +40,123 @@ export const SAMCollaborativeMap = () => {
   };
 
   return (
-    <Compare>
-      <div className="relative h-full w-full">
-        <Map
-          id="collaborative-map-1"
-          mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
-          initialViewState={initialViewState}
-          {...viewState}
-          projection={{
-            name: "mercator",
-          }}
-          mapStyle={mapStyle1}
-          scrollZoom={false}
-          onMove={handleMove}
-          onLoad={() => setLoaded1(true)}
-        >
-          <>
-            <Controls>
-              <ZoomControl />
-            </Controls>
+    <div className="h-full w-full space-y-1">
+      <div className="relative block lg:hidden">
+        <SAMLegendMobile
+          theme="dark"
+          legends={[
+            {
+              id: "national-ecosystems-maps",
+              name: "Left: National Ecosystems Maps",
+              sortable: {
+                enabled: false,
+              },
+            },
+            {
+              id: "efgs",
+              name: "Right: Global Ecosystem Atlas synthesis map",
+              sortable: {
+                enabled: false,
+              },
+            },
+          ]}
+        />
+      </div>
 
-            {loaded1 && (
-              <LayerManager
-                layers={["story_sa", "story_mozambique"]}
-                locations={["ZAF_224", "MOZ_167"]}
-                globalSettings={{}}
-              />
-            )}
-          </>
-        </Map>
-
-        <div className="absolute bottom-10 left-4 hidden lg:block">
-          <Legend
-            className="rounded-lg border border-neutral-200 bg-white shadow-sm"
-            sortable={{
-              enabled: false,
+      <Compare>
+        <div className="relative h-full w-full">
+          <Map
+            id="collaborative-map-1"
+            mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
+            initialViewState={initialViewState}
+            {...viewState}
+            projection={{
+              name: "mercator",
             }}
+            mapStyle={mapStyle1}
+            scrollZoom={false}
+            onMove={handleMove}
+            onLoad={() => setLoaded1(true)}
           >
-            <LegendItem
-              id="national-ecosystems-maps"
-              name="National Ecosystems Maps"
+            <>
+              <Controls>
+                <ZoomControl />
+              </Controls>
+
+              {loaded1 && (
+                <LayerManager
+                  layers={["story_sa", "story_mozambique"]}
+                  locations={["ZAF_224", "MOZ_167"]}
+                  globalSettings={{}}
+                />
+              )}
+            </>
+          </Map>
+
+          <div className="absolute bottom-10 left-4 hidden lg:block">
+            <Legend
+              className="rounded-lg border border-neutral-200 bg-white shadow-sm"
               sortable={{
                 enabled: false,
               }}
-            />
-          </Legend>
-        </div>
-      </div>
-      <div className="relative h-full w-full">
-        <Map
-          id="collaborative-map-2"
-          mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
-          initialViewState={initialViewState}
-          {...viewState}
-          projection={{
-            name: "mercator",
-          }}
-          mapStyle={mapStyle2}
-          scrollZoom={false}
-          onMove={handleMove}
-          onLoad={() => setLoaded2(true)}
-        >
-          <>
-            <Controls>
-              <ZoomControl />
-            </Controls>
-
-            {loaded2 && (
-              <LayerManager
-                layers={["efgs"]}
-                locations={["ZAF_224", "MOZ_167"]}
-                globalSettings={{}}
+            >
+              <LegendItem
+                id="national-ecosystems-maps"
+                name="National Ecosystems Maps"
+                sortable={{
+                  enabled: false,
+                }}
               />
-            )}
-          </>
-        </Map>
-
-        <div className="absolute bottom-10 right-4 hidden lg:block">
-          <Legend
-            className="rounded-lg border border-neutral-200 bg-white shadow-sm"
-            sortable={{
-              enabled: false,
+            </Legend>
+          </div>
+        </div>
+        <div className="relative h-full w-full">
+          <Map
+            id="collaborative-map-2"
+            mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
+            initialViewState={initialViewState}
+            {...viewState}
+            projection={{
+              name: "mercator",
             }}
+            mapStyle={mapStyle2}
+            scrollZoom={false}
+            onMove={handleMove}
+            onLoad={() => setLoaded2(true)}
           >
-            <LegendItem
-              id="efgs"
-              name="Global Ecosystem Atlas synthesis map"
+            <>
+              <Controls>
+                <ZoomControl />
+              </Controls>
+
+              {loaded2 && (
+                <LayerManager
+                  layers={["efgs"]}
+                  locations={["ZAF_224", "MOZ_167"]}
+                  globalSettings={{}}
+                />
+              )}
+            </>
+          </Map>
+
+          <div className="absolute bottom-10 right-4 hidden lg:block">
+            <Legend
+              className="rounded-lg border border-neutral-200 bg-white shadow-sm"
               sortable={{
                 enabled: false,
               }}
-            />
-          </Legend>
+            >
+              <LegendItem
+                id="efgs"
+                name="Global Ecosystem Atlas synthesis map"
+                sortable={{
+                  enabled: false,
+                }}
+              />
+            </Legend>
+          </div>
         </div>
-      </div>
-    </Compare>
+      </Compare>
+    </div>
   );
 };
